@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap');
+
+
+// Body
+$body-bg: #f8fafc;
+
+// Typography
+$font-family-sans-serif: 'Poppins', sans-serif;
+$font-size-base: 1rem;
+$line-height-base: 1.4;
+
+// Colors
+$blue: #3490dc;
+$indigo: #6574cd;
+$purple: #9561e2;
+$pink: #f66d9b;
+$red: #e3342f;
+$orange: #f6993f;
+$yellow: #ffed4a;
+$green: #38c172;
+$teal: #4dc0b5;
+$cyan: #6cb2eb;
+$white: #ffffff;
+$black: #000000;
+
+$primary: #4b67c3;
+$secondary: #82868b;
+$success: #2a9836;
+$danger: #de222e;
+$warning: #fbb21d;
+
+$primary: #4b67c3;
+$success: #28c76f;
+$danger: #ea5455;
+$warning: #ff9f43;
+$dark: #1e1e1e;
+$grey: #b8c2cc;
+$grey-light: #dae1e7;
+$white: #fff;
+$black: #22292f;
+
+$success-light: #57d38d;
+$success-lighter: #e4f7e6;
+$info-light: #b9c4ff;
+$info-lighter: #ecf2ff;
+$warning-light: tint-color($yellow, 40%);
+$warning-lighter: #fff7e1;
+$danger-light: #f9c7c7;
+$danger-lighter: #ffe6e6;
+
+$box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+$btn-box-shadow: 0 0.125rem 0.25rem rgba(34, 41, 47, 0.1);
+
+$border-radius: 0.75rem;
+$border-radius-sm: 1rem;
+$border-radius-lg: 2rem;
+$border-radius-pill: 50rem;
+
+$font-family-sans-serif: 'Montserrat';
+
+$form-label-font-size: 1rem;
+$form-label-font-weight: 600;
+
+// Badges
+$badge-font-size: 0.75rem;
+$badge-font-weight: 600;
+$badge-padding-y: 0.5em;
+$badge-padding-x: 1em;
+
+// Alerts
+$alert-border-radius: 0.25rem;
+$alert-border-width: 0.25rem;
+
+$tooltip-max-width: 300px;

@@ -1,0 +1,68 @@
+.btn {
+	min-width: 30px;
+	transition: all 0.5s !important;
+	border-radius: $border-radius;
+	&:hover {
+		transform: rotate(1.2deg);
+	}
+}
+
+.btn-primary {
+	color: var(--bs-primary);
+	background-color: rgba($primary, 0.2);
+	box-shadow: $btn-box-shadow;
+	border: none;
+	&:hover {
+		color: white;
+	}
+}
+
+.btn-secondary {
+	color: var(--bs-secondary);
+	background-color: rgba($secondary, 0.2);
+	box-shadow: $btn-box-shadow;
+	border: none;
+	&:hover {
+		color: white;
+	}
+}
+
+.btn-success {
+	color: var(--bs-success);
+	background-color: rgba($success, 0.2);
+	box-shadow: $btn-box-shadow;
+	border: none;
+	&:hover {
+		color: white;
+	}
+}
+
+.btn-danger {
+	color: var(--bs-danger);
+	background-color: rgba($danger, 0.4);
+	box-shadow: $btn-box-shadow;
+	border: none;
+	&:hover {
+		color: white;
+	}
+}
+
+.btn-warning {
+	color: var(--bs-warning);
+	background-color: rgba($warning, 0.2);
+	box-shadow: $btn-box-shadow;
+	border: none;
+	&:hover {
+		color: white;
+	}
+}
+
+.btn-info {
+	color: var(--bs-info);
+	background-color: rgba($info, 0.2);
+	box-shadow: $btn-box-shadow;
+	border: none;
+	&:hover {
+		color: white;
+	}
+}
