@@ -26,14 +26,11 @@ return new class extends Migration
             $table->longText('landing')->nullable();
             $table->string('landing_image')->nullable();
             $table->integer('limit')->nullable();
-            $table->integer('external_id')->nullable();
-            $table->string('external_service')->nullable();
             $table->string('package')->nullable();
             $table->enum('status', ['draft', 'published', 'auto-draft', 'trashed', 'future']);
             $table->string('sku')->nullable();
             $table->string('ean')->nullable();
             $table->integer('quantity')->nullable();
-            $table->string('package')->nullable();
             $table->integer('limit_qunantity')->nullable();
             $table->string('external_id')->nullable();
             $table->string('external_service')->nullable();
