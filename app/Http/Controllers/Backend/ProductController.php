@@ -54,7 +54,7 @@ class ProductController extends BackendController
     public function store(Request $request)
     {
         $product = new Product($request->all());
-        $product->created_by = Auth::user()->id;
+        #$product->created_by = Auth::user()->id;
         $product->slug = Str::slug($product->name, '-');
         $product->save();
         $id = $product->id;

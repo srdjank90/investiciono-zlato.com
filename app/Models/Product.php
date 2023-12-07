@@ -14,28 +14,20 @@ class Product extends Model
     protected $fillable = [
         'name',
         'slug',
-        'subtitle',
+        'url',
         'description',
-        'price',
-        'price_old',
+        'price_id',
+        'selling_price',
+        'purchase_price',
         'currency',
-        'featured',
-        'highlighted',
-        'special',
-        'landing',
-        'landing_image',
-        'status',
-        'sku',
-        'ean',
-        'quantity',
-        'package',
-        'limit_qunantity',
-        'external_id',
-        'external_service',
-        'created_by',
-        'expiry_date',
-        'published_at'
+        'company',
+        'last_price_at',
     ];
+
+    public function prices()
+    {
+        return $this->hasMany(Price::class)->orderBy('created_at', 'desc');
+    }
 
     public function categories()
     {

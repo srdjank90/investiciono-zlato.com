@@ -23,26 +23,26 @@ class FrontendController extends Controller
 
     public function index()
     {
-        $highlightedProducts = Product::where('highlighted', 1)->where('status', 'published')->get();
-        $highlightedProducts = $this->updateProductsWithAction($highlightedProducts);
+        #$highlightedProducts = Product::where('highlighted', 1)->where('status', 'published')->get();
+        #$highlightedProducts = $this->updateProductsWithAction($highlightedProducts);
 
-        $favoriteCategories = ProductCategory::where('favorite_flag', 1)->get();
-        $favoriteCategories = $this->updateProductsWithAction($favoriteCategories);
+        #$favoriteCategories = ProductCategory::where('favorite_flag', 1)->get();
+        #$favoriteCategories = $this->updateProductsWithAction($favoriteCategories);
 
-        $bestSellerProducts = Product::where('featured', 'best-seller')->where('status', 'published')->get();
-        $bestSellerProducts = $this->updateProductsWithAction($bestSellerProducts);
+        #$bestSellerProducts = Product::where('featured', 'best-seller')->where('status', 'published')->get();
+        #$bestSellerProducts = $this->updateProductsWithAction($bestSellerProducts);
 
-        $newProducts = Product::where('featured', 'new')->where('status', 'published')->get();
-        $newProducts = $this->updateProductsWithAction($newProducts);
+        #$newProducts = Product::where('featured', 'new')->where('status', 'published')->get();
+        #$newProducts = $this->updateProductsWithAction($newProducts);
 
-        $actionProducts = Product::where('featured', 'action')->where('status', 'published')->get();
-        $actionProducts = $this->updateProductsWithAction($actionProducts);
+        #$actionProducts = Product::where('featured', 'action')->where('status', 'published')->get();
+        #$actionProducts = $this->updateProductsWithAction($actionProducts);
 
-        $productAction = ProductAction::orderBy('id', 'desc')->first();
+        #$productAction = ProductAction::orderBy('id', 'desc')->first();
 
         $posts = Post::orderBy('created_at', 'desc')->get()->take(3);
 
-        return view('frontend.themes.' . $this->theme . '.index', compact('favoriteCategories', 'bestSellerProducts', 'newProducts', 'actionProducts', 'highlightedProducts', 'productAction', 'posts'));
+        return view('frontend.themes.' . $this->theme . '.index', compact('posts'));
     }
 
     public function cart()
