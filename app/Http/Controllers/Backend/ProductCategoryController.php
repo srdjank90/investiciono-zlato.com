@@ -37,8 +37,7 @@ class ProductCategoryController extends BackendController
     public function store(Request $request)
     {
         $productsCategories = new ProductCategory($request->except('category_image'));
-        $productsCategories->created_by = Auth::user()->id;
-
+        #$productsCategories->created_by = Auth::user()->id;
 
         if ($request->category_image) {
             $imageFile = $request->file('category_image');

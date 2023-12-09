@@ -46,7 +46,9 @@
                                 @endif
                             @endforeach
                             <th>{{ __('Categories') }}</th>
-                            <th>{{ __('Price') }}</th>
+                            <th>{{ __('Company') }}</th>
+                            <th>{{ __('Selling Price') }}</th>
+                            <th>{{ __('Purchase Price') }}</th>
                             <th>{{ __('Status') }}</th>
                             <th width="120"></th>
                         </thead>
@@ -72,15 +74,16 @@
                                             <span class="badge bg-primary text-light">{{ $category->name }}</span>
                                         @endforeach
                                     </td>
+                                    <td>{{ $product->company }}</td>
                                     <td>
-                                        <div><b>💰 @priceFormat($product->price)</b> {{ $currency }}</div>
-                                        @if ($product->price_old && $product->price_old != '' && $product->price_old != 0)
-                                            <div style="font-size: 10px;padding-left:45px">
-                                                <b class="text-decoration-line-through">💰
-                                                    @priceFormat($product->price_old)</b> {{ $currency }}
-                                            </div>
+                                        @if ($product->selling_price)
+                                            <div><b>💰 @priceFormat($product->selling_price)</b> {{ $currency }}</div>
                                         @endif
-
+                                    </td>
+                                    <td>
+                                        @if ($product->purchase_price)
+                                            <div><b>💰 @priceFormat($product->purchase_price)</b> {{ $currency }}</div>
+                                        @endif
                                     </td>
                                     <td>
                                         @if ($product->status == 'draft' || $product->status == 'auto-draft')

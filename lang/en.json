@@ -179,5 +179,7 @@
     "Login": "Login",
     "Logout": "Logout",
     "You are logged in!": "You are logged in!",
-    "Confirm Order": "Confirm Order"
+    "Confirm Order": "Confirm Order",
+    "Purchase Price": "Purchase Price",
+    "Selling Price": "Selling Price"
 }

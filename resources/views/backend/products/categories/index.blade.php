@@ -38,7 +38,7 @@
                             class="form-control form-control-sm slug-generated" value="">
                         <div id="slugHelp" class="form-text">
                             {{ __('The “slug” is the URL-friendly version of the name. It
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            is usually all lowercase and contains only letters, numbers, and hyphens.') }}
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    is usually all lowercase and contains only letters, numbers, and hyphens.') }}
                         </div>
                     </div>
                     <div class="form-group">
@@ -49,25 +49,19 @@
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <div class="form-check">
-                            <input class="form-check-input" name="favorite_flag" type="checkbox" value="1"
-                                id="favoriteFlag">
-                            <label class="form-check-label" for="favoriteFlag">
-                                {{ __('Favorite') }}
-                            </label>
-                        </div>
-                    </div>
 
-                    <div class="form-group d-none">
-                        <label for="parent">{{ __('Parent') }}</label>
-                        <select name="parent" id="parent" class="form-select form-select-sm">
+
+                    <div class="form-group">
+                        <label for="parent_id">{{ __('Parent') }}</label>
+                        <select name="parent_id" id="parent_id" class="form-select form-select-sm">
                             <option value="">{{ __('None') }}</option>
+                            @foreach ($productCategories as $category)
+                                <option value="{{ $category->id }}">
+                                    {{ $category->name }}</option>
+                            @endforeach
                         </select>
                         <div id="parentHelp" class="form-text">
-                            {{ __('Categories, unlike tags, can have a hierarchy. You
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            might have a Jazz category, and under that have children categories for Bebop and Big Band.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            Totally optional.') }}
+                            {{ __('Categories, unlike tags, can have a hierarchy. You might have a Jazz category, and under that have children categories for Bebop and Big Band.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 Totally optional.') }}
                         </div>
                     </div>
                     <button role="submit" class="btn btn-primary mt-3"><i class="bi bi-check2-circle"></i>
@@ -83,7 +77,7 @@
                         <th width="64">#</th>
                         <th>{{ __('Name') }}</th>
                         <th>{{ __('Slug') }}</th>
-                        <th>{{ __('Favorite') }}</th>
+                        <th>{{ __('Parent') }}</th>
                         <th class="text-center" width="100">{{ __('Products') }}</th>
                         <th width="100"></th>
                     </thead>
@@ -101,10 +95,8 @@
                                 <td>{{ $category->name }}</td>
                                 <td>{{ $category->slug }} </td>
                                 <td>
-                                    @if ($category->favorite_flag)
-                                        <span class="badge bg-primary">{{ __('Yes') }}</span>
-                                    @else
-                                        <span class="badge bg-secondary">{{ __('No') }}</span>
+                                    @if ($category->parent)
+                                        {{ $category->parent->name }}
                                     @endif
                                 </td>
                                 <td class="text-center">{{ $category->products_count }}</td>
@@ -163,14 +155,6 @@
                                     <input class="form-control form-control-sm" name="category_image"
                                         id="categoryImageEdit" type="file">
                                 </div>
-                            </div>
-
-                            <div class="form-check">
-                                <input class="form-check-input" name="favorite_flag" type="checkbox" value="1"
-                                    id="categoryFavoriteFlagEdit">
-                                <label class="form-check-label" for="categoryFavoriteFlagEdit">
-                                    {{ __('Favorite') }}
-                                </label>
                             </div>
 
                             <div class="mt-3 text-end">

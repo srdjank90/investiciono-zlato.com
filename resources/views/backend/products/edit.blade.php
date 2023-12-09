@@ -49,22 +49,13 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- Product Subtitle -->
-                        <div class="card mb-3">
-                            <div class="card-body">
-                                <h6 class="p-0 m-0">Podnaslov</h6>
-                                <div class="form-group mb-2">
-                                    <textarea class="form-control" name="subtitle" id="subtitle" cols="3" rows="3">{{ $product->subtitle }}</textarea>
-                                </div>
-                            </div>
-                        </div>
                         <!-- Product Description -->
                         <div class="card mb-3">
                             <div class="card-body">
                                 <h6 class="p-0 m-0">{{ __('Product Description') }}</h6>
                                 <small><i
                                         class="bi bi-info-circle-fill text-info me-1"></i>{{ __('Description about product
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        that will be shown on a frontent') }}</small>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        that will be shown on a frontent') }}</small>
                                 <div class="form-group mb-2">
                                     <label for="description">{{ __('Description') }}</label>
                                     <textarea class="form-control tinymce" name="description" id="description" cols="30" rows="10">{{ $product->description }}</textarea>
@@ -132,8 +123,7 @@
                                                 @endif
                                             </div>
                                             <div class="col-md-3 mt-4">
-                                                <a href="javascript:void(0)"
-                                                    onclick="addMeta('{{ $metaOption['name'] }}')"
+                                                <a href="javascript:void(0)" onclick="addMeta('{{ $metaOption['name'] }}')"
                                                     class="btn btn-primary btn-sm w-100">+ {{ __('Add') }}</a>
                                             </div>
                                         </div>
@@ -151,7 +141,7 @@
                                         <h6 class="p-0 m-0">{{ __('Product Images') }}</h6>
                                         <small><i
                                                 class="bi bi-info-circle-fill text-info me-1"></i>{{ __('Add your product
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        images') }}</small>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        images') }}</small>
                                     </div>
                                     <button type="button" class="btn btn-primary btn-image-gallery">
                                         {{ __('Add Image') }}
@@ -234,20 +224,20 @@
                                 <h6 class="p-0 m-0">{{ __('Product Price') }}</h6>
                                 <small><i
                                         class="bi bi-info-circle-fill text-info me-1"></i>{{ __('Information about product
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        price') }}</small>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        price') }}</small>
                                 <div class="form-group mb-3">
-                                    <label for="price">Price</label>
+                                    <label for="selling_price">{{ __('Selling Price') }}</label>
                                     <div class="input-group">
-                                        <input name="price" id="price" type="text" class="form-control"
-                                            value="{{ $product->price }}">
+                                        <input name="selling_price" id="selling_price" type="text"
+                                            class="form-control" value="{{ $product->selling_price }}">
                                         <span class="input-group-text">{{ $currency }}</span>
                                     </div>
                                 </div>
                                 <div class="form-group mb-3">
-                                    <label for="price_old">Price Old</label>
+                                    <label for="purchase_price">{{ __('Purchase Price') }}</label>
                                     <div class="input-group">
-                                        <input name="price_old" id="price_old" type="text" class="form-control"
-                                            value="{{ $product->price_old }}">
+                                        <input name="purchase_price" id="purchase_price" type="text"
+                                            class="form-control" value="{{ $product->purchase_price }}">
                                         <span class="input-group-text">{{ $currency }}</span>
                                     </div>
                                 </div>
@@ -257,24 +247,8 @@
                         <div class="card mb-3">
                             <div class="card-body">
                                 <div class="form-group mb-3">
-                                    <label for="featured">{{ __('Featured') }}</label>
-                                    <select name="featured" id="featured" class="form-select">
-                                        <option value="" {{ $product->featured == '' ? 'selected' : '' }}>
-                                            {{ __('None') }}
-                                        </option>
-                                        <option value="best-seller"
-                                            {{ $product->featured == 'best-seller' ? 'selected' : '' }}>
-                                            {{ __('Best Seller') }}</option>
-                                        <option value="new" {{ $product->featured == '' ? 'new' : '' }}>
-                                            {{ __('New') }}
-                                        </option>
-                                        <option value="action" {{ $product->featured == '' ? 'action' : '' }}>
-                                            {{ __('Action') }}</option>
-                                    </select>
-                                </div>
-                                <div class="form-group mb-3">
                                     <label for="productsCategories">Categories</label>
-                                    <select name="categories[]" id="productsCategories" multiple class="form-select">
+                                    <select name="categories" id="productsCategories" class="form-select">
                                         @foreach ($productCategories as $category)
                                             <option value="{{ $category->id }}"
                                                 {{ in_array($category->id, $productCategoriesIds) ? 'selected' : '' }}>
@@ -282,26 +256,7 @@
                                         @endforeach
                                     </select>
                                 </div>
-                                <div class="form-group mb-3">
-                                    <div class="form-check form-switch d-flex justify-content-start align-items-center">
-                                        <input class="form-check-input" {{ $product->highlighted ? 'checked' : '' }}
-                                            value="1" name="highlighted" type="checkbox" role="switch"
-                                            id="highlighted">
-                                        <label class="form-check-label ms-2 me-4"
-                                            for="highlighted">{{ __('Highlighted') }}</label>
-                                        <a href="{{ route('backend.products.landing', $product->id) }}"
-                                            class="btn btn-primary landing">{{ __('Landing Page') }}</a>
-                                    </div>
-                                </div>
-                                <div class="form-group landing">
-                                    <label for="landingImage">{{ __('Landing Image') }}</label>
-                                    @if (isset($product->landing_image) && $product->landing_image != '')
-                                        <img src="{{ $storageUrl }}{{ $product->landing_image }}" class="w-100"
-                                            alt="">
-                                    @endif
 
-                                    <input type="file" name="landing_image" class="form-control" id="landingImage">
-                                </div>
                             </div>
                         </div>
                     </div>

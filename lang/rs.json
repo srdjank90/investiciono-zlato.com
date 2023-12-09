@@ -179,5 +179,7 @@
     "Login": "Prijavite se",
     "Logout": "Odjavite se",
     "You are logged in!": "Prijavljeni ste!",
-    "Confirm Order": "Potvrdi porudžbinu"
+    "Confirm Order": "Potvrdi porudžbinu",
+    "Purchase Price": "Kupovna cena",
+    "Selling Price": "Prodajna cena"
 }

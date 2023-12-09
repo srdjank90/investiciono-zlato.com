@@ -2,6 +2,8 @@
 
 namespace App\Console\Commands;
 
+use App\Models\Product;
+use App\Models\ProductCategory;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Log;
 use Weidner\Goutte\GoutteFacade;
@@ -29,10 +31,11 @@ class ScrapeGoldProducts extends Command
     public function handle()
     {
         #$this->fetchZlatniStandard();
-        #$this->fetchInvesticionoZlato();
 
+        #$this->fetchInvesticionoZlato();
         #$this->tavexProducts();
-        $this->goldenSpaceProducts();
+        #$this->goldenSpaceProducts();
+        $this->zlatoMojeProducts();
 
         #$pric = $this->fetchInvesticionoZlatoItemPrice('https://investiciono-zlato.rs/zlatne-poluge-20-grama-10-x-2g.html');
         #Log::info($pric);
@@ -41,14 +44,22 @@ class ScrapeGoldProducts extends Command
     function fetchZlatniStandard()
     {
         $data = [];
+        $data[0]['name'] = 'Zlatne pločice';
+        $data[0]['slug'] = Str::slug($data[0]['name'], '-');
         $data[0]['url'] = 'https://zlatnistandard.rs/kategorija/zlatne-plocice/';
         $data[0]['categories'] = [];
+        $data[1]['name'] = 'Zlatne poluge';
+        $data[1]['slug'] = Str::slug($data[1]['name'], '-');
         $data[1]['url'] = 'https://zlatnistandard.rs/kategorija/zlatne-poluge/';
         $data[1]['categories'] = [];
+        $data[2]['name'] = 'Zlatni dukati';
+        $data[2]['slug'] = Str::slug($data[2]['name'], '-');
         $data[2]['url'] = 'https://zlatnistandard.rs/kategorija/zlatni-dukati/';
         $data[2]['categories'] = [];
 
         foreach ($data as $key => $d) {
+
+
             $categories = [];
             try {
                 $crawler = GoutteFacade::request('GET', $d['url']);
@@ -57,6 +68,7 @@ class ScrapeGoldProducts extends Command
                     $category['slug'] = Str::slug($category['name'], '-');
                     $category['url'] = $node->children()->extract(array('href'))[0];
                     $category['items'] = [];
+
                     return $category;
                 });
                 $data[$key]['categories'] = $categories[0];
@@ -68,7 +80,44 @@ class ScrapeGoldProducts extends Command
             }
         }
 
-        Log::info($data);
+        foreach ($data as $item) {
+            $cParentData = [
+                'name' => $item['name'],
+                'slug' => $item['slug'],
+                'description' => $item['url'],
+            ];
+            $categoryParent = ProductCategory::create($cParentData);
+            foreach ($item['categories'] as $child) {
+                $cChildData = [
+                    'name' => $child['name'],
+                    'slug' => $child['slug'],
+                    'description' =>  $child['url'],
+                    'parent_id' =>  $categoryParent->id,
+                ];
+                $categoryChild = ProductCategory::create($cChildData);
+                foreach ($child['items'] as $prod) {
+                    $declaration = '';
+                    if (gettype($prod['declaration']) == 'array') {
+                        foreach ($prod['declaration'] as $dec) {
+                            $declaration .= '<p>' . $dec . '</p>';
+                        }
+                    } else {
+                        $declaration = $prod['declaration'];
+                    }
+                    $productData = [
+                        'name' => $prod['name'],
+                        'slug' => $prod['slug'],
+                        'url' => $prod['url'],
+                        'company' => $prod['company'],
+                        'description' =>  $prod['description'],
+                        'declaration' =>  $declaration,
+                        'short' =>  $prod['short'],
+                    ];
+                    $product = Product::create($productData);
+                    $product->categories()->attach($categoryChild->id);
+                }
+            }
+        }
     }
 
     function fetchZlatniStandardCategoryItems($url)
@@ -138,13 +187,20 @@ class ScrapeGoldProducts extends Command
         return $desc;
     }
 
+    /**
+     * Investiciono zlato
+     * Function fetch products from https://investiciono-zlato.rs
+     */
     function fetchInvesticionoZlato()
     {
         $data = [];
+        $data[0]['name'] = 'Zlatne pločice';
         $data[0]['url'] = 'https://investiciono-zlato.rs/zlatne-plocice';
         $data[0]['products'] = [];
+        $data[1]['name'] = 'Zlatne poluge';
         $data[1]['url'] = 'https://investiciono-zlato.rs/zlatne-poluge';
         $data[1]['products'] = [];
+        $data[2]['name'] = 'Zlatne dukati';
         $data[2]['url'] = 'https://investiciono-zlato.rs/dukati';
         $data[2]['products'] = [];
 
@@ -182,7 +238,28 @@ class ScrapeGoldProducts extends Command
             }
         }
 
+        foreach ($data as $da) {
 
+            foreach ($da['products'] as $product) {
+                $productData = [
+                    'name' => $product['name'],
+                    'slug' => Str::slug($product['name'], '-') . '-investiciono-zlato.rs',
+                    'url' => $product['url'],
+                    'company' => 'investiciono-zlato.rs',
+                    'description' =>  $product['description'],
+                    'declaration' =>  '',
+                    'short' =>  '',
+                    'selling_price' => floatval(str_replace('.', '', str_replace('din', '', trim($product['selling_price'])))),
+                    'purchase_price' => floatval(str_replace('.', '', str_replace('din', '', trim($product['purchase_price'])))),
+                ];
+
+                $product = Product::create($productData);
+                $categoryID = $this->findCategory($product['name']);
+                if ($categoryID) {
+                    $product->categories()->attach($categoryID);
+                }
+            }
+        }
         Log::info($data);
     }
 
@@ -241,7 +318,10 @@ class ScrapeGoldProducts extends Command
         }
     }
 
-
+    /**
+     * Tavex 
+     * Products from tavex.rs
+     */
     function tavexProducts()
     {
         $url = 'https://tavex.rs/zlato/';
@@ -272,8 +352,31 @@ class ScrapeGoldProducts extends Command
             Log::error($e->getMessage());
         }
         Log::info($products);
+        foreach ($products as $prod) {
+            $productData = [
+                'name' => $prod['name'],
+                'slug' => Str::slug($prod['name'], '-') . '-tavex.rs',
+                'url' => $prod['url'],
+                'company' => 'tavex.rs',
+                'description' =>  '',
+                'declaration' =>  '',
+                'short' =>  '',
+                'selling_price' => floatval(str_replace('.', '', str_replace('din', '', trim($prod['selling_price'])))),
+                'purchase_price' => floatval(str_replace('.', '', str_replace('din', '', trim($prod['purchase_price'])))),
+            ];
+
+            $product = Product::create($productData);
+            $categoryID = $this->findCategory($product['name']);
+            if ($categoryID) {
+                $product->categories()->attach($categoryID);
+            }
+        }
     }
 
+    /**
+     * Golden Space
+     * Products from golden-space.rs
+     */
     function goldenSpaceProducts()
     {
         $url = 'https://golden-space.rs/investiciono-zlato/';
@@ -285,12 +388,111 @@ class ScrapeGoldProducts extends Command
                 $product['slug'] = Str::slug($product['name'], '-');
                 $product['selling_price'] = $node->closest('.elementor-element-populated')->filter('.elementor-widget-text-editor .woocommerce-Price-amount')->first()->text();
                 $product['purchase_price'] = $node->closest('.elementor-element-populated')->filter('.elementor-widget-text-editor .woocommerce-Price-amount')->last()->text();
-                $product['company'] = 'golden-space.rs';
                 return $product;
             });
         } catch (\Exception $e) {
             Log::error($e->getMessage());
         }
         Log::info($products);
+        foreach ($products as $prod) {
+            $productData = [
+                'name' => $prod['name'],
+                'slug' => Str::slug($prod['name'], '-') . '-golden-space.rs',
+                'url' => $prod['url'],
+                'company' => 'golden-space.rs',
+                'description' =>  '',
+                'declaration' =>  '',
+                'short' =>  '',
+                'selling_price' => floatval(str_replace('.', '', str_replace('RSD', '', trim($prod['selling_price'])))),
+                'purchase_price' => floatval(str_replace('.', '', str_replace('RSD', '', trim($prod['purchase_price'])))),
+            ];
+
+            $product = Product::create($productData);
+            $categoryID = $this->findCategory($product['name']);
+            if ($categoryID) {
+                $product->categories()->attach($categoryID);
+            }
+        }
+    }
+
+    /**
+     * Zlato Moje
+     * Products from zlatomoje.rs
+     */
+    function zlatoMojeProducts()
+    {
+        $url = 'https://www.zlatomoje.rs/';
+        try {
+            $crawler = GoutteFacade::request('GET', $url);
+            $products = $crawler->filter('section li[data-hook="product-list-grid-item"]')->each(function ($node) {
+                Log::info($node->text());
+                $product['url'] = $node->filter('[data-hook="product-item-product-details-link"]')->first()->extract(array('href'))[0];
+                $product['name'] = $node->filter('[data-hook="product-item-name"]')->first()->text();
+                $product['slug'] = Str::slug($product['name'], '-');
+                $product['selling_price'] =  $node->filter('[data-hook="product-item-price-to-pay"]')->first()->text();
+                $product['purchase_price']  = null;
+                return $product;
+            });
+        } catch (\Exception $e) {
+            Log::error($e->getMessage());
+        }
+
+        foreach ($products as $prod) {
+            $productData = [
+                'name' => $prod['name'],
+                'slug' => Str::slug($prod['name'], '-') . '-zlatomoje.rs',
+                'url' => $prod['url'],
+                'company' => 'zlatomoje.rs',
+                'description' =>  '',
+                'declaration' =>  '',
+                'short' =>  '',
+                'selling_price' => floatval(str_replace(',00', '', str_replace('.', '', str_replace('РСД', '', trim($prod['selling_price']))))),
+                'purchase_price' => floatval(str_replace(',00', '', str_replace('.', '', str_replace('РСД', '', trim($prod['purchase_price']))))),
+            ];
+
+            $product = Product::create($productData);
+            $categoryID = $this->findCategory($product['name']);
+            if ($categoryID) {
+                $product->categories()->attach($categoryID);
+            }
+        }
+        Log::info($products);
+    }
+
+    function findCategory($string)
+    {
+        $category = null;
+        if (str_contains($string, '1 gram') || str_contains($string, '1gram') || str_contains($string, '1g') || str_contains($string, '1 g')) {
+            $category = ProductCategory::where('name', 'LIKE', '%1g%')->first();
+        }
+        if (str_contains($string, '2 gram') || str_contains($string, '2gram') || str_contains($string, '2g') || str_contains($string, '2 g')) {
+            $category = ProductCategory::where('name', 'LIKE', '%2g%')->first();
+        }
+        if (str_contains($string, '5 gram') || str_contains($string, '5gram') || str_contains($string, '5g') || str_contains($string, '5 g')) {
+            $category = ProductCategory::where('name', 'LIKE', '%5g%')->first();
+        }
+        if (str_contains($string, '10 gram') || str_contains($string, '10gram') || str_contains($string, '10g') || str_contains($string, '10 g')) {
+            $category = ProductCategory::where('name', 'LIKE', '%10g%')->first();
+        }
+        if (str_contains($string, '20 gram') || str_contains($string, '20gram') || str_contains($string, '20g') || str_contains($string, '20 g')) {
+            $category = ProductCategory::where('name', 'LIKE', '%20g%')->first();
+        }
+        if (str_contains($string, '1 oz') || str_contains($string, '1oz') || str_contains($string, '1unc') || str_contains($string, '1 unc')) {
+            $category = ProductCategory::where('name', 'LIKE', '%1 unca%')->first();
+        }
+        if (str_contains($string, '50 gram') || str_contains($string, '50gram') || str_contains($string, '50g') || str_contains($string, '50 g')) {
+            $category = ProductCategory::where('name', 'LIKE', '%50g%')->first();
+        }
+        if (str_contains($string, '100 gram') || str_contains($string, '100gram') || str_contains($string, '100g') || str_contains($string, '100 g')) {
+            $category = ProductCategory::where('name', 'LIKE', '%100g%')->first();
+        }
+        if (str_contains($string, '100 gram') || str_contains($string, '100gram') || str_contains($string, '100g') || str_contains($string, '100 g')) {
+            $category = ProductCategory::where('name', 'LIKE', '%100g%')->first();
+        }
+        if ($category) {
+            return $category->id;
+        } else {
+            return null;
+        }
     }
 }

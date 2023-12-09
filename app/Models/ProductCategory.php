@@ -9,12 +9,17 @@ class ProductCategory extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'slug', 'image_id', 'favorite_flag', 'description', 'parent_id', 'min_order_quantity', 'external_id', 'external_service', 'created_by'];
+    protected $fillable = ['name', 'slug', 'image_id', 'description', 'parent_id', 'order'];
     protected $appends = ['products_count'];
 
     public function products()
     {
         return $this->belongsToMany(Product::class);
+    }
+
+    public function parent()
+    {
+        return $this->belongsTo(ProductCategory::class, 'parent_id', 'id');
     }
 
     public function image()

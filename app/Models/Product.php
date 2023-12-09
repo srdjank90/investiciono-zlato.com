@@ -15,6 +15,8 @@ class Product extends Model
         'name',
         'slug',
         'url',
+        'short',
+        'declaration',
         'description',
         'price_id',
         'selling_price',
@@ -22,6 +24,7 @@ class Product extends Model
         'currency',
         'company',
         'last_price_at',
+        'status'
     ];
 
     public function prices()

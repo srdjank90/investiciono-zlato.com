@@ -37,7 +37,7 @@ class AppServiceProvider extends ServiceProvider
             $currency = getOption('product_currency_opt', 'EUR');
             $currency = '€';
             $productMetas = getOption('product_metas_opt', []);
-            $productCategories = ProductCategory::where('slug', '!=', 'uncategorized')->orderBy('favorite_flag', 'desc')->orderBy('created_at', 'asc')->get();
+            $productCategories = ProductCategory::where('slug', '!=', 'uncategorized')->orderBy('order', 'asc')->orderBy('created_at', 'asc')->get();
             $parentProductCategories = ProductCategory::whereNull('parent_id')->get();
             $settings = getOptions('setting');
             $productAction = ProductAction::orderBy('id', 'desc')->first();
