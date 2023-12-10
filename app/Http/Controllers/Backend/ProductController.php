@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Exports\ProductExport;
 use App\Http\Controllers\Controller;
 use App\Models\File;
 use App\Models\Product;
@@ -11,6 +12,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Maatwebsite\Excel\Facades\Excel;
 
 class ProductController extends BackendController
 {
@@ -23,19 +25,26 @@ class ProductController extends BackendController
         $currency = getOption('product_currency_opt', 'EUR');
         $perPage = getOption('product_per_page_opt', 8);
         $search = '';
-        if ($request->search && $request->search !== '') {
-            $search = $request->search;
-        }
-        if ($search !== '') {
-            $products = Product::where('name', 'LIKE', '%' . $search . '%')
-                ->orWhere('status', 'LIKE', '%' . $search . '%')
-                ->paginate($perPage);
-        } else {
-            $products = Product::paginate($perPage);
-        }
+
+        $cat = $request->cat ?? 'all';
+        $query = Product::query();
+
+        $query->when(request('search'), function ($q) {
+            $q->where('name', 'LIKE', '%' . request('search') . '%');
+        });
+
+        $query->when(request('cat'), function ($q) {
+            $q->whereHas('categories', function ($qc) {
+                $qc->where('name', request('cat'));
+            });
+            $q->orderBy('selling_price', 'asc')->orderByRaw('selling_price IS NULL');
+        });
+
+        $products = $query->paginate($perPage);
+
         $productMetas = getOption('product_metas_opt', []);
 
-        return view('backend.products.index', compact(['products', 'search', 'currency', 'productMetas']));
+        return view('backend.products.index', compact(['products', 'search', 'currency', 'productMetas', 'cat']));
     }
 
     /**
@@ -350,5 +359,10 @@ class ProductController extends BackendController
         $totalFilesSameName = File::where('path', $imagePath . "/" . $originalName)->count();
         $newOriginalName = str_replace("." . $extension, "-" . $totalFilesSameName . "." . $extension, $originalName);
         return $newOriginalName;
+    }
+
+    public function export($cat)
+    {
+        return Excel::download(new ProductExport($cat), 'products.xlsx');
     }
 }

@@ -6,8 +6,8 @@
         <nav>
             <ul class="nav">
                 <li class="nav-item">
-                    <a class="nav-link {{  Route::currentRouteName() == 'backend' ? 'active' : '' }}"
-                        aria-current="page" href="{{ route('backend') }}">
+                    <a class="nav-link {{ Route::currentRouteName() == 'backend' ? 'active' : '' }}" aria-current="page"
+                        href="{{ route('backend') }}">
                         <span><i class="bi bi-house"></i> {{ __('Dashboard') }} </span>
                     </a>
                 </li>
@@ -17,7 +17,7 @@
                         <span><i class="bi bi-cart2"></i> {{ __('Products') }} </span>
                     </a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item d-none">
                     <a class="nav-link  {{ Str::contains(Route::currentRouteName(), 'backend.orders') ? 'active' : '' }}"
                         aria-current="page" href="{{ route('backend.orders.index') }}">
                         <span><i class="bi bi-card-checklist"></i> {{ __('Orders') }} </span>
@@ -40,7 +40,7 @@
 
             <ul class="nav">
                 <li class="nav-item">
-                    <a class="nav-link {{ Str::contains( Route::currentRouteName(), 'backend.settings') ? 'active' : '' }}"
+                    <a class="nav-link {{ Str::contains(Route::currentRouteName(), 'backend.settings') ? 'active' : '' }}"
                         aria-current="page" href="{{ route('backend.settings.index') }}">
                         <span><i class="bi bi-gear"></i> {{ __('Settings') }}</span>
                     </a>

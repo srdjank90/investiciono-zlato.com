@@ -57,6 +57,8 @@ Route::delete('/backend/products/{productId}/images/remove/{imageId}', [App\Http
 Route::get('/backend/products/settings', [App\Http\Controllers\Backend\ProductController::class, 'settings'])->name('backend.products.settings');
 Route::post('/backend/products/settings/metas/store', [App\Http\Controllers\Backend\ProductController::class, 'settingsMetasStore'])->name('backend.products.settings.metas.store');
 Route::get('/backend/products/time-offers', [App\Http\Controllers\Backend\ProductController::class, 'timeOffers'])->name('backend.products.timeOffers');
+Route::get('/backend/products/export/{cat}', [App\Http\Controllers\Backend\ProductController::class, 'export'])->name('backend.products.export');
+
 
 // Backend Product Categories
 Route::get('/backend/products/categories', [App\Http\Controllers\Backend\ProductCategoryController::class, 'index'])->name('backend.products.categories.index');
