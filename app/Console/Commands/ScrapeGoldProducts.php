@@ -40,8 +40,8 @@ class ScrapeGoldProducts extends Command
         #$this->kupiZlatoProducts();
         #$this->insignitusProducts();
         #$this->dokInvestProducts();
-        #$this->gvsSrbijaProducts();
-        $this->investicionoZlato2Products();
+        $this->gvsSrbijaProducts();
+        #$this->investicionoZlato2Products();
 
         #$pric = $this->fetchInvesticionoZlatoItemPrice('https://investiciono-zlato.rs/zlatne-poluge-20-grama-10-x-2g.html');
         #Log::info($pric);
@@ -810,7 +810,51 @@ class ScrapeGoldProducts extends Command
      */
     function gvsSrbijaProducts()
     {
-        $url = 'https://www.gvs-srbija.rs/kupi/zlatne-poluge.html';
+        /* $url = 'https://www.gvs-srbija.rs/kupi/zlatne-poluge.html';
+
+        try {
+            $crawler = GoutteFacade::request('GET', $url);
+            $products = $crawler->filter('.product-item-info')->each(function ($node) {
+
+                $product['url'] = $node->filter('a')->first()->extract(array('href'))[0];
+                $product['name'] = $node->filter('.productListColumnProductTitle')->first()->text();
+                $product['slug'] = Str::slug($product['name'], '-');
+                if ($node->filter('span')->count() > 0) {
+                    $product['selling_price'] =  (float)str_replace(',', '.', preg_replace('/[^0-9,]/', '', $node->filter('.goldFont.tierPrice')->first()->text()));
+                } else {
+                    $product['selling_price'] =  null;
+                }
+                $product['purchase_price'] =  null;
+
+                return $product;
+            });
+        } catch (\Exception $e) {
+            Log::error($e->getMessage());
+        }
+
+        foreach ($products as $prod) {
+            $productData = [
+                'name' => $prod['name'],
+                'slug' => Str::slug($prod['name'], '-') . '-gvs-srbija.rs',
+                'url' => $prod['url'],
+                'company' => 'gvs-srbija.rs',
+                'description' =>  '',
+                'declaration' =>  '',
+                'short' =>  '',
+                'selling_price' => $prod['selling_price'],
+                'purchase_price' => $prod['purchase_price'],
+            ];
+
+            $product = Product::create($productData);
+            $categoryID = $this->findCategory($product['name']);
+            if ($categoryID) {
+                $product->categories()->attach($categoryID);
+            }
+        } */
+
+
+
+        $url = 'https://www.gvs-srbija.rs/kupi/zlatnici.html';
 
         try {
             $crawler = GoutteFacade::request('GET', $url);
