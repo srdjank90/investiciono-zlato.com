@@ -2,12 +2,14 @@
 
 namespace App\Console\Commands;
 
+use App\Http\Controllers\Backend\PriceUpdateController;
 use App\Models\Order;
 use App\Models\Product;
 use App\Models\ProductMeta;
 use App\Models\SeoMetaTag;
 use App\Notifications\CheckoutNotification;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Str;
@@ -39,9 +41,28 @@ class Test extends Command
         #$this->addColorToProductSlug();
         #$this->reducePrice();
         #$this->renameClik();
-        $order = Order::find(16);
-        Notification::route('mail', 'info@studiozadizajn.rs')
-            ->notify(new CheckoutNotification($order));
+        #$order = Order::find(16);
+        #Notification::route('mail', 'info@studiozadizajn.rs')
+        #    ->notify(new CheckoutNotification($order));
+        #$this->removeGoldProducts();
+        $uc = new PriceUpdateController();
+        $uc->updatePrices();
+    }
+
+    public function removeGoldProducts()
+    {
+        $products = Product::all();
+        foreach ($products as $product) {
+            $found = DB::table('wp')->where('url', $product->url)->count();
+            if ($found > 0) {
+                Log::info('DONT DELETE');
+            } else {
+                if ($product->id < 209) {
+                    Log::info("REMOVE - " . $product->url);
+                    $product->delete();
+                }
+            }
+        }
     }
 
     public function renameClik()

@@ -24,8 +24,15 @@ class Product extends Model
         'currency',
         'company',
         'last_price_at',
-        'status'
+        'status',
+        'price_id',
+        'category_id'
     ];
+
+    public function category()
+    {
+        return $this->belongsTo(Company::class);
+    }
 
     public function prices()
     {

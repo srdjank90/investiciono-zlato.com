@@ -47,6 +47,16 @@
                                     <input type="text" name="slug" id="slug" class="form-control"
                                         value="{{ $product->slug }}">
                                 </div>
+                                <div class="form-group mb-2">
+                                    <label for="url">{{ __('Url') }}</label>
+                                    <input type="text" name="url" id="url" class="form-control"
+                                        value="{{ $product->url }}">
+                                </div>
+                                <div class="form-group mb-2">
+                                    <label for="company">{{ __('Company') }}</label>
+                                    <input type="text" name="company" id="company" class="form-control"
+                                        value="{{ $product->company }}">
+                                </div>
                             </div>
                         </div>
                         <!-- Product Description -->
@@ -55,10 +65,24 @@
                                 <h6 class="p-0 m-0">{{ __('Product Description') }}</h6>
                                 <small><i
                                         class="bi bi-info-circle-fill text-info me-1"></i>{{ __('Description about product
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        that will be shown on a frontent') }}</small>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                that will be shown on a frontent') }}</small>
                                 <div class="form-group mb-2">
                                     <label for="description">{{ __('Description') }}</label>
                                     <textarea class="form-control tinymce" name="description" id="description" cols="30" rows="10">{{ $product->description }}</textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product Declaration -->
+                        <div class="card mb-3">
+                            <div class="card-body">
+                                <h6 class="p-0 m-0">{{ __('Product Declaration') }}</h6>
+                                <small><i
+                                        class="bi bi-info-circle-fill text-info me-1"></i>{{ __('Declaration about product
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                that will be shown on a frontent') }}</small>
+                                <div class="form-group mb-2">
+                                    <label for="declaration">{{ __('Declaration') }}</label>
+                                    <textarea class="form-control tinymce" name="declaration" id="declaration" cols="30" rows="10">{{ $product->declaration }}</textarea>
                                 </div>
                             </div>
                         </div>
@@ -123,7 +147,8 @@
                                                 @endif
                                             </div>
                                             <div class="col-md-3 mt-4">
-                                                <a href="javascript:void(0)" onclick="addMeta('{{ $metaOption['name'] }}')"
+                                                <a href="javascript:void(0)"
+                                                    onclick="addMeta('{{ $metaOption['name'] }}')"
                                                     class="btn btn-primary btn-sm w-100">+ {{ __('Add') }}</a>
                                             </div>
                                         </div>
@@ -141,7 +166,7 @@
                                         <h6 class="p-0 m-0">{{ __('Product Images') }}</h6>
                                         <small><i
                                                 class="bi bi-info-circle-fill text-info me-1"></i>{{ __('Add your product
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        images') }}</small>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        images') }}</small>
                                     </div>
                                     <button type="button" class="btn btn-primary btn-image-gallery">
                                         {{ __('Add Image') }}
@@ -224,7 +249,7 @@
                                 <h6 class="p-0 m-0">{{ __('Product Price') }}</h6>
                                 <small><i
                                         class="bi bi-info-circle-fill text-info me-1"></i>{{ __('Information about product
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        price') }}</small>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                price') }}</small>
                                 <div class="form-group mb-3">
                                     <label for="selling_price">{{ __('Selling Price') }}</label>
                                     <div class="input-group">
@@ -249,6 +274,7 @@
                                 <div class="form-group mb-3">
                                     <label for="productsCategories">Categories</label>
                                     <select name="categories" id="productsCategories" class="form-select">
+                                        <option value="">Izaberi</option>
                                         @foreach ($productCategories as $category)
                                             <option value="{{ $category->id }}"
                                                 {{ in_array($category->id, $productCategoriesIds) ? 'selected' : '' }}>
