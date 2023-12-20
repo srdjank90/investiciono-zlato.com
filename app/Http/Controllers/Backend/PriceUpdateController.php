@@ -13,9 +13,9 @@ class PriceUpdateController extends Controller
 {
     public function updatePrices()
     {
-        #$this->investicionoZlatoUpdatePrices();
-        $this->tavexUpdatePrices();
-        $this->goldenSpaceUpdatePrices();
+        #$this->investicionoZlatoUpdatePrices();        // Slow
+        $this->tavexUpdatePrices();                     // Fast
+        $this->goldenSpaceUpdatePrices();               // Fast
     }
 
     public function investicionoZlatoUpdatePrices()
