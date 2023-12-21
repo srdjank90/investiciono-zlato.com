@@ -13,11 +13,21 @@ class PriceUpdateController extends Controller
 {
     public function updatePrices()
     {
-        #$this->investicionoZlatoUpdatePrices();        // Slow
-        $this->tavexUpdatePrices();                     // Fast
-        $this->goldenSpaceUpdatePrices();               // Fast
+        $this->investicionoZlatoUpdatePrices();         // Bad
+        $this->tavexUpdatePrices();                     // Good
+        $this->goldenSpaceUpdatePrices();               // Good
+        $this->zlatoMojeUpdatePrices();                 // Good
+        $this->kupiZlatoUpdatePrices();                 // Good
+        $this->insignitusUpdatePrices();                // Good
+        $this->dokInvestUpdatePrices();                 // Good
+        $this->gvsSrbijaUpdatePrices();                 // Good
+        $this->investicionoZlato2UpdatePrices();        // Middle
     }
 
+    /**
+     * Investiciono Zlato Update Prices - 1
+     * Function updates product prices from
+     */
     public function investicionoZlatoUpdatePrices()
     {
         $products = Product::where('slug', 'LIKE', '%-investiciono-zlato.rs')->get();
@@ -25,6 +35,12 @@ class PriceUpdateController extends Controller
         foreach ($products as $product) {
             $sellingPrice = $this->fetchInvesticionoZlatoItemSellingPrice($product->url);
             $purchasePrice = $this->fetchInvesticionoZlatoItemPurchasePrice($product->url);
+            $priceData = [
+                'product_id' => $product->id,
+                'selling_price' => floatval(str_replace('.', '', str_replace('din', '', trim($sellingPrice)))),
+                'purchase_price' => floatval(str_replace('.', '', str_replace('din', '', trim($purchasePrice)))),
+            ];
+            $price = Price::create($priceData);
         }
     }
 
@@ -65,7 +81,7 @@ class PriceUpdateController extends Controller
     }
 
     /**
-     * Tavex Update Prices
+     * Tavex Update Prices - 2
      * Function updates product prices from tavex.rs
      */
     function tavexUpdatePrices()
@@ -104,7 +120,7 @@ class PriceUpdateController extends Controller
     }
 
     /**
-     * Golden Space Update Prices
+     * Golden Space Update Prices - 3
      * Function updates product prices from golden-space.rs
      */
     function goldenSpaceUpdatePrices()
@@ -130,6 +146,300 @@ class PriceUpdateController extends Controller
             });
         } catch (\Exception $e) {
             Log::error($e->getMessage());
+        }
+    }
+
+    /**
+     * Zlato Moje Update Prices - 4
+     * Function updates product prices from zlatomoje.rs
+     */
+    function zlatoMojeUpdatePrices()
+    {
+        $url = 'https://www.zlatomoje.rs/';
+        try {
+            $crawler = GoutteFacade::request('GET', $url);
+            $products = $crawler->filter('section li[data-hook="product-list-grid-item"]')->each(function ($node) {
+                $product['url'] = $node->filter('[data-hook="product-item-product-details-link"]')->first()->extract(array('href'))[0];
+                $product['selling_price'] =  $node->filter('[data-hook="product-item-price-to-pay"]')->first()->text();
+                $product['purchase_price']  = null;
+
+                $findProduct = Product::where('url', $product['url'])->first();
+                if ($findProduct) {
+                    $priceData = [
+                        'product_id' => $findProduct->id,
+                        'selling_price' => floatval(str_replace('.', '', str_replace('РСД', '', trim($product['selling_price'])))),
+                        'purchase_price' => floatval(str_replace('.', '', str_replace('РСД', '', trim($product['purchase_price'])))),
+                    ];
+                    $price = Price::create($priceData);
+                }
+                return $product;
+            });
+        } catch (\Exception $e) {
+            Log::error($e->getMessage());
+        }
+    }
+
+    /**
+     * Kupi Zlato Update Prices - 5
+     * Function updates products prices from kupizlato.com
+     */
+    function kupiZlatoUpdatePrices()
+    {
+        $url = 'https://www.kupizlato.com/kategorija-proizvoda/cene/';
+        $url2 = 'https://www.kupizlato.com/kategorija-proizvoda/cene/page/2/';
+        try {
+            $crawler = GoutteFacade::request('GET', $url);
+            $products = $crawler->filter('.product-type-simple')->each(function ($node) {
+                $product['url'] = $node->filter('[data-widget_type="jet-woo-builder-archive-product-title.default"] a')->first()->extract(array('href'))[0];
+                $product['selling_price'] =  $node->filter('[data-widget_type="jet-woo-builder-archive-product-price.default"] .jet-woo-product-price')->first()->text();
+                $product['purchase_price']  = null;
+                $findProduct = Product::where('url', $product['url'])->first();
+                if ($findProduct) {
+                    $priceData = [
+                        'product_id' => $findProduct->id,
+                        'selling_price' => floatval(str_replace('.', '', str_replace('рсд', '', trim($product['selling_price'])))),
+                        'purchase_price' => floatval(str_replace('.', '', str_replace('рсд', '', trim($product['purchase_price'])))),
+                    ];
+                    $price = Price::create($priceData);
+                }
+            });
+        } catch (\Exception $e) {
+            Log::error($e->getMessage());
+        }
+
+        try {
+            $crawler = GoutteFacade::request('GET', $url2);
+            $products2 = $crawler->filter('.product-type-simple')->each(function ($node) {
+                $product['url'] = $node->filter('[data-widget_type="jet-woo-builder-archive-product-title.default"] a')->first()->extract(array('href'))[0];
+                $product['selling_price'] =  $node->filter('[data-widget_type="jet-woo-builder-archive-product-price.default"] .jet-woo-product-price')->first()->text();
+                $product['purchase_price']  = null;
+                $findProduct = Product::where('url', $product['url'])->first();
+                if ($findProduct) {
+                    $priceData = [
+                        'product_id' => $findProduct->id,
+                        'selling_price' => floatval(str_replace('.', '', str_replace('рсд', '', trim($product['selling_price'])))),
+                        'purchase_price' => floatval(str_replace('.', '', str_replace('рсд', '', trim($product['purchase_price'])))),
+                    ];
+                    $price = Price::create($priceData);
+                }
+            });
+        } catch (\Exception $e) {
+            Log::error($e->getMessage());
+        }
+    }
+
+    /**
+     * Insignitus Update Prices - 6
+     * Function updates products prices from insignitus.rs
+     */
+    function insignitusUpdatePrices()
+    {
+        $url = 'https://insignitus.rs/shop/';
+        try {
+            $crawler = GoutteFacade::request('GET', $url);
+            $products = $crawler->filter('.product-inner')->each(function ($node) {
+                $product['url'] = $node->filter('.woo-loop-product__title a')->first()->extract(array('href'))[0];
+                if ($node->filter('.mf-product-details .price')->count() > 0) {
+                    $product['selling_price'] =  (float)str_replace(',', '.', preg_replace('/[^0-9,]/', '', $node->filter('.mf-product-details .price')->first()->text()));
+                } else {
+                    $product['selling_price'] =  null;
+                }
+                if ($node->filter('.mf-product-details .otkupnacena1')->count() > 0) {
+                    $product['purchase_price'] = (float)str_replace(',', '.', preg_replace('/[^0-9,]/', '', $node->filter('.mf-product-details .otkupnacena1')->first()->text()));
+                } else {
+                    $product['purchase_price'] =  null;
+                }
+                $findProduct = Product::where('url', $product['url'])->first();
+                if ($findProduct) {
+                    $priceData = [
+                        'product_id' => $findProduct->id,
+                        'selling_price' => $product['selling_price'],
+                        'purchase_price' => $product['purchase_price'],
+                    ];
+                    $price = Price::create($priceData);
+                }
+            });
+        } catch (\Exception $e) {
+            Log::error($e->getMessage());
+        }
+    }
+
+    /**
+     * Dok Invest Update Prices - 7
+     * Update products prices from dokinvest.com
+     */
+    function dokInvestUpdatePrices()
+    {
+        $url = 'https://dokinvest.com/zlatne-poluge';
+        $url2 = 'https://dokinvest.com/zlatne-kovanice';
+        try {
+            $crawler = GoutteFacade::request('GET', $url);
+            $products = $crawler->filter('.product-box')->each(function ($node) {
+                $product['url'] = 'https://dokinvest.com' . $node->filter('a')->first()->extract(array('href'))[0];
+                if ($node->filter('span')->count() > 0) {
+                    $product['selling_price'] =  (float)str_replace(',', '.', preg_replace('/[^0-9,]/', '', $node->filter('span')->first()->text()));
+                } else {
+                    $product['selling_price'] =  null;
+                }
+                $product['purchase_price'] =  null;
+                $findProduct = Product::where('url', $product['url'])->first();
+                if ($findProduct) {
+                    $priceData = [
+                        'product_id' => $findProduct->id,
+                        'selling_price' => $product['selling_price'],
+                        'purchase_price' => $product['purchase_price'],
+                    ];
+                    $price = Price::create($priceData);
+                }
+            });
+        } catch (\Exception $e) {
+            Log::error($e->getMessage());
+        }
+
+        try {
+            $crawler = GoutteFacade::request('GET', $url2);
+            $products2 = $crawler->filter('.product-box')->each(function ($node) {
+                $product['url'] = 'https://dokinvest.com' . $node->filter('a')->first()->extract(array('href'))[0];
+                if ($node->filter('span')->count() > 0) {
+                    $product['selling_price'] =  (float)str_replace(',', '.', preg_replace('/[^0-9,]/', '', $node->filter('span')->first()->text()));
+                } else {
+                    $product['selling_price'] =  null;
+                }
+                $product['purchase_price'] =  null;
+                $findProduct = Product::where('url', $product['url'])->first();
+                if ($findProduct) {
+                    $priceData = [
+                        'product_id' => $findProduct->id,
+                        'selling_price' => $product['selling_price'],
+                        'purchase_price' => $product['purchase_price'],
+                    ];
+                    $price = Price::create($priceData);
+                }
+            });
+        } catch (\Exception $e) {
+            Log::error($e->getMessage());
+        }
+    }
+
+    /**
+     * GVS Srbija Update Prices - 8
+     * Products from gvs-srbija.rs
+     */
+    function gvsSrbijaUpdatePrices()
+    {
+        $url = 'https://www.gvs-srbija.rs/kupi/zlatne-poluge.html';
+        try {
+            $crawler = GoutteFacade::request('GET', $url);
+            $products = $crawler->filter('.product-item-info')->each(function ($node) {
+                $product['url'] = $node->filter('a')->first()->extract(array('href'))[0];
+                if ($node->filter('span')->count() > 0) {
+                    $product['selling_price'] =  (float)str_replace(',', '.', preg_replace('/[^0-9,]/', '', $node->filter('.goldFont.tierPrice')->first()->text()));
+                } else {
+                    $product['selling_price'] =  null;
+                }
+                $product['purchase_price'] =  null;
+                $findProduct = Product::where('url', $product['url'])->first();
+                if ($findProduct) {
+                    $priceData = [
+                        'product_id' => $findProduct->id,
+                        'selling_price' => $product['selling_price'],
+                        'purchase_price' => $product['purchase_price'],
+                    ];
+                    $price = Price::create($priceData);
+                }
+            });
+        } catch (\Exception $e) {
+            Log::error($e->getMessage());
+        }
+
+        $url = 'https://www.gvs-srbija.rs/kupi/zlatnici.html';
+        try {
+            $crawler = GoutteFacade::request('GET', $url);
+            $products = $crawler->filter('.product-item-info')->each(function ($node) {
+                $product['url'] = $node->filter('a')->first()->extract(array('href'))[0];
+                if ($node->filter('span')->count() > 0) {
+                    $product['selling_price'] =  (float)str_replace(',', '.', preg_replace('/[^0-9,]/', '', $node->filter('.goldFont.tierPrice')->first()->text()));
+                } else {
+                    $product['selling_price'] =  null;
+                }
+                $product['purchase_price'] =  null;
+                $findProduct = Product::where('url', $product['url'])->first();
+                if ($findProduct) {
+                    $priceData = [
+                        'product_id' => $findProduct->id,
+                        'selling_price' => $product['selling_price'],
+                        'purchase_price' => $product['purchase_price'],
+                    ];
+                    $price = Price::create($priceData);
+                }
+            });
+        } catch (\Exception $e) {
+            Log::error($e->getMessage());
+        }
+    }
+
+    /**
+     * Investiciono zlato 2 - 9
+     * Products from investicionozlato.com
+     */
+    function investicionoZlato2UpdatePrices()
+    {
+        $url = 'https://investicionozlato.com/cena-zlatnih-poluga/';
+
+        // Get product URL-s for single pages
+        try {
+            $crawler = GoutteFacade::request('GET', $url);
+            $products = $crawler->filter('.elementor-button.elementor-button-link.elementor-size-xl')->each(function ($node) {
+                $product['url'] = $node->extract(array('href'))[0];
+                return $product;
+            });
+        } catch (\Exception $e) {
+            Log::error($e->getMessage());
+        }
+        // Get product URL-s for prices (because loaded trough iframe)
+        try {
+            $crawler = GoutteFacade::request('GET', $url);
+            $productsPricesUrls = $crawler->filter('iframe')->each(function ($node) {
+                $productPrice['price_url'] = $node->attr('src');
+                return $productPrice;
+            });
+        } catch (\Exception $e) {
+            Log::error($e->getMessage());
+        }
+        $prods = [];
+        foreach ($products as $key => $product) {
+            $prods[$key]['url'] = $products[$key]['url'];
+            $prods[$key]['price_url'] = $productsPricesUrls[$key]['price_url'];
+        }
+        foreach ($prods as $k => $prod) {
+            // Fetch prices
+            try {
+                $crawler = GoutteFacade::request('GET', $prod['price_url']);
+                $dataPrice = $crawler->filter('.rats')->each(function ($node) {
+                    #$price = $node->filter('tr')->last()->text();
+                    if (str_contains($node->filter('tr')->last()->text(), 'DIN')) {
+                        $price = (float)str_replace(',', '.', preg_replace('/[^0-9,]/', '', $node->filter('tr')->last()->text()));
+                    } else {
+                        $price = $node->filter('tr')->last()->text();
+                        $numericPart = preg_replace('/[^0-9.]/', '', $price);
+                        $roundedPrice  = number_format((float)$numericPart, 2, '.', '');
+                        $price = number_format((float)$roundedPrice * 117.17, 2, '.', '');
+                    }
+
+                    return $price;
+                });
+            } catch (\Exception $e) {
+                Log::error($e->getMessage());
+            }
+            $findProduct = Product::where('url', $prod['url'])->first();
+            if ($findProduct) {
+                $priceData = [
+                    'product_id' => $findProduct->id,
+                    'selling_price' => (float) $dataPrice[0],
+                    'purchase_price' => (float) $dataPrice[1],
+                ];
+                $price = Price::create($priceData);
+            }
         }
     }
 }

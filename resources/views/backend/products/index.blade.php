@@ -192,7 +192,7 @@
                             <th>{{ __('Selling Price') }}</th>
                             <th>{{ __('Purchase Price') }}</th>
                             <th>{{ __('Status') }}</th>
-                            <th width="120"></th>
+                            <th width="160"></th>
                         </thead>
                         <tbody>
                             @foreach ($products as $key => $product)
@@ -245,6 +245,11 @@
                                     </td>
 
                                     <td class="lp-table-actions">
+                                        <a href="{{ route('backend.products.edit.prices', $product->id) }}"
+                                            type="button" class="btn btn-secondary btn-sm rounded-circle"
+                                            title="Cene proizvoda">
+                                            {{ count($product->prices) }}
+                                        </a>
                                         <a target="_blank" class="btn btn-info btn-sm rounded-circle" target="_blank"
                                             href="{{ $product->url }}">
                                             <i class="bi bi-globe"></i>

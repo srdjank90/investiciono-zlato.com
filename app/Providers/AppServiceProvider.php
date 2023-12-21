@@ -35,7 +35,6 @@ class AppServiceProvider extends ServiceProvider
         Paginator::useBootstrap();
         if (!$this->app->runningInConsole()) {
             $currency = getOption('product_currency_opt', 'EUR');
-            $currency = '€';
             $productMetas = getOption('product_metas_opt', []);
             $productCategories = ProductCategory::where('slug', '!=', 'uncategorized')->orderBy('order', 'asc')->orderBy('created_at', 'asc')->get();
             $parentProductCategories = ProductCategory::whereNull('parent_id')->get();

@@ -39,7 +39,6 @@
     align-items: center;
 }
 
-
 .tox-tinymce {
     border-radius: $border-radius !important;
 }
@@ -154,21 +153,20 @@
     }
 }
 
-
 /* New Stuff*/
-.sk-page-actions{
+.sk-page-actions {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 15px;
-    .sk-page-actions-left{
+    .sk-page-actions-left {
         display: flex;
-    justify-content: space-between;
-    align-items: center;
+        justify-content: space-between;
+        align-items: center;
     }
 }
 
-.sk-table-empty{
+.sk-table-empty {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -179,15 +177,15 @@
     font-size: 22px;
 }
 
-.sk-table-wrapper{
+.sk-table-wrapper {
     background-color: white;
     padding: 10px;
     border-radius: $border-radius;
-    table{
-        tbody{
-            tr{
+    table {
+        tbody {
+            tr {
                 vertical-align: middle;
-                &:hover{
+                &:hover {
                     background-color: #f7f9fe;
                 }
             }
@@ -195,11 +193,17 @@
     }
 }
 
-.form-control{
+.form-control {
     border-radius: $border-radius;
 }
 
-.dropdown-menu{
+.dropdown-menu {
     border-radius: $border-radius;
     padding: 7px;
+}
+
+.badge-price-changes {
+    left: 20px;
+    top: -17px;
+    font-size: 10px;
 }

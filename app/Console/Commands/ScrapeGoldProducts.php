@@ -40,7 +40,7 @@ class ScrapeGoldProducts extends Command
         #$this->kupiZlatoProducts();
         #$this->insignitusProducts();
         #$this->dokInvestProducts();
-        $this->gvsSrbijaProducts();
+        #$this->gvsSrbijaProducts();
         #$this->investicionoZlato2Products();
 
         #$pric = $this->fetchInvesticionoZlatoItemPrice('https://investiciono-zlato.rs/zlatne-poluge-20-grama-10-x-2g.html');
@@ -349,7 +349,7 @@ class ScrapeGoldProducts extends Command
     }
 
     /**
-     * Tavex 
+     * Tavex
      * Products from tavex.rs
      */
     function tavexProducts()
@@ -632,7 +632,7 @@ class ScrapeGoldProducts extends Command
             $crawler = GoutteFacade::request('GET', $url);
             $products = $crawler->filter('.product-box')->each(function ($node) {
                 $name = $node->filter('h6')->first()->text() . ' ' . $node->filter('h6')->last()->text();
-                $product['url'] = $node->filter('a')->first()->extract(array('href'))[0];
+                $product['url'] = 'https://dokinvest.com' . $node->filter('a')->first()->extract(array('href'))[0];
                 $product['name'] = $name;
                 $product['slug'] = Str::slug($product['name'], '-');
                 if ($node->filter('span')->count() > 0) {
@@ -652,7 +652,7 @@ class ScrapeGoldProducts extends Command
             $crawler = GoutteFacade::request('GET', $url2);
             $products2 = $crawler->filter('.product-box')->each(function ($node) {
                 $name = $node->filter('h6')->first()->text() . ' ' . $node->filter('h6')->last()->text();
-                $product['url'] = $node->filter('a')->first()->extract(array('href'))[0];
+                $product['url'] = 'https://dokinvest.com' . $node->filter('a')->first()->extract(array('href'))[0];
                 $product['name'] = $name;
                 $product['slug'] = Str::slug($product['name'], '-');
                 if ($node->filter('span')->count() > 0) {
@@ -710,7 +710,7 @@ class ScrapeGoldProducts extends Command
     }
 
     /**
-     * Gvs Srbija
+     * Investiciono zlato 2
      * Products from investicionozlato.com
      */
     function investicionoZlato2Products()
@@ -805,12 +805,12 @@ class ScrapeGoldProducts extends Command
     }
 
     /**
-     * Investiciono Zlato
+     * GVS Srbija
      * Products from gvs-srbija.rs
      */
     function gvsSrbijaProducts()
     {
-        /* $url = 'https://www.gvs-srbija.rs/kupi/zlatne-poluge.html';
+        $url = 'https://www.gvs-srbija.rs/kupi/zlatne-poluge.html';
 
         try {
             $crawler = GoutteFacade::request('GET', $url);
@@ -850,9 +850,7 @@ class ScrapeGoldProducts extends Command
             if ($categoryID) {
                 $product->categories()->attach($categoryID);
             }
-        } */
-
-
+        }
 
         $url = 'https://www.gvs-srbija.rs/kupi/zlatnici.html';
 
