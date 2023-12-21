@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Exports\PricesAllExport;
+use App\Exports\PricesExport;
 use App\Http\Controllers\Controller;
 use App\Models\Price;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class PriceController extends Controller
 {
@@ -65,5 +68,18 @@ class PriceController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function export(string $id)
+    {
+        $filename = '';
+        $price = Price::with(['product'])->find($id);
+        $filename = $price->product->slug . '-prices.xlsx';
+        return Excel::download(new PricesExport($id), $filename);
+    }
+
+    public function exportAll()
+    {
+        return Excel::download(new PricesAllExport(), 'prices.xlsx');
     }
 }

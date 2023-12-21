@@ -163,6 +163,9 @@
             </div>
             <div class="sk-page-actions-right">
 
+                <a class="btn btn-success" href="{{ route('backend.products.prices.export') }}">
+                    <i class="bi bi-cloud-download"></i> {{ __('Export Prices') }}
+                </a>
                 <a class="btn btn-success" href="{{ route('backend.products.export', $cat) }}">
                     <i class="bi bi-cloud-download"></i> {{ __('Export') }}
                 </a>

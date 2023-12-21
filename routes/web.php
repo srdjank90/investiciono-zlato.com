@@ -46,6 +46,7 @@ Route::get('/backend/products', [App\Http\Controllers\Backend\ProductController:
 Route::get('/backend/products', [App\Http\Controllers\Backend\ProductController::class, 'index'])->name('backend.products.index');
 Route::post('/backend/products/store', [App\Http\Controllers\Backend\ProductController::class, 'store'])->name('backend.products.store');
 Route::get('/backend/products/edit/{id}/prices', [App\Http\Controllers\Backend\PriceController::class, 'index'])->name('backend.products.edit.prices');
+Route::get('/backend/products/edit/{id}/prices/export', [App\Http\Controllers\Backend\PriceController::class, 'export'])->name('backend.products.edit.prices.export');
 Route::get('/backend/products/edit/{id}', [App\Http\Controllers\Backend\ProductController::class, 'edit'])->name('backend.products.edit');
 Route::get('/backend/products/landing/{id}', [App\Http\Controllers\Backend\ProductController::class, 'landing'])->name('backend.products.landing');
 Route::put('/backend/products/landing/{id}/update', [App\Http\Controllers\Backend\ProductController::class, 'landingUpdate'])->name('backend.products.landing.update');
@@ -60,6 +61,8 @@ Route::get('/backend/products/settings', [App\Http\Controllers\Backend\ProductCo
 Route::post('/backend/products/settings/metas/store', [App\Http\Controllers\Backend\ProductController::class, 'settingsMetasStore'])->name('backend.products.settings.metas.store');
 Route::get('/backend/products/time-offers', [App\Http\Controllers\Backend\ProductController::class, 'timeOffers'])->name('backend.products.timeOffers');
 Route::get('/backend/products/export/{cat}', [App\Http\Controllers\Backend\ProductController::class, 'export'])->name('backend.products.export');
+
+Route::get('/backend/products/prices/export', [App\Http\Controllers\Backend\PriceController::class, 'exportAll'])->name('backend.products.prices.export');
 
 
 // Backend Product Categories

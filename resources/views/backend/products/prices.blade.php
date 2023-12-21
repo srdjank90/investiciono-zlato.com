@@ -15,8 +15,12 @@
     <!-- Page Content -->
     <div class="row">
         <div class="sk-page-actions col-md-12">
+            <div class="sk-page-actions-left">
+                <a class="btn btn-primary" href="{{ route('backend.products.edit', $product->id) }}"><i
+                        class="bi bi-arrow-left-circle"></i> {{ __('Back') }}</a>
+            </div>
             <div class="sk-page-actions-right">
-                <a class="btn btn-success" href="#">
+                <a class="btn btn-success" href="{{ route('backend.products.edit.prices.export', $product->id) }}">
                     <i class="bi bi-cloud-download"></i> {{ __('Export') }}
                 </a>
             </div>
