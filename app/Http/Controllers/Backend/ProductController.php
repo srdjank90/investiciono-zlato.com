@@ -365,4 +365,11 @@ class ProductController extends BackendController
     {
         return Excel::download(new ProductExport($cat), 'products.xlsx');
     }
+
+    public function exports()
+    {
+        $exports = Storage::disk('public')->files('exports/prices'); // Replace with your storage folder path
+        Log::info($exports);
+        return view('backend.products.exports', compact(['exports']));
+    }
 }

@@ -14,7 +14,7 @@
         <div class="sk-page-actions col-md-12">
             <div class="sk-page-actions-left">
                 <button data-bs-toggle="modal" data-bs-target="#createModal" class="btn btn-primary">
-                    <i class="bi bi-plus-circle"></i> {{ __('Add Prouct') }}
+                    <i class="bi bi-plus-circle"></i>
                 </button>
                 <form class="ms-3" action="/backend/products" method="GET">
                     @csrf
@@ -162,13 +162,27 @@
                 </div>
             </div>
             <div class="sk-page-actions-right">
+                <div class="me-2" style="float: left">
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            {{ __('Exports') }}
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                            <li><a class="dropdown-item" href="{{ route('backend.products.prices.export') }}"><i
+                                        class="bi bi-cloud-download"></i> {{ __('Export Prices') }}</a></li>
+                            <li><a class="dropdown-item" href="{{ route('backend.products.export', $cat) }}"> <i
+                                        class="bi bi-cloud-download"></i> {{ __('Export Products') }}</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item"
+                                    href="{{ route('backend.products.prices.exports') }}">{{ __('Exports') }}</a></li>
+                        </ul>
+                    </div>
+                </div>
 
-                <a class="btn btn-success" href="{{ route('backend.products.prices.export') }}">
-                    <i class="bi bi-cloud-download"></i> {{ __('Export Prices') }}
-                </a>
-                <a class="btn btn-success" href="{{ route('backend.products.export', $cat) }}">
-                    <i class="bi bi-cloud-download"></i> {{ __('Export') }}
-                </a>
+
                 <a class="btn btn-primary d-none" href="{{ route('backend.products.actions.index') }}">
                     <i class="bi bi-piggy-bank"></i> {{ __('Actions') }}
                 </a>
@@ -251,7 +265,7 @@
                                         <a href="{{ route('backend.products.edit.prices', $product->id) }}"
                                             type="button" class="btn btn-secondary btn-sm rounded-circle"
                                             title="Cene proizvoda">
-                                            {{ count($product->prices) }}
+                                            <i class="bi bi-currency-dollar"></i>
                                         </a>
                                         <a target="_blank" class="btn btn-info btn-sm rounded-circle" target="_blank"
                                             href="{{ $product->url }}">

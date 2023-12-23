@@ -41,6 +41,9 @@ class PriceUpdateController extends Controller
                 'purchase_price' => floatval(str_replace('.', '', str_replace('din', '', trim($purchasePrice)))),
             ];
             $price = Price::create($priceData);
+            $product->selling_price = $priceData['selling_price'];
+            $product->purchase_price = $priceData['purchase_price'];
+            $product->save();
         }
     }
 
@@ -111,6 +114,9 @@ class PriceUpdateController extends Controller
                         'purchase_price' => $product['purchase_price']
                     ];
                     $price = Price::create($priceData);
+                    $findProduct->selling_price = $priceData['selling_price'];
+                    $findProduct->purchase_price = $priceData['purchase_price'];
+                    $findProduct->save();
                 }
                 return $product;
             });
@@ -141,6 +147,9 @@ class PriceUpdateController extends Controller
                         'purchase_price' => floatval(str_replace('.', '', str_replace('RSD', '', trim($product['purchase_price'])))),
                     ];
                     $price = Price::create($priceData);
+                    $findProduct->selling_price = $priceData['selling_price'];
+                    $findProduct->purchase_price = $priceData['purchase_price'];
+                    $findProduct->save();
                 }
                 return $product;
             });
@@ -171,6 +180,9 @@ class PriceUpdateController extends Controller
                         'purchase_price' => floatval(str_replace('.', '', str_replace('РСД', '', trim($product['purchase_price'])))),
                     ];
                     $price = Price::create($priceData);
+                    $findProduct->selling_price = $priceData['selling_price'];
+                    $findProduct->purchase_price = $priceData['purchase_price'];
+                    $findProduct->save();
                 }
                 return $product;
             });
@@ -201,6 +213,9 @@ class PriceUpdateController extends Controller
                         'purchase_price' => floatval(str_replace('.', '', str_replace('рсд', '', trim($product['purchase_price'])))),
                     ];
                     $price = Price::create($priceData);
+                    $findProduct->selling_price = $priceData['selling_price'];
+                    $findProduct->purchase_price = $priceData['purchase_price'];
+                    $findProduct->save();
                 }
             });
         } catch (\Exception $e) {
@@ -221,6 +236,9 @@ class PriceUpdateController extends Controller
                         'purchase_price' => floatval(str_replace('.', '', str_replace('рсд', '', trim($product['purchase_price'])))),
                     ];
                     $price = Price::create($priceData);
+                    $findProduct->selling_price = $priceData['selling_price'];
+                    $findProduct->purchase_price = $priceData['purchase_price'];
+                    $findProduct->save();
                 }
             });
         } catch (\Exception $e) {
@@ -257,6 +275,9 @@ class PriceUpdateController extends Controller
                         'purchase_price' => $product['purchase_price'],
                     ];
                     $price = Price::create($priceData);
+                    $findProduct->selling_price = $priceData['selling_price'];
+                    $findProduct->purchase_price = $priceData['purchase_price'];
+                    $findProduct->save();
                 }
             });
         } catch (\Exception $e) {
@@ -290,6 +311,9 @@ class PriceUpdateController extends Controller
                         'purchase_price' => $product['purchase_price'],
                     ];
                     $price = Price::create($priceData);
+                    $findProduct->selling_price = $priceData['selling_price'];
+                    $findProduct->purchase_price = $priceData['purchase_price'];
+                    $findProduct->save();
                 }
             });
         } catch (\Exception $e) {
@@ -314,6 +338,9 @@ class PriceUpdateController extends Controller
                         'purchase_price' => $product['purchase_price'],
                     ];
                     $price = Price::create($priceData);
+                    $findProduct->selling_price = $priceData['selling_price'];
+                    $findProduct->purchase_price = $priceData['purchase_price'];
+                    $findProduct->save();
                 }
             });
         } catch (\Exception $e) {
@@ -346,6 +373,9 @@ class PriceUpdateController extends Controller
                         'purchase_price' => $product['purchase_price'],
                     ];
                     $price = Price::create($priceData);
+                    $findProduct->selling_price = $priceData['selling_price'];
+                    $findProduct->purchase_price = $priceData['purchase_price'];
+                    $findProduct->save();
                 }
             });
         } catch (\Exception $e) {
@@ -371,6 +401,9 @@ class PriceUpdateController extends Controller
                         'purchase_price' => $product['purchase_price'],
                     ];
                     $price = Price::create($priceData);
+                    $findProduct->selling_price = $priceData['selling_price'];
+                    $findProduct->purchase_price = $priceData['purchase_price'];
+                    $findProduct->save();
                 }
             });
         } catch (\Exception $e) {
@@ -439,6 +472,9 @@ class PriceUpdateController extends Controller
                     'purchase_price' => (float) $dataPrice[1],
                 ];
                 $price = Price::create($priceData);
+                $findProduct->selling_price = $priceData['selling_price'];
+                $findProduct->purchase_price = $priceData['purchase_price'];
+                $findProduct->save();
             }
         }
     }

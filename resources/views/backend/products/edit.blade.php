@@ -69,7 +69,7 @@
                                 <h6 class="p-0 m-0">{{ __('Product Description') }}</h6>
                                 <small><i
                                         class="bi bi-info-circle-fill text-info me-1"></i>{{ __('Description about product
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        that will be shown on a frontent') }}</small>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                that will be shown on a frontent') }}</small>
                                 <div class="form-group mb-2">
                                     <label for="description">{{ __('Description') }}</label>
                                     <textarea class="form-control tinymce" name="description" id="description" cols="30" rows="10">{{ $product->description }}</textarea>
@@ -83,7 +83,7 @@
                                 <h6 class="p-0 m-0">{{ __('Product Declaration') }}</h6>
                                 <small><i
                                         class="bi bi-info-circle-fill text-info me-1"></i>{{ __('Declaration about product
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        that will be shown on a frontent') }}</small>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                that will be shown on a frontent') }}</small>
                                 <div class="form-group mb-2">
                                     <label for="declaration">{{ __('Declaration') }}</label>
                                     <textarea class="form-control tinymce" name="declaration" id="declaration" cols="30" rows="10">{{ $product->declaration }}</textarea>
@@ -170,7 +170,7 @@
                                         <h6 class="p-0 m-0">{{ __('Product Images') }}</h6>
                                         <small><i
                                                 class="bi bi-info-circle-fill text-info me-1"></i>{{ __('Add your product
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        images') }}</small>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        images') }}</small>
                                     </div>
                                     <button type="button" class="btn btn-primary btn-image-gallery">
                                         {{ __('Add Image') }}
@@ -253,7 +253,7 @@
                                 <h6 class="p-0 m-0">{{ __('Product Price') }}</h6>
                                 <small><i
                                         class="bi bi-info-circle-fill text-info me-1"></i>{{ __('Information about product
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        price') }}</small>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                price') }}</small>
                                 <div class="form-group mb-3">
                                     <label for="selling_price">{{ __('Selling Price') }}</label>
                                     <div class="input-group">
@@ -289,217 +289,300 @@
 
                             </div>
                         </div>
+                        <!-- Product Prices -->
+                        <div class="card mb-3">
+                            <div class="card-body">
+                                <h5 class="text-center">{{ __('Prices') }}</h5>
+                                @if (count($product->prices) > 0)
+                                    <table class="lp-table table table-hover">
+                                        <thead>
+                                            <th>{{ __('Selling Price') }}</th>
+                                            <th>{{ __('Purchase Price') }}</th>
+                                            <th>{{ __('Date') }}</th>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($product->prices as $key => $price)
+                                                <tr id="tr-{{ $price->id }}">
+                                                    <td>
+                                                        @php
+                                                            $percentageChange = 0;
+                                                            if (isset($product->prices[$key + 1]) && $price->selling_price != 0 && $product->prices[$key + 1]['selling_price'] != 0) {
+                                                                $percentageChange = (($price->selling_price - $product->prices[$key + 1]['selling_price']) / abs($product->prices[$key + 1]['selling_price'])) * 100;
+                                                            }
+                                                        @endphp
+                                                        @if ($price->selling_price)
+                                                            <div class="d-flex justify-center align-items-center">
+                                                                <b>💰 @priceFormat($price->selling_price)</b> {{ $currency }}
+                                                                @if ($percentageChange > 0)
+                                                                    <span
+                                                                        class="badge-price-changes badge bg-success text-white ms-2">{{ number_format($percentageChange, 2) }}%
+                                                                    </span>
+                                                                @elseif ($percentageChange < 0)
+                                                                    <span
+                                                                        class="badge-price-changes badge bg-danger text-white ms-2">{{ number_format($percentageChange, 2) }}%
+                                                                    </span>
+                                                                @else
+                                                                @endif
+                                                            </div>
+                                                        @endif
+                                                    </td>
+                                                    <td>
+                                                        @php
+                                                            $percentageChange = 0;
+                                                            if (isset($product->prices[$key + 1]) && $price->purchase_price != 0 && $product->prices[$key + 1]['purchase_price'] != 0) {
+                                                                $percentageChange = (($price->purchase_price - $product->prices[$key + 1]['purchase_price']) / abs($product->prices[$key + 1]['purchase_price'])) * 100;
+                                                            }
+                                                        @endphp
+                                                        @if ($price->purchase_price)
+                                                            <div class="d-flex justify-center align-items-center">
+                                                                <b>💰 @priceFormat($price->purchase_price)</b> {{ $currency }}
+                                                                @if ($percentageChange > 0)
+                                                                    <span
+                                                                        class="badge-price-changes badge bg-success text-white ms-2">{{ number_format($percentageChange, 2) }}%
+                                                                    </span>
+                                                                @elseif ($percentageChange < 0)
+                                                                    <span
+                                                                        class="badge-price-changes badge bg-danger text-white ms-2">{{ number_format($percentageChange, 2) }}%
+                                                                    </span>
+                                                                @else
+                                                                @endif
+                                                            </div>
+                                                        @endif
+
+                                                    </td>
+                                                    <td>{{ $price->created_at->diffForHumans() }}</td>
+                                                </tr>
+                                                @if ($loop->iteration == 5)
+                                                @break
+                                            @endif
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                                <div class="text-center">
+                                    <a
+                                        href="{{ route('backend.products.edit.prices', $product->id) }}">{{ __('Check all price changes') }}</a>
+                                </div>
+                            @else
+                                <div class="sk-table-empty">
+                                    {{ __('There is no prices in database for this product') }}
+                                </div>
+                            @endif
+
+
+                        </div>
                     </div>
                 </div>
-            </form>
-        </div>
+            </div>
     </div>
-    <script>
-        var APP_URL = window.location.origin;
-        var APP_STORAGE_URL = window.location.origin + "/storage";
-        var PRODUCT_ID = '{{ $product->id }}';
-        // Add meta
-        function addMeta(type) {
-            let metaName = $('#' + type + 'Key').val();
-            let metaValueType = $('#' + type + 'ValueType').val();
+    </form>
+</div>
+</div>
+<script>
+    var APP_URL = window.location.origin;
+    var APP_STORAGE_URL = window.location.origin + "/storage";
+    var PRODUCT_ID = '{{ $product->id }}';
+    // Add meta
+    function addMeta(type) {
+        let metaName = $('#' + type + 'Key').val();
+        let metaValueType = $('#' + type + 'ValueType').val();
 
-            var formData = new FormData();
-            formData.append('_token', "{{ csrf_token() }}");
-            formData.append('type', type);
-            formData.append('name', metaName);
-            formData.append('product_id', "{{ $product->id }}");
+        var formData = new FormData();
+        formData.append('_token', "{{ csrf_token() }}");
+        formData.append('type', type);
+        formData.append('name', metaName);
+        formData.append('product_id', "{{ $product->id }}");
 
-            // Value
-            if (metaValueType == 'file') {
-                formData.append('value', $('#' + type + 'Value')[0].files[0]);
-            } else {
-                formData.append('value', $('#' + type + 'Value').val());
+        // Value
+        if (metaValueType == 'file') {
+            formData.append('value', $('#' + type + 'Value')[0].files[0]);
+        } else {
+            formData.append('value', $('#' + type + 'Value').val());
+        }
+
+        $.ajax({
+            url: "{{ route('backend.products.meta.store') }}",
+            type: "POST",
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function(response) {
+                let newMeta =
+                    '<div class="meta-item border-bottom p-2 d-flex justify-content-between align-items-center w-100 mb-2 metaItem' +
+                    response.meta.id + '">' +
+                    '<div class="d-flex align-items-center">' +
+                    '<span class="fs-6 me-1 p-1">' + response.meta.name + '</span>' +
+                    '<div> <img width="32" src="' + APP_STORAGE_URL + '/' + response.meta.value +
+                    '" alt=""> </div>' +
+                    '<a href="javascript:void(0);" onclick="removeMeta(' + response.meta.id +
+                    ')" data-id="' + response.meta.id +
+                    '" class="btn btn-danger rounded-circle btn-sm meta-remove" title="Remove">' +
+                    '<i class="bi bi-trash"></i>' +
+                    '</a>' +
+                    '</div>' +
+                    '</div>';
+
+                let metaContainer = $('.' + type + '-items-contaner')
+                metaContainer.append(newMeta);
+
+                $('#' + type + 'Key').val('');
+                // Value need to handle empty
+                Swal.fire({
+                    icon: 'success',
+                    title: '{{ __('Successfully added!') }}'
+                });
+            },
+            error: function(response) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'There is an error adding '
+                });
+            },
+        });
+    }
+
+    // Remove meta
+    function removeMeta(id) {
+        Swal.fire({
+            title: "{{ __('Are you sure you want to delete?') }}",
+            text: "{{ __('This action cannot be revoked and the data will be deleted forever') }}",
+            showCancelButton: true,
+            confirmButtonText: "{{ __('Delete') }}",
+            icon: "question",
+            confirmButtonColor: "#0d6efd",
+        }).then((result) => {
+            /* Read more about isConfirmed, isDenied below */
+            if (result.isConfirmed) {
+                $.ajax({
+                    url: APP_URL + "/backend/products/meta/delete/" + id,
+                    type: "POST",
+                    data: {
+                        "_token": "{{ csrf_token() }}",
+                        "_method": "DELETE",
+                    },
+                    success: function(response) {
+                        $(".metaItem" + response.meta.id).remove()
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Successfully removed!'
+                        });
+                    },
+                    error: function(response) {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'There is an error removing ' + response.meta.type
+                        });
+                    },
+                });
             }
-
-            $.ajax({
-                url: "{{ route('backend.products.meta.store') }}",
-                type: "POST",
-                data: formData,
-                contentType: false,
-                processData: false,
-                success: function(response) {
-                    let newMeta =
-                        '<div class="meta-item border-bottom p-2 d-flex justify-content-between align-items-center w-100 mb-2 metaItem' +
-                        response.meta.id + '">' +
-                        '<div class="d-flex align-items-center">' +
-                        '<span class="fs-6 me-1 p-1">' + response.meta.name + '</span>' +
-                        '<div> <img width="32" src="' + APP_STORAGE_URL + '/' + response.meta.value +
-                        '" alt=""> </div>' +
-                        '<a href="javascript:void(0);" onclick="removeMeta(' + response.meta.id +
-                        ')" data-id="' + response.meta.id +
-                        '" class="btn btn-danger rounded-circle btn-sm meta-remove" title="Remove">' +
-                        '<i class="bi bi-trash"></i>' +
-                        '</a>' +
-                        '</div>' +
-                        '</div>';
-
-                    let metaContainer = $('.' + type + '-items-contaner')
-                    metaContainer.append(newMeta);
-
-                    $('#' + type + 'Key').val('');
-                    // Value need to handle empty
-                    Swal.fire({
-                        icon: 'success',
-                        title: '{{ __('Successfully added!') }}'
-                    });
-                },
-                error: function(response) {
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'There is an error adding '
-                    });
-                },
-            });
-        }
-
-        // Remove meta
-        function removeMeta(id) {
-            Swal.fire({
-                title: "{{ __('Are you sure you want to delete?') }}",
-                text: "{{ __('This action cannot be revoked and the data will be deleted forever') }}",
-                showCancelButton: true,
-                confirmButtonText: "{{ __('Delete') }}",
-                icon: "question",
-                confirmButtonColor: "#0d6efd",
-            }).then((result) => {
-                /* Read more about isConfirmed, isDenied below */
-                if (result.isConfirmed) {
-                    $.ajax({
-                        url: APP_URL + "/backend/products/meta/delete/" + id,
-                        type: "POST",
-                        data: {
-                            "_token": "{{ csrf_token() }}",
-                            "_method": "DELETE",
-                        },
-                        success: function(response) {
-                            $(".metaItem" + response.meta.id).remove()
-                            Swal.fire({
-                                icon: 'success',
-                                title: 'Successfully removed!'
-                            });
-                        },
-                        error: function(response) {
-                            Swal.fire({
-                                icon: 'error',
-                                title: 'There is an error removing ' + response.meta.type
-                            });
-                        },
-                    });
-                }
-            });
-        }
-
-        function removeImage(productId, imageId) {
-            // /backend/products/{productId}/images/remove/{imageId}
-            Swal.fire({
-                title: "{{ __('Are you sure you want to delete?') }}",
-                text: "{{ __('This action cannot be revoked and the data will be deleted forever') }}",
-                showCancelButton: true,
-                confirmButtonText: "{{ __('Delete') }}",
-                icon: "question",
-                confirmButtonColor: "#0d6efd",
-            }).then((result) => {
-                /* Read more about isConfirmed, isDenied below */
-                if (result.isConfirmed) {
-                    $.ajax({
-                        url: APP_URL + "/backend/products/" + productId + "/images/remove/" + imageId,
-                        type: "POST",
-                        data: {
-                            "_token": "{{ csrf_token() }}",
-                            "_method": "DELETE",
-                        },
-                        success: function(response) {
-                            $("#gallery-image-" + imageId).remove()
-                            Swal.fire({
-                                icon: 'success',
-                                title: 'Successfully removed!'
-                            });
-                        },
-                        error: function(response) {
-                            Swal.fire({
-                                icon: 'error',
-                                title: 'There is an error removing ' + response.meta.type
-                            });
-                        },
-                    });
-                }
-            });
-        }
-
-        // Remove image from gallery
-        $('.btn-remove-image').on('click', function() {
-            let id = $(this).data('id');
-            let productID = $(this).data('product-id');
-            removeImage(productID, id);
         });
+    }
 
-
-        // Trigger gallery update
-        $('.btn-image-gallery').click(function() {
-            $('#imageFileInput').trigger('click');
-        });
-
-        $(document).on('change', '#imageFileInput', function() {
-            var totalImages = document.getElementById('imageFileInput').files.length;
-            var formData = new FormData();
-            for (var x = 0; x < totalImages; x++) {
-                formData.append("images[]", document.getElementById('imageFileInput').files[x]);
+    function removeImage(productId, imageId) {
+        // /backend/products/{productId}/images/remove/{imageId}
+        Swal.fire({
+            title: "{{ __('Are you sure you want to delete?') }}",
+            text: "{{ __('This action cannot be revoked and the data will be deleted forever') }}",
+            showCancelButton: true,
+            confirmButtonText: "{{ __('Delete') }}",
+            icon: "question",
+            confirmButtonColor: "#0d6efd",
+        }).then((result) => {
+            /* Read more about isConfirmed, isDenied below */
+            if (result.isConfirmed) {
+                $.ajax({
+                    url: APP_URL + "/backend/products/" + productId + "/images/remove/" + imageId,
+                    type: "POST",
+                    data: {
+                        "_token": "{{ csrf_token() }}",
+                        "_method": "DELETE",
+                    },
+                    success: function(response) {
+                        $("#gallery-image-" + imageId).remove()
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Successfully removed!'
+                        });
+                    },
+                    error: function(response) {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'There is an error removing ' + response.meta.type
+                        });
+                    },
+                });
             }
-            formData.append('_token', "{{ csrf_token() }}");
-            $.ajax({
-                url: APP_URL + "/backend/products/images/store/" + PRODUCT_ID,
-                type: "POST",
-                data: formData,
-                cache: false,
-                contentType: false,
-                processData: false,
-                success: function(response) {
-                    response.data.forEach(image => {
-                        let newImage =
-                            '<div class="gallery-item col-md-4 mb-2" id="gallery-image-' + image
-                            .id + '">' +
-                            '<a href="javascript:void(0)" data-id="' + image.id +
-                            '" role="button" class="btn btn-danger btn-circle text-white position-absolute btn-remove-image"> <i class="fa fa-trash"></i> </a>' +
-                            '<img src="' + APP_STORAGE_URL + '/' + image.path +
-                            '" class="img-thumbnail" alt="...">' +
-                            '</div>'
-                        $(".gallery-images").append(newImage);
-                    })
-                    console.log(response)
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Images successfully added!'
-                    });
-                },
-                error: function(response) {
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'There is an error uploading image!'
-                    });
-                },
-            });
         });
+    }
+
+    // Remove image from gallery
+    $('.btn-remove-image').on('click', function() {
+        let id = $(this).data('id');
+        let productID = $(this).data('product-id');
+        removeImage(productID, id);
+    });
 
 
-        $(document).ready(function() {
-            if ($('#highlighted').is(":checked")) {
+    // Trigger gallery update
+    $('.btn-image-gallery').click(function() {
+        $('#imageFileInput').trigger('click');
+    });
+
+    $(document).on('change', '#imageFileInput', function() {
+        var totalImages = document.getElementById('imageFileInput').files.length;
+        var formData = new FormData();
+        for (var x = 0; x < totalImages; x++) {
+            formData.append("images[]", document.getElementById('imageFileInput').files[x]);
+        }
+        formData.append('_token', "{{ csrf_token() }}");
+        $.ajax({
+            url: APP_URL + "/backend/products/images/store/" + PRODUCT_ID,
+            type: "POST",
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function(response) {
+                response.data.forEach(image => {
+                    let newImage =
+                        '<div class="gallery-item col-md-4 mb-2" id="gallery-image-' + image
+                        .id + '">' +
+                        '<a href="javascript:void(0)" data-id="' + image.id +
+                        '" role="button" class="btn btn-danger btn-circle text-white position-absolute btn-remove-image"> <i class="fa fa-trash"></i> </a>' +
+                        '<img src="' + APP_STORAGE_URL + '/' + image.path +
+                        '" class="img-thumbnail" alt="...">' +
+                        '</div>'
+                    $(".gallery-images").append(newImage);
+                })
+                console.log(response)
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Images successfully added!'
+                });
+            },
+            error: function(response) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'There is an error uploading image!'
+                });
+            },
+        });
+    });
+
+
+    $(document).ready(function() {
+        if ($('#highlighted').is(":checked")) {
+            $('.landing').removeClass('d-none');
+        } else {
+            $('.landing').addClass('d-none');
+        }
+
+        $('#highlighted').change(function() {
+            if ($(this).is(":checked")) {
                 $('.landing').removeClass('d-none');
             } else {
                 $('.landing').addClass('d-none');
             }
-
-            $('#highlighted').change(function() {
-                if ($(this).is(":checked")) {
-                    $('.landing').removeClass('d-none');
-                } else {
-                    $('.landing').addClass('d-none');
-                }
-            });
         });
-    </script>
+    });
+</script>
 @endsection

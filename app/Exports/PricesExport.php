@@ -5,10 +5,11 @@ namespace App\Exports;
 use App\Models\Price;
 use Maatwebsite\Excel\Concerns\Exportable;
 use Maatwebsite\Excel\Concerns\FromQuery;
+use Maatwebsite\Excel\Concerns\WithChunkReading;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\WithMapping;
 
-class PricesExport implements FromQuery, WithMapping, WithHeadings
+class PricesExport implements FromQuery, WithMapping, WithHeadings, WithChunkReading
 {
     use Exportable;
     protected $productId;
@@ -53,5 +54,10 @@ class PricesExport implements FromQuery, WithMapping, WithHeadings
             $price->purchase_price,
             $price->created_at,
         ];
+    }
+
+    public function chunkSize(): int
+    {
+        return 1000; // Set your desired chunk size here
     }
 }

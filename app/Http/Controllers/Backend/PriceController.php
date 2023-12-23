@@ -7,6 +7,7 @@ use App\Exports\PricesExport;
 use App\Http\Controllers\Controller;
 use App\Models\Price;
 use App\Models\Product;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -81,5 +82,27 @@ class PriceController extends Controller
     public function exportAll()
     {
         return Excel::download(new PricesAllExport(), 'prices.xlsx');
+    }
+
+    // Export all prices to excel file
+    public function exportAllPricesCron()
+    {
+        $filename = '';
+        $dateTime = Carbon::now()->format('d_m_Y_H_i');
+        $filename = 'prices_all_' . $dateTime . '.xlsx';
+        $path = 'exports/prices/' . $filename;
+        Excel::store(new PricesAllExport(), $path, 'public');
+    }
+
+    public function exportProductPrices()
+    {
+        $filename = '';
+        $dateTime = Carbon::now()->format('d_m_Y_H_i');
+        $products = Product::all();
+        foreach ($products as $product) {
+            $filename = $product->slug . '_' . $dateTime . '.xlsx';
+            $path = 'exports/products/' . $product->id . '/' . $filename;
+            Excel::store(new PricesExport($product->id), $path, 'public');
+        }
     }
 }

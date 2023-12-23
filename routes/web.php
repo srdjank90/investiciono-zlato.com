@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Backend\FileController;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -43,7 +44,7 @@ Route::delete('/backend/posts/categories/delete/{id}', [App\Http\Controllers\Bac
 
 // Backend Products
 Route::get('/backend/products', [App\Http\Controllers\Backend\ProductController::class, 'index'])->name('backend.products.index');
-Route::get('/backend/products', [App\Http\Controllers\Backend\ProductController::class, 'index'])->name('backend.products.index');
+Route::get('/backend/products/prices/exports', [App\Http\Controllers\Backend\ProductController::class, 'exports'])->name('backend.products.prices.exports');
 Route::post('/backend/products/store', [App\Http\Controllers\Backend\ProductController::class, 'store'])->name('backend.products.store');
 Route::get('/backend/products/edit/{id}/prices', [App\Http\Controllers\Backend\PriceController::class, 'index'])->name('backend.products.edit.prices');
 Route::get('/backend/products/edit/{id}/prices/export', [App\Http\Controllers\Backend\PriceController::class, 'export'])->name('backend.products.edit.prices.export');
@@ -63,6 +64,8 @@ Route::get('/backend/products/time-offers', [App\Http\Controllers\Backend\Produc
 Route::get('/backend/products/export/{cat}', [App\Http\Controllers\Backend\ProductController::class, 'export'])->name('backend.products.export');
 
 Route::get('/backend/products/prices/export', [App\Http\Controllers\Backend\PriceController::class, 'exportAll'])->name('backend.products.prices.export');
+Route::get('/backend/files/download/{file}', [FileController::class, 'downloadPricesExport'])->name('backend.files.prices.exports.download');
+
 
 
 // Backend Product Categories

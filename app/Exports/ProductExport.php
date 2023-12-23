@@ -6,11 +6,12 @@ use App\Models\Product;
 use Maatwebsite\Excel\Concerns\Exportable;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\FromQuery;
+use Maatwebsite\Excel\Concerns\WithChunkReading;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\WithMapping;
 use PhpOffice\PhpSpreadsheet\Shared\Date;
 
-class ProductExport implements FromQuery, WithMapping, WithHeadings
+class ProductExport implements FromQuery, WithMapping, WithHeadings, WithChunkReading
 {
     use Exportable;
     protected $cat;
@@ -59,5 +60,10 @@ class ProductExport implements FromQuery, WithMapping, WithHeadings
             $product->company,
             $product->status,
         ];
+    }
+
+    public function chunkSize(): int
+    {
+        return 1000; // Set your desired chunk size here
     }
 }
