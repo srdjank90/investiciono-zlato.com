@@ -65,8 +65,8 @@ Route::get('/backend/products/export/{cat}', [App\Http\Controllers\Backend\Produ
 
 Route::get('/backend/products/prices/export', [App\Http\Controllers\Backend\PriceController::class, 'exportAll'])->name('backend.products.prices.export');
 Route::get('/backend/files/download/{file}', [FileController::class, 'downloadPricesExport'])->name('backend.files.prices.exports.download');
-
-
+Route::get('/backend/product/prices/files/download/{file}/{id}', [FileController::class, 'downloadProductPricesExport'])->name('backend.product.prices.files.exports.download');
+Route::get('/backend/product/prices/files/download/zip', [FileController::class, 'downloadZipProductPrices'])->name('backend.product.prices.files.download.zip');
 
 // Backend Product Categories
 Route::get('/backend/products/categories', [App\Http\Controllers\Backend\ProductCategoryController::class, 'index'])->name('backend.products.categories.index');

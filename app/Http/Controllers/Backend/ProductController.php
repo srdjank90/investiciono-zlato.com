@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\File;
 use App\Models\Product;
 use App\Models\ProductCategory;
+use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
@@ -219,7 +220,16 @@ class ProductController extends BackendController
         $product = Product::with('categories')->findOrFail($id);
         $productCategories = ProductCategory::all();
         $productCategoriesIds = $product->categories->pluck('id')->toArray();
-        return view('backend.products.edit', compact(['product', 'productCategories', 'productCategoriesIds', 'currency', 'productMetas']));
+        $exports = Storage::disk('public')->files('exports/products/' . $product->slug);
+
+        $exportFiles = [];
+        foreach ($exports as $key => $export) {
+            $datePart = substr($export, strpos($export, "_") + 1, 16);
+            $exportFiles[$key]['url'] = $export;
+            $exportFiles[$key]['name'] = $datePart;
+        }
+
+        return view('backend.products.edit', compact(['product', 'productCategories', 'productCategoriesIds', 'currency', 'productMetas', 'exportFiles']));
     }
 
     /**
@@ -369,7 +379,35 @@ class ProductController extends BackendController
     public function exports()
     {
         $exports = Storage::disk('public')->files('exports/prices'); // Replace with your storage folder path
-        Log::info($exports);
+
         return view('backend.products.exports', compact(['exports']));
+    }
+
+
+    public function exportDateFromFile($string)
+    {
+        // Define the regular expression pattern
+        $pattern = '/(\d{2})_(\d{2})_(\d{4})_(\d{2})_(\d{2})/';
+
+        // Use preg_match to find matches
+        if (preg_match($pattern, $string, $matches)) {
+            // Extracted date components
+            $day = $matches[1];
+            $month = $matches[2];
+            $year = $matches[3];
+            $hour = $matches[4];
+            $minute = $matches[5];
+
+            // Create a DateTime object
+            $dateTime = new DateTime("$year-$month-$day $hour:$minute");
+
+            // Format the date as needed
+            $formattedDate = $dateTime->format('Y-m-d H:i');
+
+            // Output the result
+            return $formattedDate;
+        } else {
+            return '';
+        }
     }
 }

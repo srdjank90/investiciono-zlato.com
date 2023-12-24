@@ -170,9 +170,11 @@
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                             <li><a class="dropdown-item" href="{{ route('backend.products.prices.export') }}"><i
-                                        class="bi bi-cloud-download"></i> {{ __('Export Prices') }}</a></li>
+                                        class="bi bi-cloud-download"></i> {{ __('Export Price Changes') }}</a></li>
                             <li><a class="dropdown-item" href="{{ route('backend.products.export', $cat) }}"> <i
-                                        class="bi bi-cloud-download"></i> {{ __('Export Products') }}</a></li>
+                                        class="bi bi-cloud-download"></i> {{ __('Export Products List') }}</a></li>
+                            <li><a class="dropdown-item" href="{{ route('backend.product.prices.files.download.zip') }}">
+                                    <i class="bi bi-file-earmark-zip"></i> {{ __('Download Todays Zip') }}</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>

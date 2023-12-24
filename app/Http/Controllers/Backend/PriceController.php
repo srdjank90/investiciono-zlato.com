@@ -101,7 +101,7 @@ class PriceController extends Controller
         $products = Product::all();
         foreach ($products as $product) {
             $filename = $product->slug . '_' . $dateTime . '.xlsx';
-            $path = 'exports/products/' . $product->id . '/' . $filename;
+            $path = 'exports/products/' . $product->slug . '/' . $filename;
             Excel::store(new PricesExport($product->id), $path, 'public');
         }
     }
