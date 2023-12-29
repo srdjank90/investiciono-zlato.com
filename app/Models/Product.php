@@ -21,6 +21,8 @@ class Product extends Model
         'price_id',
         'selling_price',
         'purchase_price',
+        'selling_price_percentage_change',
+        'purchase_price_percentage_change',
         'currency',
         'company',
         'last_price_at',

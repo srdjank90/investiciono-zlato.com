@@ -13,6 +13,7 @@ class Company extends Model
         'name',
         'description',
         'url',
+        'image_url',
         'single_product_scraper',
         'products_scraper'
     ];

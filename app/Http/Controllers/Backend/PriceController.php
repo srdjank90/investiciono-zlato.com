@@ -19,7 +19,7 @@ class PriceController extends Controller
     public function index($productId)
     {
         $product = Product::find($productId);
-        $prices = Price::where('product_id', $productId)->orderBy('created_at', 'desc')->paginate(60);
+        $prices = Price::where('product_id', $productId)->orderBy('created_at', 'desc')->paginate(360);
         return view('backend.products.prices', compact(['prices', 'product']));
     }
 

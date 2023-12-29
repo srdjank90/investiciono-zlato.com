@@ -135,4 +135,12 @@ Route::get('/kontakt', [App\Http\Controllers\Frontend\FrontendController::class,
 Route::get('/talaris', [App\Http\Controllers\Frontend\FrontendController::class, 'about'])->name('frontend.about');
 Route::get('/pametna-vrata', [App\Http\Controllers\Frontend\FrontendController::class, 'smartDoor'])->name('frontend.smartDoor');
 Route::get('/search', [App\Http\Controllers\Frontend\FrontendController::class, 'search'])->name('frontend.search');
+Route::get('/zlatne-plocice', [App\Http\Controllers\Frontend\FrontendController::class, 'goldenPlates'])->name('frontend.plates');
+Route::get('/zlatne-poluge', [App\Http\Controllers\Frontend\FrontendController::class, 'goldenBars'])->name('frontend.bars');
+Route::get('/zlatni-dukati', [App\Http\Controllers\Frontend\FrontendController::class, 'goldenCoins'])->name('frontend.coins');
+
+Route::get('/kategorija/{slug}', [App\Http\Controllers\Frontend\FrontendController::class, 'category'])->name('frontend.category');
+Route::get('/prodavnice', [App\Http\Controllers\Frontend\FrontendController::class, 'companies'])->name('frontend.companies');
+Route::get('/cena-zlata', [App\Http\Controllers\Frontend\FrontendController::class, 'price'])->name('frontend.price');
+Route::get('/kursna-lista', [App\Http\Controllers\Frontend\FrontendController::class, 'exchange'])->name('frontend.exchange');
 Route::get('/{slug}', [App\Http\Controllers\Frontend\FrontendController::class, 'page'])->name('frontend.page');

@@ -14,35 +14,78 @@ use Illuminate\Support\Facades\Log;
 
 class FrontendController extends Controller
 {
-    protected $theme = 'lika';
+    protected $theme = 'gold';
 
     public function __construct()
     {
-        $this->theme = getOption('setting_theme_active_opt', 'lika');
+        $this->theme = getOption('setting_theme_active_opt', 'gold');
     }
 
     public function index()
     {
-        #$highlightedProducts = Product::where('highlighted', 1)->where('status', 'published')->get();
-        #$highlightedProducts = $this->updateProductsWithAction($highlightedProducts);
-
-        #$favoriteCategories = ProductCategory::where('favorite_flag', 1)->get();
-        #$favoriteCategories = $this->updateProductsWithAction($favoriteCategories);
-
-        #$bestSellerProducts = Product::where('featured', 'best-seller')->where('status', 'published')->get();
-        #$bestSellerProducts = $this->updateProductsWithAction($bestSellerProducts);
-
-        #$newProducts = Product::where('featured', 'new')->where('status', 'published')->get();
-        #$newProducts = $this->updateProductsWithAction($newProducts);
-
-        #$actionProducts = Product::where('featured', 'action')->where('status', 'published')->get();
-        #$actionProducts = $this->updateProductsWithAction($actionProducts);
-
-        #$productAction = ProductAction::orderBy('id', 'desc')->first();
-
         $posts = Post::orderBy('created_at', 'desc')->get()->take(3);
 
-        return view('frontend.themes.' . $this->theme . '.index', compact('posts'));
+        $goldenPlates[0]['name'] = '1g';
+        $goldenPlates[0]['description'] = '1 grama';
+        $goldenPlates[0]['products'] = Product::whereHas('categories', function ($q) {
+            $q->where('name', '1g');
+        })->orderBy('selling_price', 'asc')->get()->take(3)->toArray();
+
+        $goldenPlates[1]['name'] = '2g';
+        $goldenPlates[1]['description'] = '2 grama';
+        $goldenPlates[1]['products'] = Product::whereHas('categories', function ($q) {
+            $q->where('name', '2g');
+        })->orderBy('selling_price', 'asc')->get()->take(3)->toArray();
+
+        $goldenPlates[2]['name'] = '5g';
+        $goldenPlates[2]['description'] = '5 grama';
+        $goldenPlates[2]['products'] = Product::whereHas('categories', function ($q) {
+            $q->where('name', '5g');
+        })->orderBy('selling_price', 'asc')->get()->take(3)->toArray();
+
+        $goldenPlates[3]['name'] = '10g';
+        $goldenPlates[3]['description'] = '10 grama';
+        $goldenPlates[3]['products'] = Product::whereHas('categories', function ($q) {
+            $q->where('name', '10g');
+        })->orderBy('selling_price', 'asc')->get()->take(3)->toArray();
+
+        $goldenPlates[4]['name'] = '20g';
+        $goldenPlates[4]['description'] = '20 grama';
+        $goldenPlates[4]['products'] = Product::whereHas('categories', function ($q) {
+            $q->where('name', '20g');
+        })->orderBy('selling_price', 'asc')->get()->take(3)->toArray();
+
+        $goldenBars[0]['name'] = '1unca';
+        $goldenBars[0]['description'] = '1 unca';
+        $goldenBars[0]['products'] = Product::whereHas('categories', function ($q) {
+            $q->where('name', '1unca');
+        })->orderBy('selling_price', 'asc')->get()->take(3)->toArray();
+
+        $goldenBars[1]['name'] = '50g';
+        $goldenBars[1]['description'] = '50 grama';
+        $goldenBars[1]['products'] = Product::whereHas('categories', function ($q) {
+            $q->where('name', '50g');
+        })->orderBy('selling_price', 'asc')->get()->take(3)->toArray();
+
+        $goldenBars[2]['name'] = '100g';
+        $goldenBars[2]['description'] = '100 grama';
+        $goldenBars[2]['products'] = Product::whereHas('categories', function ($q) {
+            $q->where('name', '100g');
+        })->orderBy('selling_price', 'asc')->get()->take(3)->toArray();
+
+        $goldenBars[3]['name'] = '500g';
+        $goldenBars[3]['description'] = '500 grama';
+        $goldenBars[3]['products'] = Product::whereHas('categories', function ($q) {
+            $q->where('name', '500g');
+        })->orderBy('selling_price', 'asc')->get()->take(3)->toArray();
+
+        $goldenBars[4]['name'] = '1000g';
+        $goldenBars[4]['description'] = '1000 grama';
+        $goldenBars[4]['products'] = Product::whereHas('categories', function ($q) {
+            $q->where('name', '1000g');
+        })->orderBy('selling_price', 'asc')->get()->take(3)->toArray();
+
+        return view('frontend.themes.' . $this->theme . '.index', compact('posts', 'goldenPlates', 'goldenBars'));
     }
 
     public function cart()
@@ -218,5 +261,110 @@ class FrontendController extends Controller
             ->orWhere('subtitle', 'LIKE', '%' . $searchString . '%')
             ->orderBy('price', 'asc')->paginate(48);
         return view('frontend.themes.' . $this->theme . '.search', compact('products', 'searchString'));
+    }
+
+    public function goldenPlates()
+    {
+        $goldenPlates[0]['name'] = '1g';
+        $goldenPlates[0]['description'] = '1 grama';
+        $goldenPlates[0]['products'] = Product::whereHas('categories', function ($q) {
+            $q->where('name', '1g');
+        })->orderBy('selling_price', 'asc')->get()->take(3)->toArray();
+
+        $goldenPlates[1]['name'] = '2g';
+        $goldenPlates[1]['description'] = '2 grama';
+        $goldenPlates[1]['products'] = Product::whereHas('categories', function ($q) {
+            $q->where('name', '2g');
+        })->orderBy('selling_price', 'asc')->get()->take(3)->toArray();
+
+        $goldenPlates[2]['name'] = '5g';
+        $goldenPlates[2]['description'] = '5 grama';
+        $goldenPlates[2]['products'] = Product::whereHas('categories', function ($q) {
+            $q->where('name', '5g');
+        })->orderBy('selling_price', 'asc')->get()->take(3)->toArray();
+
+        $goldenPlates[3]['name'] = '10g';
+        $goldenPlates[3]['description'] = '10 grama';
+        $goldenPlates[3]['products'] = Product::whereHas('categories', function ($q) {
+            $q->where('name', '10g');
+        })->orderBy('selling_price', 'asc')->get()->take(3)->toArray();
+
+        $goldenPlates[4]['name'] = '20g';
+        $goldenPlates[4]['description'] = '20 grama';
+        $goldenPlates[4]['products'] = Product::whereHas('categories', function ($q) {
+            $q->where('name', '20g');
+        })->orderBy('selling_price', 'asc')->get()->take(3)->toArray();
+
+        return view('frontend.themes.' . $this->theme . '.plates', compact('goldenPlates'));
+    }
+
+    public function goldenBars()
+    {
+        $goldenBars[0]['name'] = '1unca';
+        $goldenBars[0]['description'] = '1 unca';
+        $goldenBars[0]['products'] = Product::whereHas('categories', function ($q) {
+            $q->where('name', '1unca');
+        })->orderBy('selling_price', 'asc')->get()->take(3)->toArray();
+
+        $goldenBars[1]['name'] = '50g';
+        $goldenBars[1]['description'] = '50 grama';
+        $goldenBars[1]['products'] = Product::whereHas('categories', function ($q) {
+            $q->where('name', '50g');
+        })->orderBy('selling_price', 'asc')->get()->take(3)->toArray();
+
+        $goldenBars[2]['name'] = '100g';
+        $goldenBars[2]['description'] = '100 grama';
+        $goldenBars[2]['products'] = Product::whereHas('categories', function ($q) {
+            $q->where('name', '100g');
+        })->orderBy('selling_price', 'asc')->get()->take(3)->toArray();
+
+        $goldenBars[3]['name'] = '500g';
+        $goldenBars[3]['description'] = '500 grama';
+        $goldenBars[3]['products'] = Product::whereHas('categories', function ($q) {
+            $q->where('name', '500g');
+        })->orderBy('selling_price', 'asc')->get()->take(3)->toArray();
+
+        $goldenBars[4]['name'] = '1000g';
+        $goldenBars[4]['description'] = '1000 grama';
+        $goldenBars[4]['products'] = Product::whereHas('categories', function ($q) {
+            $q->where('name', '1000g');
+        })->orderBy('selling_price', 'asc')->get()->take(3)->toArray();
+
+        return view('frontend.themes.' . $this->theme . '.bars', compact('goldenBars'));
+    }
+
+    public function goldenCoins()
+    {
+        $goldenCoins[0]['name'] = 'Dukati';
+        $goldenCoins[0]['description'] = 'Dukati';
+        $goldenCoins[0]['products'] = Product::whereHas('categories', function ($q) {
+            $q->where('name', 'Dukati');
+        })->orderBy('selling_price', 'asc')->get()->toArray();
+
+        return view('frontend.themes.' . $this->theme . '.coins', compact('goldenCoins'));
+    }
+
+    public function category($categorySlug)
+    {
+        $category = ProductCategory::where('slug', $categorySlug)->first();
+        $products = Product::whereHas('categories', function ($q) use ($categorySlug) {
+            $q->where('slug', $categorySlug);
+        })->orderBy('selling_price', 'asc')->get()->toArray();
+        return view('frontend.themes.' . $this->theme . '.category', compact('products', 'category'));
+    }
+
+    public function companies()
+    {
+        return view('frontend.themes.' . $this->theme . '.companies');
+    }
+
+    public function price()
+    {
+        return view('frontend.themes.' . $this->theme . '.price');
+    }
+
+    public function exchange()
+    {
+        return view('frontend.themes.' . $this->theme . '.exchange');
     }
 }

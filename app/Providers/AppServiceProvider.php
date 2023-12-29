@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Company;
 use App\Models\Post;
 use App\Models\ProductAction;
 use App\Models\ProductCategory;
@@ -41,6 +42,8 @@ class AppServiceProvider extends ServiceProvider
             $settings = getOptions('setting');
             $productAction = ProductAction::orderBy('id', 'desc')->first();
             $posts = Post::orderBy('created_at', 'desc')->get();
+            $companies = Company::all();
+            View::share('companies', $companies);
             View::share('storageUrl', '/storage/');
             View::share('currency', $currency);
             View::share('productMetas', $productMetas);

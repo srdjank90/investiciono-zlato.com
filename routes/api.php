@@ -21,5 +21,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::group(['middleware' => [TokenAuth::class]], function () {
-    Route::get('prices', [ApiController::class, 'getPrices']);
+    Route::get('products', [ApiController::class, 'getProducts']);
 });

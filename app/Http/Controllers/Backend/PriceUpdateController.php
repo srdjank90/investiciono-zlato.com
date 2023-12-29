@@ -41,6 +41,22 @@ class PriceUpdateController extends Controller
                 'purchase_price' => floatval(str_replace('.', '', str_replace('din', '', trim($purchasePrice)))),
             ];
             $price = Price::create($priceData);
+
+            $percentageChangeSelling = 0;
+            if (($product->selling_price && $product->selling_price != 0) && $priceData['selling_price'] != 0) {
+                $percentageChangeSelling = (($price->selling_price - $priceData['selling_price']) / abs($priceData['selling_price'])) * 100;
+            }
+            if ($percentageChangeSelling != 0) {
+                $product->selling_price_percentage_change = $percentageChangeSelling;
+            }
+
+            $percentageChangePurchase = 0;
+            if (($product->purchase_price && $product->purchase_price != 0) && $priceData['purchase_price'] != 0) {
+                $percentageChangePurchase = (($price->selling_price - $priceData['purchase_price']) / abs($priceData['purchase_price'])) * 100;
+            }
+            if ($percentageChangePurchase != 0) {
+                $product->purchase_price_percentage_change = $percentageChangePurchase;
+            }
             $product->selling_price = $priceData['selling_price'];
             $product->purchase_price = $priceData['purchase_price'];
             $product->save();

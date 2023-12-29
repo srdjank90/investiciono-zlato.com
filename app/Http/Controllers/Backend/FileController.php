@@ -31,7 +31,7 @@ class FileController extends Controller
     public function downloadZipProductPrices()
     {
         // Path to the directory containing folders to be zipped
-        $directoryPath = public_path() . '\storage\exports\products'; // Change this to your actual path
+        $directoryPath = public_path() . '/storage/exports/products'; // Change this to your actual path
         #$directoryPath = 'C:\wamp64\www\zlatoteka.rs\public_html\storage\exports\products'; // Change this to your actual path
 
         // Create a unique filename for the zip file
