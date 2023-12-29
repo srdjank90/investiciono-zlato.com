@@ -185,29 +185,22 @@
                                         <a href="javascript:;" class="menu-title">Najbolji saveti</a>
                                         <div class="widget widget_post pt-2">
                                             <ul>
-                                                <li>
-                                                    <div class="dz-media">
-                                                        <img src="/themes/gold/assets/images/shop/product/small/1.png"
-                                                            alt="">
-                                                    </div>
-                                                    <div class="dz-content">
-                                                        <h6 class="name"><a href="post-standard.html">Investiciono
-                                                                zlato - Kad je najbolje kupiti?</a></h6>
-                                                        <span class="time">23.jul 2023.</span>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="dz-media">
-                                                        <img src="/themes/gold/assets/images/shop/product/small/2.png"
-                                                            alt="">
-                                                    </div>
-                                                    <div class="dz-content">
-                                                        <h6 class="name"><a href="post-standard.html">Investiciono
-                                                                zlato - Kad je najbolje prodati?</a></h6>
-                                                        <span class="time">23.jul 2023.</span>
-                                                    </div>
-                                                </li>
-
+                                                @foreach ($najboljiSaveti as $post)
+                                                    <li>
+                                                        <div class="dz-media">
+                                                            <img src="/themes/gold/assets/images/shop/product/small/1.png"
+                                                                alt="">
+                                                        </div>
+                                                        <div class="dz-content">
+                                                            <h6 class="name">
+                                                                <a href="{{ route('frontend.post', $post->slug) }}">
+                                                                    {{ $post->title }}
+                                                                </a>
+                                                            </h6>
+                                                            <span class="time d-none">23.jul 2023.</span>
+                                                        </div>
+                                                    </li>
+                                                @endforeach
                                             </ul>
                                         </div>
                                     </div>
@@ -215,29 +208,22 @@
                                         <a href="javascript:;" class="menu-title">Najnoviji tekstovi</a>
                                         <div class="widget widget_post pt-2">
                                             <ul>
-                                                <li>
-                                                    <div class="dz-media">
-                                                        <img src="/themes/gold/assets/images/shop/product/small/1.png"
-                                                            alt="">
-                                                    </div>
-                                                    <div class="dz-content">
-                                                        <h6 class="name"><a href="post-standard.html">Zlato
-                                                                zamenjuje dolar</a></h6>
-                                                        <span class="time">23.jul 2023.</span>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="dz-media">
-                                                        <img src="/themes/gold/assets/images/shop/product/small/2.png"
-                                                            alt="">
-                                                    </div>
-                                                    <div class="dz-content">
-                                                        <h6 class="name"><a href="post-standard.html">Šta utiče na
-                                                                cenu zlata</a></h6>
-                                                        <span class="time">23.jul 2023.</span>
-                                                    </div>
-                                                </li>
-
+                                                @foreach ($najnovijiTekstovi as $post)
+                                                    <li>
+                                                        <div class="dz-media">
+                                                            <img src="/themes/gold/assets/images/shop/product/small/1.png"
+                                                                alt="">
+                                                        </div>
+                                                        <div class="dz-content">
+                                                            <h6 class="name">
+                                                                <a href="{{ route('frontend.post', $post->slug) }}">
+                                                                    {{ $post->title }}
+                                                                </a>
+                                                            </h6>
+                                                            <span class="time d-none">23.jul 2023.</span>
+                                                        </div>
+                                                    </li>
+                                                @endforeach
                                             </ul>
                                         </div>
                                     </div>

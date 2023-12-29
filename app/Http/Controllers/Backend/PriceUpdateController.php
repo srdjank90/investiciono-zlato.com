@@ -44,19 +44,17 @@ class PriceUpdateController extends Controller
 
             $percentageChangeSelling = 0;
             if (($product->selling_price && $product->selling_price != 0) && $priceData['selling_price'] != 0) {
-                $percentageChangeSelling = (($price->selling_price - $priceData['selling_price']) / abs($priceData['selling_price'])) * 100;
+                $percentageChangeSelling = (($product->selling_price - $priceData['selling_price']) / abs($priceData['selling_price'])) * 100;
             }
-            if ($percentageChangeSelling != 0) {
-                $product->selling_price_percentage_change = $percentageChangeSelling;
-            }
+            $product->selling_price_percentage_change = $percentageChangeSelling;
+
 
             $percentageChangePurchase = 0;
             if (($product->purchase_price && $product->purchase_price != 0) && $priceData['purchase_price'] != 0) {
-                $percentageChangePurchase = (($price->selling_price - $priceData['purchase_price']) / abs($priceData['purchase_price'])) * 100;
+                $percentageChangePurchase = (($product->purchase_price - $priceData['purchase_price']) / abs($priceData['purchase_price'])) * 100;
             }
-            if ($percentageChangePurchase != 0) {
-                $product->purchase_price_percentage_change = $percentageChangePurchase;
-            }
+            $product->purchase_price_percentage_change = $percentageChangePurchase;
+
             $product->selling_price = $priceData['selling_price'];
             $product->purchase_price = $priceData['purchase_price'];
             $product->save();
@@ -130,6 +128,19 @@ class PriceUpdateController extends Controller
                         'purchase_price' => $product['purchase_price']
                     ];
                     $price = Price::create($priceData);
+                    $percentageChangeSelling = 0;
+                    if (($findProduct->selling_price && $findProduct->selling_price != 0) && $priceData['selling_price'] != 0) {
+                        $percentageChangeSelling = (($findProduct->selling_price - $priceData['selling_price']) / abs($priceData['selling_price'])) * 100;
+                    }
+                    $findProduct->selling_price_percentage_change = $percentageChangeSelling;
+
+
+                    $percentageChangePurchase = 0;
+                    if (($findProduct->purchase_price && $findProduct->purchase_price != 0) && $priceData['purchase_price'] != 0) {
+                        $percentageChangePurchase = (($findProduct->purchase_price - $priceData['purchase_price']) / abs($priceData['purchase_price'])) * 100;
+                    }
+                    $findProduct->purchase_price_percentage_change = $percentageChangePurchase;
+
                     $findProduct->selling_price = $priceData['selling_price'];
                     $findProduct->purchase_price = $priceData['purchase_price'];
                     $findProduct->save();
@@ -163,6 +174,19 @@ class PriceUpdateController extends Controller
                         'purchase_price' => floatval(str_replace('.', '', str_replace('RSD', '', trim($product['purchase_price'])))),
                     ];
                     $price = Price::create($priceData);
+                    $percentageChangeSelling = 0;
+                    if (($findProduct->selling_price && $findProduct->selling_price != 0) && $priceData['selling_price'] != 0) {
+                        $percentageChangeSelling = (($findProduct->selling_price - $priceData['selling_price']) / abs($priceData['selling_price'])) * 100;
+                    }
+                    $findProduct->selling_price_percentage_change = $percentageChangeSelling;
+
+
+                    $percentageChangePurchase = 0;
+                    if (($findProduct->purchase_price && $findProduct->purchase_price != 0) && $priceData['purchase_price'] != 0) {
+                        $percentageChangePurchase = (($findProduct->purchase_price - $priceData['purchase_price']) / abs($priceData['purchase_price'])) * 100;
+                    }
+                    $findProduct->purchase_price_percentage_change = $percentageChangePurchase;
+
                     $findProduct->selling_price = $priceData['selling_price'];
                     $findProduct->purchase_price = $priceData['purchase_price'];
                     $findProduct->save();
@@ -196,6 +220,19 @@ class PriceUpdateController extends Controller
                         'purchase_price' => floatval(str_replace('.', '', str_replace('РСД', '', trim($product['purchase_price'])))),
                     ];
                     $price = Price::create($priceData);
+                    $percentageChangeSelling = 0;
+                    if (($findProduct->selling_price && $findProduct->selling_price != 0) && $priceData['selling_price'] != 0) {
+                        $percentageChangeSelling = (($findProduct->selling_price - $priceData['selling_price']) / abs($priceData['selling_price'])) * 100;
+                    }
+                    $findProduct->selling_price_percentage_change = $percentageChangeSelling;
+
+
+                    $percentageChangePurchase = 0;
+                    if (($findProduct->purchase_price && $findProduct->purchase_price != 0) && $priceData['purchase_price'] != 0) {
+                        $percentageChangePurchase = (($findProduct->purchase_price - $priceData['purchase_price']) / abs($priceData['purchase_price'])) * 100;
+                    }
+                    $findProduct->purchase_price_percentage_change = $percentageChangePurchase;
+
                     $findProduct->selling_price = $priceData['selling_price'];
                     $findProduct->purchase_price = $priceData['purchase_price'];
                     $findProduct->save();
@@ -229,6 +266,19 @@ class PriceUpdateController extends Controller
                         'purchase_price' => floatval(str_replace('.', '', str_replace('рсд', '', trim($product['purchase_price'])))),
                     ];
                     $price = Price::create($priceData);
+                    $percentageChangeSelling = 0;
+                    if (($findProduct->selling_price && $findProduct->selling_price != 0) && $priceData['selling_price'] != 0) {
+                        $percentageChangeSelling = (($findProduct->selling_price - $priceData['selling_price']) / abs($priceData['selling_price'])) * 100;
+                    }
+                    $findProduct->selling_price_percentage_change = $percentageChangeSelling;
+
+
+                    $percentageChangePurchase = 0;
+                    if (($findProduct->purchase_price && $findProduct->purchase_price != 0) && $priceData['purchase_price'] != 0) {
+                        $percentageChangePurchase = (($findProduct->purchase_price - $priceData['purchase_price']) / abs($priceData['purchase_price'])) * 100;
+                    }
+                    $findProduct->purchase_price_percentage_change = $percentageChangePurchase;
+
                     $findProduct->selling_price = $priceData['selling_price'];
                     $findProduct->purchase_price = $priceData['purchase_price'];
                     $findProduct->save();
@@ -252,6 +302,19 @@ class PriceUpdateController extends Controller
                         'purchase_price' => floatval(str_replace('.', '', str_replace('рсд', '', trim($product['purchase_price'])))),
                     ];
                     $price = Price::create($priceData);
+                    $percentageChangeSelling = 0;
+                    if (($findProduct->selling_price && $findProduct->selling_price != 0) && $priceData['selling_price'] != 0) {
+                        $percentageChangeSelling = (($findProduct->selling_price - $priceData['selling_price']) / abs($priceData['selling_price'])) * 100;
+                    }
+                    $findProduct->selling_price_percentage_change = $percentageChangeSelling;
+
+
+                    $percentageChangePurchase = 0;
+                    if (($findProduct->purchase_price && $findProduct->purchase_price != 0) && $priceData['purchase_price'] != 0) {
+                        $percentageChangePurchase = (($findProduct->purchase_price - $priceData['purchase_price']) / abs($priceData['purchase_price'])) * 100;
+                    }
+                    $findProduct->purchase_price_percentage_change = $percentageChangePurchase;
+
                     $findProduct->selling_price = $priceData['selling_price'];
                     $findProduct->purchase_price = $priceData['purchase_price'];
                     $findProduct->save();
@@ -291,6 +354,19 @@ class PriceUpdateController extends Controller
                         'purchase_price' => $product['purchase_price'],
                     ];
                     $price = Price::create($priceData);
+                    $percentageChangeSelling = 0;
+                    if (($findProduct->selling_price && $findProduct->selling_price != 0) && $priceData['selling_price'] != 0) {
+                        $percentageChangeSelling = (($findProduct->selling_price - $priceData['selling_price']) / abs($priceData['selling_price'])) * 100;
+                    }
+                    $findProduct->selling_price_percentage_change = $percentageChangeSelling;
+
+
+                    $percentageChangePurchase = 0;
+                    if (($findProduct->purchase_price && $findProduct->purchase_price != 0) && $priceData['purchase_price'] != 0) {
+                        $percentageChangePurchase = (($findProduct->purchase_price - $priceData['purchase_price']) / abs($priceData['purchase_price'])) * 100;
+                    }
+                    $findProduct->purchase_price_percentage_change = $percentageChangePurchase;
+
                     $findProduct->selling_price = $priceData['selling_price'];
                     $findProduct->purchase_price = $priceData['purchase_price'];
                     $findProduct->save();
@@ -327,6 +403,19 @@ class PriceUpdateController extends Controller
                         'purchase_price' => $product['purchase_price'],
                     ];
                     $price = Price::create($priceData);
+                    $percentageChangeSelling = 0;
+                    if (($findProduct->selling_price && $findProduct->selling_price != 0) && $priceData['selling_price'] != 0) {
+                        $percentageChangeSelling = (($findProduct->selling_price - $priceData['selling_price']) / abs($priceData['selling_price'])) * 100;
+                    }
+                    $findProduct->selling_price_percentage_change = $percentageChangeSelling;
+
+
+                    $percentageChangePurchase = 0;
+                    if (($findProduct->purchase_price && $findProduct->purchase_price != 0) && $priceData['purchase_price'] != 0) {
+                        $percentageChangePurchase = (($findProduct->purchase_price - $priceData['purchase_price']) / abs($priceData['purchase_price'])) * 100;
+                    }
+                    $findProduct->purchase_price_percentage_change = $percentageChangePurchase;
+
                     $findProduct->selling_price = $priceData['selling_price'];
                     $findProduct->purchase_price = $priceData['purchase_price'];
                     $findProduct->save();
@@ -354,6 +443,19 @@ class PriceUpdateController extends Controller
                         'purchase_price' => $product['purchase_price'],
                     ];
                     $price = Price::create($priceData);
+                    $percentageChangeSelling = 0;
+                    if (($findProduct->selling_price && $findProduct->selling_price != 0) && $priceData['selling_price'] != 0) {
+                        $percentageChangeSelling = (($findProduct->selling_price - $priceData['selling_price']) / abs($priceData['selling_price'])) * 100;
+                    }
+                    $findProduct->selling_price_percentage_change = $percentageChangeSelling;
+
+
+                    $percentageChangePurchase = 0;
+                    if (($findProduct->purchase_price && $findProduct->purchase_price != 0) && $priceData['purchase_price'] != 0) {
+                        $percentageChangePurchase = (($findProduct->purchase_price - $priceData['purchase_price']) / abs($priceData['purchase_price'])) * 100;
+                    }
+                    $findProduct->purchase_price_percentage_change = $percentageChangePurchase;
+
                     $findProduct->selling_price = $priceData['selling_price'];
                     $findProduct->purchase_price = $priceData['purchase_price'];
                     $findProduct->save();
@@ -389,6 +491,19 @@ class PriceUpdateController extends Controller
                         'purchase_price' => $product['purchase_price'],
                     ];
                     $price = Price::create($priceData);
+                    $percentageChangeSelling = 0;
+                    if (($findProduct->selling_price && $findProduct->selling_price != 0) && $priceData['selling_price'] != 0) {
+                        $percentageChangeSelling = (($findProduct->selling_price - $priceData['selling_price']) / abs($priceData['selling_price'])) * 100;
+                    }
+                    $findProduct->selling_price_percentage_change = $percentageChangeSelling;
+
+
+                    $percentageChangePurchase = 0;
+                    if (($findProduct->purchase_price && $findProduct->purchase_price != 0) && $priceData['purchase_price'] != 0) {
+                        $percentageChangePurchase = (($findProduct->purchase_price - $priceData['purchase_price']) / abs($priceData['purchase_price'])) * 100;
+                    }
+                    $findProduct->purchase_price_percentage_change = $percentageChangePurchase;
+
                     $findProduct->selling_price = $priceData['selling_price'];
                     $findProduct->purchase_price = $priceData['purchase_price'];
                     $findProduct->save();
@@ -417,6 +532,19 @@ class PriceUpdateController extends Controller
                         'purchase_price' => $product['purchase_price'],
                     ];
                     $price = Price::create($priceData);
+                    $percentageChangeSelling = 0;
+                    if (($findProduct->selling_price && $findProduct->selling_price != 0) && $priceData['selling_price'] != 0) {
+                        $percentageChangeSelling = (($findProduct->selling_price - $priceData['selling_price']) / abs($priceData['selling_price'])) * 100;
+                    }
+                    $findProduct->selling_price_percentage_change = $percentageChangeSelling;
+
+
+                    $percentageChangePurchase = 0;
+                    if (($findProduct->purchase_price && $findProduct->purchase_price != 0) && $priceData['purchase_price'] != 0) {
+                        $percentageChangePurchase = (($findProduct->purchase_price - $priceData['purchase_price']) / abs($priceData['purchase_price'])) * 100;
+                    }
+                    $findProduct->purchase_price_percentage_change = $percentageChangePurchase;
+
                     $findProduct->selling_price = $priceData['selling_price'];
                     $findProduct->purchase_price = $priceData['purchase_price'];
                     $findProduct->save();
@@ -488,6 +616,19 @@ class PriceUpdateController extends Controller
                     'purchase_price' => (float) $dataPrice[1],
                 ];
                 $price = Price::create($priceData);
+                $percentageChangeSelling = 0;
+                if (($findProduct->selling_price && $findProduct->selling_price != 0) && $priceData['selling_price'] != 0) {
+                    $percentageChangeSelling = (($findProduct->selling_price - $priceData['selling_price']) / abs($priceData['selling_price'])) * 100;
+                }
+                $findProduct->selling_price_percentage_change = $percentageChangeSelling;
+
+
+                $percentageChangePurchase = 0;
+                if (($findProduct->purchase_price && $findProduct->purchase_price != 0) && $priceData['purchase_price'] != 0) {
+                    $percentageChangePurchase = (($findProduct->purchase_price - $priceData['purchase_price']) / abs($priceData['purchase_price'])) * 100;
+                }
+                $findProduct->purchase_price_percentage_change = $percentageChangePurchase;
+
                 $findProduct->selling_price = $priceData['selling_price'];
                 $findProduct->purchase_price = $priceData['purchase_price'];
                 $findProduct->save();

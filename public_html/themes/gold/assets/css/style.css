@@ -64217,3 +64217,11 @@ footer.footer-dark .icon-bx-wraper {
 .product-prices-table tbody tr td {
     font-size: 12px;
 }
+
+.badge-difference {
+    min-height: 0px;
+    min-width: 0px;
+    padding: 2px;
+    font-size: 9px;
+    border-radius: 3px;
+}

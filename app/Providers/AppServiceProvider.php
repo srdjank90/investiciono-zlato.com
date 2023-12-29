@@ -43,6 +43,17 @@ class AppServiceProvider extends ServiceProvider
             $productAction = ProductAction::orderBy('id', 'desc')->first();
             $posts = Post::orderBy('created_at', 'desc')->get();
             $companies = Company::all();
+
+            $najboljiSaveti = Post::whereHas('categories', function ($q) {
+                $q->where('id', 1);
+            })->get()->take(3);
+
+            $najnovijiTekstovi = Post::whereHas('categories', function ($q) {
+                $q->where('id', 2);
+            })->get()->take(3);
+
+            View::share('najboljiSaveti', $najboljiSaveti);
+            View::share('najnovijiTekstovi', $najnovijiTekstovi);
             View::share('companies', $companies);
             View::share('storageUrl', '/storage/');
             View::share('currency', $currency);

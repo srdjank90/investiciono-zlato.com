@@ -34,6 +34,14 @@
                                             </td>
                                             <td style="font-size: 12px" class="text-end">
                                                 @if ($product['selling_price'] != '0' && $product['selling_price'] != null)
+                                                    @if ((float) $product['selling_price_percentage_change'] > 0)
+                                                        <span class="badge badge-difference badge-primary">@priceFormat($product['selling_price_percentage_change'])
+                                                        </span>
+                                                    @endif
+                                                    @if ((float) $product['selling_price_percentage_change'] < 0)
+                                                        <span class="badge badge-difference badge-danger">@priceFormat($product['selling_price_percentage_change'])
+                                                        </span>
+                                                    @endif
                                                     @priceFormat($product['selling_price'])
                                                     {{ $currency }}
                                                 @else
@@ -42,6 +50,14 @@
                                             </td>
                                             <td class="text-end">
                                                 @if ($product['purchase_price'] != '0' && $product['purchase_price'] != null)
+                                                    @if ((float) $product['purchase_price_percentage_change'] > 0)
+                                                        <span class="badge badge-difference badge-primary">@priceFormat($product['purchase_price_percentage_change'])
+                                                        </span>
+                                                    @endif
+                                                    @if ((float) $product['purchase_price_percentage_change'] < 0)
+                                                        <span class="badge badge-difference badge-danger">@priceFormat($product['purchase_price_percentage_change'])
+                                                        </span>
+                                                    @endif
                                                     @priceFormat($product['purchase_price'])
                                                     {{ $currency }}
                                                 @else
