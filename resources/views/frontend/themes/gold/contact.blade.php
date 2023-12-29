@@ -13,16 +13,21 @@
                             <h2 class="title wow fadeInUp" data-wow-delay="0.1s">Kontaktirajte nas</h2>
                             <div class="contact-bottom wow fadeInUp" data-wow-delay="0.3s">
                                 <div class="contact-left">
-                                    <h3>Call Us</h3>
+                                    <h3>Telefon</h3>
                                     <ul>
-                                        <li>+01-123-456-7890</li>
-                                        <li>+01-123-456-7890</li>
+                                        <li> (064) 332-1233</li>
                                     </ul>
                                 </div>
                                 <div class="contact-right">
-                                    <h3>Email Us</h3>
+                                    <h3>E-mail</h3>
                                     <ul>
-                                        <li>help@MoonCart.com</li>
+                                        <li>example@info.com</li>
+                                    </ul>
+                                </div>
+                                <div class="contact-right">
+                                    <h3>Adresa</h3>
+                                    <ul>
+                                        <li>Glavna 1, Zemun, Srbija</li>
                                     </ul>
                                 </div>
                             </div>

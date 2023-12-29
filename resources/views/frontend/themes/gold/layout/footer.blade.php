@@ -123,8 +123,7 @@
                             @foreach ($companies as $key => $company)
                                 @if ($key < 3)
                                     <li>
-                                        <a href="{{ $company->url }}"><img width="100px"
-                                                src="{{ $company->image_url }}" alt=""></a>
+                                        <a href="{{ $company->url }}">{{ $company->name }}</a>
                                     </li>
                                 @endif
                             @endforeach

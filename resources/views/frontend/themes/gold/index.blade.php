@@ -10,7 +10,7 @@
                 <div class="section-inner">
                     <div class="section-head style-2 p-lg-b0 p-md-b30 wow fadeInUp" data-wow-delay="0.1s"
                         style="visibility: hidden; animation-delay: 0.1s; animation-name: none;">
-                        <h1 class="title wow fadeInUp">Kupite investiciono zlato u Srbiji online</h1>
+                        <h1 class="title wow fadeInUp text-primary">Kupite investiciono zlato u Srbiji online</h1>
                         <p>Zlatoteka poredi cene zlata u realnom vremenu na <b>devet najpovoljnijih online prodavnica
                                 investicionog zlata u Srbiji</b>, štedi Vaše vreme i Vaš novac.</p>
                     </div>
@@ -65,20 +65,36 @@
                                     <tbody>
                                         @foreach ($plate['products'] as $product)
                                             <tr>
-                                                <td class="text-start"><a target="_blank" href="{{ $product['url'] }}">
+                                                <td class="text-start"><a target="_blank" class="text-primary fw-bold"
+                                                        href="{{ $product['url'] }}">
                                                         {{ $product['name'] }}</a>
                                                 </td>
-                                                <td style="font-size: 12px" class="text-end">@priceFormat($product['selling_price'])
-                                                    {{ $currency }}</td>
-                                                <td class="text-end">@priceFormat($product['purchase_price'])
-                                                    {{ $currency }}</td>
+                                                <td style="font-size: 12px" class="text-end">
+                                                    @if ($product['selling_price'] != '0' && $product['selling_price'] != null)
+                                                        @priceFormat($product['selling_price'])
+                                                        {{ $currency }}
+                                                    @else
+                                                        Nema cene
+                                                    @endif
+                                                </td>
+                                                <td class="text-end">
+                                                    @if ($product['purchase_price'] != '0' && $product['purchase_price'] != null)
+                                                        @priceFormat($product['purchase_price'])
+                                                        {{ $currency }}
+                                                    @else
+                                                        Nema cene
+                                                    @endif
+                                                </td>
+
                                             </tr>
                                         @endforeach
                                     </tbody>
                                 </table>
-                                <div class="text-center mt-3">
-                                    <a href="{{ route('frontend.category', $plate['name']) }}">Sve zlatne pločice u
-                                        ponudi</a>
+                                <div class="text-center mt-3 mb-4">
+                                    <a class="btn btn-primary btn-sm"
+                                        href="{{ route('frontend.category', $plate['name']) }}">Sve
+                                        zlatne pločice od
+                                        {{ $plate['name'] }} u ponudi</a>
                                 </div>
                             </div>
                         @endforeach
@@ -113,19 +129,34 @@
                                     <tbody>
                                         @foreach ($bar['products'] as $product)
                                             <tr>
-                                                <td class="text-start"><a target="_blank" href="{{ $product['url'] }}">
+                                                <td class="text-start"><a target="_blank" class="text-primary fw-bold"
+                                                        href="{{ $product['url'] }}">
                                                         {{ $product['name'] }}</a>
                                                 </td>
-                                                <td class="text-end">@priceFormat($product['selling_price'])
-                                                    {{ $currency }}</td>
-                                                <td class="text-end">@priceFormat($product['purchase_price'])
-                                                    {{ $currency }}</td>
+                                                <td style="font-size: 12px" class="text-end">
+                                                    @if ($product['selling_price'] != '0' && $product['selling_price'] != null)
+                                                        @priceFormat($product['selling_price'])
+                                                        {{ $currency }}
+                                                    @else
+                                                        Nema cene
+                                                    @endif
+                                                </td>
+                                                <td class="text-end">
+                                                    @if ($product['purchase_price'] != '0' && $product['purchase_price'] != null)
+                                                        @priceFormat($product['purchase_price'])
+                                                        {{ $currency }}
+                                                    @else
+                                                        Nema cene
+                                                    @endif
+                                                </td>
                                             </tr>
                                         @endforeach
                                     </tbody>
                                 </table>
-                                <div class="text-center mt-3">
-                                    <a href="{{ route('frontend.category', $bar['name']) }}">Sve zlatne poluge u ponudi</a>
+                                <div class="text-center mt-3 mb-4">
+                                    <a class="btn btn-primary btn-sm"
+                                        href="{{ route('frontend.category', $bar['name']) }}">Sve zlatne poluge od
+                                        {{ $bar['name'] }} u ponudi</a>
                                 </div>
                             </div>
                         @endforeach
@@ -144,7 +175,7 @@
                     <span>Naše ljubazno osoblje, stoji Vam na raspolaganju.</span>
                 </h3>
             </div>
-            <a href="contact-us-1.html" class="btn btn-light">Postavi pitanje</a>
+            <a href="{{ route('frontend.contact') }}" class="btn btn-light">Postavi pitanje</a>
         </section>
         <!-- Get In Touch End -->
     </div>

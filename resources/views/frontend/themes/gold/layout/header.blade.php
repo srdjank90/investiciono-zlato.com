@@ -115,15 +115,11 @@
                             </div>
                         </li>
                         <li class="has-mega-menu sub-menu-down">
-                            <a href="javascript:void(0);"><span>Gde kupiti</span></a>
+                            <a href="{{ route('frontend.companies') }}"><span>Gde kupiti</span></a>
                             <div class="mega-menu demo-menu">
                                 <div class="row">
                                     <div class="col-lg-12 col-md-12 col-sm-12">
                                         <div class="row">
-                                            <div class="col-md-12">
-                                                <a href="{{ route('frontend.companies') }}"
-                                                    class="menu-title">Prodavnice</a>
-                                            </div>
                                             <div class="col-md-3 col-sm-6 col-6">
                                                 <ul>
                                                     @foreach ($companies as $key => $company)
@@ -248,7 +244,8 @@
                                 </div>
                             </div>
                         </li>
-                        <li class="sub-menu"><a href=""><span>Kursna lista NBS</span></a></li>
+                        <li class="sub-menu"><a href="{{ route('frontend.exchange') }}"><span>Kursna lista
+                                    NBS</span></a></li>
                         <li class="sub-menu"><a href="{{ route('frontend.price') }}"><span>Cena zlata</span></a>
                         </li>
                         <li><a href="{{ route('frontend.contact') }}">Kontakt</a></li>

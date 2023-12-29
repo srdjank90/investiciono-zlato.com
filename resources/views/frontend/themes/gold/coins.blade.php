@@ -34,13 +34,26 @@
                                     <tbody>
                                         @foreach ($coin['products'] as $product)
                                             <tr>
-                                                <td class="text-start"><a target="_blank" href="{{ $product['url'] }}">
+                                                <td class="text-start"><a target="_blank" class="text-primary fw-bold"
+                                                        href="{{ $product['url'] }}">
                                                         {{ $product['name'] }}</a>
                                                 </td>
-                                                <td style="font-size: 12px" class="text-end">@priceFormat($product['selling_price'])
-                                                    {{ $currency }}</td>
-                                                <td class="text-end">@priceFormat($product['purchase_price'])
-                                                    {{ $currency }}</td>
+                                                <td style="font-size: 12px" class="text-end">
+                                                    @if ($product['selling_price'] != '0' && $product['selling_price'] != null)
+                                                        @priceFormat($product['selling_price'])
+                                                        {{ $currency }}
+                                                    @else
+                                                        Nema cene
+                                                    @endif
+                                                </td>
+                                                <td class="text-end">
+                                                    @if ($product['purchase_price'] != '0' && $product['purchase_price'] != null)
+                                                        @priceFormat($product['purchase_price'])
+                                                        {{ $currency }}
+                                                    @else
+                                                        Nema cene
+                                                    @endif
+                                                </td>
                                             </tr>
                                         @endforeach
                                     </tbody>

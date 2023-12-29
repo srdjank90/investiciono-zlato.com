@@ -16,7 +16,7 @@
 
                                 <div class="row">
                                     <div class="col-md-3 fw-bold d-flex justify-content-start align-items-center">
-                                        {{ $company->name }}
+                                        <img src="{{ $company->image_url }}" alt="">
                                     </div>
                                     <div class="col-md-6 d-flex justify-content-start align-items-center">
                                         {{ $company->description }}

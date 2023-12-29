@@ -39,19 +39,35 @@
                                     <tbody>
                                         @foreach ($bar['products'] as $product)
                                             <tr>
-                                                <td class="text-start"><a target="_blank" href="{{ $product['url'] }}">
+                                                <td class="text-start"><a target="_blank" class="text-primary fw-bold"
+                                                        href="{{ $product['url'] }}">
                                                         {{ $product['name'] }}</a>
                                                 </td>
-                                                <td class="text-end">@priceFormat($product['selling_price'])
-                                                    {{ $currency }}</td>
-                                                <td class="text-end">@priceFormat($product['purchase_price'])
-                                                    {{ $currency }}</td>
+                                                <td style="font-size: 12px" class="text-end">
+                                                    @if ($product['selling_price'] != '0' && $product['selling_price'] != null)
+                                                        @priceFormat($product['selling_price'])
+                                                        {{ $currency }}
+                                                    @else
+                                                        Nema cene
+                                                    @endif
+                                                </td>
+                                                <td class="text-end">
+                                                    @if ($product['purchase_price'] != '0' && $product['purchase_price'] != null)
+                                                        @priceFormat($product['purchase_price'])
+                                                        {{ $currency }}
+                                                    @else
+                                                        Nema cene
+                                                    @endif
+                                                </td>
                                             </tr>
                                         @endforeach
                                     </tbody>
                                 </table>
                                 <div class="text-center mt-3">
-                                    <a href="{{ route('frontend.category', $bar['slug']) }}">Sve zlatne poluge u ponudi</a>
+                                    <a class="btn btn-primary btn-sm"
+                                        href="{{ route('frontend.category', $bar['name']) }}">Sve
+                                        zlatne poluge od
+                                        {{ $bar['name'] }} u ponudi</a>
                                 </div>
                             </div>
                         @endforeach
