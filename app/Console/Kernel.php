@@ -16,6 +16,7 @@ class Kernel extends ConsoleKernel
         $schedule->command('sitemap:generate')->daily();
         $schedule->command('app:update-prices')->everyThreeMinutes();
         $schedule->command('export:prices')->dailyAt('18:30');
+        $schedule->command('export:products-prices')->dailyAt('18:00');
     }
 
     /**
