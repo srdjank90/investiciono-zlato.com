@@ -141,6 +141,8 @@ Route::get('/zlatni-dukati', [App\Http\Controllers\Frontend\FrontendController::
 
 Route::get('/kategorija/{slug}', [App\Http\Controllers\Frontend\FrontendController::class, 'category'])->name('frontend.category');
 Route::get('/prodavnice', [App\Http\Controllers\Frontend\FrontendController::class, 'companies'])->name('frontend.companies');
+Route::get('/cron', [App\Http\Controllers\Backend\PriceUpdateController::class, 'updatePrices'])->name('cron.prices.update');
+
 Route::get('/cena-zlata', [App\Http\Controllers\Frontend\FrontendController::class, 'price'])->name('frontend.price');
 Route::get('/kursna-lista', [App\Http\Controllers\Frontend\FrontendController::class, 'exchange'])->name('frontend.exchange');
 Route::get('/{slug}', [App\Http\Controllers\Frontend\FrontendController::class, 'page'])->name('frontend.page');
