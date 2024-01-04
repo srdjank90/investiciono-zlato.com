@@ -140,8 +140,10 @@ Route::get('/zlatne-poluge', [App\Http\Controllers\Frontend\FrontendController::
 Route::get('/zlatni-dukati', [App\Http\Controllers\Frontend\FrontendController::class, 'goldenCoins'])->name('frontend.coins');
 
 Route::get('/kategorija/{slug}', [App\Http\Controllers\Frontend\FrontendController::class, 'category'])->name('frontend.category');
-Route::get('/prodavnice', [App\Http\Controllers\Frontend\FrontendController::class, 'companies'])->name('frontend.companies');
+Route::get('/deset-najbolljih-online-trgovaca-zlatom-u-srbiji', [App\Http\Controllers\Frontend\FrontendController::class, 'companies'])->name('frontend.companies');
 Route::get('/cron', [App\Http\Controllers\Backend\PriceUpdateController::class, 'updatePrices'])->name('cron.prices.update');
+Route::get('/cron-day', [App\Http\Controllers\Backend\PriceUpdateController::class, 'cronDay'])->name('cron.day');
+
 
 Route::get('/cena-zlata', [App\Http\Controllers\Frontend\FrontendController::class, 'price'])->name('frontend.price');
 Route::get('/kursna-lista', [App\Http\Controllers\Frontend\FrontendController::class, 'exchange'])->name('frontend.exchange');

@@ -38,7 +38,7 @@
                                                         href="{{ $product['url'] }}">
                                                         {{ $product['name'] }}</a>
                                                 </td>
-                                                <td style="font-size: 12px" class="text-end">
+                                                <td class="text-end">
                                                     @if ($product['selling_price'] != '0' && $product['selling_price'] != null)
                                                         @if ((float) $product['selling_price_percentage_change'] > 0)
                                                             <span
@@ -53,7 +53,7 @@
                                                         @priceFormat($product['selling_price'])
                                                         {{ $currency }}
                                                     @else
-                                                        Nema cene
+                                                        Trenutno nedostupno
                                                     @endif
                                                 </td>
                                                 <td class="text-end">
@@ -71,7 +71,7 @@
                                                         @priceFormat($product['purchase_price'])
                                                         {{ $currency }}
                                                     @else
-                                                        Nema cene
+                                                        Trenutno nedostupno
                                                     @endif
                                                 </td>
                                             </tr>

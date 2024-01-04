@@ -21,7 +21,7 @@
                             </li>
                         </ul>
                         <div class="subscribe_widget">
-                            <h6 class="title fw-medium text-capitalize">prijavite se na mejl listu</h6>
+                            <h6 class="title fw-medium">Prijavite se na mejl listu</h6>
                             <form class="dzSubscribe" action="/xhtml/script/mailchamp.php" method="post">
                                 <div class="dzSubscribeMsg"></div>
                                 <div class="form-group">
