@@ -51,70 +51,99 @@
                             style="visibility: hidden; animation-delay: 0.3s; animation-name: none;">
                             <h4 class="specification-title">Specifikacije</h4>
                         </div>
-                        <!-- Category Prices -->
+                        <!-- Multiple table Prices -->
                         @foreach ($goldenPlates as $plate)
-                            <div class="category-prices mb-3">
-                                <h4 class="text-uppercase">Težina pločice <span>od {{ $plate['description'] }}:</span></h4>
-                                <table class="table wow fadeInUp product-prices-table" data-wow-delay="0.4s"
-                                    style="visibility: hidden; animation-delay: 0.4s; animation-name: none;">
-                                    <thead>
-                                        <td class="text-start fw-bold">Naziv</td>
-                                        <td class="text-end fw-bold">Prodajna cena</td>
-                                        <td class="text-end fw-bold">Otkupna cena</td>
-                                    </thead>
-                                    <tbody>
-                                        @foreach ($plate['products'] as $product)
-                                            <tr>
-                                                <td class="text-start"><a target="_blank" class="text-primary fw-bold"
-                                                        href="{{ $product['url'] }}">
-                                                        {{ $product['name'] }}</a>
-                                                </td>
-                                                <td class="text-end">
-                                                    @if ($product['selling_price'] != '0' && $product['selling_price'] != null)
-                                                        @if ((float) $product['selling_price_percentage_change'] > 0)
-                                                            <span class="text-primary">@priceFormat($product['selling_price_percentage_change'])%
-                                                            </span>
-                                                        @endif
-                                                        @if ((float) $product['selling_price_percentage_change'] < 0)
-                                                            <span class="text-danger">@priceFormat($product['selling_price_percentage_change'])%
-                                                            </span>
-                                                        @endif
-                                                        @priceFormat($product['selling_price'])
-                                                        {{ $currency }}
-                                                    @else
-                                                        Trenutno nedostupno
+                            <div class="prices-table-gold wow fadeInUp" data-wow-delay="0.4s"
+                                style="visibility: hidden; animation-delay: 0.4s; animation-name: none;">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <h4 class="text-uppercase">Težina pločice <span>od
+                                                {{ $plate['description'] }}:</span></h4>
+                                    </div>
+                                    <div class="col-12 col-sm-6 col-md-3 col-lg-3 d-none d-md-block fw-bold mb-2">
+                                        Name
+                                    </div>
+                                    <div class="col-12 col-sm-6 col-md-3 col-lg-3 d-none d-md-block fw-bold">
+                                        Prodajna
+                                    </div>
+                                    <div class="col-12 col-sm-6 col-md-3 col-lg-3 d-none d-md-block fw-bold">
+                                        Otkupna
+                                    </div>
+                                    <div class="col-12 col-sm-6 col-md-3 col-lg-3 d-none d-md-block fw-bold">
+                                        Raspon
+                                    </div>
+                                    @foreach ($plate['products'] as $product)
+                                        <div
+                                            class="gold-column col-12 col-sm-6 col-md-3 col-lg-3 d-flex justify-content-center flex-column">
+                                            <div class="d-md-none fw-bold"><small>Naziv</small></div>
+                                            <a target="_blank" class="text-primary fw-bold" href="{{ $product['url'] }}">
+                                                {{ $product['name'] }}</a>
+                                        </div>
+                                        <div
+                                            class="gold-column col-12 col-md-3 col-sm-6 col-md-3 col-lg-3 d-flex justify-content-center flex-column">
+                                            <div class="d-md-none fw-bold"><small>Prodajna</small></div>
+                                            @if ($product['selling_price'] != '0' && $product['selling_price'] != null)
+                                                <div>
+                                                    @priceFormat($product['selling_price'])
+                                                    {{ $currency }} <br>
+                                                    @if ((float) $product['selling_price_percentage_change'] > 0)
+                                                        <small class="text-danger">@priceFormat($product['selling_price_percentage_change'])%
+                                                            <i class="fa-solid fa-arrow-up"></i></small>
                                                     @endif
-                                                </td>
-                                                <td class="text-end">
-                                                    @if ($product['purchase_price'] != '0' && $product['purchase_price'] != null)
-                                                        @if ((float) $product['purchase_price_percentage_change'] > 0)
-                                                            <span class="text-primary">@priceFormat($product['purchase_price_percentage_change'])%
-                                                            </span>
-                                                        @endif
-                                                        @if ((float) $product['purchase_price_percentage_change'] < 0)
-                                                            <span class="text-danger">@priceFormat($product['purchase_price_percentage_change'])%
-                                                            </span>
-                                                        @endif
-                                                        @priceFormat($product['purchase_price'])
-                                                        {{ $currency }}
-                                                    @else
-                                                        Trenutno nedostupno
+                                                    @if ((float) $product['selling_price_percentage_change'] < 0)
+                                                        <small class="text-success">@priceFormat($product['selling_price_percentage_change'])%
+                                                            <i class="fa-solid fa-arrow-down"></i></small>
                                                     @endif
-                                                </td>
+                                                </div>
+                                            @else
+                                                <div>Trenutno nedostupno</div>
+                                            @endif
+                                        </div>
+                                        <div
+                                            class="gold-column col-12 col-md-3 col-sm-6 col-md-3 col-lg-3 d-flex justify-content-center flex-column">
+                                            <div class="d-md-none fw-bold"><small>Otkupna</small></div>
+                                            @if ($product['purchase_price'] != '0' && $product['purchase_price'] != null)
+                                                <div>
+                                                    @priceFormat($product['purchase_price'])
+                                                    {{ $currency }} <br>
+                                                    @if ((float) $product['purchase_price_percentage_change'] > 0)
+                                                        <small class="text-danger">@priceFormat($product['purchase_price_percentage_change'])%
+                                                            <i class="fa-solid fa-arrow-up"></i></small>
+                                                    @endif
+                                                    @if ((float) $product['purchase_price_percentage_change'] < 0)
+                                                        <small class="text-success">@priceFormat($product['purchase_price_percentage_change'])%
+                                                            <i class="fa-solid fa-arrow-down"></i></small>
+                                                    @endif
+                                                </div>
+                                            @else
+                                                <div>Trenutno nedostupno</div>
+                                            @endif
+                                        </div>
+                                        <div
+                                            class="gold-column col-12 col-md-3 col-sm-6 col-md-3 col-lg-3 d-flex justify-content-center flex-column">
+                                            <div class="d-md-none fw-bold"><small>Raspon</small></div>
+                                            @if ($product['selling_price'] > 0 && $product['purchase_price'] > 0)
+                                                {{ round(($product['selling_price'] / $product['purchase_price'] - 1) * 100, 2) }}
+                                                %
+                                            @else
+                                                Trenutno nedostupno
+                                            @endif
 
-                                            </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
-                                <div class="text-start mt-3 mb-4">
-                                    <a class="btn btn-primary btn-sm"
-                                        href="{{ route('frontend.category', $plate['slug']) }}">Sve
-                                        zlatne pločice od
-                                        {{ $plate['name'] }} u ponudi</a>
+                                        </div>
+                                        <div class="col-12">
+                                            <hr>
+                                        </div>
+                                    @endforeach
+                                    <div class="col-md-12 mb-4">
+                                        <a class="btn btn-primary btn-sm"
+                                            href="{{ route('frontend.category', $plate['slug']) }}">Sve
+                                            zlatne pločice od
+                                            {{ $plate['name'] }} u ponudi</a>
+                                    </div>
                                 </div>
                             </div>
                         @endforeach
-                        <!-- #Category Prices -->
+                        <!-- #Multiple table Prices -->
                     </div>
                     <div class="col-xl-6 col-lg-6">
                         <div class="section-head style-2 wow fadeInUp" data-wow-delay="0.2s"
@@ -131,52 +160,99 @@
                             style="visibility: hidden; animation-delay: 0.3s; animation-name: none;">
                             <h4 class="specification-title">Specifikacije</h4>
                         </div>
-                        <!-- Category Prices -->
+
+                        <!-- Multiple table Prices -->
                         @foreach ($goldenBars as $bar)
-                            <div class="category-prices mb-3">
-                                <h4 class="text-uppercase">Težina poluge <span>od {{ $bar['description'] }}:</span></h4>
-                                <table class="table wow fadeInUp product-prices-table" data-wow-delay="0.4s"
-                                    style="visibility: hidden; animation-delay: 0.4s; animation-name: none;">
-                                    <thead>
-                                        <td class="text-start fw-bold">Naziv</td>
-                                        <td class="text-end fw-bold">Prodajna cena</td>
-                                        <td class="text-end fw-bold">Otkupna cena</td>
-                                    </thead>
-                                    <tbody>
-                                        @foreach ($bar['products'] as $product)
-                                            <tr>
-                                                <td class="text-start"><a target="_blank" class="text-primary fw-bold"
-                                                        href="{{ $product['url'] }}">
-                                                        {{ $product['name'] }}</a>
-                                                </td>
-                                                <td class="text-end">
-                                                    @if ($product['selling_price'] != '0' && $product['selling_price'] != null)
-                                                        @priceFormat($product['selling_price'])
-                                                        {{ $currency }}
-                                                    @else
-                                                        Trenutno nedostupno
+                            <div class="prices-table-gold wow fadeInUp" data-wow-delay="0.4s"
+                                style="visibility: hidden; animation-delay: 0.4s; animation-name: none;">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <h4 class="text-uppercase">Težina poluge <span>od
+                                                {{ $bar['description'] }}:</span></h4>
+                                    </div>
+                                    <div class="col-12 col-sm-6 col-md-3 col-lg-3 d-none d-md-block fw-bold mb-2">
+                                        Name
+                                    </div>
+                                    <div class="col-12 col-sm-6 col-md-3 col-lg-3 d-none d-md-block fw-bold">
+                                        Prodajna
+                                    </div>
+                                    <div class="col-12 col-sm-6 col-md-3 col-lg-3 d-none d-md-block fw-bold">
+                                        Otkupna
+                                    </div>
+                                    <div class="col-12 col-sm-6 col-md-3 col-lg-3 d-none d-md-block fw-bold">
+                                        Raspon
+                                    </div>
+                                    @foreach ($bar['products'] as $product)
+                                        <div
+                                            class="gold-column col-12 col-sm-6 col-md-3 col-lg-3 d-flex justify-content-center flex-column">
+                                            <div class="d-md-none fw-bold"><small>Naziv</small></div>
+                                            <a target="_blank" class="text-primary fw-bold" href="{{ $product['url'] }}">
+                                                {{ $product['name'] }}</a>
+                                        </div>
+                                        <div
+                                            class="gold-column col-12 col-md-3 col-sm-6 col-md-3 col-lg-3 d-flex justify-content-center flex-column">
+                                            <div class="d-md-none fw-bold"><small>Prodajna</small></div>
+                                            @if ($product['selling_price'] != '0' && $product['selling_price'] != null)
+                                                <div>
+                                                    @priceFormat($product['selling_price'])
+                                                    {{ $currency }} <br>
+                                                    @if ((float) $product['selling_price_percentage_change'] > 0)
+                                                        <small class="text-danger">@priceFormat($product['selling_price_percentage_change'])%
+                                                            <i class="fa-solid fa-arrow-up"></i></small>
                                                     @endif
-                                                </td>
-                                                <td class="text-end">
-                                                    @if ($product['purchase_price'] != '0' && $product['purchase_price'] != null)
-                                                        @priceFormat($product['purchase_price'])
-                                                        {{ $currency }}
-                                                    @else
-                                                        Trenutno nedostupno
+                                                    @if ((float) $product['selling_price_percentage_change'] < 0)
+                                                        <small class="text-success">@priceFormat($product['selling_price_percentage_change'])%
+                                                            <i class="fa-solid fa-arrow-down"></i></small>
                                                     @endif
-                                                </td>
-                                            </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
-                                <div class="text-start mt-3 mb-4">
-                                    <a class="btn btn-primary btn-sm"
-                                        href="{{ route('frontend.category', $bar['slug']) }}">Sve zlatne poluge od
-                                        {{ $bar['name'] }} u ponudi</a>
+                                                </div>
+                                            @else
+                                                <div>Trenutno nedostupno</div>
+                                            @endif
+                                        </div>
+                                        <div
+                                            class="gold-column col-12 col-md-3 col-sm-6 col-md-3 col-lg-3 d-flex justify-content-center flex-column">
+                                            <div class="d-md-none fw-bold"><small>Otkupna</small></div>
+                                            @if ($product['purchase_price'] != '0' && $product['purchase_price'] != null)
+                                                <div>
+                                                    @priceFormat($product['purchase_price'])
+                                                    {{ $currency }} <br>
+                                                    @if ((float) $product['purchase_price_percentage_change'] > 0)
+                                                        <small class="text-danger">@priceFormat($product['purchase_price_percentage_change'])%
+                                                            <i class="fa-solid fa-arrow-up"></i></small>
+                                                    @endif
+                                                    @if ((float) $product['purchase_price_percentage_change'] < 0)
+                                                        <small class="text-success">@priceFormat($product['purchase_price_percentage_change'])%
+                                                            <i class="fa-solid fa-arrow-down"></i></small>
+                                                    @endif
+                                                </div>
+                                            @else
+                                                <div>Trenutno nedostupno</div>
+                                            @endif
+                                        </div>
+                                        <div
+                                            class="gold-column col-12 col-md-3 col-sm-6 col-md-3 col-lg-3 d-flex justify-content-center flex-column">
+                                            <div class="d-md-none fw-bold"><small>Raspon</small></div>
+                                            @if ($product['selling_price'] > 0 && $product['purchase_price'] > 0)
+                                                {{ round(($product['selling_price'] / $product['purchase_price'] - 1) * 100, 2) }}
+                                                %
+                                            @else
+                                                Trenutno nedostupno
+                                            @endif
+
+                                        </div>
+                                        <div class="col-12">
+                                            <hr>
+                                        </div>
+                                    @endforeach
+                                    <div class="col-md-12 mb-4">
+                                        <a class="btn btn-primary btn-sm"
+                                            href="{{ route('frontend.category', $bar['slug']) }}">Sve zlatne poluge od
+                                            {{ $bar['name'] }} u ponudi</a>
+                                    </div>
                                 </div>
                             </div>
                         @endforeach
-                        <!-- #Category Prices -->
+                        <!-- #Multiple table Prices -->
                     </div>
                 </div>
             </div>

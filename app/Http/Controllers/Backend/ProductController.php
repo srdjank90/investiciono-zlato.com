@@ -38,9 +38,8 @@ class ProductController extends BackendController
             $q->whereHas('categories', function ($qc) {
                 $qc->where('name', request('cat'));
             });
-            $q->orderBy('selling_price', 'asc')->orderByRaw('selling_price IS NULL');
         });
-
+        $query->orderByRaw('selling_price IS NULL, selling_price ASC');
         $products = $query->paginate($perPage);
 
         $productMetas = getOption('product_metas_opt', []);
