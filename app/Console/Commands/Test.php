@@ -46,7 +46,8 @@ class Test extends Command
         #    ->notify(new CheckoutNotification($order));
         #$this->removeGoldProducts();
         $uc = new PriceUpdateController();
-        $uc->updatePrices();
+        #$uc->updatePrices();
+        $uc->updateEurExchange();
     }
 
     public function removeGoldProducts()

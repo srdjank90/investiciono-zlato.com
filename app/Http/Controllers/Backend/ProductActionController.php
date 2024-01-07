@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
-class ProductActionController extends Controller
+class ProductActionController extends BackendController
 {
     /**
      * Display a listing of the resource.

@@ -7,7 +7,7 @@ use App\Models\SeoMetaTag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
-class SeoController extends Controller
+class SeoController extends BackendController
 {
     /**
      * Display a listing of the resource.

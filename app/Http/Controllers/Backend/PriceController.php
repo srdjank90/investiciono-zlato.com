@@ -11,7 +11,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 
-class PriceController extends Controller
+class PriceController extends BackendController
 {
     /**
      * Display a listing of the resource.

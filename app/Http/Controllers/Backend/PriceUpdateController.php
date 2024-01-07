@@ -7,13 +7,16 @@ use App\Models\Price;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 use Weidner\Goutte\GoutteFacade;
+use Symfony\Component\DomCrawler\Crawler;
 
-class PriceUpdateController extends Controller
+class PriceUpdateController extends BackendController
 {
     public function updatePrices()
     {
+        $this->updateEurExchange();                     // Get EUR value
         $this->investicionoZlatoUpdatePrices();         // Bad
         $this->tavexUpdatePrices();                     // Good
         $this->goldenSpaceUpdatePrices();               // Good
@@ -48,7 +51,6 @@ class PriceUpdateController extends Controller
                 $percentageChangeSelling = (($product->selling_price - $priceData['selling_price']) / abs($priceData['selling_price'])) * 100;
             }
             $product->selling_price_percentage_change = $percentageChangeSelling;
-
 
             $percentageChangePurchase = 0;
             if (($product->purchase_price && $product->purchase_price != 0) && $priceData['purchase_price'] != 0) {
@@ -562,6 +564,7 @@ class PriceUpdateController extends Controller
      */
     function investicionoZlato2UpdatePrices()
     {
+        $eurExchange = getOption('currency_eur_exchange', '117.5');
         $url = 'https://investicionozlato.com/cena-zlatnih-poluga/';
 
         // Get product URL-s for single pages
@@ -593,7 +596,7 @@ class PriceUpdateController extends Controller
             // Fetch prices
             try {
                 $crawler = GoutteFacade::request('GET', $prod['price_url']);
-                $dataPrice = $crawler->filter('.rats')->each(function ($node) {
+                $dataPrice = $crawler->filter('.rats')->each(function ($node) use ($eurExchange) {
                     #$price = $node->filter('tr')->last()->text();
                     if (str_contains($node->filter('tr')->last()->text(), 'DIN')) {
                         $price = (float)str_replace(',', '.', preg_replace('/[^0-9,]/', '', $node->filter('tr')->last()->text()));
@@ -601,7 +604,7 @@ class PriceUpdateController extends Controller
                         $price = $node->filter('tr')->last()->text();
                         $numericPart = preg_replace('/[^0-9.]/', '', $price);
                         $roundedPrice  = number_format((float)$numericPart, 2, '.', '');
-                        $price = number_format((float)$roundedPrice * 117.17, 2, '.', '');
+                        $price = number_format((float)$roundedPrice * (floatval($eurExchange) + 1), 2, '.', '');
                     }
 
                     return $price;
@@ -635,5 +638,32 @@ class PriceUpdateController extends Controller
                 $findProduct->save();
             }
         }
+    }
+
+    public function updateEurExchange()
+    {
+        $eurExchange = $this->getEuroExchangeRate();
+        updateOption('currency_eur_exchange', $eurExchange);
+    }
+
+    function getEuroExchangeRate()
+    {
+        $url = 'https://www.kamatica.com/kursna-lista/nbs';
+
+        // Preuzimanje HTML-a sa stranice
+        $response = Http::withoutVerifying()->get($url);
+        $html = $response->body();
+
+        // Kreiranje Crawler objekta
+        $crawler = new Crawler($html);
+
+        // Selektovanje elementa sa srednjim kursom evra
+        $euroExchangeRate = $crawler->filter('#c_EUR')->text();
+
+        // Očišćavanje i formatiranje rezultata
+        $euroExchangeRate = str_replace(',', '.', $euroExchangeRate);
+        $euroExchangeRate = floatval($euroExchangeRate);
+
+        return $euroExchangeRate;
     }
 }

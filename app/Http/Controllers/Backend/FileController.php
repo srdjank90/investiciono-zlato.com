@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Storage;
 use Symfony\Component\HttpFoundation\Response;
 use ZipArchive;
 
-class FileController extends Controller
+class FileController extends BackendController
 {
     public function downloadPricesExport($file)
     {

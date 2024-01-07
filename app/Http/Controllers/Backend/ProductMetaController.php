@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 
-class ProductMetaController extends Controller
+class ProductMetaController extends BackendController
 {
     /**
      * Display a listing of the resource.
