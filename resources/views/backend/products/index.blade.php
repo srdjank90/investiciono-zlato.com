@@ -239,7 +239,7 @@
                                             <span class="badge bg-primary text-light">{{ $category->name }}</span>
                                         @endforeach
                                     </td>
-                                    <td>{{ $product->company }}</td>
+                                    <td>{{ $product->company->name }}</td>
                                     <td>
                                         @if ($product->selling_price)
                                             <div><b>💰 @priceFormat($product->selling_price)</b> {{ $currency }}</div>

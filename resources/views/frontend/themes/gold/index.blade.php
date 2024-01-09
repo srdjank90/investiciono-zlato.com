@@ -77,7 +77,9 @@
                                             class="gold-column col-12 col-sm-6 col-md-3 col-lg-3 d-flex justify-content-center flex-column">
                                             <div class="d-md-none fw-bold"><small>Naziv</small></div>
                                             <a target="_blank" class="text-primary fw-bold" href="{{ $product['url'] }}">
-                                                {{ $product['name'] }}</a>
+                                                {{ $product['name'] }} <img width="30"
+                                                    src="{{ $product->company->image_url }}"
+                                                    title="{{ $product->company->name }}" alt=""></a>
                                         </div>
                                         <div
                                             class="gold-column col-12 col-md-3 col-sm-6 col-md-3 col-lg-3 d-flex justify-content-center flex-column">
@@ -143,6 +145,22 @@
                                 </div>
                             </div>
                         @endforeach
+                        <div class="join-form">
+                            <h2>Najnovije promene cena zlata</h2>
+                            <p>Prijavite se za najnovije ponude, i pratite najnovije promene cena zlatadirektno u udobnosti
+                                Vaše fotelje</p>
+                            <form class="dzSubscribe" action="script/mailchamp.php" method="post">
+                                <div class="dzSubscribeMsg"></div>
+                                <div class="form-group">
+                                    <div class="input-group mb-0">
+                                        <input name="dzEmail" required="required" type="email" class="form-control"
+                                            placeholder="Your Email Address">
+                                        <button class="btn btn-secondary ms-0" name="submit" value="Submit"
+                                            type="submit">PRIJAVI SE</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
                         <!-- #Multiple table Prices -->
                     </div>
                     <div class="col-xl-6 col-lg-6">
@@ -184,10 +202,13 @@
                                     </div>
                                     @foreach ($bar['products'] as $product)
                                         <div
-                                            class="gold-column col-12 col-sm-6 col-md-3 col-lg-3 d-flex justify-content-center flex-column">
+                                            class="gold-column col-12 col-sm-6 col-md-3 col-lg-3 d-flex justify-content-center flex-column position-relative">
                                             <div class="d-md-none fw-bold"><small>Naziv</small></div>
-                                            <a target="_blank" class="text-primary fw-bold" href="{{ $product['url'] }}">
-                                                {{ $product['name'] }}</a>
+                                            <a target="_blank" class="text-primary fw-bold"
+                                                href="{{ $product['url'] }}">
+                                                {{ $product['name'] }} <img width="30"
+                                                    src="{{ $product->company->image_url }}"
+                                                    title="{{ $product->company->name }}" alt=""></a>
                                         </div>
                                         <div
                                             class="gold-column col-12 col-md-3 col-sm-6 col-md-3 col-lg-3 d-flex justify-content-center flex-column">

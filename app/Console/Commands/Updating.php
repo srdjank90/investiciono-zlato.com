@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Models\Company;
 use App\Models\Product;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Log;
@@ -29,9 +30,19 @@ class Updating extends Command
     public function handle()
     {
         #$this->updateDefaultData();
+        #$this->updateCompany();
         $this->updateNames();
     }
 
+    public function updateCompany()
+    {
+        $products = Product::all();
+        foreach ($products as $product) {
+            $comp = Company::where('url', 'LIKE', '%' . $product->company . '%')->first();
+            $product->company_id = $comp->id;
+            $product->save();
+        }
+    }
 
     public function updateDefaultData()
     {
@@ -42,7 +53,6 @@ class Updating extends Command
             $product->save();
         }
     }
-
 
     public function updateNames()
     {
@@ -91,8 +101,6 @@ class Updating extends Command
             $producerShort = 'AH';
             $nData = $this->findWeight($product->name, $producer, $producerShort);
         }
-        #Log::info($product->name);
-        #Log::info($nData);
 
         $product->producer = $producer;
         $product->producer_short = $producerShort;

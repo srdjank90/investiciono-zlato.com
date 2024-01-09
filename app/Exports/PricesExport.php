@@ -34,6 +34,7 @@ class PricesExport implements FromQuery, WithMapping, WithHeadings, WithChunkRea
     {
         // Define your headers
         return [
+            'Key',
             'Naziv',
             'Link',
             'Prodajna cena',
@@ -48,6 +49,7 @@ class PricesExport implements FromQuery, WithMapping, WithHeadings, WithChunkRea
     public function map($price): array
     {
         return [
+            $price->product->unique_key,
             $price->product->name,
             $price->product->url,
             $price->selling_price,

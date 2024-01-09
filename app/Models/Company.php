@@ -17,4 +17,9 @@ class Company extends Model
         'single_product_scraper',
         'products_scraper'
     ];
+
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
 }

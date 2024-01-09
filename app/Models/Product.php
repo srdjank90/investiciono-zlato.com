@@ -24,20 +24,20 @@ class Product extends Model
         'short',
         'declaration',
         'description',
-        'price_id',
         'selling_price',
         'purchase_price',
         'selling_price_percentage_change',
         'purchase_price_percentage_change',
         'currency',
-        'company',
+        'company_name',
+        'company_id',
         'last_price_at',
         'status',
         'price_id',
         'category_id'
     ];
 
-    public function category()
+    public function company()
     {
         return $this->belongsTo(Company::class);
     }

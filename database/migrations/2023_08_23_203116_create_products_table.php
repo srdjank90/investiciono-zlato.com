@@ -30,7 +30,7 @@ return new class extends Migration
             $table->float('selling_price')->nullable();
             $table->float('purchase_price')->nullable();
             $table->string('currency', 3)->nullable();
-            $table->string('company')->nullable();
+            $table->string('company_name')->nullable();
             $table->timestamp('last_price_at')->nullable();
             $table->string('status')->default('published')->nullable();
             $table->softDeletes();

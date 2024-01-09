@@ -6762,8 +6762,8 @@ fieldset:disabled .woocommerce #place_order,
 .woocommerce input.button,
 .woocommerce #place_order {
     --bs-btn-color: #ffffff;
-    --bs-btn-bg: #0d775e;
-    --bs-btn-border-color: #0d775e;
+    --bs-btn-bg: #623fa3;
+    --bs-btn-border-color: #623fa3;
     --bs-btn-hover-color: #ffffff;
     --bs-btn-hover-bg: #0b6550;
     --bs-btn-hover-border-color: #0a5f4b;
@@ -49431,7 +49431,7 @@ del {
 /* Our Feature End*/
 /* Get In Touch */
 .get-in-touch {
-    background-color: var(--secondary);
+    background-color: #1c1131;
     padding: 25px 30px;
     display: flex;
     align-items: center;
@@ -59695,13 +59695,13 @@ table.wishlist_table {
 }
 @media only screen and (max-width: 991px) {
     .logo-header img {
-        max-width: 180px;
+        max-width: 225px;
         height: 90px;
     }
 }
 @media only screen and (max-width: 575px) {
     .logo-header img {
-        max-width: 150px;
+        max-width: 225px;
     }
 }
 
@@ -63824,7 +63824,7 @@ footer .widget-address li span {
     color: var(--title);
 }
 footer.footer-dark {
-    background: var(--secondary);
+    background: #1c1131;
     --title: #fff;
 }
 footer.footer-dark .footer-bottom .fb-inner {

@@ -51,7 +51,9 @@
                                             class="gold-column col-12 col-sm-6 col-md-3 col-lg-3 d-flex justify-content-center flex-column">
                                             <div class="d-md-none fw-bold"><small>Naziv</small></div>
                                             <a target="_blank" class="text-primary fw-bold" href="{{ $product['url'] }}">
-                                                {{ $product['name'] }}</a>
+                                                {{ $product['name'] }} <img width="30"
+                                                    src="{{ $product->company->image_url }}"
+                                                    title="{{ $product->company->name }}" alt=""></a>
                                         </div>
                                         <div
                                             class="gold-column col-12 col-md-3 col-sm-6 col-md-3 col-lg-3 d-flex justify-content-center flex-column">

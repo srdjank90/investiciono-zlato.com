@@ -37,6 +37,7 @@ class ProductExport implements FromQuery, WithMapping, WithHeadings, WithChunkRe
     {
         // Define your headers
         return [
+            'Key',
             'Naziv',
             'URL',
             'Prodajna cena',
@@ -53,6 +54,7 @@ class ProductExport implements FromQuery, WithMapping, WithHeadings, WithChunkRe
     public function map($product): array
     {
         return [
+            $product->unique_key,
             $product->name,
             $product->url,
             $product->selling_price,
