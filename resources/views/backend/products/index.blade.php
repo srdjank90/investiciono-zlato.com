@@ -200,7 +200,9 @@
                     <table class="lp-table table table-hover">
                         <thead>
                             <th>#</th>
+                            <th>Key</th>
                             <th>{{ __('name') }}</th>
+                            <th>{{ __('Type') }}</th>
                             @foreach ($productMetas as $key => $meta)
                                 @if ($meta['displayInTable'] == 'true')
                                     <th class="">{{ $meta['name'] }}</th>
@@ -217,7 +219,9 @@
                             @foreach ($products as $key => $product)
                                 <tr id="tr-{{ $product->id }}">
                                     <td>{{ $product->id }}</td>
+                                    <td>{{ $product->unique_key }}</td>
                                     <td>{{ $product->name }} <a target="_blank" href="{{ $product->url }}">link</a></td>
+                                    <td>{{ $product->quantity_type }}</td>
                                     @foreach ($productMetas as $key => $meta)
                                         @if ($meta['displayInTable'] == 'true')
                                             <td>

@@ -12,8 +12,14 @@ class Product extends Model
     use SoftDeletes;
 
     protected $fillable = [
+        'unique_key',
         'name',
+        'name_default',
         'slug',
+        'slug_default',
+        'producer',
+        'producer_short',
+        'quantity_type',
         'url',
         'short',
         'declaration',

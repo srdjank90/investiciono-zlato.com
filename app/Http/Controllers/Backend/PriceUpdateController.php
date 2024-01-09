@@ -44,6 +44,9 @@ class PriceUpdateController extends BackendController
                 'selling_price' => floatval(str_replace('.', '', str_replace('din', '', trim($sellingPrice)))),
                 'purchase_price' => floatval(str_replace('.', '', str_replace('din', '', trim($purchasePrice)))),
             ];
+
+            //if(str_contains($product->name))
+
             $price = Price::create($priceData);
 
             $percentageChangeSelling = 0;
