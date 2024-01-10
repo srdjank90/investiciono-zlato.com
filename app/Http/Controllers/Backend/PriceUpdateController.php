@@ -34,19 +34,17 @@ class PriceUpdateController extends BackendController
      */
     public function investicionoZlatoUpdatePrices()
     {
-        $products = Product::where('slug', 'LIKE', '%-investiciono-zlato.rs')->get();
+        $products = Product::where('company_id', 1)->get();
 
         foreach ($products as $product) {
+            $divider = $this->findDividerForMultipack($product);
             $sellingPrice = $this->fetchInvesticionoZlatoItemSellingPrice($product->url);
             $purchasePrice = $this->fetchInvesticionoZlatoItemPurchasePrice($product->url);
             $priceData = [
                 'product_id' => $product->id,
-                'selling_price' => floatval(str_replace('.', '', str_replace('din', '', trim($sellingPrice)))),
-                'purchase_price' => floatval(str_replace('.', '', str_replace('din', '', trim($purchasePrice)))),
+                'selling_price' => floatval(str_replace('.', '', str_replace('din', '', trim($sellingPrice)))) / $divider,
+                'purchase_price' => floatval(str_replace('.', '', str_replace('din', '', trim($purchasePrice)))) / $divider,
             ];
-
-            //if(str_contains($product->name))
-
             $price = Price::create($priceData);
 
             $percentageChangeSelling = 0;
@@ -127,11 +125,13 @@ class PriceUpdateController extends BackendController
                     $product['purchase_price'] = str_replace('din', '', str_replace(' ', '', $product['purchase_price']));
                 }
                 $findProduct = Product::where('url', $product['url'])->first();
+
                 if ($findProduct) {
+                    $divider = $this->findDividerForMultipack($findProduct);
                     $priceData = [
                         'product_id' => $findProduct->id,
-                        'selling_price' => $product['selling_price'],
-                        'purchase_price' => $product['purchase_price']
+                        'selling_price' => $product['selling_price'] / $divider,
+                        'purchase_price' => $product['purchase_price'] / $divider
                     ];
                     $price = Price::create($priceData);
                     $percentageChangeSelling = 0;
@@ -173,11 +173,13 @@ class PriceUpdateController extends BackendController
                 $product['purchase_price'] = $node->closest('.elementor-element-populated')->filter('.elementor-widget-text-editor .woocommerce-Price-amount')->last()->text();
 
                 $findProduct = Product::where('url', $product['url'])->first();
+
                 if ($findProduct) {
+                    $divider = $this->findDividerForMultipack($findProduct);
                     $priceData = [
                         'product_id' => $findProduct->id,
-                        'selling_price' => floatval(str_replace('.', '', str_replace('RSD', '', trim($product['selling_price'])))),
-                        'purchase_price' => floatval(str_replace('.', '', str_replace('RSD', '', trim($product['purchase_price'])))),
+                        'selling_price' => floatval(str_replace('.', '', str_replace('RSD', '', trim($product['selling_price'])))) / $divider,
+                        'purchase_price' => floatval(str_replace('.', '', str_replace('RSD', '', trim($product['purchase_price'])))) / $divider,
                     ];
                     $price = Price::create($priceData);
                     $percentageChangeSelling = 0;
@@ -219,11 +221,13 @@ class PriceUpdateController extends BackendController
                 $product['purchase_price']  = null;
 
                 $findProduct = Product::where('url', $product['url'])->first();
+
                 if ($findProduct) {
+                    $divider = $this->findDividerForMultipack($findProduct);
                     $priceData = [
                         'product_id' => $findProduct->id,
-                        'selling_price' => floatval(str_replace('.', '', str_replace('РСД', '', trim($product['selling_price'])))),
-                        'purchase_price' => floatval(str_replace('.', '', str_replace('РСД', '', trim($product['purchase_price'])))),
+                        'selling_price' => floatval(str_replace('.', '', str_replace('РСД', '', trim($product['selling_price'])))) / $divider,
+                        'purchase_price' => floatval(str_replace('.', '', str_replace('РСД', '', trim($product['purchase_price'])))) / $divider,
                     ];
                     $price = Price::create($priceData);
                     $percentageChangeSelling = 0;
@@ -265,11 +269,12 @@ class PriceUpdateController extends BackendController
                 $product['selling_price'] =  $node->filter('[data-widget_type="jet-woo-builder-archive-product-price.default"] .jet-woo-product-price')->first()->text();
                 $product['purchase_price']  = null;
                 $findProduct = Product::where('url', $product['url'])->first();
+                $divider = $this->findDividerForMultipack($findProduct);
                 if ($findProduct) {
                     $priceData = [
                         'product_id' => $findProduct->id,
-                        'selling_price' => floatval(str_replace('.', '', str_replace('рсд', '', trim($product['selling_price'])))),
-                        'purchase_price' => floatval(str_replace('.', '', str_replace('рсд', '', trim($product['purchase_price'])))),
+                        'selling_price' => floatval(str_replace('.', '', str_replace('рсд', '', trim($product['selling_price'])))) / $divider,
+                        'purchase_price' => floatval(str_replace('.', '', str_replace('рсд', '', trim($product['purchase_price'])))) / $divider,
                     ];
                     $price = Price::create($priceData);
                     $percentageChangeSelling = 0;
@@ -353,11 +358,12 @@ class PriceUpdateController extends BackendController
                     $product['purchase_price'] =  null;
                 }
                 $findProduct = Product::where('url', $product['url'])->first();
+                $divider = $this->findDividerForMultipack($findProduct);
                 if ($findProduct) {
                     $priceData = [
                         'product_id' => $findProduct->id,
-                        'selling_price' => $product['selling_price'],
-                        'purchase_price' => $product['purchase_price'],
+                        'selling_price' => $product['selling_price'] / $divider,
+                        'purchase_price' => $product['purchase_price'] / $divider,
                     ];
                     $price = Price::create($priceData);
                     $percentageChangeSelling = 0;
@@ -402,11 +408,12 @@ class PriceUpdateController extends BackendController
                 }
                 $product['purchase_price'] =  null;
                 $findProduct = Product::where('url', $product['url'])->first();
+                $divider = $this->findDividerForMultipack($findProduct);
                 if ($findProduct) {
                     $priceData = [
                         'product_id' => $findProduct->id,
-                        'selling_price' => $product['selling_price'],
-                        'purchase_price' => $product['purchase_price'],
+                        'selling_price' => $product['selling_price'] / $divider,
+                        'purchase_price' => $product['purchase_price'] / $divider,
                     ];
                     $price = Price::create($priceData);
                     $percentageChangeSelling = 0;
@@ -442,11 +449,12 @@ class PriceUpdateController extends BackendController
                 }
                 $product['purchase_price'] =  null;
                 $findProduct = Product::where('url', $product['url'])->first();
+                $divider = $this->findDividerForMultipack($findProduct);
                 if ($findProduct) {
                     $priceData = [
                         'product_id' => $findProduct->id,
-                        'selling_price' => $product['selling_price'],
-                        'purchase_price' => $product['purchase_price'],
+                        'selling_price' => $product['selling_price'] / $divider,
+                        'purchase_price' => $product['purchase_price'] / $divider,
                     ];
                     $price = Price::create($priceData);
                     $percentageChangeSelling = 0;
@@ -490,11 +498,12 @@ class PriceUpdateController extends BackendController
                 }
                 $product['purchase_price'] =  null;
                 $findProduct = Product::where('url', $product['url'])->first();
+                $divider = $this->findDividerForMultipack($findProduct);
                 if ($findProduct) {
                     $priceData = [
                         'product_id' => $findProduct->id,
-                        'selling_price' => $product['selling_price'],
-                        'purchase_price' => $product['purchase_price'],
+                        'selling_price' => $product['selling_price'] / $divider,
+                        'purchase_price' => $product['purchase_price'] / $divider,
                     ];
                     $price = Price::create($priceData);
                     $percentageChangeSelling = 0;
@@ -531,11 +540,12 @@ class PriceUpdateController extends BackendController
                 }
                 $product['purchase_price'] =  null;
                 $findProduct = Product::where('url', $product['url'])->first();
+                $divider = $this->findDividerForMultipack($findProduct);
                 if ($findProduct) {
                     $priceData = [
                         'product_id' => $findProduct->id,
-                        'selling_price' => $product['selling_price'],
-                        'purchase_price' => $product['purchase_price'],
+                        'selling_price' => $product['selling_price'] / $divider,
+                        'purchase_price' => $product['purchase_price'] / $divider,
                     ];
                     $price = Price::create($priceData);
                     $percentageChangeSelling = 0;
@@ -616,11 +626,12 @@ class PriceUpdateController extends BackendController
                 Log::error($e->getMessage());
             }
             $findProduct = Product::where('url', $prod['url'])->first();
+            $divider = $this->findDividerForMultipack($findProduct);
             if ($findProduct) {
                 $priceData = [
                     'product_id' => $findProduct->id,
-                    'selling_price' => (float) $dataPrice[0],
-                    'purchase_price' => (float) $dataPrice[1],
+                    'selling_price' => (float) $dataPrice[0] / $divider,
+                    'purchase_price' => (float) $dataPrice[1] / $divider,
                 ];
                 $price = Price::create($priceData);
                 $percentageChangeSelling = 0;
@@ -649,6 +660,10 @@ class PriceUpdateController extends BackendController
         updateOption('currency_eur_exchange', $eurExchange);
     }
 
+    /**
+     * Get Euro Exchange Rate
+     * Function getting EUR exchange rate
+     */
     function getEuroExchangeRate()
     {
         $url = 'https://www.kamatica.com/kursna-lista/nbs';
@@ -668,5 +683,33 @@ class PriceUpdateController extends BackendController
         $euroExchangeRate = floatval($euroExchangeRate);
 
         return $euroExchangeRate;
+    }
+
+    /**
+     * Find Divider For Multipck
+     * Function find if product is multipack and return divider
+     */
+    function findDividerForMultipack($product)
+    {
+        $name = $product->name_default;
+        $name = str_replace(' ', '', $name);
+        Log::info($name);
+        $divider = 1;
+        if (str_contains($name, '100x1g')) {
+            $divider = 100;
+        }
+        if (str_contains($name, '50x1g')) {
+            $divider = 50;
+        }
+        if (str_contains($name, '20x1g')) {
+            $divider = 20;
+        }
+        if (str_contains($name, '10x1g')) {
+            $divider = 10;
+        }
+        if (str_contains($name, '10x2g')) {
+            $divider = 10;
+        }
+        return $divider;
     }
 }

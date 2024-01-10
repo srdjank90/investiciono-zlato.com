@@ -31,7 +31,23 @@ class Updating extends Command
     {
         #$this->updateDefaultData();
         #$this->updateCompany();
-        $this->updateNames();
+        #$this->updateNames();
+        #$this->updateSlug();
+    }
+
+    public function updateSlug()
+    {
+        $products = Product::with(['company'])->get();
+        foreach ($products as $product) {
+            $slug = $product->slug . '-' . Str::slug($product->company->name);
+            $product->slug = $slug;
+
+            if ($product->quantity_type == 'MULTI') {
+                $product->name = $product->name . '- Multi';
+            }
+
+            $product->save();
+        }
     }
 
     public function updateCompany()
