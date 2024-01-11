@@ -64229,3 +64229,14 @@ footer.footer-dark .icon-bx-wraper {
 .prices-table-gold .gold-column {
     font-size: 14px;
 }
+
+.toc-list-item h1,
+.toc-list-item h2,
+.toc-list-item h3,
+.toc-list-item h4,
+.toc-list-item h5,
+.toc-list-item h6 {
+    font-size: 14px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}

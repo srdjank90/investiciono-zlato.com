@@ -76,7 +76,14 @@
                                         <div
                                             class="gold-column col-12 col-sm-6 col-md-3 col-lg-3 d-flex justify-content-center flex-column">
                                             <div class="d-md-none fw-bold"><small>Naziv</small></div>
-                                            <a target="_blank" class="text-primary fw-bold" href="{{ $product['url'] }}">
+                                            <div class="table-product-image">
+                                                <img width="100" class="table-product-image-img"
+                                                    src="https://investiciono-zlato.rs/media/catalog/product/cache/ccf45cbd4feaeee8fea36eeaf2fe05d7/c/h/chaf_1g_feingoldbarren_vs_pk_druck_5_2.png"
+                                                    alt="">
+                                            </div>
+
+                                            <a target="_blank" class="table-product-name text-primary fw-bold"
+                                                href="{{ $product['url'] }}">
                                                 {{ $product['name'] }} <img width="30"
                                                     src="{{ $product->company->image_url }}"
                                                     title="{{ $product->company->name }}" alt=""></a>

@@ -202,7 +202,6 @@
                             <th>#</th>
                             <th>Key</th>
                             <th>{{ __('name') }}</th>
-                            <th>{{ __('name_default') }}</th>
                             <th>{{ __('Type') }}</th>
                             @foreach ($productMetas as $key => $meta)
                                 @if ($meta['displayInTable'] == 'true')
@@ -220,9 +219,9 @@
                             @foreach ($products as $key => $product)
                                 <tr id="tr-{{ $product->id }}">
                                     <td>{{ $product->id }}</td>
-                                    <td>{{ $product->unique_key }}</td>
+                                    <td><span title="{{ $product->name_default }}">{{ $product->unique_key }}</span>
+                                    </td>
                                     <td>{{ $product->name }} <a target="_blank" href="{{ $product->url }}">link</a></td>
-                                    <td>{{ $product->name_default }}</td>
                                     <td>{{ $product->quantity_type }}</td>
                                     @foreach ($productMetas as $key => $meta)
                                         @if ($meta['displayInTable'] == 'true')

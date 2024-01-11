@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('title');
             $table->text('slug');
             $table->foreignId('image_id')->nullable();
+            $table->text('toc')->nullable();
             $table->longText('content')->nullable();
             $table->text('excerpt')->nullable();
             $table->enum('status', ['draft', 'published', 'auto-draft', 'trashed', 'future']);
