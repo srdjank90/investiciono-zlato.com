@@ -74,9 +74,9 @@
                                     </div>
                                     @foreach ($plate['products'] as $product)
                                         <div
-                                            class="gold-column col-12 col-sm-6 col-md-3 col-lg-3 d-flex justify-content-center flex-column">
+                                            class="gold-column col-12 col-sm-6 col-md-3 col-lg-3 d-flex justify-content-center flex-column position-relative">
                                             <div class="d-md-none fw-bold"><small>Naziv</small></div>
-                                            <div class="table-product-image">
+                                            <div style="right: 0" class="table-product-image position-absolute">
                                                 <img width="100" class="table-product-image-img"
                                                     src="https://investiciono-zlato.rs/media/catalog/product/cache/ccf45cbd4feaeee8fea36eeaf2fe05d7/c/h/chaf_1g_feingoldbarren_vs_pk_druck_5_2.png"
                                                     alt="">

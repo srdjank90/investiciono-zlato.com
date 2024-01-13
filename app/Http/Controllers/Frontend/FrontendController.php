@@ -32,7 +32,6 @@ class FrontendController extends Controller
             ->where('selling_price', '>', 0)->whereHas('categories', function ($q) {
                 $q->where('name', '1g');
             })->orderBy('quantity_type', 'desc')->orderBy('selling_price', 'asc')->get()->take(3);
-        Log::info($goldenPlates);
         $goldenPlates[1]['name'] = '2g';
         $goldenPlates[1]['description'] = '2 grama';
         $goldenPlates[1]['slug'] = 'zlatne-plocice-2g';

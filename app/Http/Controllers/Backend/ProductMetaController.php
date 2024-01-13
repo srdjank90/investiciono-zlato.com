@@ -33,7 +33,6 @@ class ProductMetaController extends BackendController
      */
     public function store(Request $request)
     {
-        Log::info($request);
         $productMeta = new ProductMeta();
 
         $request->validate([

@@ -4,6 +4,8 @@ namespace App\Console\Commands;
 
 use App\Models\Company;
 use App\Models\Product;
+use App\Models\ProductCategory;
+use App\Models\SeoMetaTag;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
@@ -33,6 +35,33 @@ class Updating extends Command
         #$this->updateCompany();
         #$this->updateNames();
         #$this->updateSlug();
+        $this->updateProductCategorySeo();
+    }
+
+    public function updateProductSeo()
+    {
+        $products = Product::all();
+        foreach ($products as $product) {
+            $seoData = [
+                'model' => 'Product',
+                'model_id' => $product->id,
+                'title' => ucwords(str_replace("-", " ", $product->slug))
+            ];
+            $seo = SeoMetaTag::create($seoData);
+        }
+    }
+
+    public function updateProductCategorySeo()
+    {
+        $productCategories = ProductCategory::all();
+        foreach ($productCategories as $category) {
+            $seoData = [
+                'model' => 'ProductCategory',
+                'model_id' => $category->id,
+                'title' => ucfirst(str_replace("-", " ", $category->slug))
+            ];
+            $seo = SeoMetaTag::create($seoData);
+        }
     }
 
     public function updateSlug()
@@ -82,7 +111,6 @@ class Updating extends Command
 
         foreach ($products as $product) {
             $product = $this->generateName($product);
-            Log::info($product);
             $product->save();
         }
     }

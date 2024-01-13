@@ -1,5 +1,5 @@
 @extends('frontend.themes.gold.layout.layout')
-@section('title', $category->name)
+@section('title', $category->seo->title)
 @section('description', '')
 @section('keywords', '')
 @section('content')

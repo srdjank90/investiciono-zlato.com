@@ -199,5 +199,9 @@
             document.getElementById('toc-html').innerHTML = tocHTML;
             document.getElementById('toc').value = tocHTML;
         }
+
+        $(document).ready(function() {
+
+        });
     </script>
 @endsection

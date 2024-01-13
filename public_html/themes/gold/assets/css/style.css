@@ -64240,3 +64240,12 @@ footer.footer-dark .icon-bx-wraper {
     margin-bottom: 10px;
     text-transform: uppercase;
 }
+
+
+.table-product-image{
+    display: none;
+}
+
+.table-product-name:hover + .table-product-image {
+    display: block;
+}

@@ -174,7 +174,6 @@ class ProductController extends BackendController
                 }
             }
         }
-        Log::info($landing);
         $product->landing = json_encode($landing);
         $product->save();
 

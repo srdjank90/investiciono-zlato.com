@@ -36,4 +36,9 @@ class ProductCategory extends Model
     {
         return $this->hasMany(ProductCategory::class, 'parent_id', 'id');
     }
+
+    public function seo()
+    {
+        return $this->hasOne(SeoMetaTag::class, 'model_id')->where('model', 'ProductCategory');
+    }
 }
