@@ -33,6 +33,8 @@ return new class extends Migration
             $table->string('company_name')->nullable();
             $table->timestamp('last_price_at')->nullable();
             $table->string('status')->default('published')->nullable();
+            $table->string('status')->default('published')->nullable();
+            $table->string('product_image_url')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

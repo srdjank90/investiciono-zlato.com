@@ -21,11 +21,15 @@
                                     </li>
                                 </ul>
                             </div>
-                            <div class="dz-media">
+                            <div class="dz-media mb-3">
                                 @if ($post->image)
                                     <img src="{{ $storageUrl . $post->image->path }}" alt="/">
                                 @endif
+                            </div>
 
+                            <div class="d-block d-md-none">
+                                <h5>Sadržaj</h5>
+                                {!! $post->toc !!}
                             </div>
 
                             <div id="toc-content" class="dz-info">

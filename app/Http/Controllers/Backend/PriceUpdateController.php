@@ -693,6 +693,7 @@ class PriceUpdateController extends BackendController
     {
         $name = $product->name_default;
         $name = str_replace(' ', '', $name);
+
         $divider = 1;
         if (str_contains($name, '100x1g')) {
             $divider = 100;

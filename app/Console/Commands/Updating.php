@@ -9,6 +9,7 @@ use App\Models\SeoMetaTag;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
+use Weidner\Goutte\GoutteFacade;
 
 class Updating extends Command
 {
@@ -35,7 +36,185 @@ class Updating extends Command
         #$this->updateCompany();
         #$this->updateNames();
         #$this->updateSlug();
-        $this->updateProductCategorySeo();
+        #$this->updateProductCategorySeo();
+        $this->updateProductsImage();
+    }
+
+    public function updateProductsImage()
+    {
+        $products = Product::all();
+        foreach ($products as $product) {
+            #Log::info($product->url);
+            $imageUrl = $this->getProductImageUrl($product->url);
+            Log::info('Image url:' . $imageUrl);
+            $product->product_image_url = $imageUrl;
+            $product->save();
+        }
+    }
+
+    //Get product image URL
+    public function getProductImageUrl($url)
+    {
+        // 1 - investiciono-zlato.rs
+        if (str_contains($url, 'https://investiciono-zlato.rs/')) {
+            $price = [];
+            try {
+                $crawler = GoutteFacade::request('GET', $url);
+                $price = $crawler->filter('.product.media img')->first()->extract(array('src'))[0];
+                return $price;
+            } catch (\Exception $e) {
+                Log::error($e->getMessage());
+            }
+            if (count($price) > 0) {
+                return $price[0][0];
+            } else {
+                return '';
+            }
+        }
+
+        // 2 - tavex.rs
+        if (str_contains($url, 'https://tavex.rs/')) {
+            $images = [];
+            try {
+                $crawler = GoutteFacade::request('GET', $url);
+                $image = $crawler->filter('.carousel__slide-img')->first()->extract(['data-srcset'])[0];
+                $arrImage = explode('.jpg', $image);
+                $image = $arrImage[0] . '.jpg';
+                return $image;
+            } catch (\Exception $e) {
+                Log::error($e->getMessage());
+            }
+            if (count($images) > 0) {
+                return $images[0][0];
+            } else {
+                return '';
+            }
+        }
+
+        // 3 - golden-space.rs
+        if (str_contains($url, 'https://golden-space.rs/')) {
+            $images = [];
+            try {
+                $crawler = GoutteFacade::request('GET', $url);
+                $image = $crawler->filter('.woocommerce-product-gallery__image img')->first()->extract(['src'])[0];
+                return $image;
+            } catch (\Exception $e) {
+                Log::error($e->getMessage());
+            }
+            if (count($images) > 0) {
+                return $images[0][0];
+            } else {
+                return '';
+            }
+        }
+
+        // 4 - www.zlatomoje.rs
+        if (str_contains($url, 'https://www.zlatomoje.rs/')) {
+            $images = [];
+            try {
+                $crawler = GoutteFacade::request('GET', $url);
+                $image = $crawler->filter('#get-image-item-id img')->first()->extract(['src'])[0];
+                $imageArr = explode('/v1/', $image);
+                $image = $imageArr[0];
+                return $image;
+            } catch (\Exception $e) {
+                Log::error($e->getMessage());
+            }
+            if (count($images) > 0) {
+                return $images[0][0];
+            } else {
+                return '';
+            }
+        }
+
+        // 5 - www.kupizlato.com
+        if (str_contains($url, 'https://www.kupizlato.com/')) {
+            $images = [];
+            try {
+                $crawler = GoutteFacade::request('GET', $url);
+                $image = $crawler->filter('.wp-post-image')->first()->extract(['src'])[0];
+                return $image;
+            } catch (\Exception $e) {
+                Log::error($e->getMessage());
+            }
+            if (count($images) > 0) {
+                return $images[0][0];
+            } else {
+                return '';
+            }
+        }
+
+        // 6 - insignitus.rs
+        if (str_contains($url, 'https://insignitus.rs/')) {
+            $images = [];
+            try {
+                $crawler = GoutteFacade::request('GET', $url);
+                $image = $crawler->filter('.woocommerce-product-gallery__wrapper img')->first()->extract(['src'])[0];
+                return $image;
+            } catch (\Exception $e) {
+                Log::error($e->getMessage());
+            }
+            if (count($images) > 0) {
+                return $images[0][0];
+            } else {
+                return '';
+            }
+        }
+
+        // 7 - dokinvest.com
+        if (str_contains($url, 'https://dokinvest.com/')) {
+            $images = [];
+            try {
+                $crawler = GoutteFacade::request('GET', $url);
+                $image = 'https://dokinvest.com/' . $crawler->filter('.img-responsive')->first()->extract(['src'])[0];
+                return $image;
+            } catch (\Exception $e) {
+                Log::error($e->getMessage());
+            }
+            if (count($images) > 0) {
+                return $images[0][0];
+            } else {
+                return '';
+            }
+        }
+
+        // 8 - www.gvs-srbija.rs
+        if (str_contains($url, 'https://www.gvs-srbija.rs/')) {
+            $images = [];
+            try {
+                $crawler = GoutteFacade::request('GET', $url);
+                $image = $crawler->filter('body #maindiv #mainContainerRight img')->first()->extract(['src'])[0];
+                return $image;
+            } catch (\Exception $e) {
+                Log::error($e->getMessage());
+            }
+            if (count($images) > 0) {
+                return $images[0][0];
+            } else {
+                return '';
+            }
+        }
+
+        // 9 - investicionozlato.com
+        if (str_contains($url, 'https://investicionozlato.com/')) {
+            $images = [];
+            try {
+                $crawler = GoutteFacade::request('GET', $url);
+                $image = $crawler->filter('.attachment-full.size-full')->first()->extract(['srcset'])[0];
+                $arrImage = explode('.jpg', $image);
+                $image = $arrImage[0] . '.jpg';
+                return $image;
+            } catch (\Exception $e) {
+                Log::error($e->getMessage());
+            }
+            if (count($images) > 0) {
+                return $images[0][0];
+            } else {
+                return '';
+            }
+        }
+
+        return '';
     }
 
     public function updateProductSeo()

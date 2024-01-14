@@ -188,8 +188,11 @@
                                                 @foreach ($najboljiSaveti as $post)
                                                     <li>
                                                         <div class="dz-media">
-                                                            <img src="/themes/gold/assets/images/shop/product/small/1.png"
-                                                                alt="">
+                                                            @if ($post->image)
+                                                                <img src="{{ $storageUrl . $post->image->path }}"
+                                                                    style="width:50px;height:50px;object-fit:cover"
+                                                                    alt="/">
+                                                            @endif
                                                         </div>
                                                         <div class="dz-content">
                                                             <h6 class="name">
@@ -211,8 +214,11 @@
                                                 @foreach ($najnovijiTekstovi as $post)
                                                     <li>
                                                         <div class="dz-media">
-                                                            <img src="/themes/gold/assets/images/shop/product/small/1.png"
-                                                                alt="">
+                                                            @if ($post->image)
+                                                                <img src="{{ $storageUrl . $post->image->path }}"
+                                                                    style="width:50px;height:50px;object-fit:cover"
+                                                                    alt="/">
+                                                            @endif
                                                         </div>
                                                         <div class="dz-content">
                                                             <h6 class="name">

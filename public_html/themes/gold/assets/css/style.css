@@ -28,7 +28,7 @@
     );
     --primary: #623fa3;
     --secondary: #24262b;
-    --primary-hover: #12a582;
+    --primary-hover: #623fa3;
     --primary-dark: black;
     --rgba-primary-1: rgba(98, 63, 163, 0.1);
     --rgba-primary-2: rgba(98, 63, 163, 0.2);
@@ -6765,7 +6765,7 @@ fieldset:disabled .woocommerce #place_order,
     --bs-btn-bg: #623fa3;
     --bs-btn-border-color: #623fa3;
     --bs-btn-hover-color: #ffffff;
-    --bs-btn-hover-bg: #0b6550;
+    --bs-btn-hover-bg: #623fa3;
     --bs-btn-hover-border-color: #0a5f4b;
     --bs-btn-focus-shadow-rgb: 49, 139, 118;
     --bs-btn-active-color: #ffffff;
@@ -64241,9 +64241,7 @@ footer.footer-dark .icon-bx-wraper {
     text-transform: uppercase;
 }
 
-
-.table-product-image{
-    display: none;
+.table-product-image {
 }
 
 .table-product-name:hover + .table-product-image {

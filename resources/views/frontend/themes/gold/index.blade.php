@@ -76,11 +76,15 @@
                                         <div
                                             class="gold-column col-12 col-sm-6 col-md-3 col-lg-3 d-flex justify-content-center flex-column position-relative">
                                             <div class="d-md-none fw-bold"><small>Naziv</small></div>
-                                            <div style="right: 0" class="table-product-image position-absolute">
-                                                <img width="100" class="table-product-image-img"
-                                                    src="https://investiciono-zlato.rs/media/catalog/product/cache/ccf45cbd4feaeee8fea36eeaf2fe05d7/c/h/chaf_1g_feingoldbarren_vs_pk_druck_5_2.png"
-                                                    alt="">
-                                            </div>
+
+                                            <!-- Hover Image -->
+                                            @if ($product->product_image_url && $product->product_image_url != '')
+                                                <div style="right: 0;z-index:999"
+                                                    class="table-product-image position-absolute d-none">
+                                                    <img width="80" class="table-product-image-img"
+                                                        src="{{ $product->product_image_url }}" alt="">
+                                                </div>
+                                            @endif
 
                                             <a target="_blank" class="table-product-name text-primary fw-bold"
                                                 href="{{ $product['url'] }}">
@@ -211,7 +215,15 @@
                                         <div
                                             class="gold-column col-12 col-sm-6 col-md-3 col-lg-3 d-flex justify-content-center flex-column position-relative">
                                             <div class="d-md-none fw-bold"><small>Naziv</small></div>
-                                            <a target="_blank" class="text-primary fw-bold"
+                                            <!-- Hover Image -->
+                                            @if ($product->product_image_url && $product->product_image_url != '')
+                                                <div style="right: 0"
+                                                    class="table-product-image position-absolute d-none">
+                                                    <img width="100" class="table-product-image-img"
+                                                        src="{{ $product->product_image_url }}" alt="">
+                                                </div>
+                                            @endif
+                                            <a target="_blank" class="table-product-name text-primary fw-bold"
                                                 href="{{ $product['url'] }}">
                                                 {{ $product['name'] }} <img width="30"
                                                     src="{{ $product->company->image_url }}"

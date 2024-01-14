@@ -295,5 +295,18 @@
 
         })
 
+
+
+        $('.table-product-name').hover(
+            function() {
+                // On hover, remove the 'hidden' class from the previous sibling
+                $(this).prev().removeClass('d-none');
+            },
+            function() {
+                // On hover out, add the 'hidden' class back to the previous sibling
+                $(this).prev().addClass('d-none');
+            }
+        );
+
     });
 </script>

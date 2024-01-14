@@ -188,7 +188,8 @@
             // Get the content from the editor
             const content = editor.getContent();
             // Extract headings (assuming using h1 to h6 for TOC)
-            const headings = content.match(/<h[1-6].*?>(.*?)<\/h[1-6]>/gi);
+            //const headings = content.match(/<h[1-6].*?>(.*?)<\/h[1-6]>/gi);
+            const headings = content.match(/<h2.*?>(.*?)<\/h2>/gi);
             // Build the Table of Contents HTML
             const tocHTML = headings ?
                 headings.map((heading, index) => `<a class="toc-list-item" href="#section${index + 1}">${heading}</a>`)

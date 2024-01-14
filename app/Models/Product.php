@@ -33,6 +33,7 @@ class Product extends Model
         'company_id',
         'last_price_at',
         'status',
+        'product_image_url',
         'price_id',
         'category_id'
     ];
