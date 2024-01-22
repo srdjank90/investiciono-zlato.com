@@ -4,7 +4,8 @@
         <div class="container clearfix">
             <!-- Website Logo -->
             <div class="logo-header logo-dark">
-                <a href="{{ route('frontend.index') }}"><img src="/themes/gold/assets/images/logo.png" alt="logo"></a>
+                <a href="{{ route('frontend.index') }}"><img src="/themes/gold/assets/images/header-logo.png"
+                        alt="logo"></a>
             </div>
             <!-- EXTRA NAV -->
             <div class="extra-nav d-md-flex d-none">
@@ -56,7 +57,7 @@
             <div class="container clearfix">
                 <!-- Website Logo -->
                 <div class="logo-header logo-dark">
-                    <a href="{{ route('frontend.index') }}"><img src="/themes/gold/assets/images/logo.png"
+                    <a href="{{ route('frontend.index') }}"><img src="/themes/gold/assets/images/header-logo.png"
                             alt="logo"></a>
                 </div>
                 <!-- Nav Toggle Button -->

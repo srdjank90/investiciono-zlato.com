@@ -63,6 +63,13 @@ class FrontendController extends Controller
             $q->where('name', '20g');
         })->orderBy('quantity_type', 'desc')->orderBy('selling_price', 'asc')->get()->take(3);
 
+        $goldenPlates[5]['name'] = 'Multi proizvod';
+        $goldenPlates[5]['description'] = '1g multi proizvod';
+        $goldenPlates[5]['slug'] = 'multi-proizvod';
+        $goldenPlates[5]['products'] = Product::with(['company'])->whereHas('categories', function ($q) {
+            $q->where('name', 'multi proizvod');
+        })->orderBy('quantity_type', 'desc')->orderBy('selling_price', 'asc')->get()->take(3);
+
         $goldenBars[0]['name'] = '1unca';
         $goldenBars[0]['description'] = '1 unca';
         $goldenBars[0]['slug'] = 'zlatne-poluge-1unca';

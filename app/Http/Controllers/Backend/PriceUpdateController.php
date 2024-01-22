@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Log;
 use Weidner\Goutte\GoutteFacade;
 use Symfony\Component\DomCrawler\Crawler;
 
-class PriceUpdateController extends BackendController
+class PriceUpdateController extends Controller
 {
     public function updatePrices()
     {

@@ -18388,7 +18388,7 @@ strong,
     border-width: 2px;
     border-style: solid;
     border-image: initial;
-    border-color: #24262b #24262b transparent;
+    border-color: #623fa3 #1c1131 transparent;
     box-sizing: border-box;
     animation: 1s linear 0s infinite normal none running rotation;
     margin-left: auto;
@@ -18410,7 +18410,7 @@ strong,
     bottom: 0;
     margin: auto;
     border: 2px solid;
-    border-color: transparent #0d775e #0d775e;
+    border-color: transparent #623fa3 #1c1131;
     width: 24px;
     height: 24px;
     border-radius: 50%;
