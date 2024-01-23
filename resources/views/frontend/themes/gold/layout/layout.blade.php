@@ -25,6 +25,7 @@
     <link rel="stylesheet" type="text/css" href="/themes/gold/assets/vendor/lightgallery/dist/css/lg-thumbnail.css">
     <link rel="stylesheet" type="text/css" href="/themes/gold/assets/vendor/lightgallery/dist/css/lg-zoom.css">
     <link rel="stylesheet" type="text/css" href="/themes/gold/assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/themes/gold/assets/css/main.css">
     <!-- GOOGLE FONTS-->
     <link rel="preconnect" href="https://fonts.googleapis.com/">
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>

@@ -300,11 +300,15 @@
         $('.table-product-name').hover(
             function() {
                 // On hover, remove the 'hidden' class from the previous sibling
-                $(this).prev().removeClass('d-none');
+                console.log($(this).width())
+                $(this).prev().css({
+                    left: $(this).width() + 'px'
+                })
+                $(this).prev().show();
             },
             function() {
                 // On hover out, add the 'hidden' class back to the previous sibling
-                $(this).prev().addClass('d-none');
+                $(this).prev().hide();
             }
         );
 

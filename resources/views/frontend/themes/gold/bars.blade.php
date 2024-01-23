@@ -50,6 +50,10 @@
                                         <div
                                             class="gold-column col-12 col-sm-6 col-md-3 col-lg-3 d-flex justify-content-center flex-column">
                                             <div class="d-md-none fw-bold"><small>Naziv</small></div>
+                                            @if ($product->product_image_url && $product->product_image_url != '')
+                                                <img class="table-product-image" src="{{ $product->product_image_url }}"
+                                                    alt="">
+                                            @endif
                                             <a target="_blank" class="text-primary fw-bold" href="{{ $product['url'] }}">
                                                 {{ $product['name'] }} <img width="30"
                                                     src="{{ $product->company->image_url }}"

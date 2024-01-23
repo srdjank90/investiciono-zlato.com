@@ -64241,9 +64241,6 @@ footer.footer-dark .icon-bx-wraper {
     text-transform: uppercase;
 }
 
-.table-product-image {
-}
-
 .table-product-name:hover + .table-product-image {
     display: block;
 }

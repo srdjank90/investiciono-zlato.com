@@ -76,25 +76,16 @@
                                         <div
                                             class="gold-column col-12 col-sm-6 col-md-3 col-lg-3 d-flex justify-content-center flex-column position-relative">
                                             <div class="d-md-none fw-bold"><small>Naziv</small></div>
+                                            @if ($product->product_image_url && $product->product_image_url != '')
+                                                <img class="table-product-image" src="{{ $product->product_image_url }}"
+                                                    alt="">
+                                            @endif
 
-                                            <div class="testiranje">
-                                                <!-- Hover Image -->
-                                                @if ($product->product_image_url && $product->product_image_url != '')
-                                                    <div style="right: 0;z-index:999;"
-                                                        class="table-product-image position-absolute d-none">
-                                                        <img style="object-fit: cover;width:200px;height:200px"
-                                                            class="table-product-image-img"
-                                                            src="{{ $product->product_image_url }}" alt="">
-                                                    </div>
-                                                @endif
-
-                                                <a target="_blank" class="table-product-name text-primary fw-bold"
-                                                    href="{{ $product['url'] }}">
-                                                    {{ $product['name'] }} <img width="30"
-                                                        src="{{ $product->company->image_url }}"
-                                                        title="{{ $product->company->name }}" alt=""></a>
-                                            </div>
-
+                                            <a target="_blank" class="table-product-name text-primary fw-bold"
+                                                href="{{ $product['url'] }}">
+                                                {{ $product['name'] }}
+                                                <img width="45" src="{{ $product->company->image_url }}"
+                                                    title="{{ $product->company->name }}" alt=""></a>
 
                                         </div>
                                         <div
@@ -206,11 +197,8 @@
                                             <div class="d-md-none fw-bold"><small>Naziv</small></div>
                                             <!-- Hover Image -->
                                             @if ($product->product_image_url && $product->product_image_url != '')
-                                                <div style="right: 0"
-                                                    class="table-product-image position-absolute d-none">
-                                                    <img width="100" class="table-product-image-img"
-                                                        src="{{ $product->product_image_url }}" alt="">
-                                                </div>
+                                                <img class="table-product-image" src="{{ $product->product_image_url }}"
+                                                    alt="">
                                             @endif
                                             <a target="_blank" class="table-product-name text-primary fw-bold"
                                                 href="{{ $product['url'] }}">
