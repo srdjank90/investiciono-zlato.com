@@ -1,5 +1,5 @@
 @extends('frontend.themes.gold.layout.layout')
-@section('title', $category->seo->title)
+@section('title', $category->seo->title . ' | Poredjenje cena investicionog zlata u realnom vremenu')
 @section('description', '')
 @section('keywords', '')
 @section('content')
@@ -20,7 +20,7 @@
                             style="visibility: hidden; animation-delay: 0.4s; animation-name: none;">
                             <div class="row">
                                 <div class="col-12 col-sm-6 col-md-3 col-lg-3 d-none d-md-block fw-bold mb-3">
-                                    Name
+                                    Naziv
                                 </div>
                                 <div class="col-12 col-sm-6 col-md-3 col-lg-3 d-none d-md-block fw-bold">
                                     Prodajna
@@ -36,7 +36,7 @@
                                         class="gold-column col-12 col-sm-6 col-md-3 col-lg-3 d-flex justify-content-center flex-column">
                                         <div class="d-md-none fw-bold"><small>Naziv</small></div>
                                         <a target="_blank" class="text-primary fw-bold" href="{{ $product['url'] }}">
-                                            {{ $product['name'] }} <img width="30"
+                                            {{ $product['name'] }} <img width="45"
                                                 src="{{ $product->company->image_url }}"
                                                 title="{{ $product->company->name }}" alt=""></a>
                                     </div>

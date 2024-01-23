@@ -1,13 +1,35 @@
 .table-product-image {
     object-fit: cover;
-    width: 100px;
-    height: 100px;
-    min-width: 100px;
+    width: 130px;
+    height: 130px;
+    min-width: 130px;
     border: 1px solid #ccc;
     border-radius: 5px;
     position: absolute;
-    left: 100px;
+    left: 200px;
     display: none;
     z-index: 999;
     background-color: white;
+    margin-left: 20px;
+}
+
+footer .footer-logo img {
+    max-width: 290px;
+}
+
+.site-header.style-2 .header-info-bar .logo-header img {
+    height: 90px;
+    max-width: 220px;
+}
+
+@media (max-width: 575.98px) {
+    footer .footer-logo img {
+        max-width: 350px;
+    }
+    .w-sm-100 {
+        width: 100%;
+    }
+    .table-product-name img {
+        width: 60px;
+    }
 }

@@ -16,7 +16,7 @@
                             <li>
                                 <p><span>E-mail</span> : example@info.com</p>
                             </li>
-                            <li>
+                            <li class="d-none">
                                 <p><span>Telefon</span> : (064) 332-1233</p>
                             </li>
                         </ul>
@@ -115,7 +115,7 @@
         <div class="container">
             <div class="row fb-inner wow fadeInUp" data-wow-delay="0.1s">
                 <div class="col-lg-6 col-md-12 text-start">
-                    <p class="copyright-text">© 2023 <a href="">Allinclusive.</a> just work it.</p>
+                    <p class="copyright-text">© 2024 <a href="">Allinclusive.</a> just work it.</p>
                 </div>
 
             </div>

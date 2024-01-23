@@ -6769,12 +6769,12 @@ fieldset:disabled .woocommerce #place_order,
     --bs-btn-hover-border-color: #0a5f4b;
     --bs-btn-focus-shadow-rgb: 49, 139, 118;
     --bs-btn-active-color: #ffffff;
-    --bs-btn-active-bg: #0a5f4b;
-    --bs-btn-active-border-color: #0a5947;
+    --bs-btn-active-bg: #623fa3;
+    --bs-btn-active-border-color: #623fa3;
     --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
     --bs-btn-disabled-color: #ffffff;
-    --bs-btn-disabled-bg: #0d775e;
-    --bs-btn-disabled-border-color: #0d775e;
+    --bs-btn-disabled-bg: #623fa3;
+    --bs-btn-disabled-border-color: #623fa3;
 }
 
 .btn-secondary {

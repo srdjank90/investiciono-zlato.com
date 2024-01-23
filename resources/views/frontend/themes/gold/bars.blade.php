@@ -1,5 +1,5 @@
 @extends('frontend.themes.gold.layout.layout')
-@section('title', 'Zlatne poluge')
+@section('title', 'Zlatne poluge | Poredjenje cena investicionog zlata u realnom vremenu')
 @section('description', 'Zlatne poluge')
 @section('keywords', '')
 @section('content')
@@ -31,11 +31,11 @@
                                 style="visibility: hidden; animation-delay: 0.4s; animation-name: none;">
                                 <div class="row">
                                     <div class="col-12">
-                                        <h4 class="text-uppercase">Težina poluge <span>od
+                                        <h4 class="text-uppercase">Cena zlatne poluge <span>od
                                                 {{ $bar['description'] }}:</span></h4>
                                     </div>
                                     <div class="col-12 col-sm-6 col-md-3 col-lg-3 d-none d-md-block fw-bold mb-2">
-                                        Name
+                                        Naziv
                                     </div>
                                     <div class="col-12 col-sm-6 col-md-3 col-lg-3 d-none d-md-block fw-bold">
                                         Prodajna
@@ -55,7 +55,7 @@
                                                     alt="">
                                             @endif
                                             <a target="_blank" class="text-primary fw-bold" href="{{ $product['url'] }}">
-                                                {{ $product['name'] }} <img width="30"
+                                                {{ $product['name'] }} <img width="45"
                                                     src="{{ $product->company->image_url }}"
                                                     title="{{ $product->company->name }}" alt=""></a>
                                         </div>

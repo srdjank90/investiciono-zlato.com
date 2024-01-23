@@ -10,8 +10,10 @@
                 <div class="section-inner">
                     <div class="section-head style-2 p-lg-b0 p-md-b30 wow fadeInUp" data-wow-delay="0.1s"
                         style="visibility: hidden; animation-delay: 0.1s; animation-name: none;">
-                        <h1 class="title wow fadeInUp text-primary">Kupite investiciono zlato u Srbiji online</h1>
-                        <p>Zlatoteka poredi cene zlata u realnom vremenu na <b>devet najpovoljnijih online prodavnica
+                        <h1 class="title wow fadeInUp">Kupite <span class="text-primary">investiciono zlato</span> u Srbiji
+                            online</h1>
+                        <p>Sezame, otvori se poredi cene zlata u realnom vremenu na <b>devet najpovoljnijih online
+                                prodavnica
                                 investicionog zlata u Srbiji</b>, štedi Vaše vreme i Vaš novac.</p>
                     </div>
                     <div class="row gx-3 companies-inner">
@@ -57,11 +59,11 @@
                                 style="visibility: hidden; animation-delay: 0.4s; animation-name: none;">
                                 <div class="row">
                                     <div class="col-12">
-                                        <h4 class="text-uppercase">Težina pločice <span>od
+                                        <h4 class="text-uppercase">Ccena zlatne pločice <span>od
                                                 {{ $plate['description'] }}:</span></h4>
                                     </div>
                                     <div class="col-12 col-sm-6 col-md-3 col-lg-3 d-none d-md-block fw-bold mb-2">
-                                        Name
+                                        Naziv
                                     </div>
                                     <div class="col-12 col-sm-6 col-md-3 col-lg-3 d-none d-md-block fw-bold">
                                         Prodajna
@@ -144,7 +146,7 @@
                                         </div>
                                     @endforeach
                                     <div class="col-md-12 mb-4">
-                                        <a class="btn btn-primary btn-sm"
+                                        <a class="btn btn-primary btn-sm w-sm-100"
                                             href="{{ route('frontend.category', $plate['slug']) }}">Sve
                                             zlatne pločice od
                                             {{ $plate['name'] }} u ponudi</a>
@@ -176,11 +178,11 @@
                                 style="visibility: hidden; animation-delay: 0.4s; animation-name: none;">
                                 <div class="row">
                                     <div class="col-12">
-                                        <h4 class="text-uppercase">Težina poluge <span>od
+                                        <h4 class="text-uppercase">Cena zlatne poluge <span>od
                                                 {{ $bar['description'] }}:</span></h4>
                                     </div>
                                     <div class="col-12 col-sm-6 col-md-3 col-lg-3 d-none d-md-block fw-bold mb-2">
-                                        Name
+                                        Naziv
                                     </div>
                                     <div class="col-12 col-sm-6 col-md-3 col-lg-3 d-none d-md-block fw-bold">
                                         Prodajna
@@ -202,7 +204,7 @@
                                             @endif
                                             <a target="_blank" class="table-product-name text-primary fw-bold"
                                                 href="{{ $product['url'] }}">
-                                                {{ $product['name'] }} <img width="30"
+                                                {{ $product['name'] }} <img width="45"
                                                     src="{{ $product->company->image_url }}"
                                                     title="{{ $product->company->name }}" alt=""></a>
                                         </div>
@@ -262,7 +264,7 @@
                                         </div>
                                     @endforeach
                                     <div class="col-md-12 mb-4">
-                                        <a class="btn btn-primary btn-sm"
+                                        <a class="btn btn-primary btn-sm w-sm-100"
                                             href="{{ route('frontend.category', $bar['slug']) }}">Sve zlatne poluge od
                                             {{ $bar['name'] }} u ponudi</a>
                                     </div>
