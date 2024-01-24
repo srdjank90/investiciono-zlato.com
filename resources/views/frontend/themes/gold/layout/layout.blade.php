@@ -62,7 +62,7 @@
         <div id="loading-area" class="preloader-wrapper-1">
             <div>
                 <span class="loader-2"></span>
-                <img src="/themes/gold/assets/images/loader-logo.png" alt="reklamni materijal">
+                <img src="/themes/gold/assets/images/loader-logo.png" alt="sezame, otvori se">
                 <span class="loader"></span>
             </div>
         </div>

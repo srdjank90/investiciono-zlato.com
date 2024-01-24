@@ -1,6 +1,6 @@
 @extends('frontend.themes.gold.layout.layout')
-@section('title', 'Zlatne pločice')
-@section('description', 'Zlatne pločice | Poredjenje cena investicionog zlata u realnom vremenu')
+@section('title', 'Zlatne pločice | Poredjenje cena investicionog zlata u realnom vremenu')
+@section('description', '')
 @section('keywords', '')
 @section('content')
     <div class="page-content bg-white">
@@ -19,10 +19,6 @@
                                 najpovoljnijih online prodavnica investicionog zlata očekuju zlatne pločice težinskih
                                 denominacija od 1g do 20g renomiranih svetskih brendova. Zbog svoje fine izrade i najviše
                                 čistoće zlata („Fine Gold“) predstavljaju visoko likvidne investicione formate. </p>
-                        </div>
-                        <div class="product-specification wow fadeInUp" data-wow-delay="0.3s"
-                            style="visibility: hidden; animation-delay: 0.3s; animation-name: none;">
-                            <h4 class="specification-title">Specifikacije</h4>
                         </div>
                         <!-- Multiple table Prices -->
                         @foreach ($goldenPlates as $plate)

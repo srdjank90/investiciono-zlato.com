@@ -21,10 +21,6 @@
                                 i najviše čistoće zlata („Fine Gold“) predstavljaju visoko likvidne investicione formate.
                             </p>
                         </div>
-                        <div class="product-specification wow fadeInUp" data-wow-delay="0.3s"
-                            style="visibility: hidden; animation-delay: 0.3s; animation-name: none;">
-                            <h4 class="specification-title">Specifikacije</h4>
-                        </div>
                         <!-- Multiple table Prices -->
                         @foreach ($goldenBars as $bar)
                             <div class="prices-table-gold wow fadeInUp" data-wow-delay="0.4s"

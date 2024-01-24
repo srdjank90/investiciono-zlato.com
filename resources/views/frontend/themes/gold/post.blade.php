@@ -1,5 +1,5 @@
 @extends('frontend.themes.gold.layout.layout')
-@section('title', $post->title)
+@section('title', $post->title . ' | Poredjenje cena investicionog zlata u realnom vremenu')
 @section('description', '')
 @section('keywords', '')
 @section('content')

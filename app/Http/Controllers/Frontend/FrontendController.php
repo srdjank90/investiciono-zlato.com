@@ -395,6 +395,7 @@ class FrontendController extends Controller
 
     public function goldenCoins()
     {
+        $category = ProductCategory::where('slug', 'dukati')->first();
         $goldenCoins[0]['name'] = 'Dukati';
         $goldenCoins[0]['description'] = 'Dukati';
         $goldenCoins[0]['slug'] = 'zlatni-dukati';
@@ -404,7 +405,7 @@ class FrontendController extends Controller
             })->orderBy('quantity_type', 'desc')->orderBy('selling_price', 'asc')->get();
 
 
-        return view('frontend.themes.' . $this->theme . '.coins', compact('goldenCoins'));
+        return view('frontend.themes.' . $this->theme . '.coins', compact('goldenCoins', 'category'));
     }
 
     public function category($categorySlug)

@@ -14,7 +14,10 @@
                             online</h1>
                         <p>Sezame, otvori se poredi cene zlata u realnom vremenu na <b>devet najpovoljnijih online
                                 prodavnica
-                                investicionog zlata u Srbiji</b>, štedi Vaše vreme i Vaš novac.</p>
+                                investicionog zlata u Srbiji</b>, štedi Vaše vreme i Vaš novac. U Srbiji, pod investicionim
+                            zlatom se podrazumeva zlato u obliku zlatnih poluga ili zlatnih pločica, čistoće najmanje
+                            995/1000, kao i obliku zlatnih dukata čistoće najmanje 900/1000, koji su kovani nakon 1800.
+                            godine, i koji su bili ili su zakonsko sredstvo plaćanja u zemlji porekla.</p>
                     </div>
                     <div class="row gx-3 companies-inner">
                         @foreach ($companies as $company)
@@ -42,14 +45,17 @@
                     <div class="col-xl-6 col-lg-6">
                         <div class="section-head style-2 wow fadeInUp" data-wow-delay="0.2s"
                             style="visibility: hidden; animation-delay: 0.2s; animation-name: none;">
-                            <h2 class="sub-title">Zlatne pločice</h2>
-                            <p>Zlatne pločice deo su našeg bogatog asortimana proizvoda nastalih u globalno renomiranim
-                                livnicama koje se pridržavaju najviših standarda proizvodnje. Kupce proizvoda u ponudi naših
-                                najpovoljnijih online prodavnica investicionog zlata očekuju zlatne pločice težinskih
-                                denominacija od 1g do 20g renomiranih svetskih brendova. Zbog svoje fine izrade i najviše
-                                čistoće zlata („Fine Gold“) predstavljaju visoko likvidne investicione formate. </p>
+                            <h3 class="sub-title">Zlatne pločice</h3>
+                            <p>Zlatne pločice su male zlatne poluge koje služe kao oblik investicionog zlata. Proizvode ih
+                                renomirani proizvođači koristeći napredne tehnologije kako bi osigurali visok kvalitet. Neki
+                                od istaknutih proizvođača uključuju Argor Heraeus, C.Hafner, Valcambi Suisse, PAMP, The
+                                Royal Mint i Münze Österreich, svaki garantujući visok nivo sigurnosti i autentičnosti
+                                svojih proizvoda. Svaka pločica je LBMA sertifikovana za svoju finoću, obično 999,9, i
+                                poreklom su iz zemalja poput Nemačke, Austrije, Velike Britanije i Švajcarske. Cene ovih
+                                zlatnih pločica variraju u zavisnosti od veličine i tržišnih uslova u trenutku kupovine.i
+                                najviše čistoće zlata („Fine Gold“) predstavljaju visoko likvidne investicione formate. </p>
                         </div>
-                        <div class="product-specification wow fadeInUp" data-wow-delay="0.3s"
+                        <div class="product-specification wow fadeInUp d-none" data-wow-delay="0.3s"
                             style="visibility: hidden; animation-delay: 0.3s; animation-name: none;">
                             <h4 class="specification-title">Specifikacije</h4>
                         </div>
@@ -59,7 +65,7 @@
                                 style="visibility: hidden; animation-delay: 0.4s; animation-name: none;">
                                 <div class="row">
                                     <div class="col-12">
-                                        <h4 class="text-uppercase">Ccena zlatne pločice <span>od
+                                        <h4 class="text-uppercase">Cena zlatne pločice <span>od
                                                 {{ $plate['description'] }}:</span></h4>
                                     </div>
                                     <div class="col-12 col-sm-6 col-md-3 col-lg-3 d-none d-md-block fw-bold mb-2">
@@ -159,15 +165,17 @@
                     <div class="col-xl-6 col-lg-6">
                         <div class="section-head style-2 wow fadeInUp" data-wow-delay="0.2s"
                             style="visibility: hidden; animation-delay: 0.2s; animation-name: none;">
-                            <h2 class="sub-title">Zlatne poluge</h2>
-                            <p>Zlatne poluge su čest izbor ulagača zainteresovanih za investiciono zlato. One dolaze iz
-                                pouzdanih livnica svetskog renomea, upakovane su u blister pakovanja u kojima se nalaze LBMA
-                                sertifikati koji garantuju kvalitet proizvodnje i druge bitne parametre. Zlatne poluge
-                                težinskih denominacija od 1unce do 1kg renomiranih svetskih brendova. Zbog svoje fine izrade
-                                i najviše čistoće zlata („Fine Gold“) predstavljaju visoko likvidne investicione formate.
+                            <h3 class="sub-title">Zlatne poluge</h3>
+                            <p>Zlatne poluge su su pravougaoni komadi zlata i kao takvi su čest izbor ulagača
+                                zainteresovanih za investiciono zlato. One dolaze iz pouzdanih livnica svetskog renomea,
+                                upakovane su u blister pakovanja, kao uostalom i zlatne pločice, u kojima se nalaze LBMA
+                                sertifikati koji garantuju kvalitet proizvodnje. Zbog svoje fine izrade i najviše čistoće
+                                zlata („Fine Gold“), zlatne poluge predstavljaju visoko likvidne investicione formate. Često
+                                se smatraju opipljivom imovinom koja može zadržati svoju vrednost tokom vremena. Investitori
+                                često kupuju i čuvaju ove poluge kao način zaštite od inflacije ili fluktuacija valuta.
                             </p>
                         </div>
-                        <div class="product-specification wow fadeInUp" data-wow-delay="0.3s"
+                        <div class="product-specification wow fadeInUp d-none" data-wow-delay="0.3s"
                             style="visibility: hidden; animation-delay: 0.3s; animation-name: none;">
                             <h4 class="specification-title">Specifikacije</h4>
                         </div>

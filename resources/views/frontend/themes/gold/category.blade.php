@@ -11,9 +11,11 @@
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-xl-12 col-lg-12">
-                        <div class="product-specification wow fadeInUp" data-wow-delay="0.3s"
+                        <div class="product-specification wow fadeInUp mb-3" data-wow-delay="0.3s"
                             style="visibility: hidden; animation-delay: 0.3s; animation-name: none;">
-                            <h4 class="specification-title">Kategorija {{ $category->name }}</h4>
+                            <div class="mb-4">
+                                {!! $category->description !!}
+                            </div>
                         </div>
                         <!-- Category table Prices -->
                         <div class="prices-table-gold wow fadeInUp" data-wow-delay="0.4s"

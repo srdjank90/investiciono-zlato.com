@@ -11,13 +11,12 @@
                         </div>
                         <ul class="widget-address">
                             <li>
-                                <p><span>Adresa</span> : Glavna 1, Zemun, Srbija</p>
+                                <p><span>Adresa</span> : Nemanjina 25, 11080 Zemun</p>
                             </li>
                             <li>
-                                <p><span>E-mail</span> : example@info.com</p>
-                            </li>
-                            <li class="d-none">
-                                <p><span>Telefon</span> : (064) 332-1233</p>
+                                <p><span>E-mail</span> : <a
+                                        href="mailto:office@investiciono-zlato.com">office@investiciono-zlato.com</a>
+                                </p>
                             </li>
                         </ul>
                         <div class="subscribe_widget">

@@ -1,5 +1,5 @@
 @extends('frontend.themes.gold.layout.layout')
-@section('title', 'Blog')
+@section('title', 'Blog | Poredjenje cena investicionog zlata u realnom vremenu')
 @section('description', isset($setting['setting_seo_description_opt']) ? $setting['setting_seo_description_opt'] : '')
 @section('keywords', isset($setting['setting_seo_keywords_opt']) ? $setting['setting_seo_keywords_opt'] : '')
 @section('content')

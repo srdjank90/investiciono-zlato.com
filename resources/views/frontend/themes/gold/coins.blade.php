@@ -1,6 +1,6 @@
 @extends('frontend.themes.gold.layout.layout')
-@section('title', 'Zlatni dukati')
-@section('description', 'Zlatni dukati | Poredjenje cena investicionog zlata u realnom vremenu')
+@section('title', 'Zlatni dukati | Poredjenje cena investicionog zlata u realnom vremenu')
+@section('description', '')
 @section('keywords', '')
 @section('content')
     <div class="page-content bg-white">
@@ -13,13 +13,11 @@
                     <div class="col-xl-12 col-lg-12">
                         <div class="section-head style-2 wow fadeInUp" data-wow-delay="0.2s"
                             style="visibility: hidden; animation-delay: 0.2s; animation-name: none;">
-                            <h2 class="sub-title">Zlatni dukati</h2>
-                            <p></p>
+                            <div class="mb-4">
+                                {!! $category->description !!}
+                            </div>
                         </div>
-                        <div class="product-specification wow fadeInUp" data-wow-delay="0.3s"
-                            style="visibility: hidden; animation-delay: 0.3s; animation-name: none;">
-                            <h4 class="specification-title">Specifikacije</h4>
-                        </div>
+
                         <!-- Multiple table Prices -->
                         @foreach ($goldenCoins as $coin)
                             <div class="prices-table-gold wow fadeInUp" data-wow-delay="0.4s"

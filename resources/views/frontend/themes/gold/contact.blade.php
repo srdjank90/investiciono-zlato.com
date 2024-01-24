@@ -1,5 +1,5 @@
 @extends('frontend.themes.gold.layout.layout')
-@section('title', 'Kontakt')
+@section('title', 'Kontakt | Poredjenje cena investicionog zlata u realnom vremenu')
 @section('description', 'Kontakt')
 @section('keywords', '')
 @section('content')
@@ -12,26 +12,32 @@
                         <div class="contact-info style-1 text-start text-white">
                             <h2 class="title wow fadeInUp" data-wow-delay="0.1s">Kontaktirajte nas</h2>
                             <div class="contact-bottom wow fadeInUp" data-wow-delay="0.3s">
-                                <div class="contact-left">
-                                    <h3>Telefon</h3>
-                                    <ul>
-                                        <li> (064) 332-1233</li>
-                                    </ul>
-                                </div>
-                                <div class="contact-right">
+                                <div class="contact-right me-2">
                                     <h3>E-mail</h3>
                                     <ul>
-                                        <li>example@info.com</li>
+                                        <li>
+                                            <a class="text-white"
+                                                href="mailto:office@investiciono-zlato.com">office@investiciono-zlato.com</a>
+                                        </li>
                                     </ul>
                                 </div>
                                 <div class="contact-right">
                                     <h3>Adresa</h3>
                                     <ul>
-                                        <li>Glavna 1, Zemun, Srbija</li>
+                                        <li>Nemanjina 25, 11080 Zemun</li>
                                     </ul>
                                 </div>
                             </div>
+                            <div class="text-white mt-4">
+                                Zainteresovani za praćenje cena zlata i donošenje pametnih investicionih odluka? Posetite
+                                našu
+                                kontakt stranicu i javite nam se danas! Naš tim stručnjaka će vam pružiti informacije o
+                                najnovijim cenama zlata i pomoći vam da pronađete najbolje investicione prilike. Ne
+                                propustite
+                                šansu da ostvarite profit na tržištu plemenitih metala. Kontaktirajte nas sada!
+                            </div>
                         </div>
+
                     </div>
                     <div class="col-lg-6">
                         <div class="contact-area1 style-1 m-r20 m-md-r0 wow fadeInUp" data-wow-delay="0.5s">

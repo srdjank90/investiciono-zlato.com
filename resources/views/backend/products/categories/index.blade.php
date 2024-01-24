@@ -38,7 +38,7 @@
                             class="form-control form-control-sm slug-generated" value="">
                         <div id="slugHelp" class="form-text">
                             {{ __('The “slug” is the URL-friendly version of the name. It
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    is usually all lowercase and contains only letters, numbers, and hyphens.') }}
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        is usually all lowercase and contains only letters, numbers, and hyphens.') }}
                         </div>
                     </div>
                     <div class="form-group">
@@ -123,7 +123,7 @@
 
         <!-- Edit modal -->
         <div class="modal modal-alert fade" id="editModal" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-dialog" role="document">
+            <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <form action="" id="editForm" enctype="multipart/form-data" method="post">
                         @csrf
@@ -144,6 +144,12 @@
                                 <label for="categorySlugEdit">{{ __('Slug') }}</label>
                                 <input type="text" name="slug" id="categorySlugEdit" required
                                     class="form-control">
+                            </div>
+
+                            <div class="form-group mb-2">
+                                <label for="description">{{ __('Description') }}</label>
+                                <textarea class="form-control tinymce" name="description" id="categoryDescriptionEdit" cols="30"
+                                    rows="10"></textarea>
                             </div>
 
                             <div class="form-group">
@@ -172,6 +178,12 @@
 
 @section('scripts')
     <script>
+        tinymce.init({
+            selector: "#categoryDescriptionEdit",
+            plugins: "anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount",
+            toolbar: "undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat",
+        });
+
         function formatDate(date) {
             var d = new Date(date),
                 month = '' + (d.getMonth() + 1),
@@ -203,7 +215,24 @@
             if (category.favorite_flag) {
                 $("#categoryFavoriteFlagEdit").attr('checked', true)
             }
+            console.log(category)
+            if (category.description && category.description != '') {
+                setTinyMCEContent(category.description)
+            } else {
+                setTinyMCEContent('')
+            }
 
         })
+
+        function setTinyMCEContent(value) {
+            // Get TinyMCE instance by id
+            var editor = tinymce.get('categoryDescriptionEdit');
+
+            // Check if the editor instance exists
+            if (editor) {
+                // Set the content of the editor
+                editor.setContent(value);
+            }
+        }
     </script>
 @endsection
