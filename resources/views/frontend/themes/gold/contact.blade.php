@@ -11,23 +11,6 @@
                     <div class="col-lg-6">
                         <div class="contact-info style-1 text-start text-white">
                             <h2 class="title wow fadeInUp" data-wow-delay="0.1s">Kontaktirajte nas</h2>
-                            <div class="contact-bottom wow fadeInUp" data-wow-delay="0.3s">
-                                <div class="contact-right me-2">
-                                    <h3>E-mail</h3>
-                                    <ul>
-                                        <li>
-                                            <a class="text-white"
-                                                href="mailto:office@investiciono-zlato.com">office@investiciono-zlato.com</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="contact-right">
-                                    <h3>Adresa</h3>
-                                    <ul>
-                                        <li>Nemanjina 25, 11080 Zemun</li>
-                                    </ul>
-                                </div>
-                            </div>
                             <div class="text-white mt-4">
                                 Zainteresovani za praćenje cena zlata i donošenje pametnih investicionih odluka? Posetite
                                 našu
@@ -35,6 +18,19 @@
                                 najnovijim cenama zlata i pomoći vam da pronađete najbolje investicione prilike. Ne
                                 propustite
                                 šansu da ostvarite profit na tržištu plemenitih metala. Kontaktirajte nas sada!
+                            </div>
+                            <div class="wow fadeInUp text-white mt-4" data-wow-delay="0.3s">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h3 class="text-white">E-mail</h3>
+                                        <a class="text-white"
+                                            href="mailto:office@investiciono-zlato.com">office@investiciono-zlato.com</a>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h3 class="text-white">Adresa</h3>
+                                        Nemanjina 25, 11080 Zemun
+                                    </div>
+                                </div>
                             </div>
                         </div>
 

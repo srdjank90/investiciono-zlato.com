@@ -52,8 +52,7 @@
                                 Royal Mint i Münze Österreich, svaki garantujući visok nivo sigurnosti i autentičnosti
                                 svojih proizvoda. Svaka pločica je LBMA sertifikovana za svoju finoću, obično 999,9, i
                                 poreklom su iz zemalja poput Nemačke, Austrije, Velike Britanije i Švajcarske. Cene ovih
-                                zlatnih pločica variraju u zavisnosti od veličine i tržišnih uslova u trenutku kupovine.i
-                                najviše čistoće zlata („Fine Gold“) predstavljaju visoko likvidne investicione formate. </p>
+                                zlatnih pločica variraju u zavisnosti od veličine i tržišnih uslova u trenutku kupovine.</p>
                         </div>
                         <div class="product-specification wow fadeInUp d-none" data-wow-delay="0.3s"
                             style="visibility: hidden; animation-delay: 0.3s; animation-name: none;">

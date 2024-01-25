@@ -14,11 +14,13 @@
                         <div class="section-head style-2 wow fadeInUp" data-wow-delay="0.2s"
                             style="visibility: hidden; animation-delay: 0.2s; animation-name: none;">
                             <h2 class="sub-title">Zlatne pločice</h2>
-                            <p>Zlatne pločice deo su našeg bogatog asortimana proizvoda nastalih u globalno renomiranim
-                                livnicama koje se pridržavaju najviših standarda proizvodnje. Kupce proizvoda u ponudi naših
-                                najpovoljnijih online prodavnica investicionog zlata očekuju zlatne pločice težinskih
-                                denominacija od 1g do 20g renomiranih svetskih brendova. Zbog svoje fine izrade i najviše
-                                čistoće zlata („Fine Gold“) predstavljaju visoko likvidne investicione formate. </p>
+                            <p>Zlatne pločice su male zlatne poluge koje služe kao oblik investicionog zlata. Proizvode ih
+                                renomirani proizvođači koristeći napredne tehnologije kako bi osigurali visok kvalitet. Neki
+                                od istaknutih proizvođača uključuju Argor Heraeus, C.Hafner, Valcambi Suisse, PAMP, The
+                                Royal Mint i Münze Österreich, svaki garantujući visok nivo sigurnosti i autentičnosti
+                                svojih proizvoda. Svaka pločica je LBMA sertifikovana za svoju finoću, obično 999,9, i
+                                poreklom su iz zemalja poput Nemačke, Austrije, Velike Britanije i Švajcarske. Cene ovih
+                                zlatnih pločica variraju u zavisnosti od veličine i tržišnih uslova u trenutku kupovine.</p>
                         </div>
                         <!-- Multiple table Prices -->
                         @foreach ($goldenPlates as $plate)
