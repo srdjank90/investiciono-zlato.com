@@ -6,8 +6,10 @@ use App\Models\Company;
 use App\Models\Product;
 use App\Models\ProductCategory;
 use App\Models\SeoMetaTag;
+use GuzzleHttp\Client;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Weidner\Goutte\GoutteFacade;
 
@@ -37,7 +39,9 @@ class Updating extends Command
         #$this->updateNames();
         #$this->updateSlug();
         #$this->updateProductCategorySeo();
-        $this->updateProductsImage();
+        #$this->updateProductsImage();
+        #$this->updateCoinNames();
+        $this->downloadProductsImages();
     }
 
     public function updateProductsImage()
@@ -294,7 +298,6 @@ class Updating extends Command
         }
     }
 
-
     public function generateName($product)
     {
         $producer = '';
@@ -406,6 +409,99 @@ class Updating extends Command
             return $weight;
         } else {
             return $weight;
+        }
+    }
+
+    public function updateCoinNames()
+    {
+        $products = Product::whereHas('categories', function ($qc) {
+            $qc->where('slug', 'LIKE', '%dukati%');
+        })->get();
+
+        foreach ($products as $product) {
+            $product = $this->generateCoinName($product);
+            $product->save();
+        }
+    }
+
+    /**
+     * Generate Name For Golden Coins
+     */
+    public function generateCoinName($product)
+    {
+        $producer = '';
+        $producerShort = '';
+        $name = '';
+        $slug = '';
+        $key = '';
+        if (str_contains(strtolower($product->name), 'filharmoni') || str_contains(strtolower($product->name), 'philhar')) {
+            $producer = 'Vienna Philharmonic';
+            $producerShort = 'VP';
+            $name = '1unca zlata | ' . $producer;
+            $slug = 'zlatni-dukati-' . Str::slug($producer) . '-1unca';
+            $key = $producerShort . '1U_BASIC';
+        }
+
+        if (str_contains(strtolower($product->name), 'jednostruki') || str_contains(strtolower($product->name), 'mali dukat')) {
+            $producer = 'Franz Joseph';
+            $producerShort = 'FJ';
+            $name = '3.49g zlata | ' . $producer;
+            $slug = 'zlatni-dukati-' . Str::slug($producer) . '-349g';
+            $key = $producerShort . '349G_BASIC';
+        }
+
+        if (
+            str_contains(strtolower($product->name), 'veliki dukat')
+            || str_contains(strtolower($product->name), 'etvorostruki')
+            || str_contains(strtolower($product->name), '4 dukata')
+        ) {
+            $producer = 'Franz Joseph';
+            $producerShort = 'FJ';
+            $name = '13.96g zlata | ' . $producer;
+            $slug = 'zlatni-dukati-' . Str::slug($producer) . '-1396g';
+            $key = $producerShort . '1396G_BASIC';
+        }
+
+        $product->producer = $producer;
+        $product->producer_short = $producerShort;
+        $product->name_default = $product->name;
+        $product->name = $name;
+        $product->slug_default = $product->slug;
+        $product->slug = $slug;
+        $product->unique_key = $key;
+        $product->quantity_type = 'SINGLE';
+        return $product;
+    }
+
+    public function downloadProductsImages()
+    {
+        $products = Product::all();
+        foreach ($products as $product) {
+            $imageUrl = $product->product_image_url;
+            if ($imageUrl) {
+                Log::info($imageUrl);
+                try {
+                    $client = new Client();
+                    $imageName = $product->id . '-' . $product->slug . '.jpg';
+                    $response = $client->get($imageUrl);
+                    if ($response->getStatusCode() === 200) {
+                        // Get the contents and save it to storage
+                        $imageContent = $response->getBody()->getContents();
+                        Storage::disk('public')->put('images/' . $imageName, $imageContent);
+
+                        // Optionally, you can also return the path to the saved image
+                        $imagePath = Storage::url('images/' . $imageName);
+                        $product->product_image_url = $imagePath;
+                        $product->save();
+                        Log::info($imagePath);
+                    } else {
+                        // Handle error if the request was not successful
+                        Log::info('ERROR');
+                    }
+                } catch (\Exception $e) {
+                    Log::info($e);
+                }
+            }
         }
     }
 }

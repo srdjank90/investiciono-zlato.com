@@ -22,6 +22,10 @@ footer .footer-logo img {
     max-width: 220px;
 }
 
+h2 {
+    text-transform: uppercase;
+}
+
 @media (max-width: 575.98px) {
     footer .footer-logo img {
         max-width: 350px;
