@@ -8,8 +8,8 @@
         <section class="content-inner-1 overlay-white-middle companies border-top">
             <div class="container">
                 <div class="section-inner">
-                    <div class="section-head style-2 p-lg-b0 p-md-b30 ">
-                        <h1 class="title ">Kupite <span class="text-primary">investiciono zlato</span> u Srbiji
+                    <div class="section-head style-2 p-lg-b0 p-md-b30">
+                        <h1 class="title">Kupite <span class="text-primary">investiciono zlato</span> u Srbiji
                             online</h1>
                         <p>Sezame, otvori se poredi cene zlata u realnom vremenu na <b>devet najpovoljnijih online
                                 prodavnica
@@ -20,7 +20,7 @@
                     </div>
                     <div class="row gx-3 companies-inner">
                         @foreach ($companies as $company)
-                            <div class="col-md-4 col-sm-4 col-6 p-lg-b30 p-b20 ">
+                            <div class="col-md-4 col-sm-4 col-6 p-lg-b30 p-b20">
                                 <a target="_blank" href="{{ $company->url }}" class="companies-wrapper">
                                     <div class="companies-media">
                                         <img src="{{ $company->image_url }}" alt="">
@@ -41,7 +41,7 @@
             <div class="container">
                 <div class="row align-items-start">
                     <div class="col-xl-6 col-lg-6">
-                        <div class="section-head style-2 ">
+                        <div class="section-head style-2">
                             <h3 class="sub-title">Zlatne pločice</h3>
                             <div>Zlatne pločice su male zlatne poluge koje služe kao oblik investicionog zlata. Proizvode ih
                                 renomirani proizvođači koristeći napredne tehnologije kako bi osigurali visok kvalitet. Neki
@@ -51,6 +51,9 @@
                                 poreklom su iz zemalja poput Nemačke, Austrije, Velike Britanije i Švajcarske. Cene ovih
                                 zlatnih pločica variraju u zavisnosti od veličine i tržišnih uslova u trenutku kupovine.
                             </div>
+                        </div>
+                        <div class="product-specification d-none">
+                            <h4 class="specification-title">Specifikacije</h4>
                         </div>
                         <!-- Multiple table Prices -->
                         @foreach ($goldenPlates as $plate)
@@ -77,6 +80,29 @@
                                             class="gold-column col-12 col-sm-6 col-md-3 col-lg-3 d-flex justify-content-center flex-column position-relative">
                                             <div class="d-md-none fw-bold"><small>Naziv</small></div>
 
+                                            @php
+                                                if (str_contains($product->unique_key, 'CH')) {
+                                                    echo '<img class="table-product-image" src="/storage/manufacturers/CH.webp" alt="">';
+                                                }
+                                                if (str_contains($product->unique_key, 'AH')) {
+                                                    echo '<img class="table-product-image" src="/storage/manufacturers/AH.webp" alt="">';
+                                                }
+                                                if (str_contains($product->unique_key, 'FJ')) {
+                                                    echo '<img class="table-product-image" src="/storage/manufacturers/FJ.webp" alt="">';
+                                                }
+                                                if (str_contains($product->unique_key, 'HM')) {
+                                                    echo '<img class="table-product-image" src="/storage/manufacturers/HM.webp" alt="">';
+                                                }
+                                                if (str_contains($product->unique_key, 'RM')) {
+                                                    echo '<img class="table-product-image" src="/storage/manufacturers/RM.webp" alt="">';
+                                                }
+                                                if (str_contains($product->unique_key, 'VP')) {
+                                                    echo '<img class="table-product-image" src="/storage/manufacturers/VP.webp" alt="">';
+                                                }
+                                                if (str_contains($product->unique_key, 'VS')) {
+                                                    echo '<img class="table-product-image" src="/storage/manufacturers/VS.webp" alt="">';
+                                                }
+                                            @endphp
 
                                             <a target="_blank" class="table-product-name text-primary fw-bold"
                                                 href="{{ $product['url'] }}">
@@ -152,7 +178,7 @@
                         <!-- #Multiple table Prices -->
                     </div>
                     <div class="col-xl-6 col-lg-6">
-                        <div class="section-head style-2 ">
+                        <div class="section-head style-2">
                             <h3 class="sub-title">Zlatne poluge</h3>
                             <div>Zlatne poluge su su pravougaoni komadi zlata i kao takvi su čest izbor ulagača
                                 zainteresovanih za investiciono zlato. One dolaze iz pouzdanih livnica svetskog renomea,
@@ -163,10 +189,9 @@
                                 često kupuju i čuvaju ove poluge kao način zaštite od inflacije ili fluktuacija valuta.
                             </div>
                         </div>
-
                         <!-- Multiple table Prices -->
                         @foreach ($goldenBars as $bar)
-                            <div class="prices-table-gold ">
+                            <div class="prices-table-gold">
                                 <div class="row">
                                     <div class="col-12">
                                         <h4 class="text-uppercase">Cena zlatne poluge <span>od
@@ -188,8 +213,29 @@
                                         <div
                                             class="gold-column col-12 col-sm-6 col-md-3 col-lg-3 d-flex justify-content-center flex-column position-relative">
                                             <div class="d-md-none fw-bold"><small>Naziv</small></div>
-                                            <!-- Hover Image -->
-
+                                            @php
+                                                if (str_contains($product->unique_key, 'CH')) {
+                                                    echo '<img class="table-product-image" src="/storage/manufacturers/CH.webp" alt="">';
+                                                }
+                                                if (str_contains($product->unique_key, 'AH')) {
+                                                    echo '<img class="table-product-image" src="/storage/manufacturers/AH.webp" alt="">';
+                                                }
+                                                if (str_contains($product->unique_key, 'FJ')) {
+                                                    echo '<img class="table-product-image" src="/storage/manufacturers/FJ.webp" alt="">';
+                                                }
+                                                if (str_contains($product->unique_key, 'HM')) {
+                                                    echo '<img class="table-product-image" src="/storage/manufacturers/HM.webp" alt="">';
+                                                }
+                                                if (str_contains($product->unique_key, 'RM')) {
+                                                    echo '<img class="table-product-image" src="/storage/manufacturers/RM.webp" alt="">';
+                                                }
+                                                if (str_contains($product->unique_key, 'VP')) {
+                                                    echo '<img class="table-product-image" src="/storage/manufacturers/VP.webp" alt="">';
+                                                }
+                                                if (str_contains($product->unique_key, 'VS')) {
+                                                    echo '<img class="table-product-image" src="/storage/manufacturers/VS.webp" alt="">';
+                                                }
+                                            @endphp
                                             <a target="_blank" class="table-product-name text-primary fw-bold"
                                                 href="{{ $product['url'] }}">
                                                 {{ $product['name'] }} <img width="45"
