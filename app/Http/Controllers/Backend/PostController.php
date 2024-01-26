@@ -149,6 +149,7 @@ class PostController extends BackendController
                 $originalName = $this->regenerateOriginalName($imagePath, $originalName, $extension);
             }
             $path = Storage::disk('public')->putFileAs($imagePath, $imageFile, $originalName);
+
             $imageData = [
                 "name" => str_replace("." . $extension, "", $originalName),
                 "path" => $path,
