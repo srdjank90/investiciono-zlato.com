@@ -8,9 +8,8 @@
         <section class="content-inner-1 overlay-white-middle companies border-top">
             <div class="container">
                 <div class="section-inner">
-                    <div class="section-head style-2 p-lg-b0 p-md-b30 wow fadeInUp" data-wow-delay="0.1s"
-                        style="visibility: hidden; animation-delay: 0.1s; animation-name: none;">
-                        <h1 class="title wow fadeInUp">Kupite <span class="text-primary">investiciono zlato</span> u Srbiji
+                    <div class="section-head style-2 p-lg-b0 p-md-b30 ">
+                        <h1 class="title ">Kupite <span class="text-primary">investiciono zlato</span> u Srbiji
                             online</h1>
                         <p>Sezame, otvori se poredi cene zlata u realnom vremenu na <b>devet najpovoljnijih online
                                 prodavnica
@@ -21,8 +20,7 @@
                     </div>
                     <div class="row gx-3 companies-inner">
                         @foreach ($companies as $company)
-                            <div class="col-md-4 col-sm-4 col-6 p-lg-b30 p-b20 wow fadeInUp" data-wow-delay="0.1s"
-                                style="visibility: hidden; animation-delay: 0.1s; animation-name: none;">
+                            <div class="col-md-4 col-sm-4 col-6 p-lg-b30 p-b20 ">
                                 <a target="_blank" href="{{ $company->url }}" class="companies-wrapper">
                                     <div class="companies-media">
                                         <img src="{{ $company->image_url }}" alt="">
@@ -38,30 +36,25 @@
 
         <!-- Products -->
         <section class="content-inner-1 overlay-white-middle about-products2">
-            <img src="/themes/gold/assets/images/bg-triangle3.png" class="bg-img" alt="">
-            <img src="/themes/gold/assets/images/bg-triangle4.png" class="bg-img2" alt="">
+            <img src="/themes/gold/assets/images/bg-triangle3.webp" class="bg-img" alt="">
+            <img src="/themes/gold/assets/images/bg-triangle4.webp" class="bg-img2" alt="">
             <div class="container">
                 <div class="row align-items-start">
                     <div class="col-xl-6 col-lg-6">
-                        <div class="section-head style-2 wow fadeInUp" data-wow-delay="0.2s"
-                            style="visibility: hidden; animation-delay: 0.2s; animation-name: none;">
+                        <div class="section-head style-2 ">
                             <h3 class="sub-title">Zlatne pločice</h3>
-                            <p>Zlatne pločice su male zlatne poluge koje služe kao oblik investicionog zlata. Proizvode ih
+                            <div>Zlatne pločice su male zlatne poluge koje služe kao oblik investicionog zlata. Proizvode ih
                                 renomirani proizvođači koristeći napredne tehnologije kako bi osigurali visok kvalitet. Neki
                                 od istaknutih proizvođača uključuju Argor Heraeus, C.Hafner, Valcambi Suisse, PAMP, The
                                 Royal Mint i Münze Österreich, svaki garantujući visok nivo sigurnosti i autentičnosti
                                 svojih proizvoda. Svaka pločica je LBMA sertifikovana za svoju finoću, obično 999,9, i
                                 poreklom su iz zemalja poput Nemačke, Austrije, Velike Britanije i Švajcarske. Cene ovih
-                                zlatnih pločica variraju u zavisnosti od veličine i tržišnih uslova u trenutku kupovine.</p>
-                        </div>
-                        <div class="product-specification wow fadeInUp d-none" data-wow-delay="0.3s"
-                            style="visibility: hidden; animation-delay: 0.3s; animation-name: none;">
-                            <h4 class="specification-title">Specifikacije</h4>
+                                zlatnih pločica variraju u zavisnosti od veličine i tržišnih uslova u trenutku kupovine.
+                            </div>
                         </div>
                         <!-- Multiple table Prices -->
                         @foreach ($goldenPlates as $plate)
-                            <div class="prices-table-gold wow fadeInUp" data-wow-delay="0.4s"
-                                style="visibility: hidden; animation-delay: 0.4s; animation-name: none;">
+                            <div class="prices-table-gold">
                                 <div class="row">
                                     <div class="col-12">
                                         <h4 class="text-uppercase">Cena zlatne pločice <span>od
@@ -83,10 +76,7 @@
                                         <div
                                             class="gold-column col-12 col-sm-6 col-md-3 col-lg-3 d-flex justify-content-center flex-column position-relative">
                                             <div class="d-md-none fw-bold"><small>Naziv</small></div>
-                                            @if ($product->product_image_url && $product->product_image_url != '')
-                                                <img class="table-product-image" src="{{ $product->product_image_url }}"
-                                                    alt="">
-                                            @endif
+
 
                                             <a target="_blank" class="table-product-name text-primary fw-bold"
                                                 href="{{ $product['url'] }}">
@@ -162,27 +152,21 @@
                         <!-- #Multiple table Prices -->
                     </div>
                     <div class="col-xl-6 col-lg-6">
-                        <div class="section-head style-2 wow fadeInUp" data-wow-delay="0.2s"
-                            style="visibility: hidden; animation-delay: 0.2s; animation-name: none;">
+                        <div class="section-head style-2 ">
                             <h3 class="sub-title">Zlatne poluge</h3>
-                            <p>Zlatne poluge su su pravougaoni komadi zlata i kao takvi su čest izbor ulagača
+                            <div>Zlatne poluge su su pravougaoni komadi zlata i kao takvi su čest izbor ulagača
                                 zainteresovanih za investiciono zlato. One dolaze iz pouzdanih livnica svetskog renomea,
                                 upakovane su u blister pakovanja, kao uostalom i zlatne pločice, u kojima se nalaze LBMA
                                 sertifikati koji garantuju kvalitet proizvodnje. Zbog svoje fine izrade i najviše čistoće
                                 zlata („Fine Gold“), zlatne poluge predstavljaju visoko likvidne investicione formate. Često
                                 se smatraju opipljivom imovinom koja može zadržati svoju vrednost tokom vremena. Investitori
                                 često kupuju i čuvaju ove poluge kao način zaštite od inflacije ili fluktuacija valuta.
-                            </p>
-                        </div>
-                        <div class="product-specification wow fadeInUp d-none" data-wow-delay="0.3s"
-                            style="visibility: hidden; animation-delay: 0.3s; animation-name: none;">
-                            <h4 class="specification-title">Specifikacije</h4>
+                            </div>
                         </div>
 
                         <!-- Multiple table Prices -->
                         @foreach ($goldenBars as $bar)
-                            <div class="prices-table-gold wow fadeInUp" data-wow-delay="0.4s"
-                                style="visibility: hidden; animation-delay: 0.4s; animation-name: none;">
+                            <div class="prices-table-gold ">
                                 <div class="row">
                                     <div class="col-12">
                                         <h4 class="text-uppercase">Cena zlatne poluge <span>od
@@ -205,10 +189,7 @@
                                             class="gold-column col-12 col-sm-6 col-md-3 col-lg-3 d-flex justify-content-center flex-column position-relative">
                                             <div class="d-md-none fw-bold"><small>Naziv</small></div>
                                             <!-- Hover Image -->
-                                            @if ($product->product_image_url && $product->product_image_url != '')
-                                                <img class="table-product-image" src="{{ $product->product_image_url }}"
-                                                    alt="">
-                                            @endif
+
                                             <a target="_blank" class="table-product-name text-primary fw-bold"
                                                 href="{{ $product['url'] }}">
                                                 {{ $product['name'] }} <img width="45"
@@ -286,8 +267,7 @@
         <!-- About products2 End -->
 
         <!-- Get In Touch -->
-        <section class="get-in-touch wow fadeIn" data-wow-delay="0.3s"
-            style="visibility: hidden; animation-delay: 0.3s; animation-name: none;">
+        <section class="get-in-touch wow fadeIn">
             <div class="m-r100 m-md-r0 m-sm-r0">
                 <h3 class="dz-title mb-lg-0 mb-3">Imate pitanje ?
                     <span>Naše ljubazno osoblje, stoji Vam na raspolaganju.</span>

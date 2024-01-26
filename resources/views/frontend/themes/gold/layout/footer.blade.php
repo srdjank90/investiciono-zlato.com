@@ -7,7 +7,7 @@
                 <div class="col-xl-3 col-md-4 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="widget widget_about me-2">
                         <div class="footer-logo logo-white">
-                            <a href="index"><img src="/themes/gold/assets/images/footer-logo.png" alt=""></a>
+                            <a href="index"><img src="/themes/gold/assets/images/footer-logo.webp" alt=""></a>
                         </div>
                         <ul class="widget-address">
                             <li>

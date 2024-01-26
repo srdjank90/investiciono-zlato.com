@@ -4,7 +4,7 @@
         <div class="container clearfix">
             <!-- Website Logo -->
             <div class="logo-header logo-dark">
-                <a href="{{ route('frontend.index') }}"><img src="/themes/gold/assets/images/header-logo.png"
+                <a href="{{ route('frontend.index') }}"><img src="/themes/gold/assets/images/header-logo.webp"
                         alt="logo"></a>
             </div>
             <!-- EXTRA NAV -->
@@ -57,7 +57,7 @@
             <div class="container clearfix">
                 <!-- Website Logo -->
                 <div class="logo-header logo-dark">
-                    <a href="{{ route('frontend.index') }}"><img src="/themes/gold/assets/images/header-logo.png"
+                    <a href="{{ route('frontend.index') }}"><img src="/themes/gold/assets/images/header-logo.webp"
                             alt="logo"></a>
                 </div>
                 <!-- Nav Toggle Button -->
@@ -90,7 +90,7 @@
                 <!-- Main Nav -->
                 <div class="header-nav navbar-collapse collapse justify-content-start" id="navbarNavDropdown">
                     <div class="logo-header">
-                        <a href="index"><img src="/themes/gold/assets/images/logo.png" alt=""></a>
+                        <a href="index"><img src="/themes/gold/assets/images/logo.webp" alt=""></a>
                     </div>
                     <ul class="nav navbar-nav dark-nav">
                         <li class="has-mega-menu sub-menu-down">
@@ -98,19 +98,19 @@
                             <div class="mega-menu demo-menu">
                                 <div class="row">
                                     <div class="col-md-3 col-6"><a href="{{ route('frontend.plates') }}"><img
-                                                src="/themes/gold/assets/images/demo/demo-1.png" alt="/"> <span
+                                                src="/themes/gold/assets/images/demo/demo-1.webp" alt="/"> <span
                                                 class="menu-title">Zlatne pločice</span></a></div>
                                     <div class="col-md-3 col-6"><a href="{{ route('frontend.bars') }}"><img
-                                                src="/themes/gold/assets/images/demo/demo-2.png" alt="/"> <span
+                                                src="/themes/gold/assets/images/demo/demo-2.webp" alt="/"> <span
                                                 class="menu-title">Zlatne poluge</span></a>
                                     </div>
                                     <div class="col-md-3 col-6"><a href="{{ route('frontend.coins') }}"><img
-                                                src="/themes/gold/assets/images/demo/demo-3.png" alt="/"> <span
-                                                class="menu-title">Zlatni dukati</span></a>
+                                                src="/themes/gold/assets/images/demo/demo-3.webp" alt="/">
+                                            <span class="menu-title">Zlatni dukati</span></a>
                                     </div>
                                     <div class="col-md-3 col-6"><a href="https://www.aikb.net/"><img
-                                                src="/themes/gold/assets/images/demo/demo-4.png" alt="/"> <span
-                                                class="menu-title">Investicioni forum</span></a>
+                                                src="/themes/gold/assets/images/demo/demo-4.webp" alt="/">
+                                            <span class="menu-title">Investicioni forum</span></a>
                                     </div>
                                 </div>
                             </div>
@@ -169,7 +169,7 @@
                                             <div class="col-md-3 col-sm-4 col-6 d-md-block">
                                                 <div class="adv-media">
                                                     <a href="https://www.aikb.net/"><img
-                                                            src="/themes/gold/assets/images/adv-1.png"
+                                                            src="/themes/gold/assets/images/adv-1.webp"
                                                             alt="/"></a>
 
                                                 </div>

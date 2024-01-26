@@ -17,18 +17,10 @@
         href="/themes/gold/assets/vendor/bootstrap-select/dist/css/bootstrap-select.min.css">
     <link rel="stylesheet" type="text/css" href="/themes/gold/assets/icons/themify/themify-icons.css">
     <link rel="stylesheet" type="text/css" href="/themes/gold/assets/icons/flaticon/flaticon_mooncart.css">
-    <link rel="stylesheet" type="text/css" href="/themes/gold/assets/vendor/magnific-popup/magnific-popup.min.css">
     <link rel="stylesheet" type="text/css" href="/themes/gold/assets/icons/fontawesome/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
-    <link rel="stylesheet" type="text/css" href="/themes/gold/assets/vendor/animate/animate.css">
-    <link rel="stylesheet" type="text/css" href="/themes/gold/assets/vendor/lightgallery/dist/css/lightgallery.css">
-    <link rel="stylesheet" type="text/css" href="/themes/gold/assets/vendor/lightgallery/dist/css/lg-thumbnail.css">
-    <link rel="stylesheet" type="text/css" href="/themes/gold/assets/vendor/lightgallery/dist/css/lg-zoom.css">
     <link rel="stylesheet" type="text/css" href="/themes/gold/assets/css/style.css">
     <link rel="stylesheet" type="text/css" href="/themes/gold/assets/css/main.css">
-    <!-- GOOGLE FONTS-->
-    <link rel="preconnect" href="https://fonts.googleapis.com/">
-    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&amp;family=Roboto:wght@100;300;400;500;700;900&amp;display=swap"
         rel="stylesheet">
@@ -59,13 +51,6 @@
 
 <body>
     <div class="page-wraper">
-        <div id="loading-area" class="preloader-wrapper-1">
-            <div>
-                <span class="loader-2"></span>
-                <img src="/themes/gold/assets/images/loader-logo.png" alt="sezame, otvori se">
-                <span class="loader"></span>
-            </div>
-        </div>
         <!-- Header -->
         @include('frontend.themes.gold.layout.header')
         <!-- #Header -->

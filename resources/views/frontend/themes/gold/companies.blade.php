@@ -6,8 +6,8 @@
     <div class="page-content bg-white">
         <!-- Golden Plates -->
         <section class="content-inner-1 overlay-white-middle about-products2">
-            <img src="/themes/gold/assets/images/bg-triangle3.png" class="bg-img" alt="">
-            <img src="/themes/gold/assets/images/bg-triangle4.png" class="bg-img2" alt="">
+            <img src="/themes/gold/assets/images/bg-triangle3.webp" class="bg-img" alt="">
+            <img src="/themes/gold/assets/images/bg-triangle4.webp" class="bg-img2" alt="">
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-md-12">
