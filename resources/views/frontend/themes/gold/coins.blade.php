@@ -1,6 +1,9 @@
 @extends('frontend.themes.gold.layout.layout')
 @section('title', 'Zlatni dukati | Poredjenje cena investicionog zlata u realnom vremenu')
-@section('description', '')
+@section('description',
+    'Zlatni dukati su tradicionalne zlatne kovanice koje su bile u upotrebi tokom istorije i koje se
+    i danas proizvode u nekim zemljama. Ovi zlatni dukati su često bili korišćeni kao novac ili sredstvo razmene i imaju
+    bogatu istorijsku vrednost')
 @section('keywords', '')
 @section('content')
     <div class="page-content bg-white">
@@ -11,8 +14,7 @@
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-xl-12 col-lg-12">
-                        <div class="section-head style-2 wow fadeInUp" data-wow-delay="0.2s"
-                            style="visibility: hidden; animation-delay: 0.2s; animation-name: none;">
+                        <div class="section-head style-2">
                             <div class="mb-4">
                                 {!! $category->description !!}
                             </div>
@@ -20,8 +22,7 @@
 
                         <!-- Multiple table Prices -->
                         @foreach ($goldenCoins as $coin)
-                            <div class="prices-table-gold wow fadeInUp" data-wow-delay="0.4s"
-                                style="visibility: hidden; animation-delay: 0.4s; animation-name: none;">
+                            <div class="prices-table-gold">
                                 <div class="row">
                                     <div class="col-12">
                                         <h4 class="text-uppercase">Cena zlatne poluge <span>od

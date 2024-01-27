@@ -1,6 +1,6 @@
 @extends('frontend.themes.gold.layout.layout')
 @section('title', $category->seo->title . ' | Poredjenje cena investicionog zlata u realnom vremenu')
-@section('description', '')
+@section('description', strip_tags(htmlspecialchars_decode($category->description)))
 @section('keywords', '')
 @section('content')
     <div class="page-content bg-white">
@@ -11,15 +11,13 @@
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-xl-12 col-lg-12">
-                        <div class="product-specification wow fadeInUp mb-3" data-wow-delay="0.3s"
-                            style="visibility: hidden; animation-delay: 0.3s; animation-name: none;">
+                        <div class="product-specification mb-3">
                             <div class="mb-4">
                                 {!! $category->description !!}
                             </div>
                         </div>
                         <!-- Category table Prices -->
-                        <div class="prices-table-gold wow fadeInUp" data-wow-delay="0.4s"
-                            style="visibility: hidden; animation-delay: 0.4s; animation-name: none;">
+                        <div class="prices-table-gold">
                             <div class="row">
                                 <div class="col-12 col-sm-6 col-md-3 col-lg-3 d-none d-md-block fw-bold mb-3">
                                     Naziv

@@ -1,6 +1,13 @@
 @extends('frontend.themes.gold.layout.layout')
 @section('title', 'Zlatne poluge | Poredjenje cena investicionog zlata u realnom vremenu')
-@section('description', 'Zlatne poluge')
+@section('description',
+    'Zlatne poluge su su pravougaoni komadi zlata i kao takvi su čest izbor ulagača
+    zainteresovanih za investiciono zlato. One dolaze iz pouzdanih livnica svetskog renomea,
+    upakovane su u blister pakovanja, kao uostalom i zlatne pločice, u kojima se nalaze LBMA
+    sertifikati koji garantuju kvalitet proizvodnje. Zbog svoje fine izrade i najviše čistoće
+    zlata („Fine Gold“), zlatne poluge predstavljaju visoko likvidne investicione formate. Često
+    se smatraju opipljivom imovinom koja može zadržati svoju vrednost tokom vremena. Investitori
+    često kupuju i čuvaju ove poluge kao način zaštite od inflacije ili fluktuacija valuta.')
 @section('keywords', '')
 @section('content')
     <div class="page-content bg-white">
@@ -11,8 +18,7 @@
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-xl-12 col-lg-12">
-                        <div class="section-head style-2 wow fadeInUp" data-wow-delay="0.2s"
-                            style="visibility: hidden; animation-delay: 0.2s; animation-name: none;">
+                        <div class="section-head style-2">
                             <h2 class="sub-title">Zlatne poluge</h2>
                             <p>Zlatne poluge su su pravougaoni komadi zlata i kao takvi su čest izbor ulagača
                                 zainteresovanih za investiciono zlato. One dolaze iz pouzdanih livnica svetskog renomea,
@@ -25,8 +31,7 @@
                         </div>
                         <!-- Multiple table Prices -->
                         @foreach ($goldenBars as $bar)
-                            <div class="prices-table-gold wow fadeInUp" data-wow-delay="0.4s"
-                                style="visibility: hidden; animation-delay: 0.4s; animation-name: none;">
+                            <div class="prices-table-gold">
                                 <div class="row">
                                     <div class="col-12">
                                         <h4 class="text-uppercase">Cena zlatne poluge <span>od

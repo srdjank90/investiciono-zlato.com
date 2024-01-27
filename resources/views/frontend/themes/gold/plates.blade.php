@@ -1,6 +1,13 @@
 @extends('frontend.themes.gold.layout.layout')
 @section('title', 'Zlatne pločice | Poredjenje cena investicionog zlata u realnom vremenu')
-@section('description', '')
+@section('description',
+    'Zlatne pločice su male zlatne poluge koje služe kao oblik investicionog zlata. Proizvode ih
+    renomirani proizvođači koristeći napredne tehnologije kako bi osigurali visok kvalitet. Neki
+    od istaknutih proizvođača uključuju Argor Heraeus, C.Hafner, Valcambi Suisse, PAMP, The
+    Royal Mint i Münze Österreich, svaki garantujući visok nivo sigurnosti i autentičnosti
+    svojih proizvoda. Svaka pločica je LBMA sertifikovana za svoju finoću, obično 999,9, i
+    poreklom su iz zemalja poput Nemačke, Austrije, Velike Britanije i Švajcarske. Cene ovih
+    zlatnih pločica variraju u zavisnosti od veličine i tržišnih uslova u trenutku kupovine.')
 @section('keywords', '')
 @section('content')
     <div class="page-content bg-white">
@@ -11,8 +18,7 @@
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-xl-12 col-lg-12">
-                        <div class="section-head style-2 wow fadeInUp" data-wow-delay="0.2s"
-                            style="visibility: hidden; animation-delay: 0.2s; animation-name: none;">
+                        <div class="section-head style-2">
                             <h2 class="sub-title">Zlatne pločice</h2>
                             <p>Zlatne pločice su male zlatne poluge koje služe kao oblik investicionog zlata. Proizvode ih
                                 renomirani proizvođači koristeći napredne tehnologije kako bi osigurali visok kvalitet. Neki
@@ -24,8 +30,7 @@
                         </div>
                         <!-- Multiple table Prices -->
                         @foreach ($goldenPlates as $plate)
-                            <div class="prices-table-gold wow fadeInUp" data-wow-delay="0.4s"
-                                style="visibility: hidden; animation-delay: 0.4s; animation-name: none;">
+                            <div class="prices-table-gold">
                                 <div class="row">
                                     <div class="col-12">
                                         <h4 class="text-uppercase">Cena zlatne pločice <span>od

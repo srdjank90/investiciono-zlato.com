@@ -73,7 +73,7 @@
                     <div class="extra-cell">
                         <ul class="header-right">
                             <li class="nav-item search-link">
-                                <a class="nav-link" href="javascript:void(0);" data-bs-toggle="offcanvas"
+                                <a class="nav-link" href="#" data-bs-toggle="offcanvas"
                                     data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">
                                     <svg width="21" height="21" viewBox="0 0 21 21" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
@@ -94,7 +94,7 @@
                     </div>
                     <ul class="nav navbar-nav dark-nav">
                         <li class="has-mega-menu sub-menu-down">
-                            <a href="javascript:void(0);"><span>Investiciono zlato</span></a>
+                            <a href="#"><span>Investiciono zlato</span></a>
                             <div class="mega-menu demo-menu">
                                 <div class="row">
                                     <div class="col-md-3 col-6"><a href="{{ route('frontend.plates') }}"><img
@@ -108,7 +108,7 @@
                                                 src="/themes/gold/assets/images/demo/demo-3.webp" alt="/">
                                             <span class="menu-title">Zlatni dukati</span></a>
                                     </div>
-                                    <div class="col-md-3 col-6"><a href="https://www.aikb.net/"><img
+                                    <div class="col-md-3 col-6"><a href="https://forum.investiciono-zlato.com"><img
                                                 src="/themes/gold/assets/images/demo/demo-4.webp" alt="/">
                                             <span class="menu-title">Investicioni forum</span></a>
                                     </div>
@@ -179,7 +179,7 @@
                                 </div>
                             </div>
                         </li>
-                        <li class="has-mega-menu sub-menu-down"><a href="javascript:void(0);"><span>Blog</span></a>
+                        <li class="has-mega-menu sub-menu-down"><a href="#"><span>Blog</span></a>
                             <div class="mega-menu blog-menu">
                                 <div class="row">
                                     <div class="col-md-6 col-sm-6 col-6">
