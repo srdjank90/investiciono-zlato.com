@@ -13,10 +13,11 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule): void
     {
         // $schedule->command('inspire')->hourly();
-        $schedule->command('sitemap:generate')->daily();
-        $schedule->command('app:update-prices')->everyThreeMinutes();
-        $schedule->command('export:prices')->dailyAt('18:30');
-        $schedule->command('export:products-prices')->dailyAt('18:00');
+        #$schedule->command('sitemap:generate')->daily();
+        $schedule->command('app:update-prices')->everyTwoMinutes();
+        $schedule->command('export:prices')->dailyAt('23:58')->timezone('CET');
+        $schedule->command('export:products-prices')->dailyAt('23:58')->timezone('CET');
+        $schedule->command('app:empty-prices')->dailyAt('23:59')->timezone('CET');
     }
 
     /**

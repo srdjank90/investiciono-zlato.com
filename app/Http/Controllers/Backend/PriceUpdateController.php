@@ -14,6 +14,20 @@ use Symfony\Component\DomCrawler\Crawler;
 
 class PriceUpdateController extends Controller
 {
+    public function updatePricesApi()
+    {
+        $url = env('SCRAPER_API', 'http://127.0.0.1:8001/api');
+        $response = Http::get($url . '/prices');
+        if ($response->successful()) {
+            $prices = $response->json();
+            foreach ($prices as $price) {
+                Price::create($price);
+            }
+        } else {
+            Log::info('Problem sa povlacenjem cena!');
+        }
+    }
+
     public function updatePrices()
     {
         $this->updateEurExchange();                     // Get EUR value

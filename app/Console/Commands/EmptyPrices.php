@@ -2,17 +2,17 @@
 
 namespace App\Console\Commands;
 
-use App\Http\Controllers\Backend\PriceUpdateController;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\DB;
 
-class UpdatePrices extends Command
+class EmptyPrices extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'app:update-prices';
+    protected $signature = 'app:empty-prices';
 
     /**
      * The console command description.
@@ -26,7 +26,6 @@ class UpdatePrices extends Command
      */
     public function handle()
     {
-        $uc = new PriceUpdateController();
-        $uc->updatePricesApi();
+        DB::table('prices')->truncate();
     }
 }
