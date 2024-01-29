@@ -2,6 +2,7 @@
 @section('title', isset($setting['setting_seo_title_opt']) ? $setting['setting_seo_title_opt'] : 'Zlatoteka')
 @section('description', isset($setting['setting_seo_description_opt']) ? $setting['setting_seo_description_opt'] : '')
 @section('keywords', isset($setting['setting_seo_keywords_opt']) ? $setting['setting_seo_keywords_opt'] : '')
+@section('image', 'themes/gold/assets/images/demo/demo-3.webp')
 @section('content')
     <div class="page-content bg-white">
         <!-- Companies -->

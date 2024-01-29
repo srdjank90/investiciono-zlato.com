@@ -2,6 +2,8 @@
 @section('title', $post->title . ' | Poredjenje cena investicionog zlata u realnom vremenu')
 @section('description', '')
 @section('keywords', '')
+@section('image', $post->image ? 'https://investiciono-zlato.com/storage/' . $post->image->path :
+    'themes/gold/assets/images/demo/demo-3.webp')
 @section('content')
     <div class="page-content">
         <!-- Blog Large -->

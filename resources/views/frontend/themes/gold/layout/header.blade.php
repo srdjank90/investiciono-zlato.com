@@ -168,7 +168,7 @@
 
                                             <div class="col-md-3 col-sm-4 col-6 d-md-block">
                                                 <div class="adv-media">
-                                                    <a href="https://www.aikb.net/"><img
+                                                    <a href="https://forum.investiciono-zlato.com/"><img
                                                             src="/themes/gold/assets/images/adv-1.webp"
                                                             alt="/"></a>
 

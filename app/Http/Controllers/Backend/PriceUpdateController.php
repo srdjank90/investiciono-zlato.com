@@ -16,7 +16,7 @@ class PriceUpdateController extends Controller
 {
     public function updatePricesApi()
     {
-        $url = env('SCRAPER_API', 'http://127.0.0.1:8001/api');
+        $url = env('SCRAPER_API', 'https://radoviutoku.com/api');
         $response = Http::get($url . '/prices');
         if ($response->successful()) {
             $prices = $response->json();
