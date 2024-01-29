@@ -2,6 +2,7 @@
 @section('title', $category->seo->title . ' | Poredjenje cena investicionog zlata u realnom vremenu')
 @section('description', strip_tags(htmlspecialchars_decode($category->description)))
 @section('keywords', '')
+@section('image', 'themes/gold/assets/images/demo/demo-3.webp')
 @section('content')
     <div class="page-content bg-white">
         <!-- Golden Plates -->

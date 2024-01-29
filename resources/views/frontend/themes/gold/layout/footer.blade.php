@@ -10,23 +10,23 @@
                             <a href="index"><img src="/themes/gold/assets/images/footer-logo.webp" alt=""></a>
                         </div>
                         <ul class="widget-address">
-                            <li>
+                            <li class="d-none">
                                 <p><span>Adresa</span> : Nemanjina 25, 11080 Zemun</p>
                             </li>
                             <li>
                                 <p><span>E-mail</span> : <a
-                                        href="mailto:office@investiciono-zlato.com">office@investiciono-zlato.com</a>
+                                        href="mailto:kontakt@investiciono-zlato.com">kontakt@investiciono-zlato.com</a>
                                 </p>
                             </li>
                         </ul>
                         <div class="subscribe_widget">
                             <h6 class="title fw-medium">Prijavite se na mejl listu</h6>
-                            <form class="dzSubscribe" action="/xhtml/script/mailchamp.php" method="post">
-                                <div class="dzSubscribeMsg"></div>
+                            <form id="newsletterForm" class="dzSubscribe" method="post">
+                                @csrf
                                 <div class="form-group">
                                     <div class="input-group mb-0">
-                                        <input name="dzEmail" required="required" type="email" class="form-control"
-                                            placeholder="Upišite email adresu">
+                                        <input name="email" id="newsletterEmail" required="required" type="email"
+                                            class="form-control text-dark" placeholder="Upišite email adresu">
                                         <div class="input-group-addon">
                                             <button name="submit" value="Submit" type="submit" class="btn">
                                                 <svg width="21" height="21" viewBox="0 0 21 21" fill="none">
@@ -39,6 +39,9 @@
                                             </button>
                                         </div>
                                     </div>
+                                </div>
+                                <div class="newsletterMsg">
+
                                 </div>
                             </form>
                         </div>
@@ -126,3 +129,32 @@
 <!-- Footer End -->
 
 <button class="scroltop" type="button"><i class="fas fa-arrow-up"></i></button>
+
+@section('scripts')
+    <script>
+        $(document).ready(function() {
+            $('#newsletterForm').submit(function(event) {
+                event.preventDefault(); // Prevent the default form submission
+                var formData = $(this).serialize(); // Serialize form data
+                $.ajax({
+                    type: 'POST',
+                    url: '/subscribe', // Change this to your backend endpoint
+                    data: formData,
+                    dataType: 'json',
+                    success: function(response) {
+                        $('.newsletterMsg').html(response.message)
+                        setTimeout(function() {
+                            $('.newsletterMsg').html('')
+                            $('#newsletterEmail').val('')
+                        }, 3000)
+                    },
+                    error: function(xhr, status, error) {
+                        // Handle errors
+                        var errorMessage = xhr.status + ': ' + xhr.statusText;
+                        alert('Error - ' + errorMessage);
+                    }
+                });
+            });
+        });
+    </script>
+@endsection

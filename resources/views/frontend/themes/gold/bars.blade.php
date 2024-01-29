@@ -9,6 +9,7 @@
     se smatraju opipljivom imovinom koja može zadržati svoju vrednost tokom vremena. Investitori
     često kupuju i čuvaju ove poluge kao način zaštite od inflacije ili fluktuacija valuta.')
 @section('keywords', '')
+@section('image', 'themes/gold/assets/images/demo/demo-3.webp')
 @section('content')
     <div class="page-content bg-white">
         <!-- Golden Plates -->

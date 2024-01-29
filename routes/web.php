@@ -147,4 +147,5 @@ Route::get('/cron-day', [App\Http\Controllers\Backend\PriceUpdateController::cla
 
 Route::get('/cena-zlata', [App\Http\Controllers\Frontend\FrontendController::class, 'price'])->name('frontend.price');
 Route::get('/kursna-lista', [App\Http\Controllers\Frontend\FrontendController::class, 'exchange'])->name('frontend.exchange');
+Route::post('/subscribe', [App\Http\Controllers\Frontend\SubscriberController::class, 'subscribe'])->name('frontend.subscribe');
 Route::get('/{slug}', [App\Http\Controllers\Frontend\FrontendController::class, 'page'])->name('frontend.page');

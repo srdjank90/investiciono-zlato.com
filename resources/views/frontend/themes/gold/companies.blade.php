@@ -2,6 +2,7 @@
 @section('title', 'Prodavnice | Poredjenje cena investicionog zlata u realnom vremenu')
 @section('description', 'Prodavnice')
 @section('keywords', '')
+@section('image', 'themes/gold/assets/images/demo/demo-3.webp')
 @section('content')
     <div class="page-content bg-white">
         <!-- Golden Plates -->

@@ -9,6 +9,7 @@
     poreklom su iz zemalja poput Nemačke, Austrije, Velike Britanije i Švajcarske. Cene ovih
     zlatnih pločica variraju u zavisnosti od veličine i tržišnih uslova u trenutku kupovine.')
 @section('keywords', '')
+@section('image', 'themes/gold/assets/images/demo/demo-3.webp')
 @section('content')
     <div class="page-content bg-white">
         <!-- Golden Plates -->

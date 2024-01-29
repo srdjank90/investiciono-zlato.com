@@ -5,6 +5,7 @@
     i danas proizvode u nekim zemljama. Ovi zlatni dukati su često bili korišćeni kao novac ili sredstvo razmene i imaju
     bogatu istorijsku vrednost')
 @section('keywords', '')
+@section('image', 'themes/gold/assets/images/demo/demo-3.webp')
 @section('content')
     <div class="page-content bg-white">
         <!-- Golden Plates -->

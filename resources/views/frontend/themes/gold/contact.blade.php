@@ -2,6 +2,7 @@
 @section('title', 'Kontakt | Poredjenje cena investicionog zlata u realnom vremenu')
 @section('description', 'Kontakt')
 @section('keywords', '')
+@section('image', 'themes/gold/assets/images/demo/demo-3.webp')
 @section('content')
     <div class="page-content" style="min-height: 800px">
         <!--banner-->
@@ -21,12 +22,12 @@
                             </div>
                             <div class="wow fadeInUp text-white mt-4" data-wow-delay="0.3s">
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-8">
                                         <h3 class="text-white">E-mail</h3>
                                         <a class="text-white"
-                                            href="mailto:office@investiciono-zlato.com">office@investiciono-zlato.com</a>
+                                            href="mailto:kontakt@investiciono-zlato.com">kontakt@investiciono-zlato.com</a>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-8 d-none">
                                         <h3 class="text-white">Adresa</h3>
                                         Nemanjina 25, 11080 Zemun
                                     </div>
