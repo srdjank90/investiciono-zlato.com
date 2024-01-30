@@ -21,6 +21,6 @@ class SubscriberController extends Controller
             'email' => $request->email,
         ]);
 
-        return response()->json(['message' => 'Uspešno ste se pretplatili'], 201);
+        return response()->json(['message' => 'Uspešno ste se prijavili'], 201);
     }
 }
