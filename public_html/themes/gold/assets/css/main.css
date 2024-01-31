@@ -26,6 +26,15 @@ h2 {
     text-transform: uppercase;
 }
 
+.header-fixed {
+    position: fixed;
+    width: 100%;
+}
+
+.page-content {
+    padding-top: 150px;
+}
+
 @media (max-width: 575.98px) {
     footer .footer-logo img {
         max-width: 350px;

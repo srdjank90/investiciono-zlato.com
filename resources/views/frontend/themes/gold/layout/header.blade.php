@@ -1,4 +1,4 @@
-<header class="site-header mo-left header style-2">
+<header class="site-header mo-left header style-2 header-fixed">
     <!-- Main Header -->
     <div class="header-info-bar">
         <div class="container clearfix">

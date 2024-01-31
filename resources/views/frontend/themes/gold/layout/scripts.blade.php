@@ -199,6 +199,18 @@
     }
 
     $(document).ready(function() {
+        var header = $('.site-header');
+        var headerOffset = header.offset().top;
+
+        $(window).scroll(function() {
+            if ($(window).scrollTop() > headerOffset) {
+                //header.addClass('header-fixed');
+            } else {
+                //header.removeClass('header-fixed');
+            }
+        });
+
+
         $('.color-label:first').click();
         $('.color-input:first').next().children().addClass('checked-color');
 
