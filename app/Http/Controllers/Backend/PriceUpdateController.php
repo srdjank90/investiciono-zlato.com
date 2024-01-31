@@ -22,6 +22,12 @@ class PriceUpdateController extends Controller
             $prices = $response->json();
             foreach ($prices as $price) {
                 Price::create($price);
+                $product = Product::find($price['product_id']);
+                if ($product) {
+                    $product->selling_price = $price['selling_price'];
+                    $product->purchase_price = $price['purchase_price'];
+                    $product->save();
+                }
             }
         } else {
             Log::info('Problem sa povlacenjem cena!');
