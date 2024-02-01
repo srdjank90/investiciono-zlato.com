@@ -31,14 +31,14 @@ class FrontendController extends Controller
         $goldenPlates[0]['products'] = Product::with(['company'])->whereNotNull('selling_price')
             ->where('selling_price', '>', 0)->whereHas('categories', function ($q) {
                 $q->where('name', '1g');
-            })->orderBy('quantity_type', 'desc')->orderBy('selling_price', 'asc')->get()->take(3);
+            })->orderBy('quantity_type', 'desc')->orderByRaw('selling_price IS NULL, selling_price ASC')->get()->take(3);
         $goldenPlates[1]['name'] = '2g';
         $goldenPlates[1]['description'] = '2 grama';
         $goldenPlates[1]['slug'] = 'zlatne-plocice-2g';
         $goldenPlates[1]['products'] = Product::with(['company'])->whereNotNull('selling_price')
             ->where('selling_price', '>', 0)->whereHas('categories', function ($q) {
                 $q->where('name', '2g');
-            })->orderBy('quantity_type', 'desc')->orderBy('selling_price', 'asc')->get()->take(3);
+            })->orderBy('quantity_type', 'desc')->orderByRaw('selling_price IS NULL, selling_price ASC')->get()->take(3);
 
         $goldenPlates[2]['name'] = '5g';
         $goldenPlates[2]['description'] = '5 grama';
@@ -46,7 +46,7 @@ class FrontendController extends Controller
         $goldenPlates[2]['products'] = Product::with(['company'])->whereNotNull('selling_price')
             ->where('selling_price', '>', 0)->whereHas('categories', function ($q) {
                 $q->where('name', '5g');
-            })->orderBy('quantity_type', 'desc')->orderBy('selling_price', 'asc')->get()->take(3);
+            })->orderBy('quantity_type', 'desc')->orderByRaw('selling_price IS NULL, selling_price ASC')->get()->take(3);
 
         $goldenPlates[3]['name'] = '10g';
         $goldenPlates[3]['description'] = '10 grama';
@@ -54,21 +54,21 @@ class FrontendController extends Controller
         $goldenPlates[3]['products'] = Product::with(['company'])->whereNotNull('selling_price')
             ->where('selling_price', '>', 0)->whereHas('categories', function ($q) {
                 $q->where('name', '10g');
-            })->orderBy('quantity_type', 'desc')->orderBy('selling_price', 'asc')->get()->take(3);
+            })->orderBy('quantity_type', 'desc')->orderByRaw('selling_price IS NULL, selling_price ASC')->get()->take(3);
 
         $goldenPlates[4]['name'] = '20g';
         $goldenPlates[4]['description'] = '20 grama';
         $goldenPlates[4]['slug'] = 'zlatne-plocice-20g';
         $goldenPlates[4]['products'] = Product::with(['company'])->whereHas('categories', function ($q) {
             $q->where('name', '20g');
-        })->orderBy('quantity_type', 'desc')->orderBy('selling_price', 'asc')->get()->take(3);
+        })->orderBy('quantity_type', 'desc')->orderByRaw('selling_price IS NULL, selling_price ASC')->get()->take(3);
 
         $goldenPlates[5]['name'] = 'Multi proizvod';
         $goldenPlates[5]['description'] = '1g multi proizvod';
         $goldenPlates[5]['slug'] = 'multi-proizvod';
         $goldenPlates[5]['products'] = Product::with(['company'])->whereHas('categories', function ($q) {
             $q->where('name', 'multi proizvod');
-        })->orderBy('quantity_type', 'desc')->orderBy('selling_price', 'asc')->get()->take(3);
+        })->orderBy('quantity_type', 'desc')->orderByRaw('selling_price IS NULL, selling_price ASC')->get()->take(3);
 
         $goldenBars[0]['name'] = '1unca';
         $goldenBars[0]['description'] = '1 unca';
@@ -76,7 +76,7 @@ class FrontendController extends Controller
         $goldenBars[0]['products'] = Product::with(['company'])->whereNotNull('selling_price')
             ->where('selling_price', '>', 0)->whereHas('categories', function ($q) {
                 $q->where('name', '1unca');
-            })->orderBy('quantity_type', 'desc')->orderBy('selling_price', 'asc')->get()->take(3);
+            })->orderBy('quantity_type', 'desc')->orderByRaw('selling_price IS NULL, selling_price ASC')->get()->take(3);
 
         $goldenBars[1]['name'] = '50g';
         $goldenBars[1]['description'] = '50 grama';
@@ -84,7 +84,7 @@ class FrontendController extends Controller
         $goldenBars[1]['products'] = Product::with(['company'])->whereNotNull('selling_price')
             ->where('selling_price', '>', 0)->whereHas('categories', function ($q) {
                 $q->where('name', '50g');
-            })->orderBy('quantity_type', 'desc')->orderBy('selling_price', 'asc')->get()->take(3);
+            })->orderBy('quantity_type', 'desc')->orderByRaw('selling_price IS NULL, selling_price ASC')->get()->take(3);
 
         $goldenBars[2]['name'] = '100g';
         $goldenBars[2]['description'] = '100 grama';
@@ -92,7 +92,7 @@ class FrontendController extends Controller
         $goldenBars[2]['products'] = Product::with(['company'])->whereNotNull('selling_price')
             ->where('selling_price', '>', 0)->whereHas('categories', function ($q) {
                 $q->where('name', '100g');
-            })->orderBy('quantity_type', 'desc')->orderBy('selling_price', 'asc')->get()->take(3);
+            })->orderBy('quantity_type', 'desc')->orderByRaw('selling_price IS NULL, selling_price ASC')->get()->take(3);
 
         $goldenBars[3]['name'] = '250g';
         $goldenBars[3]['description'] = '250 grama';
@@ -100,7 +100,7 @@ class FrontendController extends Controller
         $goldenBars[3]['products'] = Product::with(['company'])->whereNotNull('selling_price')
             ->where('selling_price', '>', 0)->whereHas('categories', function ($q) {
                 $q->where('name', '250g');
-            })->orderBy('quantity_type', 'desc')->orderBy('selling_price', 'asc')->get()->take(3);
+            })->orderBy('quantity_type', 'desc')->orderByRaw('selling_price IS NULL, selling_price ASC')->get()->take(3);
 
         $goldenBars[4]['name'] = '500g';
         $goldenBars[4]['description'] = '500 grama';
@@ -108,7 +108,7 @@ class FrontendController extends Controller
         $goldenBars[4]['products'] = Product::with(['company'])->whereNotNull('selling_price')
             ->where('selling_price', '>', 0)->whereHas('categories', function ($q) {
                 $q->where('name', '500g');
-            })->orderBy('quantity_type', 'desc')->orderBy('selling_price', 'asc')->get()->take(3);
+            })->orderBy('quantity_type', 'desc')->orderByRaw('selling_price IS NULL, selling_price ASC')->get()->take(3);
 
         $goldenBars[5]['name'] = '1000g';
         $goldenBars[5]['description'] = '1000 grama';
@@ -116,7 +116,7 @@ class FrontendController extends Controller
         $goldenBars[5]['products'] = Product::with(['company'])->whereNotNull('selling_price')
             ->where('selling_price', '>', 0)->whereHas('categories', function ($q) {
                 $q->where('name', '1000g');
-            })->orderBy('quantity_type', 'desc')->orderBy('selling_price', 'asc')->get()->take(3);
+            })->orderBy('quantity_type', 'desc')->orderByRaw('selling_price IS NULL, selling_price ASC')->get()->take(3);
 
         return view('frontend.themes.' . $this->theme . '.index', compact('posts', 'goldenPlates', 'goldenBars'));
     }
@@ -139,7 +139,7 @@ class FrontendController extends Controller
     public function products()
     {
         //$actionProducts = Product::whereIn('id', $productsOnAction)->get();
-        $products = Product::with(['files', 'categories'])->where('status', 'published')->where('price', '>', 0)->orderBy('price', 'asc')->paginate(48);
+        $products = Product::with(['files', 'categories'])->where('status', 'published')->where('price', '>', 0)->orderByRaw('selling_price IS NULL, selling_price ASC')->paginate(48);
         $productMetas = getOption('product_metas_opt', []);
         $products = $this->updateProductsWithAction($products);
         $categories = ProductCategory::whereNull('parent_id')->get();
@@ -148,11 +148,12 @@ class FrontendController extends Controller
 
     public function categoryProducts($categorySlug)
     {
+        Log::info('HERE');
         $selectedCategory = ProductCategory::where('slug', $categorySlug)->first();
         if ($selectedCategory) {
             $products = Product::with(['categories'])->where('status', 'published')->whereHas('categories', function ($query) use ($categorySlug) {
                 $query->where(['slug' => $categorySlug]);
-            })->where('price', '>', 0)->orderBy('price', 'asc')->paginate(48);
+            })->where('price', '>', 0)->orderByRaw('selling_price IS NULL, selling_price ASC')->paginate(48);
             $products = $this->updateProductsWithAction($products);
             $productMetas = getOption('product_metas_opt', []);
             $categories = ProductCategory::whereNull('parent_id')->get();
@@ -292,7 +293,7 @@ class FrontendController extends Controller
             ->where('name', 'LIKE', '%' . $searchString . '%')
             ->orWhere('external_id', 'LIKE', '%' . $searchString . '%')
             ->orWhere('subtitle', 'LIKE', '%' . $searchString . '%')
-            ->orderBy('price', 'asc')->paginate(48);
+            ->orderByRaw('selling_price IS NULL, selling_price ASC')->paginate(48);
         return view('frontend.themes.' . $this->theme . '.search', compact('products', 'searchString'));
     }
 
@@ -304,7 +305,7 @@ class FrontendController extends Controller
         $goldenPlates[0]['products'] = Product::with(['company'])->whereNotNull('selling_price')
             ->where('selling_price', '>', 0)->whereHas('categories', function ($q) {
                 $q->where('name', '1g');
-            })->orderBy('quantity_type', 'desc')->orderBy('selling_price', 'asc')->get()->take(3);
+            })->orderBy('quantity_type', 'desc')->orderByRaw('selling_price IS NULL, selling_price ASC')->get()->take(3);
 
         $goldenPlates[1]['name'] = '2g';
         $goldenPlates[1]['description'] = '2 grama';
@@ -312,7 +313,7 @@ class FrontendController extends Controller
         $goldenPlates[1]['products'] = Product::with(['company'])->whereNotNull('selling_price')
             ->where('selling_price', '>', 0)->whereHas('categories', function ($q) {
                 $q->where('name', '2g');
-            })->orderBy('quantity_type', 'desc')->orderBy('selling_price', 'asc')->get()->take(3);
+            })->orderBy('quantity_type', 'desc')->orderByRaw('selling_price IS NULL, selling_price ASC')->get()->take(3);
 
         $goldenPlates[2]['name'] = '5g';
         $goldenPlates[2]['description'] = '5 grama';
@@ -320,7 +321,7 @@ class FrontendController extends Controller
         $goldenPlates[2]['products'] = Product::with(['company'])->whereNotNull('selling_price')
             ->where('selling_price', '>', 0)->whereHas('categories', function ($q) {
                 $q->where('name', '5g');
-            })->orderBy('quantity_type', 'desc')->orderBy('selling_price', 'asc')->get()->take(3);
+            })->orderBy('quantity_type', 'desc')->orderByRaw('selling_price IS NULL, selling_price ASC')->get()->take(3);
 
         $goldenPlates[3]['name'] = '10g';
         $goldenPlates[3]['description'] = '10 grama';
@@ -328,14 +329,14 @@ class FrontendController extends Controller
         $goldenPlates[3]['products'] = Product::with(['company'])->whereNotNull('selling_price')
             ->where('selling_price', '>', 0)->whereHas('categories', function ($q) {
                 $q->where('name', '10g');
-            })->orderBy('quantity_type', 'desc')->orderBy('selling_price', 'asc')->get()->take(3);
+            })->orderBy('quantity_type', 'desc')->orderByRaw('selling_price IS NULL, selling_price ASC')->get()->take(3);
 
         $goldenPlates[4]['name'] = '20g';
         $goldenPlates[4]['description'] = '20 grama';
         $goldenPlates[4]['slug'] = 'zlatne-plocice-20g';
         $goldenPlates[4]['products'] = Product::with(['company'])->whereHas('categories', function ($q) {
             $q->where('name', '20g');
-        })->orderBy('quantity_type', 'desc')->orderBy('selling_price', 'asc')->get()->take(3);
+        })->orderBy('quantity_type', 'desc')->orderByRaw('selling_price IS NULL, selling_price ASC')->get()->take(3);
 
         return view('frontend.themes.' . $this->theme . '.plates', compact('goldenPlates'));
     }
@@ -348,7 +349,7 @@ class FrontendController extends Controller
         $goldenBars[0]['products'] = Product::with(['company'])->whereNotNull('selling_price')
             ->where('selling_price', '>', 0)->whereHas('categories', function ($q) {
                 $q->where('name', '1unca');
-            })->orderBy('quantity_type', 'desc')->orderBy('selling_price', 'asc')->get()->take(3);
+            })->orderBy('quantity_type', 'desc')->orderByRaw('selling_price IS NULL, selling_price ASC')->get()->take(3);
 
         $goldenBars[1]['name'] = '50g';
         $goldenBars[1]['description'] = '50 grama';
@@ -356,7 +357,7 @@ class FrontendController extends Controller
         $goldenBars[1]['products'] = Product::with(['company'])->whereNotNull('selling_price')
             ->where('selling_price', '>', 0)->whereHas('categories', function ($q) {
                 $q->where('name', '50g');
-            })->orderBy('quantity_type', 'desc')->orderBy('selling_price', 'asc')->get()->take(3);
+            })->orderBy('quantity_type', 'desc')->orderByRaw('selling_price IS NULL, selling_price ASC')->get()->take(3);
 
         $goldenBars[2]['name'] = '100g';
         $goldenBars[2]['description'] = '100 grama';
@@ -364,7 +365,7 @@ class FrontendController extends Controller
         $goldenBars[2]['products'] = Product::with(['company'])->whereNotNull('selling_price')
             ->where('selling_price', '>', 0)->whereHas('categories', function ($q) {
                 $q->where('name', '100g');
-            })->orderBy('quantity_type', 'desc')->orderBy('selling_price', 'asc')->get()->take(3);
+            })->orderBy('quantity_type', 'desc')->orderByRaw('selling_price IS NULL, selling_price ASC')->get()->take(3);
 
         $goldenBars[3]['name'] = '250g';
         $goldenBars[3]['description'] = '250 grama';
@@ -372,7 +373,7 @@ class FrontendController extends Controller
         $goldenBars[3]['products'] = Product::with(['company'])->whereNotNull('selling_price')
             ->where('selling_price', '>', 0)->whereHas('categories', function ($q) {
                 $q->where('name', '250g');
-            })->orderBy('quantity_type', 'desc')->orderBy('selling_price', 'asc')->get()->take(3);
+            })->orderBy('quantity_type', 'desc')->orderByRaw('selling_price IS NULL, selling_price ASC')->get()->take(3);
 
         $goldenBars[4]['name'] = '500g';
         $goldenBars[4]['description'] = '500 grama';
@@ -380,7 +381,7 @@ class FrontendController extends Controller
         $goldenBars[4]['products'] = Product::with(['company'])->whereNotNull('selling_price')
             ->where('selling_price', '>', 0)->whereHas('categories', function ($q) {
                 $q->where('name', '500g');
-            })->orderBy('quantity_type', 'desc')->orderBy('selling_price', 'asc')->get()->take(3);
+            })->orderBy('quantity_type', 'desc')->orderByRaw('selling_price IS NULL, selling_price ASC')->get()->take(3);
 
         $goldenBars[5]['name'] = '1000g';
         $goldenBars[5]['description'] = '1000 grama';
@@ -388,7 +389,7 @@ class FrontendController extends Controller
         $goldenBars[5]['products'] = Product::with(['company'])->whereNotNull('selling_price')
             ->where('selling_price', '>', 0)->whereHas('categories', function ($q) {
                 $q->where('name', '1000g');
-            })->orderBy('quantity_type', 'desc')->orderBy('selling_price', 'asc')->get()->take(3);
+            })->orderBy('quantity_type', 'desc')->orderByRaw('selling_price IS NULL, selling_price ASC')->get()->take(3);
 
         return view('frontend.themes.' . $this->theme . '.bars', compact('goldenBars'));
     }
@@ -402,7 +403,7 @@ class FrontendController extends Controller
         $goldenCoins[0]['products'] = Product::with(['company'])->whereNotNull('selling_price')
             ->where('selling_price', '>', 0)->whereHas('categories', function ($q) {
                 $q->where('name', 'Dukati');
-            })->orderBy('quantity_type', 'desc')->orderBy('selling_price', 'asc')->get();
+            })->orderBy('quantity_type', 'desc')->orderByRaw('selling_price IS NULL, selling_price ASC')->get();
 
 
         return view('frontend.themes.' . $this->theme . '.coins', compact('goldenCoins', 'category'));
@@ -413,7 +414,7 @@ class FrontendController extends Controller
         $category = ProductCategory::where('slug', $categorySlug)->first();
         $products = Product::whereHas('categories', function ($q) use ($categorySlug) {
             $q->where('slug', $categorySlug);
-        })->orderBy('quantity_type', 'desc')->orderBy('selling_price', 'asc')->get();
+        })->orderBy('quantity_type', 'desc')->orderByRaw('selling_price IS NULL, selling_price ASC')->get();
         return view('frontend.themes.' . $this->theme . '.category', compact('products', 'category'));
     }
 

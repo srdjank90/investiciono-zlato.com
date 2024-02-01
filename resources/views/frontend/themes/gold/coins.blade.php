@@ -26,8 +26,7 @@
                             <div class="prices-table-gold">
                                 <div class="row">
                                     <div class="col-12">
-                                        <h4 class="text-uppercase">Cena zlatne poluge <span>od
-                                                {{ $coin['description'] }}:</span></h4>
+                                        <h4 class="text-uppercase">Cena zlatnih dukata:</span></h4>
                                     </div>
                                     <div class="col-12 col-sm-6 col-md-3 col-lg-3 d-none d-md-block fw-bold mb-2">
                                         Naziv

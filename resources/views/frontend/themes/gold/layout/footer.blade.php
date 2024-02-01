@@ -117,7 +117,7 @@
         <div class="container">
             <div class="row fb-inner wow fadeInUp" data-wow-delay="0.1s">
                 <div class="col-lg-6 col-md-12 text-start">
-                    <p class="copyright-text">© 2024 <a href="">Allinclusive.</a> just work it.</p>
+                    <p class="copyright-text">© 2024 investiciono-zlato, Poredjenje cena zlata u realnom vremenu.</p>
                 </div>
 
             </div>
