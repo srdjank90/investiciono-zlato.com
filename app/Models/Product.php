@@ -21,6 +21,7 @@ class Product extends Model
         'producer_short',
         'quantity_type',
         'url',
+        'purchase_price_url',
         'short',
         'declaration',
         'description',

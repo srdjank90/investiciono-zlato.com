@@ -24,6 +24,7 @@ return new class extends Migration
             $table->integer('company_id')->nullable();
             $table->integer('price_id')->nullable();
             $table->string('url')->nullable();
+            $table->string('purchase_price_url')->nullable();
             $table->text('short')->nullable();
             $table->text('declaration')->nullable();
             $table->longText('description')->nullable();
