@@ -38,31 +38,29 @@
                     </div>
                     <div class="col-lg-6">
                         <div class="contact-area1 style-1 m-r20 m-md-r0 wow fadeInUp" data-wow-delay="0.5s">
-                            <form class="dz-form dzForm" method="POST"
-                                action="https://mooncart.dexignzone.com/xhtml/script/contact_smtp.php">
-                                <input type="hidden" class="form-control" name="dzToDo" value="Contact">
-                                <input type="hidden" class="form-control" name="reCaptchaEnable" value="0">
-                                <div class="dzFormMsg"></div>
+                            <form id="contactForm" method="POST" action="{{ route('frontend.contact.send') }}">
+                                @csrf
                                 <label class="form-label">Ime</label>
                                 <div class="input-group">
-                                    <input required type="text" class="form-control" name="dzName">
+                                    <input required type="text" class="form-control" name="name">
                                 </div>
                                 <label class="form-label">Email</label>
                                 <div class="input-group">
-                                    <input required type="text" class="form-control" name="dzEmail">
+                                    <input required type="text" class="form-control" name="email">
                                 </div>
                                 <label class="form-label">Telefon</label>
                                 <div class="input-group">
-                                    <input required type="text" class="form-control" name="dzPhoneNumber">
+                                    <input required type="text" class="form-control" name="phone">
                                 </div>
                                 <label class="form-label">Poruka</label>
                                 <div class="input-group m-b30">
-                                    <textarea name="dzMessage" rows="4" required class="form-control m-b10"></textarea>
+                                    <textarea name="message" rows="4" required class="form-control m-b10"></textarea>
                                 </div>
                                 <div>
                                     <button name="submit" type="submit" value="submit"
                                         class="btn w-100 btn-secondary btnhover">Pošalji</button>
                                 </div>
+                                <div id="responseMessage"></div>
                             </form>
                         </div>
                     </div>
@@ -79,4 +77,27 @@
         </div>
 
     </div>
+@endsection
+
+@section('scripts')
+    <script>
+        $(document).ready(function() {
+            $('#contactForm').submit(function(event) {
+                event.preventDefault();
+
+                $.ajax({
+                    type: 'POST',
+                    url: $(this).attr('action'),
+                    data: $(this).serialize(),
+                    success: function(response) {
+                        $('#responseMessage').text(response.message);
+                        $('#contactForm')[0].reset();
+                    },
+                    error: function(xhr, status, error) {
+                        console.error(xhr.responseText);
+                    }
+                });
+            });
+        });
+    </script>
 @endsection

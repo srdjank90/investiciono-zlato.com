@@ -134,17 +134,20 @@ Route::get('/prodajna-mesta', [App\Http\Controllers\Frontend\FrontendController:
 Route::get('/kontakt', [App\Http\Controllers\Frontend\FrontendController::class, 'contact'])->name('frontend.contact');
 Route::get('/talaris', [App\Http\Controllers\Frontend\FrontendController::class, 'about'])->name('frontend.about');
 Route::get('/pametna-vrata', [App\Http\Controllers\Frontend\FrontendController::class, 'smartDoor'])->name('frontend.smartDoor');
-Route::get('/search', [App\Http\Controllers\Frontend\FrontendController::class, 'search'])->name('frontend.search');
+Route::get('/search', [App\Http\Controllers\Frontend\SearchController::class, 'search'])->name('frontend.search');
 Route::get('/zlatne-plocice', [App\Http\Controllers\Frontend\FrontendController::class, 'goldenPlates'])->name('frontend.plates');
 Route::get('/zlatne-poluge', [App\Http\Controllers\Frontend\FrontendController::class, 'goldenBars'])->name('frontend.bars');
 Route::get('/zlatni-dukati', [App\Http\Controllers\Frontend\FrontendController::class, 'goldenCoins'])->name('frontend.coins');
+Route::get('/investiciono-zlato', [App\Http\Controllers\Frontend\FrontendController::class, 'gold'])->name('frontend.gold');
+
+Route::get('/autocomplete', [App\Http\Controllers\Frontend\SearchController::class, 'autocomplete'])->name('frontend.autocomplete');
 
 Route::get('/kategorija/{slug}', [App\Http\Controllers\Frontend\FrontendController::class, 'category'])->name('frontend.category');
 Route::get('/deset-najbolljih-online-trgovaca-zlatom-u-srbiji', [App\Http\Controllers\Frontend\FrontendController::class, 'companies'])->name('frontend.companies');
 Route::get('/cron', [App\Http\Controllers\Backend\PriceUpdateController::class, 'updatePrices'])->name('cron.prices.update');
 Route::get('/cron-day', [App\Http\Controllers\Backend\PriceUpdateController::class, 'cronDay'])->name('cron.day');
 
-
+Route::post('/contact-send', [App\Http\Controllers\Frontend\ContactController::class, 'sendContactForm'])->name('frontend.contact.send');
 Route::get('/cena-zlata', [App\Http\Controllers\Frontend\FrontendController::class, 'price'])->name('frontend.price');
 Route::get('/kursna-lista', [App\Http\Controllers\Frontend\FrontendController::class, 'exchange'])->name('frontend.exchange');
 Route::post('/subscribe', [App\Http\Controllers\Frontend\SubscriberController::class, 'subscribe'])->name('frontend.subscribe');

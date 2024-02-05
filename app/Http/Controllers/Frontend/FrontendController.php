@@ -225,6 +225,11 @@ class FrontendController extends Controller
         return view('frontend.themes.' . $this->theme . '.services');
     }
 
+    public function gold()
+    {
+        return view('frontend.themes.' . $this->theme . '.gold');
+    }
+
     public function contact()
     {
         return view('frontend.themes.' . $this->theme . '.contact');

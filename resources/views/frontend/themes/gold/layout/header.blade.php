@@ -30,11 +30,10 @@
             </div>
             <!-- header search nav -->
             <div class="header-search-nav">
-                <form class="header-item-search">
+                <form class="header-item-search form-search" method="GET" action="{{ route('frontend.search') }}">
                     <div class="input-group search-input">
-
-                        <input type="text" class="form-control" aria-label="Text input with dropdown button"
-                            placeholder="Unesi ime proizvoda i uporedi cene zlata">
+                        <input type="text" class="form-control autocomplete-search" name="qty"
+                            aria-label="Text input with dropdown button" placeholder="Pretraga">
                         <button class="btn" type="button">
                             <svg width="21" height="21" viewBox="0 0 21 21" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
@@ -90,19 +89,19 @@
                 <!-- Main Nav -->
                 <div class="header-nav navbar-collapse collapse justify-content-start" id="navbarNavDropdown">
                     <div class="logo-header">
-                        <a href="index"><img src="/themes/gold/assets/images/logo.webp" alt=""></a>
+                        <a href="index"><img src="/themes/gold/assets/images/header-logo.webp" alt=""></a>
                     </div>
                     <ul class="nav navbar-nav dark-nav">
                         <li class="has-mega-menu sub-menu-down">
-                            <a href="#"><span>Investiciono zlato</span></a>
+                            <a href="{{ route('frontend.gold') }}"><span>Investiciono zlato</span></a>
                             <div class="mega-menu demo-menu">
                                 <div class="row">
                                     <div class="col-md-3 col-6"><a href="{{ route('frontend.plates') }}"><img
                                                 src="/themes/gold/assets/images/demo/demo-1.webp" alt="/"> <span
                                                 class="menu-title">Zlatne pločice</span></a></div>
                                     <div class="col-md-3 col-6"><a href="{{ route('frontend.bars') }}"><img
-                                                src="/themes/gold/assets/images/demo/demo-2.webp" alt="/"> <span
-                                                class="menu-title">Zlatne poluge</span></a>
+                                                src="/themes/gold/assets/images/demo/demo-2.webp" alt="/">
+                                            <span class="menu-title">Zlatne poluge</span></a>
                                     </div>
                                     <div class="col-md-3 col-6"><a href="{{ route('frontend.coins') }}"><img
                                                 src="/themes/gold/assets/images/demo/demo-3.webp" alt="/">
@@ -179,7 +178,8 @@
                                 </div>
                             </div>
                         </li>
-                        <li class="has-mega-menu sub-menu-down"><a href="#"><span>Blog</span></a>
+                        <li class="has-mega-menu sub-menu-down"><a
+                                href="{{ route('frontend.posts') }}"><span>Blog</span></a>
                             <div class="mega-menu blog-menu">
                                 <div class="row">
                                     <div class="col-md-6 col-sm-6 col-6">
@@ -255,10 +255,10 @@
             &times;
         </button>
         <div class="container">
-            <form class="header-item-search">
+            <form class="header-item-search form-search" method="GET" action="{{ route('frontend.search') }}">
                 <div class="input-group search-input">
-                    <input type="text" class="form-control" aria-label="Text input with dropdown button"
-                        placeholder="Unesi ime proizvoda">
+                    <input type="text" class="form-control autocomplete-search" name="qty"
+                        aria-label="Text input with dropdown button" placeholder="Unesi ime proizvoda">
                     <button class="btn" type="button">
                         <svg width="21" height="21" viewBox="0 0 21 21" fill="none"
                             xmlns="http://www.w3.org/2000/svg">

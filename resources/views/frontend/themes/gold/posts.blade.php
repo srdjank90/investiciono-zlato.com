@@ -12,7 +12,7 @@
                     <h1>Blog</h1>
                     <nav aria-label="breadcrumb" class="breadcrumb-row">
                         <ul class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{ route('frontend.index') }}"> Home</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('frontend.index') }}"> Početna</a></li>
                             <li class="breadcrumb-item">Blog</li>
                         </ul>
                     </nav>

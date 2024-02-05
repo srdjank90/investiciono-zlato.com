@@ -20,6 +20,7 @@
     <link rel="stylesheet" type="text/css" href="/themes/gold/assets/icons/flaticon/flaticon_mooncart.css">
     <link rel="stylesheet" type="text/css" href="/themes/gold/assets/icons/fontawesome/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link rel="stylesheet" type="text/css" href="/themes/gold/assets/css/style.css">
     <link rel="stylesheet" type="text/css" href="/themes/gold/assets/css/main.css">
     <link

@@ -3,7 +3,8 @@
 <script src="/themes/gold/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script><!-- BOOTSTRAP MIN JS -->
 <script src="/themes/gold/assets/vendor/bootstrap-select/dist/js/bootstrap-select.min.js"></script><!-- BOOTSTRAP SELECT MIN JS -->
 <script src="/themes/gold/assets/vendor/bootstrap-touchspin/bootstrap-touchspin.js"></script><!-- BOOTSTRAP TOUCHSPIN JS -->
-<script src="/themes/gold/assets/vendor/imagesloaded/imagesloaded.js"></script><!-- IMAGESLOADED-->
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="/themes/gold/assets/js/custom.js"></script><!-- CUSTOMJS-->
 
 <!-- Chart Scripts -->
 <script>
@@ -197,6 +198,31 @@
         });
         return pMetaString;
     }
+
+    // Autocomplete search
+    $(function() {
+        $(".autocomplete-search").autocomplete({
+            source: function(request, response) {
+                $.ajax({
+                    url: "{{ route('frontend.autocomplete') }}",
+                    dataType: "json",
+                    data: {
+                        query: request.term
+                    },
+                    success: function(data) {
+                        response(data);
+                    }
+                });
+            },
+            select: function(event, ui) {
+                console.log(event)
+                console.log(ui.item.value)
+                $('.autocomplete-search').val(ui.item.value)
+                $('.form-search').submit();
+            },
+            minLength: 1
+        });
+    });
 
     $(document).ready(function() {
         var header = $('.site-header');
