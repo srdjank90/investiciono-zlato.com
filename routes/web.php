@@ -138,7 +138,9 @@ Route::get('/search', [App\Http\Controllers\Frontend\SearchController::class, 's
 Route::get('/zlatne-plocice', [App\Http\Controllers\Frontend\FrontendController::class, 'goldenPlates'])->name('frontend.plates');
 Route::get('/zlatne-poluge', [App\Http\Controllers\Frontend\FrontendController::class, 'goldenBars'])->name('frontend.bars');
 Route::get('/zlatni-dukati', [App\Http\Controllers\Frontend\FrontendController::class, 'goldenCoins'])->name('frontend.coins');
+Route::get('/najisplativiji-neisplativiji', [App\Http\Controllers\Frontend\FrontendController::class, 'best'])->name('frontend.best');
 Route::get('/investiciono-zlato', [App\Http\Controllers\Frontend\FrontendController::class, 'gold'])->name('frontend.gold');
+Route::get('/dukati/{slug}', [App\Http\Controllers\Frontend\FrontendController::class, 'coinsSingleArchive'])->name('frontend.coins.single.archive');
 
 Route::get('/autocomplete', [App\Http\Controllers\Frontend\SearchController::class, 'autocomplete'])->name('frontend.autocomplete');
 

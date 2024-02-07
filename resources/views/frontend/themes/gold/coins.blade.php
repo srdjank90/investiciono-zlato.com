@@ -8,7 +8,7 @@
 @section('image', 'themes/gold/assets/images/demo/demo-3.webp')
 @section('content')
     <div class="page-content bg-white">
-        <!-- Golden Plates -->
+        <!-- Golden Coins -->
         <section class="content-inner-1 overlay-white-middle about-products2">
             <img src="/themes/gold/assets/images/bg-triangle3.webp" class="bg-img" alt="">
             <img src="/themes/gold/assets/images/bg-triangle4.webp" class="bg-img2" alt="">
@@ -26,7 +26,8 @@
                             <div class="prices-table-gold">
                                 <div class="row">
                                     <div class="col-12">
-                                        <h4 class="text-uppercase">Cena zlatnih dukata:</span></h4>
+                                        <h4 class="text-uppercase">
+                                            {{ $coin['description'] }}</h4>
                                     </div>
                                     <div class="col-12 col-sm-6 col-md-3 col-lg-3 d-none d-md-block fw-bold mb-2">
                                         Naziv
@@ -42,12 +43,39 @@
                                     </div>
                                     @foreach ($coin['products'] as $product)
                                         <div
-                                            class="gold-column col-12 col-sm-6 col-md-3 col-lg-3 d-flex justify-content-center flex-column">
+                                            class="gold-column col-12 col-sm-6 col-md-3 col-lg-3 d-flex justify-content-center flex-column position-relative">
                                             <div class="d-md-none fw-bold"><small>Naziv</small></div>
-                                            <a target="_blank" class="text-primary fw-bold" href="{{ $product['url'] }}">
-                                                {{ $product['name'] }} <img width="45"
-                                                    src="{{ $product->company->image_url }}"
+
+                                            @php
+                                                if (str_contains($product->unique_key, 'CH')) {
+                                                    echo '<img class="table-product-image" src="/storage/manufacturers/CH.webp" alt="">';
+                                                }
+                                                if (str_contains($product->unique_key, 'AH')) {
+                                                    echo '<img class="table-product-image" src="/storage/manufacturers/AH.webp" alt="">';
+                                                }
+                                                if (str_contains($product->unique_key, 'FJ')) {
+                                                    echo '<img class="table-product-image" src="/storage/manufacturers/FJ.webp" alt="">';
+                                                }
+                                                if (str_contains($product->unique_key, 'HM')) {
+                                                    echo '<img class="table-product-image" src="/storage/manufacturers/HM.webp" alt="">';
+                                                }
+                                                if (str_contains($product->unique_key, 'RM')) {
+                                                    echo '<img class="table-product-image" src="/storage/manufacturers/RM.webp" alt="">';
+                                                }
+                                                if (str_contains($product->unique_key, 'VP')) {
+                                                    echo '<img class="table-product-image" src="/storage/manufacturers/VP.webp" alt="">';
+                                                }
+                                                if (str_contains($product->unique_key, 'VS')) {
+                                                    echo '<img class="table-product-image" src="/storage/manufacturers/VS.webp" alt="">';
+                                                }
+                                            @endphp
+
+                                            <a target="_blank" class="table-product-name text-primary fw-bold"
+                                                href="{{ $product['url'] }}">
+                                                {{ $product['name'] }}
+                                                <img width="45" src="{{ $product->company->image_url }}"
                                                     title="{{ $product->company->name }}" alt=""></a>
+
                                         </div>
                                         <div
                                             class="gold-column col-12 col-md-3 col-sm-6 col-md-3 col-lg-3 d-flex justify-content-center flex-column">
@@ -104,7 +132,11 @@
                                             <hr>
                                         </div>
                                     @endforeach
-
+                                    <div class="col-md-12 mb-4">
+                                        <a class="btn btn-primary btn-sm w-sm-100"
+                                            href="{{ route('frontend.coins.single.archive', $coin['slug']) }}">Zlatni dukat
+                                            {{ $coin['name'] }} u ponudi</a>
+                                    </div>
                                 </div>
                             </div>
                         @endforeach
@@ -113,6 +145,6 @@
                 </div>
             </div>
         </section>
-        <!-- #Golden Plates -->
+        <!-- #Golden Coins -->
     </div>
 @endsection

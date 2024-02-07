@@ -224,6 +224,23 @@
         });
     });
 
+    var div = document.getElementById("prices-updated");
+    div.textContent = "Cene zlata upravo ažurirane"; // Set text content to empty string
+
+    // Function to remove text after 5 seconds
+    setTimeout(function() {
+        var div = document.getElementById("prices-updated");
+        div.textContent = ""; // Set text content to empty string
+    }, 5000); // 5000 milliseconds = 5 seconds
+
+    // Function to reload the page
+    function reloadPage() {
+        location.reload();
+    }
+
+    // Set interval to reload the page every 2 minutes (120000 milliseconds)
+    setInterval(reloadPage, 120000);
+
     $(document).ready(function() {
         var header = $('.site-header');
         var headerOffset = header.offset().top;

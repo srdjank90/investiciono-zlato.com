@@ -72,16 +72,7 @@
                     <div class="extra-cell">
                         <ul class="header-right">
                             <li class="nav-item search-link">
-                                <a class="nav-link" href="#" data-bs-toggle="offcanvas"
-                                    data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">
-                                    <svg width="21" height="21" viewBox="0 0 21 21" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <circle cx="10.0535" cy="10.55" r="7.49047" stroke="var(--white)"
-                                            stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                                        <path d="M15.2632 16.1487L18.1999 19.0778" stroke="var(--white)"
-                                            stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                                    </svg>
-                                </a>
+                                <i id="prices-updated" class="prices-updated text-white">Cene zlata upravo ažurirane</i>
                             </li>
                         </ul>
                     </div>
@@ -107,9 +98,9 @@
                                                 src="/themes/gold/assets/images/demo/demo-3.webp" alt="/">
                                             <span class="menu-title">Zlatni dukati</span></a>
                                     </div>
-                                    <div class="col-md-3 col-6"><a href="https://forum.investiciono-zlato.com"><img
+                                    <div class="col-md-3 col-6"><a href="{{ route('frontend.best') }}"><img
                                                 src="/themes/gold/assets/images/demo/demo-4.webp" alt="/">
-                                            <span class="menu-title">Investicioni forum</span></a>
+                                            <span class="menu-title">Najpovoljnije/Najnepovoljnije</span></a>
                                     </div>
                                 </div>
                             </div>
@@ -250,7 +241,7 @@
     <!-- Main Header End -->
 
     <!-- SearchBar -->
-    <div class="dz-search-area dz-offcanvas offcanvas offcanvas-top" tabindex="-1" id="offcanvasTop">
+    <div class="dz-search-area dz-offcanvas offcanvas offcanvas-top d-none" tabindex="-1" id="offcanvasTop">
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close">
             &times;
         </button>

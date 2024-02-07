@@ -148,7 +148,6 @@ class FrontendController extends Controller
 
     public function categoryProducts($categorySlug)
     {
-        Log::info('HERE');
         $selectedCategory = ProductCategory::where('slug', $categorySlug)->first();
         if ($selectedCategory) {
             $products = Product::with(['categories'])->where('status', 'published')->whereHas('categories', function ($query) use ($categorySlug) {
@@ -402,14 +401,39 @@ class FrontendController extends Controller
     public function goldenCoins()
     {
         $category = ProductCategory::where('slug', 'dukati')->first();
-        $goldenCoins[0]['name'] = 'Dukati';
-        $goldenCoins[0]['description'] = 'Dukati';
-        $goldenCoins[0]['slug'] = 'zlatni-dukati';
-        $goldenCoins[0]['products'] = Product::with(['company'])->whereNotNull('selling_price')
-            ->where('selling_price', '>', 0)->whereHas('categories', function ($q) {
-                $q->where('name', 'Dukati');
-            })->orderBy('quantity_type', 'desc')->orderByRaw('selling_price IS NULL, selling_price ASC')->get();
 
+        $goldenCoins[0]['name'] = '3.49 g zlata | dukat Franc Jozef';
+        $goldenCoins[0]['description'] = '3.49 g zlata | dukat Franc Jozef';
+        $goldenCoins[0]['slug'] = 'zlatni-dukati-franz-joseph-349g';
+        $goldenCoins[0]['products'] = Product::with(['company'])
+            ->whereNotNull('selling_price')
+            ->where('name', '3.49 g zlata | dukat Franc Jozef')
+            ->orderBy('quantity_type', 'desc')
+            ->orderByRaw('selling_price IS NULL, selling_price ASC')
+            ->get()
+            ->take(3);
+
+        $goldenCoins[1]['name'] = '13.96 g zlata | dukat Franc Jozef';
+        $goldenCoins[1]['description'] = '13.96 g zlata | dukat Franc Jozef';
+        $goldenCoins[1]['slug'] = 'zlatni-dukati-franz-joseph-1396g';
+        $goldenCoins[1]['products'] = Product::with(['company'])
+            ->whereNotNull('selling_price')
+            ->where('name', '13.96 g zlata | dukat Franc Jozef')
+            ->orderBy('quantity_type', 'desc')
+            ->orderByRaw('selling_price IS NULL, selling_price ASC')
+            ->get()
+            ->take(3);
+
+        $goldenCoins[2]['name'] = '1 unca zlata | dukat Bečka filharmonija';
+        $goldenCoins[2]['description'] = '1 unca zlata | dukat Bečka filharmonija';
+        $goldenCoins[2]['slug'] = 'zlatni-dukati-vienna-philharmonic-1unca';
+        $goldenCoins[2]['products'] = Product::with(['company'])
+            ->whereNotNull('selling_price')
+            ->where('name', '1 unca zlata | dukat Bečka filharmonija')
+            ->orderBy('quantity_type', 'desc')
+            ->orderByRaw('selling_price IS NULL, selling_price ASC')
+            ->get()
+            ->take(3);
 
         return view('frontend.themes.' . $this->theme . '.coins', compact('goldenCoins', 'category'));
     }
@@ -436,5 +460,97 @@ class FrontendController extends Controller
     public function exchange()
     {
         return view('frontend.themes.' . $this->theme . '.exchange');
+    }
+
+    public function best()
+    {
+        $goldenPlatesBest[0]['name'] = '1g';
+        $goldenPlatesBest[0]['description'] = '1 grama';
+        $goldenPlatesBest[0]['slug'] = 'zlatne-plocice-1g';
+        $goldenPlatesBest[0]['products'] = Product::with(['company'])->whereNotNull('selling_price')
+            ->where('selling_price', '>', 0)->whereHas('categories', function ($q) {
+                $q->where('name', '1g');
+            })->orderBy('quantity_type', 'desc')->orderByRaw('selling_price IS NULL, selling_price ASC')->get()->take(3);
+
+        $goldenPlatesBest[1]['name'] = '2g';
+        $goldenPlatesBest[1]['description'] = '2 grama';
+        $goldenPlatesBest[1]['slug'] = 'zlatne-plocice-2g';
+        $goldenPlatesBest[1]['products'] = Product::with(['company'])->whereNotNull('selling_price')
+            ->where('selling_price', '>', 0)->whereHas('categories', function ($q) {
+                $q->where('name', '2g');
+            })->orderBy('quantity_type', 'desc')->orderByRaw('selling_price IS NULL, selling_price ASC')->get()->take(3);
+
+        $goldenPlatesBest[2]['name'] = '5g';
+        $goldenPlatesBest[2]['description'] = '5 grama';
+        $goldenPlatesBest[2]['slug'] = 'zlatne-plocice-5g';
+        $goldenPlatesBest[2]['products'] = Product::with(['company'])->whereNotNull('selling_price')
+            ->where('selling_price', '>', 0)->whereHas('categories', function ($q) {
+                $q->where('name', '5g');
+            })->orderBy('quantity_type', 'desc')->orderByRaw('selling_price IS NULL, selling_price ASC')->get()->take(3);
+
+        $goldenPlatesBest[3]['name'] = '10g';
+        $goldenPlatesBest[3]['description'] = '10 grama';
+        $goldenPlatesBest[3]['slug'] = 'zlatne-plocice-10g';
+        $goldenPlatesBest[3]['products'] = Product::with(['company'])->whereNotNull('selling_price')
+            ->where('selling_price', '>', 0)->whereHas('categories', function ($q) {
+                $q->where('name', '10g');
+            })->orderBy('quantity_type', 'desc')->orderByRaw('selling_price IS NULL, selling_price ASC')->get()->take(3);
+
+        $goldenPlatesBest[4]['name'] = '20g';
+        $goldenPlatesBest[4]['description'] = '20 grama';
+        $goldenPlatesBest[4]['slug'] = 'zlatne-plocice-20g';
+        $goldenPlatesBest[4]['products'] = Product::with(['company'])->whereHas('categories', function ($q) {
+            $q->where('name', '20g');
+        })->orderBy('quantity_type', 'desc')->orderByRaw('selling_price IS NULL, selling_price ASC')->get()->take(3);
+
+
+        $goldenPlatesWorst[0]['name'] = '1g';
+        $goldenPlatesWorst[0]['description'] = '1 grama';
+        $goldenPlatesWorst[0]['slug'] = 'zlatne-plocice-1g';
+        $goldenPlatesWorst[0]['products'] = Product::with(['company'])->whereNotNull('selling_price')
+            ->where('selling_price', '>', 0)->whereHas('categories', function ($q) {
+                $q->where('name', '1g');
+            })->orderBy('quantity_type', 'desc')->orderByRaw('selling_price IS NULL, selling_price DESC')->get()->take(3);
+
+        $goldenPlatesWorst[1]['name'] = '2g';
+        $goldenPlatesWorst[1]['description'] = '2 grama';
+        $goldenPlatesWorst[1]['slug'] = 'zlatne-plocice-2g';
+        $goldenPlatesWorst[1]['products'] = Product::with(['company'])->whereNotNull('selling_price')
+            ->where('selling_price', '>', 0)->whereHas('categories', function ($q) {
+                $q->where('name', '2g');
+            })->orderBy('quantity_type', 'desc')->orderByRaw('selling_price IS NULL, selling_price DESC')->get()->take(3);
+
+        $goldenPlatesWorst[2]['name'] = '5g';
+        $goldenPlatesWorst[2]['description'] = '5 grama';
+        $goldenPlatesWorst[2]['slug'] = 'zlatne-plocice-5g';
+        $goldenPlatesWorst[2]['products'] = Product::with(['company'])->whereNotNull('selling_price')
+            ->where('selling_price', '>', 0)->whereHas('categories', function ($q) {
+                $q->where('name', '5g');
+            })->orderBy('quantity_type', 'desc')->orderByRaw('selling_price IS NULL, selling_price DESC')->get()->take(3);
+
+        $goldenPlatesWorst[3]['name'] = '10g';
+        $goldenPlatesWorst[3]['description'] = '10 grama';
+        $goldenPlatesWorst[3]['slug'] = 'zlatne-plocice-10g';
+        $goldenPlatesWorst[3]['products'] = Product::with(['company'])->whereNotNull('selling_price')
+            ->where('selling_price', '>', 0)->whereHas('categories', function ($q) {
+                $q->where('name', '10g');
+            })->orderBy('quantity_type', 'desc')->orderByRaw('selling_price IS NULL, selling_price DESC')->get()->take(3);
+
+        $goldenPlatesWorst[4]['name'] = '20g';
+        $goldenPlatesWorst[4]['description'] = '20 grama';
+        $goldenPlatesWorst[4]['slug'] = 'zlatne-plocice-20g';
+        $goldenPlatesWorst[4]['products'] = Product::with(['company'])->whereHas('categories', function ($q) {
+            $q->where('name', '20g');
+        })->orderBy('quantity_type', 'desc')->orderByRaw('selling_price IS NULL, selling_price DESC')->get()->take(3);
+
+        return view('frontend.themes.' . $this->theme . '.best', compact('goldenPlatesBest', 'goldenPlatesWorst'));
+    }
+
+
+    public function coinsSingleArchive($slug)
+    {
+        $coinData = Product::where('slug', $slug)->first();
+        $products = Product::where('slug', $slug)->get();
+        return view('frontend.themes.' . $this->theme . '.coin-single-archive', compact('products', 'coinData'));
     }
 }
