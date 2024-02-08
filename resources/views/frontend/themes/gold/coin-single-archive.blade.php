@@ -1,6 +1,6 @@
 @extends('frontend.themes.gold.layout.layout')
 @section('title', $coinData->name . ' | Poredjenje cena investicionog zlata u realnom vremenu')
-@section('description', '')
+@section('description', $description)
 @section('keywords', '')
 @section('image', 'themes/gold/assets/images/demo/demo-3.webp')
 @section('content')
@@ -16,6 +16,9 @@
                             <h2 class="mb-4 fs-3">
                                 {!! $coinData->name !!}
                             </h2>
+                            <div>
+                                {{ $description }}
+                            </div>
                         </div>
                         <!-- Category table Prices -->
                         <div class="prices-table-gold">

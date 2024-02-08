@@ -99,7 +99,7 @@
                                             <span class="menu-title">Zlatni dukati</span></a>
                                     </div>
                                     <div class="col-md-3 col-6"><a href="{{ route('frontend.best') }}"><img
-                                                src="/themes/gold/assets/images/demo/demo-4.webp" alt="/">
+                                                src="/themes/gold/assets/images/loader-logo.webp" alt="/">
                                             <span class="menu-title">Najpovoljnije/Najnepovoljnije</span></a>
                                     </div>
                                 </div>
@@ -159,7 +159,7 @@
                                             <div class="col-md-3 col-sm-4 col-6 d-md-block">
                                                 <div class="adv-media">
                                                     <a href="https://forum.investiciono-zlato.com/"><img
-                                                            src="/themes/gold/assets/images/adv-1.webp"
+                                                            src="/themes/gold/assets/images/demo/demo-4.webp"
                                                             alt="/"></a>
 
                                                 </div>

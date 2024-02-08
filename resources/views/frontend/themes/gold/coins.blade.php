@@ -27,7 +27,7 @@
                                 <div class="row">
                                     <div class="col-12">
                                         <h4 class="text-uppercase">
-                                            {{ $coin['description'] }}</h4>
+                                            {{ $coin['name'] }}</h4>
                                     </div>
                                     <div class="col-12 col-sm-6 col-md-3 col-lg-3 d-none d-md-block fw-bold mb-2">
                                         Naziv

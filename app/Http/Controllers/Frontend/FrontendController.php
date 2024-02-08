@@ -403,7 +403,6 @@ class FrontendController extends Controller
         $category = ProductCategory::where('slug', 'dukati')->first();
 
         $goldenCoins[0]['name'] = '3.49 g zlata | dukat Franc Jozef';
-        $goldenCoins[0]['description'] = '3.49 g zlata | dukat Franc Jozef';
         $goldenCoins[0]['slug'] = 'zlatni-dukati-franz-joseph-349g';
         $goldenCoins[0]['products'] = Product::with(['company'])
             ->whereNotNull('selling_price')
@@ -414,7 +413,6 @@ class FrontendController extends Controller
             ->take(3);
 
         $goldenCoins[1]['name'] = '13.96 g zlata | dukat Franc Jozef';
-        $goldenCoins[1]['description'] = '13.96 g zlata | dukat Franc Jozef';
         $goldenCoins[1]['slug'] = 'zlatni-dukati-franz-joseph-1396g';
         $goldenCoins[1]['products'] = Product::with(['company'])
             ->whereNotNull('selling_price')
@@ -425,7 +423,6 @@ class FrontendController extends Controller
             ->take(3);
 
         $goldenCoins[2]['name'] = '1 unca zlata | dukat Bečka filharmonija';
-        $goldenCoins[2]['description'] = '1 unca zlata | dukat Bečka filharmonija';
         $goldenCoins[2]['slug'] = 'zlatni-dukati-vienna-philharmonic-1unca';
         $goldenCoins[2]['products'] = Product::with(['company'])
             ->whereNotNull('selling_price')
@@ -549,8 +546,18 @@ class FrontendController extends Controller
 
     public function coinsSingleArchive($slug)
     {
+        $description = '';
         $coinData = Product::where('slug', $slug)->first();
+        if ($slug == 'zlatni-dukati-franz-joseph-349g') {
+            $description = 'Zlatni dukat Franc Jozef, sa težinom od 3.49 grama zlata, predstavlja cenjenu kovanicu koji ljubitelji numizmatike i investitori često traže. Ovaj zlatni dukat, kovan u čast austro-ugarskog cara Franca Jozefa I, simbolizuje važan deo evropske istorije i finansijske tradicije. Sa svojim preciznim udarom i visokim sadržajem čistog zlata, ovaj zlatni dukat je ne samo kolekcionarski predmet već i stabilna investicija. Investiranje u zlato, kao što je dukat Franc Jozef, predstavlja pouzdan način zaštite od inflacije i očuvanja vrednosti kapitala u vremenima ekonomske nestabilnosti.';
+        }
+        if ($slug == 'zlatni-dukati-franz-joseph-1396g') {
+            $description = 'Zlatni dukat Franc Jozef sa impresivnom težinom od 13.96 grama zlata predstavlja izuzetnu vrednost za kolekcionare i investitore u plemenitim metalima. Ovaj prestižni zlatni dukat, koji nosi lik austro-ugarskog cara Franca Jozefa I, simbol je dugotrajne istorije i bogatstva. Njegova visoka čistoća zlata i istorijska važnost čine ga atraktivnim ne samo kao kolekcionarski predmet već i kao sigurnu investiciju. Ulaganje u zlato, poput zlatnog dukata Franc Jozef, omogućava diverzifikaciju portfolija i zaštitu od ekonomskih fluktuacija, čineći ga izvanrednim izborom za one koji žele da sačuvaju svoju imovinsku vrednost u nestabilnim vremenima.';
+        }
+        if ($slug == 'zlatni-dukati-vienna-philharmonic-1unca') {
+            $description = 'Zlatni dukat Bečka filharmonija, sa težinom od 1 unce zlata, spada među najprestižnije investicione kovanice na svetu. Ovaj zlatni dukat, koji odaje počast čuvenom orkestru Bečke filharmonije, nije samo simbol muzičke ekscelencije već i izuzetan izbor za investitore i kolekcionare plemenitih metala. Sa 1 uncom čistog zlata, zlatni dukat Bečka filharmonija predstavlja ključnu komponentu u portfolijima onih koji teže očuvanju vrednosti svoje imovine u turbulentnim ekonomskim vremenima. Ulaganje u zlato, kroz kupovinu dukata kao što je Bečka filharmonija, pruža stabilnost, sigurnost i zaštitu od inflacije, čineći ga idealnim izborom za dugoročno očuvanje kapitala.';
+        }
         $products = Product::where('slug', $slug)->get();
-        return view('frontend.themes.' . $this->theme . '.coin-single-archive', compact('products', 'coinData'));
+        return view('frontend.themes.' . $this->theme . '.coin-single-archive', compact('products', 'coinData', 'description'));
     }
 }
