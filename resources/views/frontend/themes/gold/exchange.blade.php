@@ -31,8 +31,21 @@
                             funkcionisanje privrede i međunarodne trgovine.</p>
                     </div>
                 </div>
-                <iframe width="100%" scrolling="no" style="overflow-x: hidden;" height="2000px"
+                <iframe width="100%" id="nbsIframe" scrolling="no" style="overflow-x: hidden;" height="2000px"
                     src="https://www.nbs.rs/kursnaListaModul/srednjiKurs.faces?lang=lat" frameborder="0"></iframe>
+
+                <button onclick="changeIframeStyle">Test</button>
+
+                <script>
+                    function changeIframeStyle() {
+                        var iframe = document.getElementById('myIframe');
+                        var iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+
+                        // Change font family and color of body in iframe
+                        iframeDoc.body.style.fontFamily = 'Arial, sans-serif'; // Change to your desired font family
+                        iframeDoc.body.style.color = 'red'; // Change to your desired color
+                    }
+                </script>
             </div>
         </section>
     </div>

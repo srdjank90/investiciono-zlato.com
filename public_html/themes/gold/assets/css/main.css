@@ -17,9 +17,15 @@ footer .footer-logo img {
     max-width: 290px;
 }
 
+.site-header.style-2 .header-info-bar .logo-header,
+.site-header.style-2 .header-info-bar .extra-nav,
+.site-header.style-2 .header-info-bar .header-item-search {
+    height: 125px;
+}
+
 .site-header.style-2 .header-info-bar .logo-header img {
-    height: 90px;
-    max-width: 245px;
+    height: 125px;
+    max-width: 360px;
 }
 
 h2 {
@@ -48,6 +54,15 @@ h2 {
 
 #ui-id-1 {
     z-index: 9999;
+}
+
+.header-item-search {
+    width: 100%;
+    margin-left: 225px;
+    height: 80px;
+    align-items: center;
+    display: flex;
+    position: relative;
 }
 
 @media (max-width: 575.98px) {

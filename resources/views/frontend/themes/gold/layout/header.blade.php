@@ -156,14 +156,6 @@
                                                 </ul>
                                             </div>
 
-                                            <div class="col-md-3 col-sm-4 col-6 d-md-block">
-                                                <div class="adv-media">
-                                                    <a href="https://forum.investiciono-zlato.com/"><img
-                                                            src="/themes/gold/assets/images/demo/demo-4.webp"
-                                                            alt="/"></a>
-
-                                                </div>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -231,6 +223,8 @@
                         <li class="sub-menu"><a href="{{ route('frontend.exchange') }}"><span>Kursna lista
                                     NBS</span></a></li>
                         <li class="sub-menu"><a href="{{ route('frontend.price') }}"><span>Cena zlata</span></a>
+                        </li>
+                        <li class="sub-menu"><a href="https://forum.investiciono-zlato.com/"><span>Forum</span></a>
                         </li>
                         <li><a href="{{ route('frontend.contact') }}">Kontakt</a></li>
                     </ul>

@@ -241,7 +241,19 @@
     // Set interval to reload the page every 2 minutes (120000 milliseconds)
     setInterval(reloadPage, 120000);
 
+    window.addEventListener('DOMContentLoaded', function() {
+        var iframe = document.getElementById('nbsIframe');
+        var iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+        if (iframeDoc) {
+            // Update background color of iframe body
+            iframeDoc.body.style.backgroundColor = 'red';
+        }
+    });
+
     $(document).ready(function() {
+
+
+
         var header = $('.site-header');
         var headerOffset = header.offset().top;
 
