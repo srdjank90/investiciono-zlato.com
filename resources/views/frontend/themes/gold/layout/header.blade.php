@@ -98,9 +98,10 @@
                                                 src="/themes/gold/assets/images/demo/demo-3.webp" alt="/">
                                             <span class="menu-title">Zlatni dukati</span></a>
                                     </div>
-                                    <div class="col-md-3 col-6"><a href="{{ route('frontend.best') }}"><img
+                                    <div class="col-md-3 col-6"><a
+                                            href="{{ route('frontend.category', 'multi-proizvod') }}"><img
                                                 src="/themes/gold/assets/images/loader-logo.webp" alt="/">
-                                            <span class="menu-title">Najpovoljnije/Najnepovoljnije</span></a>
+                                            <span class="menu-title">Kombo proizvodi</span></a>
                                     </div>
                                 </div>
                             </div>
@@ -155,7 +156,12 @@
                                                     @endforeach
                                                 </ul>
                                             </div>
-
+                                            <div class="col-md-3 col-sm-6 col-6">
+                                                <a href="{{ route('frontend.best') }}"><img
+                                                        src="/themes/gold/assets/images/loader-logo.webp"
+                                                        alt="/">
+                                                    <span class="menu-title">Najpovoljnije/Najnepovoljnije</span></a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

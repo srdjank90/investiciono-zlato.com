@@ -56189,7 +56189,7 @@ table.wishlist_table {
 }
 @media only screen and (max-width: 991px) {
     .logo-header img {
-        max-width: 225px;
+        max-width: 320px;
         height: 90px;
     }
 }
@@ -57457,7 +57457,7 @@ a {
     }
     .mo-left .header-nav .logo-header img {
         max-width: unset;
-        width: 180px;
+        width: 300px;
         height: auto;
         vertical-align: middle;
     }

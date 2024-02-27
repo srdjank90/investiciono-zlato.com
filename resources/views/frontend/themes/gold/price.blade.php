@@ -1,6 +1,8 @@
 @extends('frontend.themes.gold.layout.layout')
-@section('title', 'Cena zlata | Poredjenje cena investicionog zlata u realnom vremenu')
-@section('description', 'Cena zlata')
+@section('title', 'Cena zlata danas u Srbiji - kako pratiti promene?')
+@section('description',
+    'Kada su politička i ekonomska dešavanja turbulentna, cena
+    zlata često raste, jer se smatra sigurnom investicijom.')
 @section('keywords', '')
 @section('image', 'themes/gold/assets/images/demo/demo-3.webp')
 @section('content')
@@ -29,7 +31,7 @@
                                     stanju na trži&scaron;tu plemenitih metala. Praćenje cena zlata može vam pomoći da bolje
                                     upravljate va&scaron;im investicijama i finansijskom budućno&scaron;ću.</p>
                             </div>
-                            <div class="col-12 gold-price">
+                            <div class="col-12 gold-price py-5">
                                 <div class="elementor-widget-container">
                                     <script src="https://charts.kt-solutions.de/assets/js/jquery.canvasjs.min.js"></script>
                                     <script src="https://charts.kt-solutions.de/assets/js/ktcharts.js"></script>
@@ -62,7 +64,7 @@
                                         </div>
 
                                     </div>
-                                    <div id="goldChart" style="width:100%;height:50vh">
+                                    <div id="goldChart" style="width:100%;height:50vh;padding-top:30px;padding-bottom:70px">
                                         <div class="canvasjs-chart-container"
                                             style="position: relative; text-align: left; cursor: auto;"><canvas
                                                 class="canvasjs-chart-canvas" width="1031" height="456"
@@ -143,51 +145,238 @@
                                     </script>
                                 </div>
                             </div>
-                            <div class="col-md-2">
-
-                            </div>
-                            <div class="col-md-8 d-none">
-                                <!-- TradingView Widget BEGIN -->
-                                <div class="tradingview-widget-container">
-                                    <div class="tradingview-widget-container__widget"></div>
-                                    <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/"
-                                            rel="noopener nofollow" target="_blank"><span class="blue-text">Track all
-                                                markets on
-                                                TradingView</span></a></div>
-                                    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js"
-                                        async>
-                                        {
-                                            "symbols": [
-                                                ["PYTH:XAUUSD|1D"]
-                                            ],
-                                            "chartOnly": false,
-                                            "width": 1000,
-                                            "height": 500,
-                                            "locale": "en",
-                                            "colorTheme": "light",
-                                            "autosize": false,
-                                            "showVolume": false,
-                                            "showMA": false,
-                                            "hideDateRanges": false,
-                                            "hideMarketStatus": false,
-                                            "hideSymbolLogo": false,
-                                            "scalePosition": "right",
-                                            "scaleMode": "Normal",
-                                            "fontFamily": "-apple-system, BlinkMacSystemFont, Trebuchet MS, Roboto, Ubuntu, sans-serif",
-                                            "fontSize": "10",
-                                            "noTimeScale": false,
-                                            "valuesTracking": "1",
-                                            "changeMode": "price-and-percent",
-                                            "chartType": "area",
-                                            "maLineColor": "#2962FF",
-                                            "maLineWidth": 1,
-                                            "maLength": 9,
-                                            "lineWidth": 2,
-                                            "lineType": 0,
-                                            "dateRanges": ["1d|1", "1m|30", "3m|60", "12m|1D", "60m|1W", "all|1M"]
-                                        }
-                                    </script>
-                                </div> <!-- TradingView Widget END -->
+                            <div class="col-12 mt-5">
+                                <h1 class="text-center mb-3">Cena zlata danas u Srbiji - kako pratiti promene?</h1>
+                                <h2>Kako se određuje cena zlata?</h2>
+                                <p>Cena zlata se određuje na osnovu nekoliko faktora koji utiču na njegovu vrednost na
+                                    tržištu. Prvo, važan faktor je ponuda i potražnja za zlatom. Kada je potražnja veća od
+                                    ponude, cena zlata obično raste, dok se cena smanjuje kada je ponuda veća od
+                                    potražnje.</p>
+                                <p>Drugi faktor koji utiče na cenu zlata je geopolitička situacija. Kada su svetski
+                                    politički ili
+                                    ekonomski događaji nesigurni ili nestabilni, investitori često traže bezbednu luku za
+                                    ulaganje, kao što je zlato. To može dovesti do porasta cene zlata.</p>
+                                <p>
+                                    Treći faktor je cena valuta. Kada vrednost valute opada, cena zlata obično raste.
+                                    Naime, zlato se često smatra alternativnim oblikom valute i mnogi investitori kupuju
+                                    zlato kao zaštitu od inflacije i nestabilnosti valuta.
+                                </p>
+                                <p>Još jedan važan faktor je kamatna stopa. Kada su kamatne stope niske, investitori
+                                    mogu biti više zainteresovani za kupovinu zlata koje nudi bolji povrat uloženog kapitala
+                                    u odnosu na štednju ili druge oblike investicija.</p>
+                                <p>Takođe, uticaj na cenu zlata može imati i industrijska potrošnja. Zlato se koristi u
+                                    različitim industrijskim sektorima poput elektronike, medicinskih uređaja i nakita. Ako
+                                    postoji velika potražnja za zlatom u tim sektorima, to može uticati na cenu.</p>
+                                <p>Ukratko, cena zlata se određuje prema ponudi i potražnji, geopolitičkoj situaciji,
+                                    vrednosti valute, kamatnim stopama i industrijskoj potrošnji. Razumevanje ovih faktora
+                                    može pomoći investitorima da pravilno procene vrednost zlata i donesu informisane
+                                    odluke o kupovini ili prodaji. Važno je zapamtiti da su ovi faktori dinamični i da se
+                                    mogu
+                                    menjati tokom vremena, što može uticati na fluktuacije cena zlata na tržištu.</p>
+                                <h2>Da li je cena zlata promenljiva?</h2>
+                                <p>Da, cena zlata je promenljiva i podložna fluktuacijama na tržištu. Vrednost zlata se
+                                    određuje na osnovu ponude i tražnje, kao i drugih faktora koji utiču na tržište
+                                    plemenitih
+                                    metala. Promene cena zlata se često dešavaju kao odgovor na ekonomske, političke i
+                                    finansijske događaje širom sveta.</p>
+                                <p>Mnogi faktori mogu uticati na promenu cene zlata. Na primer, ekonomska nestabilnost,
+                                    inflacija, geopoilitički događaji i promene kamatnih stopa mogu svi imati uticaj na
+                                    tražnju
+                                    i vrednost zlata. Kada postoji veća tražnja za zlatom, cena može porasti, dok može
+                                    pasti kada postoji manja tražnja ili veća ponuda.</p>
+                                <p>Takođe, investitori često koriste zlato kao “sigurno utočište” u periodima finansijske
+                                    nestabilnosti ili neizvesnosti. U takvim situacijama, kada se očekuje pad vrednosti
+                                    drugih investicija kao što su akcije ili valute, cena zlata može rasti.</p>
+                                <p>Važno je napomenuti da investiranje u zlato nosi određene rizike zbog promenljive
+                                    cene. Investitori treba da budu svesni da se vrednost zlata može kretati kako u
+                                    pozitivnom, tako i u negativnom pravcu. Zbog toga je važno pažljivo pratiti tržište i
+                                    konsultovati stručnjake pre nego što se donese odluka o investiranju u zlato.</p>
+                                <h2>Koji faktori utiču na cenu zlata?</h2>
+                                <p>Cena zlata podleže uticaju različitih faktora. Evo nekih ključnih faktora koji mogu
+                                    uticati
+                                    na cenu zlata:</p>
+                                <ol>
+                                    <li><b>Potražnja i ponuda:</b> Odnos između potražnje i ponude zlata može značajno
+                                        uticati na njegovu cenu. Kada je potražnja veća od ponude, cene zlata obično
+                                        rastu. S druge strane, ako je ponuda veća od potražnje, cene mogu pasti.</li>
+                                    <li><b>Globalna ekonomska situacija:</b> Stanje globalne ekonomije može imati
+                                        značajan uticaj na cenu zlata. Kada je ekonomija nestabilna ili se suočava s
+                                        recesijom, mnogi investitori se okreću zlatu kao sigurnoj luki. To može dovesti do
+                                        porasta cena zlata.</li>
+                                    <li><b>Inflacija i deflacija:</b> Inflacija, odnosno opšti rast cena dobara i usluga,
+                                        može
+                                        uticati na cenu zlata. Kada postoji visoka inflacija, vrednost novca opada, što
+                                        dovodi do porasta potražnje za zlatom kao zaštitom od gubitka vrednosti. S
+                                        druge strane, deflacija ili opšti pad cena može smanjiti potražnju za zlatom i
+                                        uticati na njegovu cenu.</li>
+                                    <li><b>Geopolitička nestabilnost:</b> Geopolitički događaji kao što su ratovi, političke
+                                        prevare i sukobi mogu uticati na cenu zlata. Kada postoji geopolitička
+                                        nestabilnost, investitori često smatraju zlato sigurnom investicijom i njegova cena
+                                        može rasti.</li>
+                                    <li><b>Kamatne stope:</b> Nivo kamatnih stopa takođe može uticati na cenu zlata. Kada
+                                        su kamatne stope niske, investitori se često okreću alternativnim investicijijama
+                                        poput zlata. To može dovesti do povećane potražnje za zlatom i rasta njegove
+                                        cene. S druge strane, visoke kamatne stope mogu smanjiti privlačnost zlata kao
+                                        investicije, što može uticati na njegovu cenu.</li>
+                                    <li><b>Valutna tržišta:</b> Vrednost valuta može uticati na cenu zlata. Kada vrednost
+                                        određene valute pada, cena zlata, koje se često smatra alternativnom valutom,
+                                        obično raste. Ovo je zbog toga što investitori traže zaštitu od inflacije i
+                                        nestabilnosti valuta putem ulaganja u zlato.</li>
+                                    <li><b>Industrijska potrošnja:</b> Potražnja za zlatom u različitim industrijskim
+                                        sektorima,
+                                        kao što su elektronika, medicinski uređaji i nakit, takođe može uticati na cenu
+                                        zlata. Ako postoji velika potražnja za zlatom u ovim sektorima, to može dovesti
+                                        do porasta cene.</li>
+                                </ol>
+                                <p>Svi ovi faktori zajedno oblikuju ponudu i potražnju zlata na tržištu, što dovodi do
+                                    promene njegove cene. Važno je razumeti da su ovi faktori dinamični i da se mogu
+                                    menjati tokom vremena. Stoga, pre donošenja odluke o investiranju u zlato, važno je
+                                    pratiti ove faktore i konsultovati stručnjake kako biste doneli informisanu odluku.</p>
+                                <h2>Koliko vredi gram čistog zlata?</h2>
+                                <p>Vrednost grama čistog zlata zavisi od mnogih faktora. Glavni faktor je cena zlata na
+                                    svetskom tržištu, koja se često menja. Trenutna cena zlata može biti lako dostupna
+                                    putem različitih finansijskih izvora ili putem interneta.</p>
+                                <p>Da biste izračunali vrednost grama zlata, trebate uzeti u obzir trenutnu cenu zlata u
+                                    dolarima po unci i konvertovati je u lokalnu valutu. Zatim, koristeći količinu zlata
+                                    izraženu u gramima, možete pomnožiti tu vrednost da biste dobili vrednost grama zlata.
+                                </p>
+                                <p>Važno je napomenuti da je cena zlata izražena po finoj unci, što znači da se odnosi na
+                                    čistu težinu zlata bez primesa. Takođe, treba imati na umu da se trošak obrade i
+                                    naknade mogu dodati kada prodajete ili kupujete zlato, što može uticati na konačnu
+                                    vrednost grama čistog zlata.</p>
+                                <p>Vrednost zlata može biti osnova za ulaganje ili za prodaju nakita od zlata. Takođe,
+                                    vrednost zlata se često koristi kao hedž protiv inflacije i kao sigurna investicija u
+                                    turbulentnim ekonomskim vremenima.</p>
+                                <p>Uvek je najbolje da se konsultujete sa stručnjakom za tržište zlata kako biste dobili
+                                    tačnije informacije o trenutnoj vrednosti grama čistog zlata i kako biste doneli
+                                    informisane odluke o kupovini ili prodaji.</p>
+                                <h2>Gde se može prodati zlato?</h2>
+                                <p>Vlasnici zlata u Srbiji imaju nekoliko opcija kada je u pitanju prodaja njihovih
+                                    dragocenosti. Evo nekoliko mesta gde se zlato može prodati:</p>
+                                <ol>
+                                    <li><b>Zlatara:</b> Najčešći način prodaje zlata je putem zlatara. Zlatari su
+                                        specijalizovane
+                                        prodavnice koje se bave kupovinom i prodajom dragocenog metala. Oni obično
+                                        procenjuju vrednost zlata na osnovu njegove čistoće i aktuelne cene na tržištu.
+                                        Prodaja zlata zlataru može biti brza i jednostavna opcija, ali vlasnici mogu dobiti
+                                        nižu cenu u poređenju sa nekim drugim metodama prodaje.</li>
+                                    <li><b>Online platforme za prodaju zlata:</b> U digitalnom dobu, postoje online
+                                        platforme
+                                        koje omogućavaju vlasnicima zlata da prodaju svoje dragocenosti. Ovi portali
+                                        pružaju mogućnost da postavite oglase za prodaju i komunicirate direktno sa
+                                        potencijalnim kupcima. Ovakav način prodaje može biti praktičan i omogućava
+                                        veću kontrolu nad cenom po kojoj se prodaje zlato.</li>
+                                    <li><b>Numizmatički kolekcionari:</b> Ako posedujete retke ili kolekcionarske zlatne
+                                        novčiće ili predmete sa zlatnim vrednostima, možete se obratiti numizmatičkim
+                                        kolekcionarima. Oni su specijalizovani za prikupljanje i trgovinu retkih novčića,
+                                        medalja i drugih zlatnih predmeta. Kolekcionari često su zainteresovani za
+                                        jedinstvene i retke komade, što može rezultirati većom cenom za vaše zlato.</li>
+                                </ol>
+                                <p>Međutim, budite oprezni prilikom izbora otkupnog mesta i istražite reputaciju pre nego
+                                    što se odlučite za prodaju svojeg zlata.Važno je napomenuti da će cena koju dobijete
+                                    prilikom prodaje zlata zavisiti od više faktora kao što su čistoća zlata, njegova
+                                    težina,
+                                    trenutna cena zlata na tržištu i provizije koje naplaćuje određena prodajna opcija. Pre
+                                    prodaje zlata, preporučuje se konsultacija sa više različitih mesta prodaje kako biste
+                                    pronašli najbolju mogućnost koja vam obezbeđuje najbolju vrednost za vaše zlato.</p>
+                                <h2>Digitalni alati za praćenje</h2>
+                                <p>Praćenje cene zlata tradicionalno se obavljalo putem finansijskih medija i novina, ali u
+                                    današnjem digitalnom dobu postoje razni digitalni alati. Online platforme i aplikacije
+                                    omogućavaju investitorima i štedišama da prate promene cena zlata u realnom
+                                    vremenu.</p>
+                                <h3>Aplikacije i platforme</h3>
+                                <p>Pristup informacijama o ceni zlata nikada nije bio lakši zahvaljujući modernim
+                                    aplikacijama i platformama:</p>
+                                <ul>
+                                    <li class="ms-3"><b>Kitco</b> - vodeći izvor za cene metala i tržišne analize;</li>
+                                    <li class="ms-3"><b>Gold Price Live</b> - aplikacija koja pruža trenutne cene;</li>
+                                    <li class="ms-3"><b>Bloomberg</b> - mesto za sveobuhvatne finansijske vesti i podatke;
+                                    </li>
+                                    <li class="ms-3"><b>Yahoo Finance</b> - kombinuje vesti, podatke i alate za
+                                        investitore;</li>
+                                    <li class="ms-3"><b>Gold Tracker</b> - specijalizovana aplikacija za praćenje zlata;
+                                    </li>
+                                    <li class="ms-3"><b>MarketWatch</b> - informacije i analize cenovnih trendova zlata;
+                                    </li>
+                                    <li class="ms-3"><b>Investing.com</b> - prati cene i nudi raznovrsne finansijske
+                                        instrumente;</li>
+                                    <li class="ms-3"><b>Reuters</b> - pouzdan izvor za praćenje tržišta i cena;</li>
+                                    <li class="ms-3"><b>CNBC</b> - pruža aktuelne finansijske vesti i podatke o tržištima.
+                                    </li>
+                                </ul>
+                                <p>
+                                    Ove aplikacije pružaju različite funkcionalnosti, uključujući prikaz trenutnih cena,
+                                    analitičke alate i istorijske podatke.
+                                </p>
+                                <h3>Finansijski portali i grafikoni</h3>
+                                <p>Finansijski portali pružaju ažurirane informacije i grafikone koji analiziraju kretanje
+                                    cena
+                                    zlata.</p>
+                                <p>Ovi portali nude napredne alate kao što su interaktivni grafikoni, analitički alati,
+                                    različiti
+                                    vremenski okviri i indikatori koji pomažu u predviđanju budućih trendova cena zlata.
+                                    Takođe, investitori mogu pristupiti istorijskim cenama, što je ključno za analizu
+                                    dugoročnih tendencija na tržištu. Portali često omogućavaju personalizaciju grafikona
+                                    prema korisničkim preferencijama, što olakšava razumevanje dinamike cena.</p>
+                                <p>Pored toga, finansijski portali često pružaju informacije o inflaciji, kamatnim stopama,
+                                    promenama u vrednosti valuta i drugim makroekonomskim indikatorima koji direktno ili
+                                    indirektno utiču na vrednost zlata.</p>
+                                <p>Napokon, ne treba zanemariti tehničku analizu koju pružaju finansijski portali. Grafikoni
+                                    često sadrže različite tehničke analize, uključujući trend linije, nivoe podrške i
+                                    otpora,
+                                    kao i druge oblike tehničke analize.</p>
+                                <h2>Ko određuje svetsku cenu zlata?</h2>
+                                <p>Svetska cena zlata određuje se putem kombinacije faktora i procesa koji se odvijaju na
+                                    globalnom nivou. Iako je tržište zlata široko i raznoliko, nekoliko ključnih aktera i
+                                    faktora
+                                    ima značajan uticaj na kretanje cena.
+                                </p>
+                                <p>Jedan od glavnih faktora koji utiče na svetsku cenu zlata je tražnja i ponuda. Ova
+                                    ravnoteža između kupaca i prodavaca određuje koliko zlata je dostupno na tržištu i
+                                    koliko investitori žele da kupe. Ako je tražnja veća od ponude, cena zlata obično raste,
+                                    dok pad tražnje može dovesti do pada cena.
+                                </p>
+                                <p>Takođe, monetarna politika i performanse centralnih banaka imaju značajan uticaj na
+                                    cenu zlata. Kada se smanjuju kamatne stope ili se vrši štampanje novca, investitori
+                                    često okreću svoje investicije prema zlatu kao sigurnoj luci. Ovo može dovesti do rasta
+                                    cena zlata.
+                                </p>
+                                <p>Krize i geopolitički događaji takođe mogu značajno uticati na cenu zlata. Kada se
+                                    dogode političke nestabilnosti, ratovi ili ekonomske turbulencije, investitori često
+                                    traže
+                                    utočište u zlatu kao sigurnoj imovini. Ovaj porast tražnje može dovesti do rasta cena.
+                                </p>
+                                <p>Tehnička analiza takođe igra ulogu u određivanju svetske cene zlata. Kroz proučavanje
+                                    istorijskih cena i grafikona, investitori mogu identifikovati obrasce i trendove koji
+                                    mogu
+                                    uticati na buduće cene. Ova vrsta analize pomaže investitorima da donose informisane
+                                    odluke o kupovini ili prodaji zlata.
+                                </p>
+                                <h2>Kupovina i prodaja zlata</h2>
+                                <p>Prilikom kupovine i prodaje zlata, ključni faktor je trenutna tržišna vrednost ovog
+                                    plemenitog metala. Ta vrednost je podložna stalnim promenama, što pruža osnovu za
+                                    donošenje investicionih odluka.</p>
+                                <p>Tržište zlata je dinamično, a visoka likvidnost omogućava investitorima brzo obavljanje
+                                    transakcija. Spot cena zlata se određuje na osnovu trenutne ponude i potražnje na
+                                    međunarodnom tržištu, često u odnosu na LME/LBMA referentnu vrednost.</p>
+                                <p>Pratiti LME/LBMA cenu pruža jasno uporište pri trgovanju, a investitori koriste razne
+                                    alate i platforme kako bi osigurali optimalne investicione poteze. Kako odrediti pravi
+                                    trenutak za kupovinu zlata?</p>
+                                <p>Istorija je pokazala da se u vremenima ekonomske neizvesnosti zlato često smatra
+                                    stabilnim investicionim instrumentom.</p>
+                                <p>Zbog toga je detaljan pregled istorijskih podataka i obrazaca kretanja cena zlata ključan
+                                    za procenu pravog trenutka za kupovinu ili prodaju. Vreme kada je tržište volatilno može
+                                    biti povoljno za obavljanje transakcija, pod uslovom da se koriste visokokvalitetni
+                                    podaci
+                                    pri donošenju odluka.</p>
+                                <p>Takođe, praćenje sezonskih trendova može biti od suštinskog značaja za odabir pravog
+                                    trenutka. Neka istraživanja ukazuju na sezonske obrasce prema kojima se cene zlata
+                                    povećavaju ili smanjuju u određenim periodima godine. Ove analize preporučuju
+                                    dodatno razmatranje prilikom procene dugoročnih investicionih strategija.
+                                </p>
+                                <p>Na kraju, korisno je koristiti tehničku analizu tržišnih kretanja i ponašanja zlata.
+                                    Kombinovanjem fundamentalne i tehničke analize, investitori mogu predvideti trendove i
+                                    prepoznati signale koji ukazuju na pravi trenutak za kupovinu ili prodaju.</p>
                             </div>
                         </div>
                     </div>
