@@ -14,6 +14,7 @@
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-md-12">
+                        <h1 class="text-center mb-3">Cena zlata danas u Srbiji - kako pratiti promene?</h1>
                         <h2>Cena zlata</h2>
                         <div>Cena zlata je jedan od najvažnijih faktora u svetu investiranja i ekonomije. Ova plemenita
                             metal ima dugu istoriju kao sredstvo vrednosti i često se koristi kao siguran utoči&scaron;te
@@ -54,7 +55,7 @@
                                         </div>
                                         <div class="col-12 col-md-3">
                                             <div class="form-group">
-                                                <label for="">Period</label>
+                                                <label for="">Gramaža</label>
                                                 <select name="" id="weight-select" class="form-select">
                                                     <option value="G">Gram</option>
                                                     <option value="KG">Kilogram</option>
@@ -146,7 +147,7 @@
                                 </div>
                             </div>
                             <div class="col-12 mt-5">
-                                <h1 class="text-center mb-3">Cena zlata danas u Srbiji - kako pratiti promene?</h1>
+
                                 <h2>Kako se određuje cena zlata?</h2>
                                 <p>Cena zlata se određuje na osnovu nekoliko faktora koji utiču na njegovu vrednost na
                                     tržištu. Prvo, važan faktor je ponuda i potražnja za zlatom. Kada je potražnja veća od

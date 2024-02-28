@@ -100,8 +100,8 @@
                                     </div>
                                     <div class="col-md-3 col-6"><a
                                             href="{{ route('frontend.category', 'multi-proizvod') }}"><img
-                                                src="/themes/gold/assets/images/loader-logo.webp" alt="/">
-                                            <span class="menu-title">Kombo proizvodi</span></a>
+                                                src="/themes/gold/assets/images/demo/demo-4.webp" alt="/">
+                                            <span class="menu-title">Multipack</span></a>
                                     </div>
                                 </div>
                             </div>
