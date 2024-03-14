@@ -195,7 +195,7 @@ class FrontendController extends Controller
 
     public function posts()
     {
-        $posts = Post::with(['categories'])->where('status', 'published')->paginate(10);
+        $posts = Post::with(['categories'])->where('status', 'published')->orderBy('created_at', 'desc')->paginate(10);
         return view('frontend.themes.' . $this->theme . '.posts', compact('posts'));
     }
 
@@ -205,7 +205,7 @@ class FrontendController extends Controller
         if ($selectedCategory) {
             $posts = Post::with(['categories'])->whereHas('categories', function ($query) use ($categorySlug) {
                 $query->where(['slug' => $categorySlug]);
-            })->paginate(10);
+            })->orderBy('created_at', 'desc')->paginate(10);
             return view('frontend.themes.' . $this->theme . '.posts', compact('posts', 'selectedCategory'));
         } else {
             return $this->post($categorySlug);
