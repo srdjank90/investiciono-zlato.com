@@ -10,14 +10,15 @@
             <img src="/themes/gold/assets/images/bg-triangle3.webp" class="bg-img" alt="">
             <img src="/themes/gold/assets/images/bg-triangle4.webp" class="bg-img2" alt="">
             <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-xl-6 col-lg-6">
+                <div class="row align-items-start">
+                    <div class="col-xl-6 col-lg-6 best-prices">
                         <div class="section-head style-2">
                             <h4 class="sub-title">Najpovoljnije cene pločica</h4>
                         </div>
                         <!-- Best Plates -->
                         @foreach ($goldenPlatesBest as $plate)
-                            <div class="prices-table-gold">
+                            <div class="prices-table-gold"
+                                style="border-radius: 10px;background-color:#90ee90;padding:10px;margin-bottom:20px">
                                 <div class="row">
                                     <div class="col-12">
                                         <h4 class="text-uppercase">Cena zlatne pločice <span>od
@@ -51,11 +52,11 @@
                                                 <div>
                                                     @priceFormat($product['selling_price'])
                                                     {{ $currency }} <br>
-                                                    @if ((float) $product['selling_price_percentage_change'] > 0)
+                                                    @if ((float) $product['selling_price_percentage_change'] > 0 && false)
                                                         <small class="text-danger">@priceFormat($product['selling_price_percentage_change'])%
                                                             <i class="fa-solid fa-arrow-up"></i></small>
                                                     @endif
-                                                    @if ((float) $product['selling_price_percentage_change'] < 0)
+                                                    @if ((float) $product['selling_price_percentage_change'] < 0 && false)
                                                         <small class="text-success">@priceFormat($product['selling_price_percentage_change'])%
                                                             <i class="fa-solid fa-arrow-down"></i></small>
                                                     @endif
@@ -71,11 +72,11 @@
                                                 <div>
                                                     @priceFormat($product['purchase_price'])
                                                     {{ $currency }} <br>
-                                                    @if ((float) $product['purchase_price_percentage_change'] > 0)
+                                                    @if ((float) $product['purchase_price_percentage_change'] > 0 && false)
                                                         <small class="text-danger">@priceFormat($product['purchase_price_percentage_change'])%
                                                             <i class="fa-solid fa-arrow-up"></i></small>
                                                     @endif
-                                                    @if ((float) $product['purchase_price_percentage_change'] < 0)
+                                                    @if ((float) $product['purchase_price_percentage_change'] < 0 && false)
                                                         <small class="text-success">@priceFormat($product['purchase_price_percentage_change'])%
                                                             <i class="fa-solid fa-arrow-down"></i></small>
                                                     @endif
@@ -109,16 +110,17 @@
                             </div>
                         @endforeach
                     </div>
-                    <div class="col-xl-6 col-lg-6">
+                    <div class="col-xl-6 col-lg-6 worst-prices">
                         <div class="section-head style-2">
                             <h4 class="sub-title">Najnepovoljnije cene pločica</h4>
                         </div>
                         <!-- Worst Plates -->
                         @foreach ($goldenPlatesWorst as $plate)
-                            <div class="prices-table-gold">
-                                <div class="row">
+                            <div class="prices-table-gold"
+                                style="border-radius: 10px;background-color:#ff7f7f;padding:10px;margin-bottom:20px">
+                                <div class="row text-white">
                                     <div class="col-12">
-                                        <h4 class="text-uppercase">Cena zlatne pločice <span>od
+                                        <h4 class="text-uppercase text-white">Cena zlatne pločice <span>od
                                                 {{ $plate['description'] }}:</span></h4>
                                     </div>
                                     <div class="col-12 col-sm-6 col-md-3 col-lg-3 d-none d-md-block fw-bold mb-2">
@@ -137,7 +139,7 @@
                                         <div
                                             class="gold-column col-12 col-sm-6 col-md-3 col-lg-3 d-flex justify-content-center flex-column">
                                             <div class="d-md-none fw-bold"><small>Naziv</small></div>
-                                            <a target="_blank" class="text-primary fw-bold" href="{{ $product['url'] }}">
+                                            <a target="_blank" class="fw-bold text-white" href="{{ $product['url'] }}">
                                                 {{ $product['name'] }} <img width="45"
                                                     src="{{ $product->company->image_url }}"
                                                     title="{{ $product->company->name }}" alt=""></a>
@@ -149,11 +151,11 @@
                                                 <div>
                                                     @priceFormat($product['selling_price'])
                                                     {{ $currency }} <br>
-                                                    @if ((float) $product['selling_price_percentage_change'] > 0)
+                                                    @if ((float) $product['selling_price_percentage_change'] > 0 && false)
                                                         <small class="text-danger">@priceFormat($product['selling_price_percentage_change'])%
                                                             <i class="fa-solid fa-arrow-up"></i></small>
                                                     @endif
-                                                    @if ((float) $product['selling_price_percentage_change'] < 0)
+                                                    @if ((float) $product['selling_price_percentage_change'] < 0 && false)
                                                         <small class="text-success">@priceFormat($product['selling_price_percentage_change'])%
                                                             <i class="fa-solid fa-arrow-down"></i></small>
                                                     @endif
@@ -169,11 +171,11 @@
                                                 <div>
                                                     @priceFormat($product['purchase_price'])
                                                     {{ $currency }} <br>
-                                                    @if ((float) $product['purchase_price_percentage_change'] > 0)
+                                                    @if ((float) $product['purchase_price_percentage_change'] > 0 && false)
                                                         <small class="text-danger">@priceFormat($product['purchase_price_percentage_change'])%
                                                             <i class="fa-solid fa-arrow-up"></i></small>
                                                     @endif
-                                                    @if ((float) $product['purchase_price_percentage_change'] < 0)
+                                                    @if ((float) $product['purchase_price_percentage_change'] < 0 && false)
                                                         <small class="text-success">@priceFormat($product['purchase_price_percentage_change'])%
                                                             <i class="fa-solid fa-arrow-down"></i></small>
                                                     @endif

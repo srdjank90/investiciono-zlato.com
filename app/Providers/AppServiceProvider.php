@@ -47,11 +47,11 @@ class AppServiceProvider extends ServiceProvider
 
             $najboljiSaveti = Post::whereHas('categories', function ($q) {
                 $q->where('id', 1);
-            })->get()->take(3);
+            })->orderBy('created_at', 'desc')->get()->take(3);
 
             $najnovijiTekstovi = Post::whereHas('categories', function ($q) {
                 $q->where('id', 2);
-            })->get()->take(3);
+            })->orderBy('created_at', 'desc')->get()->take(3);
 
             View::share('najboljiSaveti', $najboljiSaveti);
             View::share('najnovijiTekstovi', $najnovijiTekstovi);

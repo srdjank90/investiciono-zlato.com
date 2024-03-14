@@ -84,11 +84,11 @@
                                                 <div>
                                                     @priceFormat($product['selling_price'])
                                                     {{ $currency }} <br>
-                                                    @if ((float) $product['selling_price_percentage_change'] > 0)
+                                                    @if ((float) $product['selling_price_percentage_change'] > 0 && false)
                                                         <small class="text-danger">@priceFormat($product['selling_price_percentage_change'])%
                                                             <i class="fa-solid fa-arrow-up"></i></small>
                                                     @endif
-                                                    @if ((float) $product['selling_price_percentage_change'] < 0)
+                                                    @if ((float) $product['selling_price_percentage_change'] < 0 && false)
                                                         <small class="text-success">@priceFormat($product['selling_price_percentage_change'])%
                                                             <i class="fa-solid fa-arrow-down"></i></small>
                                                     @endif
@@ -104,11 +104,11 @@
                                                 <div>
                                                     @priceFormat($product['purchase_price'])
                                                     {{ $currency }} <br>
-                                                    @if ((float) $product['purchase_price_percentage_change'] > 0)
+                                                    @if ((float) $product['purchase_price_percentage_change'] > 0 && false)
                                                         <small class="text-danger">@priceFormat($product['purchase_price_percentage_change'])%
                                                             <i class="fa-solid fa-arrow-up"></i></small>
                                                     @endif
-                                                    @if ((float) $product['purchase_price_percentage_change'] < 0)
+                                                    @if ((float) $product['purchase_price_percentage_change'] < 0 && false)
                                                         <small class="text-success">@priceFormat($product['purchase_price_percentage_change'])%
                                                             <i class="fa-solid fa-arrow-down"></i></small>
                                                     @endif

@@ -17,88 +17,189 @@
                                 {!! $category->description !!}
                             </div>
                         </div>
-                        <!-- Category table Prices -->
-                        <div class="prices-table-gold">
-                            <div class="row">
-                                <div class="col-12 col-sm-6 col-md-3 col-lg-3 d-none d-md-block fw-bold mb-3">
-                                    Naziv
-                                </div>
-                                <div class="col-12 col-sm-6 col-md-3 col-lg-3 d-none d-md-block fw-bold">
-                                    Prodajna
-                                </div>
-                                <div class="col-12 col-sm-6 col-md-3 col-lg-3 d-none d-md-block fw-bold">
-                                    Otkupna
-                                </div>
-                                <div class="col-12 col-sm-6 col-md-3 col-lg-3 d-none d-md-block fw-bold">
-                                    Raspon
-                                </div>
-                                @foreach ($products as $product)
-                                    <div
-                                        class="gold-column col-12 col-sm-6 col-md-3 col-lg-3 d-flex justify-content-center flex-column">
-                                        <div class="d-md-none fw-bold"><small>Naziv</small></div>
-                                        <a target="_blank" class="text-primary fw-bold" href="{{ $product['url'] }}">
-                                            {{ $product['name'] }} <img width="45"
-                                                src="{{ $product->company->image_url }}"
-                                                title="{{ $product->company->name }}" alt=""></a>
+                        <!-- Category table Prices  -->
+                        @if ($category->slug !== 'multi-proizvod')
+                            <div class="prices-table-gold">
+                                <div class="row">
+                                    <div class="col-12 col-sm-6 col-md-3 col-lg-3 d-none d-md-block fw-bold mb-3">
+                                        Naziv
                                     </div>
-                                    <div
-                                        class="gold-column col-12 col-md-3 col-sm-6 col-md-3 col-lg-3 d-flex justify-content-center flex-column">
-                                        <div class="d-md-none fw-bold"><small>Prodajna</small></div>
-                                        @if ($product['selling_price'] != '0' && $product['selling_price'] != null)
-                                            <div>
-                                                @priceFormat($product['selling_price'])
-                                                {{ $currency }} <br>
-                                                @if ((float) $product['selling_price_percentage_change'] > 0)
-                                                    <small class="text-danger">@priceFormat($product['selling_price_percentage_change'])%
-                                                        <i class="fa-solid fa-arrow-up"></i></small>
-                                                @endif
-                                                @if ((float) $product['selling_price_percentage_change'] < 0)
-                                                    <small class="text-success">@priceFormat($product['selling_price_percentage_change'])%
-                                                        <i class="fa-solid fa-arrow-down"></i></small>
-                                                @endif
-                                            </div>
-                                        @else
-                                            <div>Trenutno nedostupno</div>
-                                        @endif
+                                    <div class="col-12 col-sm-6 col-md-3 col-lg-3 d-none d-md-block fw-bold">
+                                        Prodajna
                                     </div>
-                                    <div
-                                        class="gold-column col-12 col-md-3 col-sm-6 col-md-3 col-lg-3 d-flex justify-content-center flex-column">
-                                        <div class="d-md-none fw-bold"><small>Otkupna</small></div>
-                                        @if ($product['purchase_price'] != '0' && $product['purchase_price'] != null)
-                                            <div>
-                                                @priceFormat($product['purchase_price'])
-                                                {{ $currency }} <br>
-                                                @if ((float) $product['purchase_price_percentage_change'] > 0)
-                                                    <small class="text-danger">@priceFormat($product['purchase_price_percentage_change'])%
-                                                        <i class="fa-solid fa-arrow-up"></i></small>
-                                                @endif
-                                                @if ((float) $product['purchase_price_percentage_change'] < 0)
-                                                    <small class="text-success">@priceFormat($product['purchase_price_percentage_change'])%
-                                                        <i class="fa-solid fa-arrow-down"></i></small>
-                                                @endif
-                                            </div>
-                                        @else
-                                            <div>Trenutno nedostupno</div>
-                                        @endif
+                                    <div class="col-12 col-sm-6 col-md-3 col-lg-3 d-none d-md-block fw-bold">
+                                        Otkupna
                                     </div>
-                                    <div
-                                        class="gold-column col-12 col-md-3 col-sm-6 col-md-3 col-lg-3 d-flex justify-content-center flex-column">
-                                        <div class="d-md-none fw-bold"><small>Raspon</small></div>
-                                        @if ($product['selling_price'] > 0 && $product['purchase_price'] > 0)
-                                            {{ round(($product['selling_price'] / $product['purchase_price'] - 1) * 100, 2) }}
-                                            %
-                                        @else
-                                            Trenutno nedostupno
-                                        @endif
+                                    <div class="col-12 col-sm-6 col-md-3 col-lg-3 d-none d-md-block fw-bold">
+                                        Raspon
+                                    </div>
+                                    @foreach ($products as $product)
+                                        <div
+                                            class="gold-column col-12 col-sm-6 col-md-3 col-lg-3 d-flex justify-content-center flex-column">
+                                            <div class="d-md-none fw-bold"><small>Naziv</small></div>
+                                            <a target="_blank" class="text-primary fw-bold" href="{{ $product['url'] }}">
+                                                {{ $product['name'] }} <img width="45"
+                                                    src="{{ $product->company->image_url }}"
+                                                    title="{{ $product->company->name }}" alt=""></a>
+                                        </div>
+                                        <div
+                                            class="gold-column col-12 col-md-3 col-sm-6 col-md-3 col-lg-3 d-flex justify-content-center flex-column">
+                                            <div class="d-md-none fw-bold"><small>Prodajna</small></div>
+                                            @if ($product['selling_price'] != '0' && $product['selling_price'] != null)
+                                                <div>
+                                                    @priceFormat($product['selling_price'])
+                                                    {{ $currency }} <br>
+                                                    @if ((float) $product['selling_price_percentage_change'] > 0 && false)
+                                                        <small class="text-danger">@priceFormat($product['selling_price_percentage_change'])%
+                                                            <i class="fa-solid fa-arrow-up"></i></small>
+                                                    @endif
+                                                    @if ((float) $product['selling_price_percentage_change'] < 0 && false)
+                                                        <small class="text-success">@priceFormat($product['selling_price_percentage_change'])%
+                                                            <i class="fa-solid fa-arrow-down"></i></small>
+                                                    @endif
+                                                </div>
+                                            @else
+                                                <div>Trenutno nedostupno</div>
+                                            @endif
+                                        </div>
+                                        <div
+                                            class="gold-column col-12 col-md-3 col-sm-6 col-md-3 col-lg-3 d-flex justify-content-center flex-column">
+                                            <div class="d-md-none fw-bold"><small>Otkupna</small></div>
+                                            @if ($product['purchase_price'] != '0' && $product['purchase_price'] != null)
+                                                <div>
+                                                    @priceFormat($product['purchase_price'])
+                                                    {{ $currency }} <br>
+                                                    @if ((float) $product['purchase_price_percentage_change'] > 0 && false)
+                                                        <small class="text-danger">@priceFormat($product['purchase_price_percentage_change'])%
+                                                            <i class="fa-solid fa-arrow-up"></i></small>
+                                                    @endif
+                                                    @if ((float) $product['purchase_price_percentage_change'] < 0 && false)
+                                                        <small class="text-success">@priceFormat($product['purchase_price_percentage_change'])%
+                                                            <i class="fa-solid fa-arrow-down"></i></small>
+                                                    @endif
+                                                </div>
+                                            @else
+                                                <div>Trenutno nedostupno</div>
+                                            @endif
+                                        </div>
+                                        <div
+                                            class="gold-column col-12 col-md-3 col-sm-6 col-md-3 col-lg-3 d-flex justify-content-center flex-column">
+                                            <div class="d-md-none fw-bold"><small>Raspon</small></div>
+                                            @if ($product['selling_price'] > 0 && $product['purchase_price'] > 0)
+                                                {{ round(($product['selling_price'] / $product['purchase_price'] - 1) * 100, 2) }}
+                                                %
+                                            @else
+                                                Trenutno nedostupno
+                                            @endif
 
-                                    </div>
-                                    <div class="col-12">
-                                        <hr>
-                                    </div>
-                                @endforeach
+                                        </div>
+                                        <div class="col-12">
+                                            <hr>
+                                        </div>
+                                    @endforeach
+                                </div>
                             </div>
-                        </div>
-                        <!-- #Category table Prices -->
+                            <!-- #Category table Prices -->
+                        @else
+                            <div class="prices-table-gold">
+                                <div class="row">
+                                    <div class="col-12 col-sm-6 col-md-2 col-lg-2 d-none d-md-block fw-bold mb-3">
+                                        Naziv
+                                    </div>
+                                    <div class="col-12 col-sm-6 col-md-2 col-lg-2 d-none d-md-block fw-bold">
+                                        U pakovanju
+                                    </div>
+                                    <div class="col-12 col-sm-6 col-md-2 col-lg-2 d-none d-md-block fw-bold">
+                                        Cena pakovanja
+                                    </div>
+                                    <div class="col-12 col-sm-6 col-md-2 col-lg-2 d-none d-md-block fw-bold">
+                                        Prodajna/kom
+                                    </div>
+                                    <div class="col-12 col-sm-6 col-md-2 col-lg-2 d-none d-md-block fw-bold">
+                                        Otkupna/kom
+                                    </div>
+                                    <div class="col-12 col-sm-6 col-md-2 col-lg-2 d-none d-md-block fw-bold">
+                                        Raspon
+                                    </div>
+                                    @foreach ($products as $product)
+                                        <div
+                                            class="gold-column col-12 col-sm-6 col-md-2 col-lg-2 d-flex justify-content-center flex-column">
+                                            <div class="d-md-none fw-bold"><small>Naziv</small></div>
+                                            <a target="_blank" class="text-primary fw-bold" href="{{ $product['url'] }}">
+                                                {{ $product['name'] }} <img width="45"
+                                                    src="{{ $product->company->image_url }}"
+                                                    title="{{ $product->company->name }}" alt=""></a>
+                                        </div>
+                                        <div
+                                            class="gold-column col-12 col-sm-6 col-md-2 col-lg-2 d-flex justify-content-center flex-column">
+                                            <div class="d-md-none fw-bold"><small>U pakovanju</small></div>
+                                            {{ $product->quantity_multiplier }}
+
+                                        </div>
+                                        <div
+                                            class="gold-column col-12 col-sm-6 col-md-2 col-lg-2 d-flex justify-content-center flex-column">
+                                            <div class="d-md-none fw-bold"><small>Cena pakovanja</small></div>
+                                            @priceFormat($product['selling_price'] * $product->quantity_multiplier)
+                                            {{ $currency }}
+                                        </div>
+                                        <div
+                                            class="gold-column col-12 col-sm-6 col-md-2 col-lg-2 d-flex justify-content-center flex-column">
+                                            <div class="d-md-none fw-bold"><small>Prodajna/kom</small></div>
+                                            @if ($product['selling_price'] != '0' && $product['selling_price'] != null)
+                                                <div>
+                                                    @priceFormat($product['selling_price'])
+                                                    {{ $currency }} <br>
+                                                    @if ((float) $product['selling_price_percentage_change'] > 0 && false)
+                                                        <small class="text-danger">@priceFormat($product['selling_price_percentage_change'])%
+                                                            <i class="fa-solid fa-arrow-up"></i></small>
+                                                    @endif
+                                                    @if ((float) $product['selling_price_percentage_change'] < 0 && false)
+                                                        <small class="text-success">@priceFormat($product['selling_price_percentage_change'])%
+                                                            <i class="fa-solid fa-arrow-down"></i></small>
+                                                    @endif
+                                                </div>
+                                            @else
+                                                <div>Trenutno nedostupno</div>
+                                            @endif
+                                        </div>
+                                        <div
+                                            class="gold-column col-12 col-sm-6 col-md-2 col-lg-2 d-flex justify-content-center flex-column">
+                                            <div class="d-md-none fw-bold"><small>Otkupna/kom</small></div>
+                                            @if ($product['purchase_price'] != '0' && $product['purchase_price'] != null)
+                                                <div>
+                                                    @priceFormat($product['purchase_price'])
+                                                    {{ $currency }} <br>
+                                                    @if ((float) $product['purchase_price_percentage_change'] > 0 && false)
+                                                        <small class="text-danger">@priceFormat($product['purchase_price_percentage_change'])%
+                                                            <i class="fa-solid fa-arrow-up"></i></small>
+                                                    @endif
+                                                    @if ((float) $product['purchase_price_percentage_change'] < 0 && false)
+                                                        <small class="text-success">@priceFormat($product['purchase_price_percentage_change'])%
+                                                            <i class="fa-solid fa-arrow-down"></i></small>
+                                                    @endif
+                                                </div>
+                                            @else
+                                                <div>Trenutno nedostupno</div>
+                                            @endif
+                                        </div>
+                                        <div
+                                            class="gold-column col-12 col-sm-6 col-md-2 col-lg-2 d-flex justify-content-center flex-column">
+                                            <div class="d-md-none fw-bold"><small>Raspon</small></div>
+                                            @if ($product['selling_price'] > 0 && $product['purchase_price'] > 0)
+                                                {{ round(($product['selling_price'] / $product['purchase_price'] - 1) * 100, 2) }}
+                                                %
+                                            @else
+                                                Trenutno nedostupno
+                                            @endif
+
+                                        </div>
+                                        <div class="col-12">
+                                            <hr>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>
