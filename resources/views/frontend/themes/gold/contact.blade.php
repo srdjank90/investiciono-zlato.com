@@ -58,9 +58,11 @@
                                 </div>
                                 <div>
                                     <button name="submit" type="submit" value="submit"
-                                        class="btn w-100 btn-secondary btnhover">Pošalji</button>
+                                        class="btn w-100 btn-secondary btnhover"><i
+                                            class="fa fa-refresh fa-spin me-2 send-loading d-none"></i>
+                                        Pošalji</button>
                                 </div>
-                                <div id="responseMessage"></div>
+                                <div id="responseMessage" class="d-flex justify-content-center mt-3"> </div>
                             </form>
                         </div>
                     </div>
@@ -84,7 +86,8 @@
         $(document).ready(function() {
             $('#contactForm').submit(function(event) {
                 event.preventDefault();
-
+                $('.send-loading').removeClass('d-none')
+                $('.send-loading').attr('disabled', true)
                 $.ajax({
                     type: 'POST',
                     url: $(this).attr('action'),
@@ -92,9 +95,13 @@
                     success: function(response) {
                         $('#responseMessage').text(response.message);
                         $('#contactForm')[0].reset();
+                        $('.send-loading').addClass('d-none')
+                        $('.send-loading').attr('disabled', false)
                     },
                     error: function(xhr, status, error) {
-                        console.error(xhr.responseText);
+                        $('#responseMessage').text('Proverite unete podatke!');
+                        $('.send-loading').addClass('d-none')
+                        $('.send-loading').attr('disabled', false)
                     }
                 });
             });
