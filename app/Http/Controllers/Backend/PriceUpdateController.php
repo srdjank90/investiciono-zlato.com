@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Models\Price;
 use App\Models\Product;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
@@ -16,6 +17,8 @@ class PriceUpdateController extends Controller
 {
     public function updatePricesApi()
     {
+        $checkedAt = Carbon::now();
+
         $url = env('SCRAPER_API', 'https://radoviutoku.com/api');
         $response = Http::get($url . '/prices');
         if ($response->successful()) {
@@ -24,6 +27,7 @@ class PriceUpdateController extends Controller
                 Price::create($price);
                 $product = Product::find($price['product_id']);
                 if ($product) {
+                    NotificationController::storePricePercentChange($product->selling_price, $price['selling_price'], $product, $checkedAt);
                     $product->selling_price = $price['selling_price'];
                     $product->purchase_price = $price['purchase_price'];
                     $product->save();

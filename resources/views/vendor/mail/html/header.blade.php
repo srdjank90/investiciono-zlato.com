@@ -10,9 +10,9 @@
         </a>
     </td> --}}
     <td class="header">
-        <a href="https://reklamni-materijal.com" style="display: inline-block;">
+        {{-- <a href="https://reklamni-materijal.com" style="display: inline-block;">
             <img width="200" src="https://reklamni-materijal.com/themes/mooncart/assets/images/logo.png"
                 alt="Reklamni materijal by Jefimija dizajn">
-        </a>
+        </a> --}}
     </td>
 </tr>

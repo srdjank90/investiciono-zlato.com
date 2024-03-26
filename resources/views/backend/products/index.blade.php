@@ -23,8 +23,8 @@
                             placeholder="🔍 {{ __('Search') }}">
                     </div>
                 </form>
-                <div class="ms-5 d-flex flex-row">
-                    <form class="me-2" action="/backend/products" method="GET">
+                <div class="ms-5 d-flex flex-row flex-wrap">
+                    <form class="me-2 mb-2" action="/backend/products" method="GET">
                         <input type="hidden" name="cat" value="1g">
                         @if ($cat == '1g')
                             <button class="btn btn-primary">1g</button>
@@ -33,7 +33,7 @@
                         @endif
                         @csrf
                     </form>
-                    <form class="me-2" action="/backend/products" method="GET">
+                    <form class="me-2 mb-2" action="/backend/products" method="GET">
                         <input type="hidden" name="cat" value="2g">
                         @if ($cat == '2g')
                             <button class="btn btn-primary">2g</button>
@@ -42,7 +42,7 @@
                         @endif
                         @csrf
                     </form>
-                    <form class="me-2 d-none" action="/backend/products" method="GET">
+                    <form class="me-2 d-none mb-2" action="/backend/products" method="GET">
                         <input type="hidden" name="cat" value="2.5g">
                         @if ($cat == '2.5g')
                             <button class="btn btn-primary">2.5g</button>
@@ -51,7 +51,7 @@
                         @endif
                         @csrf
                     </form>
-                    <form class="me-2" action="/backend/products" method="GET">
+                    <form class="me-2 mb-2" action="/backend/products" method="GET">
                         <input type="hidden" name="cat" value="5g">
                         @if ($cat == '5g')
                             <button class="btn btn-primary">5g</button>
@@ -60,7 +60,7 @@
                         @endif
                         @csrf
                     </form>
-                    <form class="me-2" action="/backend/products" method="GET">
+                    <form class="me-2 mb-2" action="/backend/products" method="GET">
                         <input type="hidden" name="cat" value="10g">
                         @if ($cat == '10g')
                             <button class="btn btn-primary">10g</button>
@@ -69,7 +69,7 @@
                         @endif
                         @csrf
                     </form>
-                    <form class="me-2" action="/backend/products" method="GET">
+                    <form class="me-2 mb-2" action="/backend/products" method="GET">
                         <input type="hidden" name="cat" value="20g">
                         @if ($cat == '20g')
                             <button class="btn btn-primary">20g</button>
@@ -78,7 +78,7 @@
                         @endif
                         @csrf
                     </form>
-                    <form class="me-2" action="/backend/products" method="GET">
+                    <form class="me-2 mb-2" action="/backend/products" method="GET">
                         <input type="hidden" name="cat" value="1unca">
                         @if ($cat == '1unca')
                             <button class="btn btn-primary">1unca</button>
@@ -87,7 +87,7 @@
                         @endif
                         @csrf
                     </form>
-                    <form class="me-2" action="/backend/products" method="GET">
+                    <form class="me-2 mb-2" action="/backend/products" method="GET">
                         <input type="hidden" name="cat" value="50g">
                         @if ($cat == '50g')
                             <button class="btn btn-primary">50g</button>
@@ -105,7 +105,7 @@
                         @endif
                         @csrf
                     </form>
-                    <form class="me-2 d-none" action="/backend/products" method="GET">
+                    <form class="me-2 mb-2" action="/backend/products" method="GET">
                         <input type="hidden" name="cat" value="250g">
                         @if ($cat == '250g')
                             <button class="btn btn-primary">250g</button>
@@ -114,7 +114,7 @@
                         @endif
                         @csrf
                     </form>
-                    <form class="me-2" action="/backend/products" method="GET">
+                    <form class="me-2 mb-2" action="/backend/products" method="GET">
                         <input type="hidden" name="cat" value="500g">
                         @if ($cat == '500g')
                             <button class="btn btn-primary">500g</button>
@@ -123,7 +123,7 @@
                         @endif
                         @csrf
                     </form>
-                    <form class="me-2" action="/backend/products" method="GET">
+                    <form class="me-2 mb-2" action="/backend/products" method="GET">
                         <input type="hidden" name="cat" value="1000g">
                         @if ($cat == '1000g')
                             <button class="btn btn-primary">1000g</button>
@@ -132,7 +132,7 @@
                         @endif
                         @csrf
                     </form>
-                    <form class="me-2" action="/backend/products" method="GET">
+                    <form class="me-2 mb-2" action="/backend/products" method="GET">
                         <input type="hidden" name="cat" value="Dukati">
                         @if ($cat == 'Dukati')
                             <button class="btn btn-primary">Dukati</button>
@@ -141,7 +141,7 @@
                         @endif
                         @csrf
                     </form>
-                    <form class="me-2" action="/backend/products" method="GET">
+                    <form class="me-2 mb-2" action="/backend/products" method="GET">
                         <input type="hidden" name="cat" value="Nedefinisano">
                         @if ($cat == 'Nedefinisano')
                             <button class="btn btn-primary">Nedefinisano</button>
@@ -150,7 +150,7 @@
                         @endif
                         @csrf
                     </form>
-                    <form class="me-2" action="/backend/products" method="GET">
+                    <form class="me-2 mb-2" action="/backend/products" method="GET">
                         <input type="hidden" name="cat" value="">
                         @if ($cat == '')
                             <button class="btn btn-primary">Sve</button>
@@ -183,7 +183,6 @@
                         </ul>
                     </div>
                 </div>
-
 
                 <a class="btn btn-primary d-none" href="{{ route('backend.products.actions.index') }}">
                     <i class="bi bi-piggy-bank"></i> {{ __('Actions') }}

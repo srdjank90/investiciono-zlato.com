@@ -139,6 +139,9 @@ Route::get('/zlatne-plocice', [App\Http\Controllers\Frontend\FrontendController:
 Route::get('/zlatne-poluge', [App\Http\Controllers\Frontend\FrontendController::class, 'goldenBars'])->name('frontend.bars');
 Route::get('/zlatni-dukati', [App\Http\Controllers\Frontend\FrontendController::class, 'goldenCoins'])->name('frontend.coins');
 Route::get('/najisplativije-cene-zlata-u-srbiji', [App\Http\Controllers\Frontend\FrontendController::class, 'best'])->name('frontend.best');
+Route::get('/najisplativiji-neisplativiji', function () {
+    return redirect()->route('frontend.best');
+});
 Route::get('/investiciono-zlato', [App\Http\Controllers\Frontend\FrontendController::class, 'gold'])->name('frontend.gold');
 Route::get('/dukati/{slug}', [App\Http\Controllers\Frontend\FrontendController::class, 'coinsSingleArchive'])->name('frontend.coins.single.archive');
 

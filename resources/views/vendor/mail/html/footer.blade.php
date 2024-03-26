@@ -4,7 +4,7 @@
             <tr>
                 <td class="content-cell" align="center">
                     <span style="display: none">{{ Illuminate\Mail\Markdown::parse($slot) }}</span>
-                    2023 ©Allinclusive.
+                    2024 ©Sezame,otvori se!.
                 </td>
             </tr>
         </table>

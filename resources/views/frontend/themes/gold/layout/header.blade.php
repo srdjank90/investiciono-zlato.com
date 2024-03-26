@@ -184,7 +184,7 @@
                                                                     alt="/">
                                                             @endif
                                                         </div>
-                                                        <div class="dz-content">
+                                                        <div class="dz-content" style="width: calc(100% - 60px)">
                                                             <h6 class="name">
                                                                 <a href="{{ route('frontend.post', $post->slug) }}">
                                                                     {{ $post->title }}
@@ -210,7 +210,7 @@
                                                                     alt="/">
                                                             @endif
                                                         </div>
-                                                        <div class="dz-content">
+                                                        <div class="dz-content" style="width: calc(100% - 60px)">
                                                             <h6 class="name">
                                                                 <a href="{{ route('frontend.post', $post->slug) }}">
                                                                     {{ $post->title }}

@@ -38,7 +38,7 @@
                             class="form-control form-control-sm slug-generated" value="">
                         <div id="slugHelp" class="form-text">
                             {{ __('The “slug” is the URL-friendly version of the name. It
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        is usually all lowercase and contains only letters, numbers, and hyphens.') }}
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            is usually all lowercase and contains only letters, numbers, and hyphens.') }}
                         </div>
                     </div>
                     <div class="form-group">
@@ -48,8 +48,6 @@
                                 type="file">
                         </div>
                     </div>
-
-
 
                     <div class="form-group">
                         <label for="parent_id">{{ __('Parent') }}</label>
@@ -163,6 +161,12 @@
                                 </div>
                             </div>
 
+                            <div class="form-group">
+                                <label for="categoryNotificationPercentEdit">{{ __('Notification Change') }}</label>
+                                <input type="text" name="notification_percent" id="categoryNotificationPercentEdit"
+                                    required class="form-control">
+                            </div>
+
                             <div class="mt-3 text-end">
                                 <button type="button" class="btn btn-secondary"
                                     data-bs-dismiss="modal">{{ __('Cancel') }}</button>
@@ -211,6 +215,7 @@
             $("#editForm").attr('action', '/backend/products/categories/update/' + category.id)
             $("#categoryNameEdit").val(category.name);
             $("#categorySlugEdit").val(category.slug);
+            $("#categoryNotificationPercentEdit").val(category.notification_percent);
             $("#categoryDescriptionEdit").val(category.description);
             if (category.favorite_flag) {
                 $("#categoryFavoriteFlagEdit").attr('checked', true)
