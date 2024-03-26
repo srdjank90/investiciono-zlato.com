@@ -19,7 +19,7 @@ class Kernel extends ConsoleKernel
         $schedule->command('export:products-prices')->dailyAt('23:58')->timezone('CET');
         $schedule->command('app:empty-prices')->dailyAt('23:59')->timezone('CET');
         $schedule->command('app:clean-price-percent-changes')->weeklyOn(0, '00:00')->timezone('CET');
-        $schedule->call('App\Http\Controllers\Backend\NotificationController@sendNotificationForPricePercentageChanges')->everyFiveMinutes();
+        $schedule->call('App\Http\Controllers\Backend\NotificationController@sendNotificationForPricePercentageChanges')->hourly();
     }
 
     /**
