@@ -22,7 +22,7 @@ class NotificationController extends Controller
         Log::info('Percentage notification triggered!');
         $priceChanges = PricePercentChange::where('notified', 0)->get();
         if (count($priceChanges) > 0) {
-            Notification::route('mail', 'srdjank90@gmail.com')
+            Notification::route('mail', ['srdjank90@gmail.com', 'srdjan@hejdev.com'])
                 ->notify(new PricePercentChangeNotification($priceChanges));
         }
     }

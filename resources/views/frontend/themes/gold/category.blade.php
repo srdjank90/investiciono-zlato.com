@@ -1,6 +1,11 @@
 @extends('frontend.themes.gold.layout.layout')
-@section('title', $category->seo->title . ' | Poredjenje cena investicionog zlata u realnom vremenu')
-@section('description', strip_tags(htmlspecialchars_decode($category->description)))
+@if($category)
+@section('title', $category->name . ' | Poredjenje cena investicionog zlata u realnom vremenu')
+@else
+@section('title',  'Investiciono zlato | Poredjenje cena investicionog zlata u realnom vremenu')
+@section('description', '')
+@endif
+
 @section('keywords', '')
 @section('image', 'themes/gold/assets/images/demo/demo-3.webp')
 @section('content')
@@ -14,11 +19,13 @@
                     <div class="col-xl-12 col-lg-12">
                         <div class="product-specification mb-3">
                             <div class="mb-4">
-                                {!! $category->description !!}
+                                @if($category)
+                                    {!! $category->description !!}
+                                @endif
                             </div>
                         </div>
                         <!-- Category table Prices  -->
-                        @if ($category->slug !== 'multi-proizvod')
+                        @if ($category && $category->slug !== 'multi-proizvod')
                             <div class="prices-table-gold">
                                 <div class="row">
                                     <div class="col-12 col-sm-6 col-md-3 col-lg-3 d-none d-md-block fw-bold mb-3">
