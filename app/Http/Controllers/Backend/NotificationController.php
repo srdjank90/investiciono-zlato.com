@@ -22,7 +22,7 @@ class NotificationController extends Controller
         Log::info('Percentage notification triggered!');
         $priceChanges = PricePercentChange::where('notified', 0)->get();
         if (count($priceChanges) > 0) {
-            Notification::route('mail', ['srdjank90@gmail.com', 'srdjan@hejdev.com'])
+            Notification::route('mail', ['office@zlatnistandard.rs', 'zlatnistd@gmail.com'])
                 ->notify(new PricePercentChangeNotification($priceChanges));
         }
     }
@@ -35,10 +35,10 @@ class NotificationController extends Controller
         $percentageTrigger = $product->categories[0]->notification_percent;
 
         // If prices different than percentage set then store that change
-        if ($newPrice != 0 && $newPrice != 0 && $percentageTrigger > 0) {
+        if ($oldPrice != 0 && $newPrice != 0 && $percentageTrigger > 0) {
             $percentChange = (($newPrice - $oldPrice) / $oldPrice) * 100;
             $percentChange = number_format($percentChange, 2, '.');
-            if (abs($percentChange) >= $percentageTrigger) {
+            if (abs(floatval($percentChange)) >= $percentageTrigger) {
                 $pricePercentChangeData = [
                     'product_id' => $product->id,
                     'percentage_set' => $percentageTrigger,
