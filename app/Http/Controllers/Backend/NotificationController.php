@@ -33,7 +33,6 @@ class NotificationController extends Controller
     public static function storePricePercentChange($oldPrice, $newPrice, $product, $checkedAt)
     {
         $percentageTrigger = $product->categories[0]->notification_percent;
-
         // If prices different than percentage set then store that change
         if ($oldPrice != 0 && $newPrice != 0 && $percentageTrigger > 0) {
             $percentChange = (($newPrice - $oldPrice) / $oldPrice) * 100;
