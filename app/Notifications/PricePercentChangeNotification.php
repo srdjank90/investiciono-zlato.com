@@ -39,7 +39,7 @@ class PricePercentChangeNotification extends Notification
         return (new MailMessage)
             ->subject('Notifikacija o promeni cena proizvoda')
             ->greeting('Ispod se nalaze zapažene promene cena za procenat koji ste odredili po kategorijama.')
-            ->line(new HtmlString($this->generatePercentageChangesHtml()))
+            ->line(new HtmlString($this->generatePercentageChangesTable()))
             ->salutation(' ');
     }
 
@@ -59,6 +59,33 @@ class PricePercentChangeNotification extends Notification
             $change->notified = 1;
             $change->save();
         }
+        return $html;
+    }
+
+    public function generatePercentageChangesTable()
+    {
+        $html = "";
+        $html .= "<table>";
+        $html .= "<thead>";
+        $html .= "  <th>Naziv</th>";
+        $html .= "  <th>Kompanija</th>";
+        $html .= "  <th>Stara cena</th>";
+        $html .= "  <th>Nova cena</th>";
+        $html .= "  <th>Promena</th>";
+        $html .= "<tbody>";
+        foreach ($this->priceChanges as $change) {
+            $html .= "<tr>";
+            $html .= "  <th>" . $change->product->name . "</th>";
+            $html .= "  <th>" . $change->product->company->name . "</th>";
+            $html .= "  <th>" . $change->old_price . "</th>";
+            $html .= "  <th>" . $change->new_price . "</th>";
+            $html .= "  <th>" . $change->percentage_change . "</th>";
+            $html .= "</th>";
+        }
+        $html .= "</tbody>";
+        $html .= "</thead>";
+        $html .= "</table>";
+
         return $html;
     }
 
