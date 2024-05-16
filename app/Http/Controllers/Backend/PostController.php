@@ -227,7 +227,6 @@ class PostController extends BackendController
         $words = '';
         // Output the results
         foreach ($mostCommonBigrams as $bigram => $count) {
-            Log::info("$bigram: $count occurrences");
             $words .= $bigram . ',';
         }
 

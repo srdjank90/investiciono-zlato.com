@@ -34,7 +34,6 @@ class PriceUpdateController extends Controller
                 }
             }
         } else {
-            Log::info('Problem sa povlacenjem cena!');
         }
     }
 

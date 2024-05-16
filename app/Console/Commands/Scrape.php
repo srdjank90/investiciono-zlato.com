@@ -57,7 +57,6 @@ class Scrape extends Command
                 $description = $rModel['Description'];
                 $description = $this->textToUcFirst($this->textToLowercase($description));
                 $product->subtitle = $description;
-                Log::info($product->subtitle);
                 $product->save();
             }
         }
@@ -94,7 +93,6 @@ class Scrape extends Command
                 $product->quantity = $productQuantity;
                 $product->save();
             } catch (\Exception $e) {
-                Log::info('ERROR');
             }
         }
     }
@@ -158,7 +156,6 @@ class Scrape extends Command
                 try {
                     $responseModel = Http::asForm()->withToken($token)->timeout(15)->get('http://api.promobay.net/en-US/api/Model?id=' . $model['Id']);
                     $rModel = $responseModel->json();
-                    Log::info($rModel);
                     // Find All Colors
 
                     /*  if (isset($rModel['Colors'])) {
@@ -174,8 +171,6 @@ class Scrape extends Command
                         }
                     } */
                 } catch (\Exception $e) {
-                    //Log::info($e);
-                    Log::info('ERROR');
                 }
 
 
@@ -214,7 +209,7 @@ class Scrape extends Command
                             }
                         }
                     } catch (\Exception $e) {
-                        Log::info('ERROR');
+                        
                     }
                 }
 
@@ -310,7 +305,6 @@ class Scrape extends Command
                     'keywords' => $keywords
                 ]; */
                 #$seo = SeoMetaTag::create($dataSeo);
-                Log::info('DONE');
             }
         }
     }
@@ -346,12 +340,9 @@ class Scrape extends Command
                 'keywords' => $keywords
             ];
 
-            Log::info($dataSeo);
-
             /* if (isset($product['Model']['Id']) && gettype(($product['Model']['Id']) == 'array')) {
                 $responseColors = Http::asForm()->withToken($token)->get('http://api.promobay.net/en-US/api/Model?id=' . $product['Model']['Id']);
                 $productColors = $responseColors->json();
-                Log::info($productColors);
             } */
         }
     }
@@ -360,7 +351,6 @@ class Scrape extends Command
     {
         $responseDetails = Http::asForm()->withToken($token)->get('http://api.promobay.net/en-US/api/Product?id=' . $productId);
         $productDetails = $responseDetails->json();
-        Log::info($productDetails);
     }
 
     function textToLowercase($text)

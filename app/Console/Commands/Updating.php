@@ -48,9 +48,7 @@ class Updating extends Command
     {
         $products = Product::all();
         foreach ($products as $product) {
-            #Log::info($product->url);
             $imageUrl = $this->getProductImageUrl($product->url);
-            Log::info('Image url:' . $imageUrl);
             $product->product_image_url = $imageUrl;
             $product->save();
         }
@@ -479,7 +477,7 @@ class Updating extends Command
         foreach ($products as $product) {
             $imageUrl = $product->product_image_url;
             if ($imageUrl) {
-                Log::info($imageUrl);
+                ($imageUrl);
                 try {
                     $client = new Client();
                     $imageName = $product->id . '-' . $product->slug . '.jpg';
@@ -493,13 +491,13 @@ class Updating extends Command
                         $imagePath = Storage::url('images/' . $imageName);
                         $product->product_image_url = $imagePath;
                         $product->save();
-                        Log::info($imagePath);
+                        ($imagePath);
                     } else {
                         // Handle error if the request was not successful
-                        Log::info('ERROR');
+                        ('ERROR');
                     }
                 } catch (\Exception $e) {
-                    Log::info($e);
+                    ($e);
                 }
             }
         }

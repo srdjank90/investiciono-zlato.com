@@ -56,10 +56,9 @@ class Test extends Command
         foreach ($products as $product) {
             $found = DB::table('wp')->where('url', $product->url)->count();
             if ($found > 0) {
-                Log::info('DONT DELETE');
             } else {
                 if ($product->id < 209) {
-                    Log::info("REMOVE - " . $product->url);
+
                     $product->delete();
                 }
             }
@@ -128,7 +127,7 @@ class Test extends Command
             array_push($keywords, 'Reklamni materijal');
             $keywordsString = implode(',', $keywords);
             $color = '';
-            Log::info($product->meta);
+
             foreach ($product->meta as $c) {
                 if ($c->name !== 'Clik') {
                     $color = ' - ' . $c->name;

@@ -37,8 +37,13 @@ class NotificationController extends Controller
         // Catch percentage change for first category
         $divider = NotificationController::getPriceDivider($product);
 
-        $oldPricePerGram = $oldPrice / $divider;
-        $newPricePerGram = $newPrice / $divider;
+        if ($divider != 0 && $divider != null) {
+            $oldPricePerGram = $oldPrice / $divider;
+            $newPricePerGram = $newPrice / $divider;
+        } else {
+            $oldPricePerGram = $oldPrice;
+            $newPricePerGram = $newPrice;
+        }
 
         $percentageTrigger = $product->categories[0]->notification_percent;
         // If prices different than percentage set then store that change
@@ -104,8 +109,8 @@ class NotificationController extends Controller
 
         if (str_contains($product->name, '1g') !== false) {
             return $product->selling_price / 1;
-        } else {
-            return 1;
         }
+
+        return 1;
     }
 }

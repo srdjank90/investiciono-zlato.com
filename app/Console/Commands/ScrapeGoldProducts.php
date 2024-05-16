@@ -44,7 +44,6 @@ class ScrapeGoldProducts extends Command
         #$this->investicionoZlato2Products();
 
         #$pric = $this->fetchInvesticionoZlatoItemPrice('https://investiciono-zlato.rs/zlatne-poluge-20-grama-10-x-2g.html');
-        #Log::info($pric);
     }
 
     function createCategories()
@@ -196,7 +195,6 @@ class ScrapeGoldProducts extends Command
             $table = $crawler->filter('table')->first();
 
             $declaration[] = $table->filter('tr')->each(function ($row, $i) {
-                #Log::info($row->text());
                 return $row->text();
             });
         } catch (\Exception $e) {
@@ -290,7 +288,6 @@ class ScrapeGoldProducts extends Command
                 }
             }
         }
-        Log::info($data);
     }
 
     function fetchInvesticionoZlatoItemsDescription($url)
@@ -381,7 +378,6 @@ class ScrapeGoldProducts extends Command
         } catch (\Exception $e) {
             Log::error($e->getMessage());
         }
-        Log::info($products);
         foreach ($products as $prod) {
             $productData = [
                 'name' => $prod['name'],
@@ -423,7 +419,7 @@ class ScrapeGoldProducts extends Command
         } catch (\Exception $e) {
             Log::error($e->getMessage());
         }
-        Log::info($products);
+
         foreach ($products as $prod) {
             $productData = [
                 'name' => $prod['name'],
@@ -455,7 +451,6 @@ class ScrapeGoldProducts extends Command
         try {
             $crawler = GoutteFacade::request('GET', $url);
             $products = $crawler->filter('section li[data-hook="product-list-grid-item"]')->each(function ($node) {
-                Log::info($node->text());
                 $product['url'] = $node->filter('[data-hook="product-item-product-details-link"]')->first()->extract(array('href'))[0];
                 $product['name'] = $node->filter('[data-hook="product-item-name"]')->first()->text();
                 $product['slug'] = Str::slug($product['name'], '-');
@@ -486,7 +481,6 @@ class ScrapeGoldProducts extends Command
                 $product->categories()->attach($categoryID);
             }
         }
-        Log::info($products);
     }
 
     /**
@@ -501,7 +495,6 @@ class ScrapeGoldProducts extends Command
         try {
             $crawler = GoutteFacade::request('GET', $url);
             $products = $crawler->filter('.product-type-simple')->each(function ($node) {
-                Log::info($node->text());
                 $product['url'] = $node->filter('[data-widget_type="jet-woo-builder-archive-product-title.default"] a')->first()->extract(array('href'))[0];
                 $product['name'] = $node->filter('[data-widget_type="jet-woo-builder-archive-product-title.default"] a')->first()->text();
                 $product['slug'] = Str::slug($product['name'], '-');
@@ -578,7 +571,6 @@ class ScrapeGoldProducts extends Command
         try {
             $crawler = GoutteFacade::request('GET', $url);
             $products = $crawler->filter('.product-inner')->each(function ($node) {
-                #Log::info($node->filter('.mf-product-details .price')->count() ? 'true' : 'false');
                 $product['url'] = $node->filter('.woo-loop-product__title a')->first()->extract(array('href'))[0];
                 $product['name'] = $node->filter('.woo-loop-product__title a')->first()->text();
                 $product['slug'] = Str::slug($product['name'], '-');
@@ -617,7 +609,6 @@ class ScrapeGoldProducts extends Command
                 $product->categories()->attach($categoryID);
             }
         }
-        Log::info($products);
     }
 
     /**
@@ -706,7 +697,6 @@ class ScrapeGoldProducts extends Command
                 $product->categories()->attach($categoryID);
             }
         }
-        Log::info($products);
     }
 
     /**
@@ -893,8 +883,6 @@ class ScrapeGoldProducts extends Command
                 $product->categories()->attach($categoryID);
             }
         }
-
-        Log::info($products);
     }
 
     function findCategory($string)

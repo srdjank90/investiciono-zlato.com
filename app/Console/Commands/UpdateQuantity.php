@@ -77,7 +77,6 @@ class UpdateQuantity extends Command
                     $product->save();
                 }
             } catch (\Exception $e) {
-                Log::info('ERROR');
             }
         }
     }
