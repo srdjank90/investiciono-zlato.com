@@ -27,6 +27,7 @@ class NotificationController extends Controller
                 ->notify(new PricePercentChangeNotification($priceChanges)); */
             Mail::to(['office@zlatnistandard.rs', 'zlatnistd@gmail.com', 'srdjank90@gmail.com'])->send(new PriceChangeEmail($priceChanges));
         }
+        $priceChanges = PricePercentChange::where('notified', 0)->update(['notified' => 1]);
     }
 
     /**
